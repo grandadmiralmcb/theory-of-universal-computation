@@ -2,27 +2,25 @@
 
 All notable developments of the Expression-Tree Ontology are recorded here.
 
-## [2026-08-06] (unitarity from structural projection)
+## [2026-08-06] (theorem chain)
 
-### Derivation
-- Free epoch = share-preserving evolution (no path dropped).
-- Lemma: free evolution cannot act by share-breaking (forced).
-- Assumption R: share-preserving linear reduce is reversible → invertibility (semi-forced).
-- Principle N: no cost-free change of relative moduli → norm fixable (semi-forced).
-- Invertible + norm-preserving linear maps → unitary on active subspace.
-- Structural decoherence = sole non-unitary locus (projection).
-- Documented in `docs/10-unitarity-from-projection.md`; summarized in `docs/03-quantum-sector.md` §2.
+### Formal theorems from axioms (`docs/11-theorems.md`)
+- **T1–T2:** structural cost well-defined; preferential selection.
+- **T3–T8:** optimal \(\delta v\), discrete dynamics, continuum Newton, inverse share-count ratio (parameter-free), projectile motion, position-dependent bias.
+- **T9–T11:** isolation/maintain from trees, structural decoherence criterion, classical limit of coherence.
+- **T12:** free evolution is share-preserving.
+- **T13:** unitarity on active subspace (conditional on Assumptions R, N).
+- **T14:** structural decoherence is the sole non-unitary locus.
+- Dependency graph and explicit gap list (Born, \(\varphi_i\), sequential parameter from syntax, R/N as theorems).
 
-### Honesty boundary
-- Unitarity not obtained from real \(S,B,D\) alone.
-- Obtained from structural projection + R + N.
-- Born rule still a reading at selection; \(\varphi_i\) generator still open.
+## [2026-08-06] (unitarity from projection)
+
+- Free epoch, share_preserve, R, N, unitarity conditional derivation (`docs/10-unitarity-from-projection.md`).
 
 ## [2026-08-06] (linear reduce + toolbox)
 
-- Active direction: linear reduce + weighted share.
-- Toolbox A–F documented.
+- Active direction; complexification toolbox A–F.
 
 ## [2026-08-06] (earlier)
 
-- Expression-tree costs, adversarial pressure points, velocity coupling, classical formalisms, radical reduction.
+- Expression-tree costs, adversarial pressures, velocity coupling, classical formalisms, radical reduction.
