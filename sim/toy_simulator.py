@@ -4,16 +4,16 @@ Toy Structural Sequential Simulator
 ===================================
 Expression-Tree Ontology — discrete sequential calculus.
 
-Supports:
-  - constant bias (uniform field)
-  - position-dependent bias from a structural potential V(x)
+Supports constant bias and position-dependent bias from a structural potential.
 
-Under a potential the continuum limit is
-    m_struct * ẍ = - dV/dx
+Continuum target under a potential V(x):
+    m_struct * ẍ = - V'(x)
 
-The simulator selects lowest-structural-cost velocity updates at each tick
-and tracks a simple energy-like quantity to check approximate conservation
-when the bias is derivable from a potential.
+The optimal velocity change rate from minimizing
+    C(dv) = ½ m (dv)² + b(x) dv
+is dv* = -b/m.  The integrator applies this as a *rate*:
+    v <- v + dv* * dt
+    x <- x + v * dt
 """
 
 from __future__ import annotations
@@ -32,25 +32,17 @@ class Seq:
 
 @dataclass
 class Bias:
-    """
-    Bias context.
-    - If strength is set and potential is None: constant bias (old behavior).
-    - If potential is set: b(x) = dV/dx (force = -dV/dx in the continuum).
-    """
     strength: float = 0.0
     potential: Optional[Callable[[float], float]] = None
-    force: Optional[Callable[[float], float]] = None  # if provided, used directly as -dV/dx
+    force: Optional[Callable[[float], float]] = None
 
     def b_at(self, x: float) -> float:
-        """Return the local structural bias strength at position x.
-
-        Convention: continuum equation is ẍ = -b(x)/m
-        so b(x) = +dV/dx when force = -dV/dx.
+        """b(x) such that continuum equation is ẍ = -b(x)/m.
+        When force = -dV/dx is supplied, b = -force = dV/dx.
         """
         if self.force is not None:
-            return -self.force(x)          # b = -force
+            return -self.force(x)
         if self.potential is not None:
-            # numerical derivative of V
             eps = 1e-6
             dV = (self.potential(x + eps) - self.potential(x - eps)) / (2 * eps)
             return dV
@@ -74,36 +66,37 @@ class SequentialState:
 
 class SequentialEvaluator:
     def __init__(self, state: SequentialState, dt: float = 0.05,
+                 use_analytic: bool = True,
                  dv_candidates: Optional[List[float]] = None):
         self.state = state
         self.dt = dt
-        # finer grid for better approximation of continuous optimum
-        self.dv_candidates = dv_candidates or [i * 0.02 for i in range(-50, 51)]
+        self.use_analytic = use_analytic
+        self.dv_candidates = dv_candidates or [i * 0.05 for i in range(-40, 41)]
 
     def tick(self) -> dict:
-        candidates = []
-        for dv in self.dv_candidates:
-            C, breakdown = cost_of_dv(self.state.cluster, dv, self.state.bias)
-            candidates.append((C, dv, breakdown))
-
-        candidates.sort(key=lambda t: t[0])
-        best_C, best_dv, best_breakdown = candidates[0]
-
-        m = best_breakdown["m"]
-        b = best_breakdown["b"]
+        m = m_struct(self.state.cluster)
+        b = self.state.bias.b_at(self.state.cluster.x) if self.state.bias else 0.0
         dv_star = -b / m if m != 0 else 0.0
 
-        self.state.cluster.v += best_dv
+        if self.use_analytic:
+            best_dv = dv_star
+            best_C = 0.5 * m * (dv_star ** 2) + b * dv_star
+        else:
+            candidates = []
+            for dv in self.dv_candidates:
+                C, breakdown = cost_of_dv(self.state.cluster, dv, self.state.bias)
+                candidates.append((C, dv, breakdown))
+            candidates.sort(key=lambda t: t[0])
+            best_C, best_dv, _ = candidates[0]
+
+        # dv* is a *rate* (acceleration); integrate it
+        self.state.cluster.v += best_dv * self.dt
         self.state.cluster.x += self.state.cluster.v * self.dt
         self.state.tick += 1
 
-        # structural energy analogue: kinetic + potential
         V = 0.0
         if self.state.bias is not None and self.state.bias.potential is not None:
             V = self.state.bias.potential(self.state.cluster.x)
-        elif self.state.bias is not None and self.state.bias.force is not None:
-            # only known for simple analytic cases; leave 0 if unknown
-            V = 0.0
         T = 0.5 * m * (self.state.cluster.v ** 2)
         E = T + V
 
@@ -111,8 +104,8 @@ class SequentialEvaluator:
             "tick": self.state.tick,
             "x": self.state.cluster.x,
             "v": self.state.cluster.v,
-            "dv_chosen": best_dv,
             "dv_star": dv_star,
+            "dv_applied": best_dv,
             "cost": best_C,
             "m_struct": m,
             "b_struct": b,
@@ -129,16 +122,12 @@ class SequentialEvaluator:
             self.tick()
         return self.state.history
 
-# ---------------------------------------------------------------------------
-# Experiments
-# ---------------------------------------------------------------------------
-
 def run_constant_bias_comparison(
     share_a: int = 5,
     share_b: int = 20,
     bias_strength: float = 1.0,
-    ticks: int = 50,
-    dt: float = 0.1,
+    ticks: int = 100,
+    dt: float = 0.05,
 ):
     print("=" * 64)
     print("Constant bias — inverse-acceleration test")
@@ -159,7 +148,8 @@ def run_constant_bias_comparison(
 
     a_a = hist_a[-1]["v"] / (ticks * dt)
     a_b = hist_b[-1]["v"] / (ticks * dt)
-    print(f"  Observed aA={a_a:.6f}, aB={a_b:.6f}, ratio={a_a/a_b if a_b else float('nan'):.4f}")
+    ratio = a_a / a_b if abs(a_b) > 1e-15 else float("nan")
+    print(f"  Observed aA={a_a:.6f}, aB={a_b:.6f}, ratio={ratio:.4f}")
     print("=" * 64)
     return hist_a, hist_b
 
@@ -168,10 +158,10 @@ def run_harmonic(
     k: float = 1.0,
     x0: float = 1.0,
     v0: float = 0.0,
-    ticks: int = 400,
-    dt: float = 0.05,
+    periods: float = 3.0,
+    dt: float = 0.02,
 ):
-    """Harmonic potential V = ½ k x²  →  force = -k x  →  b(x) = k x."""
+    """Harmonic potential V=½kx² → force=-kx → b(x)=kx."""
     print("=" * 64)
     print("Position-dependent bias — harmonic oscillator")
     print("=" * 64)
@@ -187,32 +177,35 @@ def run_harmonic(
     m = m_struct(cluster)
     omega = math.sqrt(k / m)
     T_period = 2 * math.pi / omega
+    ticks = int(periods * T_period / dt)
 
     print(f"  m_struct={m:.4f}, k={k}, ω={omega:.4f}, period≈{T_period:.4f}")
-    print(f"  initial x={x0}, v={v0}")
+    print(f"  integrating {periods} periods ({ticks} ticks, dt={dt})")
 
     evaluator = SequentialEvaluator(SequentialState(cluster=cluster, bias=bias), dt=dt)
     hist = evaluator.run(ticks)
 
-    # report a few samples and energy drift
     E0 = hist[0]["E"]
-    E_final = hist[-1]["E"]
-    E_min = min(r["E"] for r in hist)
-    E_max = max(r["E"] for r in hist)
+    Es = [r["E"] for r in hist]
+    E_min, E_max = min(Es), max(Es)
 
-    print(f"\n  t=0     x={hist[0]['x']:+.4f}  v={hist[0]['v']:+.4f}  E={hist[0]['E']:.6f}")
-    mid = len(hist)//4
-    print(f"  t~T/4   x={hist[mid]['x']:+.4f}  v={hist[mid]['v']:+.4f}  E={hist[mid]['E']:.6f}")
-    mid2 = len(hist)//2
-    print(f"  t~T/2   x={hist[mid2]['x']:+.4f}  v={hist[mid2]['v']:+.4f}  E={hist[mid2]['E']:.6f}")
-    print(f"  final   x={hist[-1]['x']:+.4f}  v={hist[-1]['v']:+.4f}  E={hist[-1]['E']:.6f}")
-    print(f"\n  Energy: E0={E0:.6f}, final={E_final:.6f}, range=[{E_min:.6f}, {E_max:.6f}]")
-    print(f"  Relative drift ≈ {(E_max - E_min)/max(abs(E0),1e-12):.4e}")
+    def sample(frac, label):
+        i = min(int(frac * (len(hist)-1)), len(hist)-1)
+        r = hist[i]
+        print(f"  {label:8s} x={r['x']:+.4f}  v={r['v']:+.4f}  E={r['E']:.6f}")
+
+    sample(0.0, "t=0")
+    sample(0.25, "t~T/4")
+    sample(0.5, "t~T/2")
+    sample(0.75, "t~3T/4")
+    sample(1.0, "final")
+
+    print(f"\n  Energy: E0={E0:.6f}, range=[{E_min:.6f}, {E_max:.6f}]")
+    print(f"  Relative drift ≈ {(E_max-E_min)/max(abs(E0),1e-12):.4e}")
     print("=" * 64)
     return hist
 
 if __name__ == "__main__":
-    import math
     run_constant_bias_comparison()
     print()
     run_harmonic()
