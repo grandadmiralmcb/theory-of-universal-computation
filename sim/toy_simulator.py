@@ -19,18 +19,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import List, Optional, Tuple
 
-# ---------------------------------------------------------------------------
-# Structural weights
-# ---------------------------------------------------------------------------
-ALPHA = 1.0   # share-disruption contribution to inertia
-
-# ---------------------------------------------------------------------------
-# Minimal cluster representation
-# ---------------------------------------------------------------------------
+ALPHA = 1.0
 
 @dataclass
 class Seq:
-    """Sequential cluster: position, velocity, share density."""
     x: float = 0.0
     v: float = 0.0
     share_density: int = 1
@@ -38,39 +30,16 @@ class Seq:
 
 @dataclass
 class Bias:
-    """Constant ambient bias (structural force)."""
-    strength: float          # positive → accelerates in -x direction
-
-# ---------------------------------------------------------------------------
-# Structural inertia and cost of a velocity change
-# ---------------------------------------------------------------------------
+    strength: float
 
 def m_struct(cluster: Seq) -> float:
-    """
-    Structural inertia proportional to share density.
-    (In a fuller model this would be <S> for a unit change of trajectory.)
-    """
-    return ALPHA * float(cluster.share_density) + 0.05   # small floor so m > 0
+    return ALPHA * float(cluster.share_density) + 0.05
 
 def cost_of_dv(cluster: Seq, dv: float, bias: Optional[Bias]) -> Tuple[float, dict]:
-    """
-    Cost of changing sequential velocity by dv.
-
-    C(dv) = ½ m_struct (dv)² + b_struct * dv
-
-    The linear term encodes the constant bias (preferred direction of acceleration).
-    Minimizing C with respect to dv recovers dv* = -b / m, the discrete form of
-    the continuum equation ä = -b/m.
-    """
     m = m_struct(cluster)
     b = bias.strength if bias is not None else 0.0
-    # sign convention: positive b favors negative acceleration
     C = 0.5 * m * (dv ** 2) + b * dv
     return C, {"m": m, "b": b, "dv": dv, "C": C}
-
-# ---------------------------------------------------------------------------
-# Sequential evaluator (velocity-update form)
-# ---------------------------------------------------------------------------
 
 @dataclass
 class SequentialState:
@@ -83,8 +52,7 @@ class SequentialEvaluator:
     def __init__(self, state: SequentialState, dt: float = 0.1, dv_candidates: Optional[List[float]] = None):
         self.state = state
         self.dt = dt
-        # candidate velocity changes the evaluator is allowed to consider
-        self.dv_candidates = dv_candidates or [-0.5, -0.2, -0.1, 0.0, 0.1, 0.2, 0.5]
+        self.dv_candidates = dv_candidates or [i * 0.05 for i in range(-20, 21)]
 
     def tick(self) -> dict:
         candidates = []
@@ -95,12 +63,10 @@ class SequentialEvaluator:
         candidates.sort(key=lambda t: t[0])
         best_C, best_dv, best_breakdown = candidates[0]
 
-        # optimal continuous choice (for reference)
         m = best_breakdown["m"]
         b = best_breakdown["b"]
         dv_star = -b / m if m != 0 else 0.0
 
-        # apply the discrete choice
         self.state.cluster.v += best_dv
         self.state.cluster.x += self.state.cluster.v * self.dt
         self.state.tick += 1
@@ -123,17 +89,7 @@ class SequentialEvaluator:
             self.tick()
         return self.state.history
 
-# ---------------------------------------------------------------------------
-# Comparison experiment
-# ---------------------------------------------------------------------------
-
-def run_comparison(
-    share_a: int = 5,
-    share_b: int = 20,
-    bias_strength: float = 1.0,
-    ticks: int = 50,
-    dt: float = 0.1,
-):
+def run_comparison(share_a: int = 5, share_b: int = 20, bias_strength: float = 1.0, ticks: int = 50, dt: float = 0.1):
     print("=" * 64)
     print("Toy Structural Sequential Simulator")
     print("Velocity-update form — inverse-acceleration test")
@@ -160,7 +116,6 @@ def run_comparison(
     hist_a = eval_a.run(ticks)
     hist_b = eval_b.run(ticks)
 
-    # measured average acceleration from velocity change
     v_a = hist_a[-1]["v"]
     v_b = hist_b[-1]["v"]
     a_meas_a = v_a / (ticks * dt)
