@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """
-Two-path structural + amplitude toy
-===================================
-Executable fragment of the quantum sector formalisms.
-
-Operations implemented by name:
-  coherent_set, isolation_cost, maintain_cost, structural_decoherence,
-  amplitude_weight, path_recombine, intensity, visibility_amplitude,
-  born_extract, classical_limit_of_coherence (via raising maintain cost).
+Two-path structural + amplitude + velocity coupling toy
+=======================================================
+Operations: coherent_set, isolation/maintain costs, structural_decoherence,
+amplitude weights, path_recombine, intensity, visibility, born_extract,
+attach_sequential_state (path-wise), preferential_select, sequential_tick,
+phase_accumulate, path_recombine_with_velocity, com_from_amplitudes,
+classical_limit_of_coherence.
 """
 
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import List, Optional, Tuple
 import cmath
 import math
 import random
@@ -21,49 +20,45 @@ import random
 class Path:
     name: str
     amplitude: complex
-    isolation_cost: float   # C_isolate for this path
+    isolation_cost: float
+    x: float = 0.0
+    v: float = 0.0
+    m: float = 1.0
+    phase_rate: float = 0.0   # φ_i for phase_accumulate
 
 @dataclass
 class CoherentSet:
     paths: List[Path]
-    maintain_cost: float    # C_maintain for the whole set
+    maintain_cost: float
 
     def active(self) -> List[Path]:
         return [p for p in self.paths if p.isolation_cost > self.maintain_cost]
 
 def structural_decoherence(cs: CoherentSet) -> CoherentSet:
-    """Operation: structural_decoherence"""
     kept = [p for p in cs.paths if p.isolation_cost > cs.maintain_cost]
     return CoherentSet(paths=kept, maintain_cost=cs.maintain_cost)
 
 def path_recombine(cs: CoherentSet) -> complex:
-    """Operation: path_recombine — sum amplitudes of active paths"""
     return sum((p.amplitude for p in cs.active()), complex(0))
 
 def intensity(a_tot: complex) -> float:
-    """Operation: intensity"""
     return abs(a_tot) ** 2
 
 def visibility_amplitude(cs: CoherentSet) -> float:
-    """Operation: visibility_amplitude (two-path formula when both active)"""
     active = cs.active()
     if len(active) < 2:
         return 0.0
     a1, a2 = active[0].amplitude, active[1].amplitude
-    num = 2 * abs(a1) * abs(a2)
     den = abs(a1)**2 + abs(a2)**2
-    return num / den if den > 0 else 0.0
+    return (2 * abs(a1) * abs(a2) / den) if den > 0 else 0.0
 
 def born_extract(cs: CoherentSet) -> Optional[Path]:
-    """Operation: born_extract — sample one path with P ~ |a|^2"""
     active = cs.active()
     if not active:
         return None
     weights = [abs(p.amplitude)**2 for p in active]
     total = sum(weights)
-    if total <= 0:
-        return random.choice(active)
-    r = random.random() * total
+    r = random.random() * total if total > 0 else 0.0
     acc = 0.0
     for p, w in zip(active, weights):
         acc += w
@@ -71,64 +66,89 @@ def born_extract(cs: CoherentSet) -> Optional[Path]:
             return p
     return active[-1]
 
+def preferential_select_dv(m: float, b: float) -> float:
+    """δv* = -b/m"""
+    return -b / m if m != 0 else 0.0
+
+def sequential_tick_path(p: Path, b: float, dt: float) -> None:
+    """path-wise preferential_select + sequential_tick"""
+    dv_star = preferential_select_dv(p.m, b)
+    p.v += dv_star * dt
+    p.x += p.v * dt
+
+def phase_accumulate(p: Path, dt: float) -> None:
+    """a <- a * exp(-i φ dt)"""
+    p.amplitude *= cmath.exp(-1j * p.phase_rate * dt)
+
+def com_from_amplitudes(cs: CoherentSet) -> Tuple[float, float]:
+    """amplitude-weighted mean position and velocity"""
+    active = cs.active()
+    if not active:
+        return 0.0, 0.0
+    w = [abs(p.amplitude)**2 for p in active]
+    W = sum(w) or 1.0
+    x = sum(wi * p.x for wi, p in zip(w, active)) / W
+    v = sum(wi * p.v for wi, p in zip(w, active)) / W
+    return x, v
+
 def demo():
     print("=" * 64)
-    print("Two-path structural + amplitude toy")
+    print("Two-path + velocity coupling")
     print("=" * 64)
 
-    # Equal amplitudes, relative phase π/2 initially for illustration
-    p1 = Path("path1", amplitude=cmath.exp(1j * 0.0) / math.sqrt(2), isolation_cost=5.0)
-    p2 = Path("path2", amplitude=cmath.exp(1j * math.pi / 2) / math.sqrt(2), isolation_cost=5.0)
+    # Two paths, same initial x,v; different phase rates (path-dependent binding proxy)
+    p1 = Path("arm1", amplitude=1/math.sqrt(2), isolation_cost=5.0, x=0.0, v=0.0, m=1.0, phase_rate=0.0)
+    p2 = Path("arm2", amplitude=1/math.sqrt(2), isolation_cost=5.0, x=0.0, v=0.0, m=1.0, phase_rate=1.0)
     cs = CoherentSet(paths=[p1, p2], maintain_cost=1.0)
 
-    print("\n1. Coherent set (isolation > maintain for both)")
-    print(f"   active paths: {[p.name for p in cs.active()]}")
-    a_tot = path_recombine(cs)
-    print(f"   a_tot = {a_tot:.4f}, intensity = {intensity(a_tot):.4f}")
-    print(f"   visibility_amplitude = {visibility_amplitude(cs):.4f}")
-
-    print("\n2. Interference vs relative phase")
-    for phi_deg in [0, 60, 90, 120, 180]:
-        phi = math.radians(phi_deg)
-        p2.amplitude = cmath.exp(1j * phi) / math.sqrt(2)
+    dt = 0.1
+    # Constant bias on both arms (COM-like motion) but differential phase
+    b = 0.5
+    print("\n1. Path-wise sequential ticks under common bias + phase_accumulate")
+    for step in range(10):
+        for p in cs.active():
+            sequential_tick_path(p, b, dt)
+            phase_accumulate(p, dt)
         a_tot = path_recombine(cs)
         I = intensity(a_tot)
-        V = visibility_amplitude(cs)
-        print(f"   Δφ={phi_deg:3d}°  I={I:.4f}  V={V:.4f}")
+        x_com, v_com = com_from_amplitudes(cs)
+        if step % 3 == 0:
+            print(f"   t={step*dt:.1f}  x_com={x_com:+.3f}  v_com={v_com:+.3f}  I={I:.4f}  V={visibility_amplitude(cs):.3f}")
 
-    print("\n3. Structural decoherence (raise maintain_cost)")
-    cs.maintain_cost = 6.0   # now isolation (5) <= maintain (6)
-    cs2 = structural_decoherence(cs)
-    print(f"   active after decoherence: {[p.name for p in cs2.active()]}")
-    print(f"   visibility_amplitude = {visibility_amplitude(cs2):.4f}")
+    print("\n2. Differential bias (which-path sequential distinction)")
+    p1 = Path("arm1", 1/math.sqrt(2), 5.0, x=0.0, v=0.0, m=1.0, phase_rate=0.0)
+    p2 = Path("arm2", 1/math.sqrt(2), 5.0, x=0.0, v=0.0, m=1.0, phase_rate=0.0)
+    cs = CoherentSet(paths=[p1, p2], maintain_cost=1.0)
+    for step in range(15):
+        sequential_tick_path(p1, b=0.2, dt=dt)   # weak bias arm1
+        sequential_tick_path(p2, b=1.0, dt=dt)   # strong bias arm2
+        if step % 5 == 4:
+            print(f"   t={(step+1)*dt:.1f}  x1={p1.x:+.3f} v1={p1.v:+.3f}  x2={p2.x:+.3f} v2={p2.v:+.3f}")
+    print("   (trajectories diverge → isolation typically becomes cheap in a fuller model)")
 
-    print("\n4. Born extraction on a still-coherent set (reset maintain)")
-    cs.maintain_cost = 1.0
-    p2.amplitude = 1 / math.sqrt(2)
-    counts = {"path1": 0, "path2": 0}
-    N = 5000
-    for _ in range(N):
-        # restore both paths each trial
-        trial = CoherentSet(
-            paths=[
-                Path("path1", 1/math.sqrt(2), 5.0),
-                Path("path2", 1/math.sqrt(2), 5.0),
-            ],
-            maintain_cost=1.0,
-        )
-        chosen = born_extract(trial)
-        if chosen:
-            counts[chosen.name] += 1
-    print(f"   N={N}  path1={counts['path1']/N:.3f}  path2={counts['path2']/N:.3f}  (expect ~0.5 each)")
+    print("\n3. Recombine with velocity (com_from_amplitudes)")
+    # Reset equal amplitudes, different positions
+    p1 = Path("arm1", 1/math.sqrt(2), 5.0, x=1.0, v=0.5, m=1.0)
+    p2 = Path("arm2", 1/math.sqrt(2), 5.0, x=-1.0, v=-0.2, m=1.0)
+    cs = CoherentSet(paths=[p1, p2], maintain_cost=1.0)
+    x_com, v_com = com_from_amplitudes(cs)
+    print(f"   weighted COM: x={x_com:+.3f}, v={v_com:+.3f}")
 
-    print("\n5. Classical limit of coherence (unequal isolation + high maintain)")
-    # path2 becomes cheap to isolate (environmentally distinguished)
-    p1 = Path("path1", 1/math.sqrt(2), isolation_cost=10.0)
-    p2 = Path("path2", 1/math.sqrt(2), isolation_cost=2.0)
+    print("\n4. Born extract carries surviving velocity")
+    chosen = born_extract(cs)
+    if chosen:
+        print(f"   selected {chosen.name}: x={chosen.x:+.3f}, v={chosen.v:+.3f}")
+
+    print("\n5. Classical limit: raise maintain_cost, survivor continues sequentially")
+    p1 = Path("arm1", 1/math.sqrt(2), isolation_cost=8.0, x=0.0, v=0.0, m=1.0)
+    p2 = Path("arm2", 1/math.sqrt(2), isolation_cost=2.0, x=0.0, v=0.0, m=1.0)
     cs = CoherentSet(paths=[p1, p2], maintain_cost=5.0)
     cs = structural_decoherence(cs)
-    print(f"   surviving paths: {[p.name for p in cs.active()]}")
-    print(f"   (path2 isolated → single-path classical regime)")
+    print(f"   survivors: {[p.name for p in cs.active()]}")
+    for p in cs.active():
+        for _ in range(5):
+            sequential_tick_path(p, b=1.0, dt=0.1)
+        print(f"   after classical ticks: x={p.x:+.3f}, v={p.v:+.3f}")
     print("=" * 64)
 
 if __name__ == "__main__":

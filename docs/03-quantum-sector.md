@@ -1,20 +1,20 @@
 # 03 — Quantum Sector
 
-Structural multi-path coherence, isolation-cost decoherence, minimal amplitude enrichment, and the classical limit of coherence.
+Structural multi-path coherence, isolation-cost decoherence, minimal amplitude enrichment, classical limit of coherence, and **velocity coupling** between coherent sets and the sequential calculus.
 
-Every derivation names the operation performed. Operations compose with the structural sequential calculus of `docs/02-dynamics.md`.
+Every derivation names the operation performed.
 
 ---
 
 ## 0. Shared substrate
 
-The reduced primitives and structural cost remain in force:
+Reduced primitives and structural cost remain in force:
 
 \[
 C = \alpha S + \beta B + \gamma D
 \]
 
-with \(S\) from `share`, \(B\) from `abs`/`app`, \(D\) from `eq`. Preferential low-disruption sequentialization (`preferential_select`) is the sole dynamical principle.
+Preferential low-disruption sequentialization (`preferential_select`) is the sole dynamical principle. Classical sequential calculus: `docs/02-dynamics.md`.
 
 ---
 
@@ -24,7 +24,7 @@ with \(S\) from `share`, \(B\) from `abs`/`app`, \(D\) from `eq`. Preferential l
 
 **Operation: `share_link`**
 
-Two residuals \(E_1, E_2\) are share-linked when there exists at least one `share` node whose content is required by both. An evaluator that has not broken those nodes remains dependent on both residuals simultaneously.
+Residuals are co-dependent when connected by `share` nodes.
 
 **Operation: `coherent_set`**
 
@@ -32,217 +32,266 @@ Two residuals \(E_1, E_2\) are share-linked when there exists at least one `shar
 \mathcal{C} = \bigl\{ E_i \;\big|\; C_{\rm isolate}(E_i;\mathcal{C}) > C_{\rm maintain}(\mathcal{C}) \bigr\}.
 \]
 
-While \(\lvert\mathcal{C}\rvert > 1\), sequential projection has not forced a unique residual. This is the structural substrate of superposition.
-
----
-
-### 1.2 Isolation and maintain costs (explicit)
+### 1.2 Isolation and maintain costs
 
 **Operation: `isolation_cost`**
 
-To isolate residual \(E_i\) from \(\mathcal{C}\) is to break every `share` node that connects \(E_i\) to any other member of \(\mathcal{C}\). Let \(\Sigma_i\) be that set of share nodes. Then
-
 \[
 C_{\rm isolate}(E_i;\mathcal{C})
-  = \alpha\,\lvert\Sigma_i\rvert
-  + \beta\, B_{\rm isolate}(E_i)
-  + \gamma\, D_{\rm isolate}(E_i)
+  = \alpha\,\lvert\Sigma_i\rvert + \beta\, B_{\rm isolate}(E_i) + \gamma\, D_{\rm isolate}(E_i)
 \]
-
-where \(B_{\rm isolate}\) counts binding residuals opened by the break and \(D_{\rm isolate}\) is 1 if the post-break residual fails `eq` with the pre-break sequential model.
 
 **Operation: `maintain_cost`**
 
 \[
 C_{\rm maintain}(\mathcal{C})
-  = \alpha\, S_{\rm maintain}
-  + \beta\, B_{\rm maintain}
-  + \gamma\, D_{\rm maintain}
+  = \alpha\, S_{\rm maintain} + \beta\, B_{\rm maintain} + \gamma\, D_{\rm maintain}
 \]
-
-counts the ongoing disruption of keeping all current share links of \(\mathcal{C}\) intact under the evaluator’s sequential strategy (including any environmental shares).
-
----
 
 ### 1.3 Structural decoherence
 
 **Operation: `structural_decoherence`**
 
-At each sequential tick, for every \(E_i\in\mathcal{C}\):
-
 \[
-\textbf{if }\; C_{\rm isolate}(E_i;\mathcal{C}) \le C_{\rm maintain}(\mathcal{C})
+\textbf{if } C_{\rm isolate}(E_i;\mathcal{C}) \le C_{\rm maintain}(\mathcal{C})
 \quad\textbf{then}\quad
 \mathcal{C} \leftarrow \mathcal{C}\setminus\{E_i\}.
 \]
 
-**Derivation (named steps)**
+### 1.4 Structural visibility
 
-1. `isolation_cost` / `maintain_cost` — evaluate structural counts.
-2. `preferential_select` — among “keep share” vs “break share”, choose the lower \(C\).
-3. When break wins, `share` nodes in \(\Sigma_i\) are reduced away; residual leaves \(\mathcal{C}\).
-
-No collapse postulate is added. Selection is ordinary lowest-disruption sequentialization applied to share architecture.
-
----
-
-### 1.4 Qualitative visibility
-
-**Operation: `visibility_structural`**
-
-Define a coarse visibility for a two-path set:
-
-\[
-\mathcal{V}_{\rm struct}
-  = \begin{cases}
-      1 & \text{if }\min_i C_{\rm isolate}(E_i) > C_{\rm maintain},\\
-      0 & \text{otherwise.}
-    \end{cases}
-\]
-
-Coherence is binary at the pure-structural level: either isolation remains expensive for all paths, or at least one path has already been forced out. Continuous fringe visibility requires path weights (Section 2).
+**Operation: `visibility_structural`** — binary: 1 iff all active paths still satisfy isolation > maintain.
 
 ---
 
 ## 2. Minimal amplitude enrichment
 
-Pure structure does not supply continuous interference or Born-rule probabilities. The following enrichment is the smallest addition that does, while remaining an attribute of residuals under sharing rather than a new ontological substance.
+### 2.1 Weights and reduction
 
-### 2.1 Amplitude weights
+**Operation: `amplitude_weight`** — \(a_i\in\mathbb{C}\) on each residual in \(\mathcal{C}\).
 
-**Operation: `amplitude_weight`**
+**Operation: `force_A`** — amplitude-valued reduction.
 
-Each residual \(E_i\in\mathcal{C}\) carries \(a_i\in\mathcal{A}\). Working choice: \(\mathcal{A}=\mathbb{C}\).
+### 2.2 Recombination and interference
 
-**Operation: `force_A`**
+**Operation: `path_recombine`** — \(a_{\rm tot}=\sum_i a_i\).
 
-\[
-\texttt{force}_A : \texttt{Expr} \to \mathcal{A}(\texttt{Val}).
-\]
-
-Reduction paths are weighted; recombination adds weights.
-
----
-
-### 2.2 Path recombination and interference
-
-**Operation: `path_recombine`**
-
-When share-linked paths that have acquired relative phase are brought into a single sequential context:
-
-\[
-a_{\rm tot} = \sum_{i\in\mathcal{C}} a_i.
-\]
-
-**Operation: `intensity`**
-
-\[
-I \propto \lvert a_{\rm tot}\rvert^2
-  = \sum_i \lvert a_i\rvert^2
-  + 2\sum_{i<j}\mathrm{Re}(a_i^* a_j).
-\]
-
-**Two-path specialization**
-
-Let \(a_1 = \lvert a_1\rvert e^{i\phi_1}\), \(a_2 = \lvert a_2\rvert e^{i\phi_2}\), \(\Delta\phi=\phi_1-\phi_2\). Then
-
-\[
-I \propto \lvert a_1\rvert^2 + \lvert a_2\rvert^2 + 2\lvert a_1\rvert\lvert a_2\rvert\cos\Delta\phi.
-\]
+**Operation: `intensity`** — \(I\propto\lvert a_{\rm tot}\rvert^2\).
 
 **Operation: `visibility_amplitude`**
 
 \[
-\mathcal{V}
-  = \frac{I_{\rm max}-I_{\rm min}}{I_{\rm max}+I_{\rm min}}
-  = \frac{2\lvert a_1\rvert\lvert a_2\rvert}{\lvert a_1\rvert^2+\lvert a_2\rvert^2}
+\mathcal{V} = \frac{2\lvert a_1\rvert\lvert a_2\rvert}{\lvert a_1\rvert^2+\lvert a_2\rvert^2}
 \]
 
-when both paths remain in \(\mathcal{C}\) (\(\mathcal{V}_{\rm struct}=1\)). If structural decoherence has already dropped a path, \(\mathcal{V}=0\).
+when both paths active; else 0.
 
----
-
-### 2.3 Born-rule extraction on structural selection
+### 2.3 Born extraction
 
 **Operation: `born_extract`**
 
-When `structural_decoherence` reduces \(\mathcal{C}\) to a singleton, or when a detection context forces selection of one residual, the probability that residual \(i\) is retained is
-
 \[
-P(i) = \frac{\lvert a_i\rvert^2}{\sum_{j\in\mathcal{C}}\lvert a_j\rvert^2}.
+P(i) = \frac{\lvert a_i\rvert^2}{\sum_j\lvert a_j\rvert^2}.
 \]
-
-**Derivation (named steps)**
-
-1. `coherent_set` holds with amplitude weights attached.
-2. `structural_decoherence` (or an equivalent detection binding) forces a choice.
-3. `born_extract` reads normalized modulus-squared weights as selection probabilities.
-
-This is the minimal probabilistic reading of amplitude weights consistent with structural selection. It is an enrichment rule, not a consequence of \(S,B,D\) alone.
 
 ---
 
-## 3. Classical limit of coherence
+## 3. Velocity coupling
+
+A coherent set is not only a collection of residuals and amplitudes; it can carry sequential parameters. This section derives how classical sequential dynamics and multi-path structure couple.
+
+### 3.1 Sequential parameters on a coherent set
+
+**Operation: `attach_sequential_state`**
+
+Two consistent options:
+
+| Mode | Sequential state | When natural |
+|------|------------------|--------------|
+| **Centre-of-mass (COM)** | single \((x,v)\) for the whole \(\mathcal{C}\) | paths not spatially distinguished; shared trajectory label |
+| **Path-wise** | each \(E_i\) carries \((x_i,v_i)\) | paths diverge in sequential parameter (e.g. different arms of an interferometer) |
+
+Both are permitted by the formalism. COM is the minimal coupling; path-wise is required for differential bias and which-path sequential distinction.
+
+---
+
+### 3.2 COM mode — collective sequential dynamics
+
+**Operation: `com_velocity_cost`**
+
+Treat \(\mathcal{C}\) as a single high-resistance object with structural inertia
+
+\[
+m_{\mathcal{C}} = m_{\rm struct}(\mathcal{C})
+\]
+
+(function of total share density of the set). Under bias \(b(x)\):
+
+\[
+C(\delta v) = \tfrac12 m_{\mathcal{C}}(\delta v)^2 + b(x)\,\delta v.
+\]
+
+**Operation: `preferential_select`** (unchanged)
+
+\[
+\delta v^* = -\frac{b(x)}{m_{\mathcal{C}}}.
+\]
+
+**Operation: `sequential_tick`** (on COM)
+
+\[
+v \leftarrow v + \delta v^*\,\tau, \qquad x \leftarrow x + v\,\tau.
+\]
+
+Amplitudes are passengers: they are not altered by COM sequential updates unless a separate free-evolution rule (phase accumulation) is active.
+
+**Continuum limit**
+
+\[
+m_{\mathcal{C}}\,\ddot{x} = -b(x).
+\]
+
+A coherent set in COM mode behaves as one classical body of mass \(m_{\mathcal{C}}\) until `structural_decoherence` or `path_recombine` occurs.
+
+---
+
+### 3.3 Path-wise mode — differential sequential dynamics
+
+**Operation: `pathwise_velocity_cost`**
+
+Each active path \(E_i\) has its own sequential state \((x_i,v_i)\) and inertia \(m_i\). Local bias may differ:
+
+\[
+C_i(\delta v_i) = \tfrac12 m_i(\delta v_i)^2 + b_i(x_i)\,\delta v_i.
+\]
+
+**Operation: `preferential_select`** (per path)
+
+\[
+\delta v_i^* = -\frac{b_i(x_i)}{m_i}.
+\]
+
+**Operation: `sequential_tick`** (per path)
+
+\[
+v_i \leftarrow v_i + \delta v_i^*\,\tau, \qquad x_i \leftarrow x_i + v_i\,\tau.
+\]
+
+Paths can separate in sequential parameter space. Share links remain until isolation costs are paid. Differential bias is the structural origin of which-path information: if \(b_1\neq b_2\) strongly, sequential trajectories diverge and isolation often becomes cheap (decoherence).
+
+---
+
+### 3.4 Phase accumulation under path-wise motion (minimal enrichment)
+
+**Operation: `phase_accumulate`**
+
+While paths remain in \(\mathcal{C}\), each path may accumulate phase from its sequential history. Minimal rule (controlled enrichment):
+
+\[
+a_i(t+\tau) = a_i(t)\,\exp\bigl(-i\,\varphi_i\,\tau\bigr),
+\qquad
+\varphi_i = \varphi_i(x_i,v_i;\text{binding context}).
+\]
+
+A simple structural proxy: \(\varphi_i\) proportional to residual binding cost along the path (or to a potential evaluated on that path). Relative phase \(\Delta\phi\) then drives interference upon `path_recombine`.
+
+This is the natural bridge between sequential motion and the interference cross term. It is still an enrichment (phase is not forced by \(S,B,D\) alone) but is tightly coupled to the sequential state already maintained by the evaluator.
+
+---
+
+### 3.5 Recombination with velocity
+
+**Operation: `path_recombine_with_velocity`**
+
+When paths are brought back into a single sequential context (share architecture forces or permits recombination):
+
+1. **`path_recombine`** — amplitudes add: \(a_{\rm tot}=\sum a_i\).
+2. Sequential parameters must be reconciled. Minimal rules:
+   - **COM inheritance:** surviving sequential state is the amplitude-weighted mean
+     \[
+     x = \frac{\sum_i \lvert a_i\rvert^2 x_i}{\sum_j \lvert a_j\rvert^2}, \quad
+     v = \frac{\sum_i \lvert a_i\rvert^2 v_i}{\sum_j \lvert a_j\rvert^2}.
+     \]
+   - **Selection inheritance:** if recombination coincides with `structural_decoherence` / `born_extract`, the chosen path’s \((x_i,v_i)\) becomes the sequential state of the singleton.
+
+**Operation name for the weighted-mean rule:** `com_from_amplitudes`.
+
+---
+
+### 3.6 Decoherence with velocity
+
+**Operation: `structural_decoherence`** (velocity-aware)
+
+When a path is dropped:
+
+- Its amplitude is removed from future recombinations.
+- Its sequential state is discarded (or archived as a non-projected residual).
+- The surviving set retains its own sequential parameters (COM or remaining path-wise states).
+
+If environmental share density raises `maintain_cost` until only one path remains, the singleton continues under ordinary classical `sequential_tick` with that path’s \((x,v)\) — the classical limit of coherence with velocity intact.
+
+---
+
+### 3.7 Summary derivation — coupled two-path interferometer under bias
+
+**Named pipeline**
+
+1. `share_link` + `amplitude_weight` — prepare two-path coherent set.
+2. `attach_sequential_state` (path-wise) — each arm has \((x_i,v_i)\).
+3. Possibly different `evaluate_b_at` on each arm.
+4. Repeated `preferential_select` + `sequential_tick` (path-wise) + optional `phase_accumulate`.
+5. At the second beamsplitter region: `path_recombine_with_velocity` + `intensity` / `visibility_amplitude`.
+6. If a detector binding raises isolation cost: `structural_decoherence` + `born_extract` + surviving path’s velocity continues classically.
+
+This is a complete, named account of a biased two-path interferometer inside the expression ontology.
+
+---
+
+## 4. Classical limit of coherence (with velocity)
 
 **Operation: `classical_limit_of_coherence`**
 
-**Derivation**
+1. Microscopic \(\mathcal{C}\) share-links to a large environmental cluster.
+2. `maintain_cost` rises → `structural_decoherence` → singleton.
+3. Surviving \((x,v)\) evolves by classical `preferential_select` + `sequential_tick` under ambient bias.
 
-1. A microscopic coherent set \(\mathcal{C}\) becomes share-linked to a large high-resistance environmental cluster (many additional `share` nodes).
-2. `maintain_cost` rises with environmental share density; alternatively, isolation of environmental alternatives becomes cheap relative to maintaining global multi-path structure.
-3. `structural_decoherence` fires: all but one residual leave \(\mathcal{C}\).
-4. Surviving dynamics are ordinary `preferential_select` + `sequential_tick` on a single high-\(\kappa\) trajectory (classical sequential calculus of `docs/02-dynamics.md`).
-
-**Statement**
-
-Quantum multi-path behavior and classical single-path motion are two regimes of the same preferential low-disruption dynamics, distinguished by whether isolation of alternative residuals remains expensive.
+Quantum multi-path and classical single-path motion remain two regimes of one dynamics, now including sequential velocity throughout.
 
 ---
 
-## 4. Composition with the classical sequential calculus
+## 5. Named operation register (full quantum + velocity)
 
-Between decoherence events, a coherent set may still carry sequential parameters (e.g. centre-of-mass labels). Then:
-
-1. `preferential_select` acts on the sequential parameters of the set as a whole (or on each path’s parameters if they differ).
-2. Amplitude weights evolve by whatever enrichment rule is adopted for free evolution (minimal choice: constant weights between recombinations; richer choice: path-dependent phase accumulation from structural binding history).
-3. Upon `path_recombine` or `structural_decoherence`, amplitudes and structural costs interact as above.
-
-No conflict arises: classical cost minimization governs sequential labels; amplitude enrichment governs multi-path weights until structure forces selection.
-
----
-
-## 5. Named operation register (quantum)
-
-| Operation | Input | Output / effect |
-|-----------|-------|------------------|
-| `share_link` | residuals, `share` nodes | co-dependence |
-| `coherent_set` | isolation vs maintain costs | multi-path set \(\mathcal{C}\) |
-| `isolation_cost` | residual + \(\mathcal{C}\) | scalar \(C_{\rm isolate}\) |
-| `maintain_cost` | \(\mathcal{C}\) + strategy | scalar \(C_{\rm maintain}\) |
-| `structural_decoherence` | \(\mathcal{C}\) | possibly smaller \(\mathcal{C}\) |
-| `visibility_structural` | costs | binary coherence flag |
-| `amplitude_weight` | residual | \(a_i\in\mathbb{C}\) |
-| `force_A` | expression | amplitude-valued residual |
-| `path_recombine` | weighted paths | \(a_{\rm tot}=\sum a_i\) |
-| `intensity` | \(a_{\rm tot}\) | \(\lvert a_{\rm tot}\rvert^2\) |
-| `visibility_amplitude` | two-path amplitudes | fringe visibility \(\mathcal{V}\) |
-| `born_extract` | weighted \(\mathcal{C}\) on selection | probabilities \(P(i)\) |
-| `classical_limit_of_coherence` | environmental share density | single-path classical trajectory |
+| Operation | Role |
+|-----------|------|
+| `share_link` | co-dependence via `share` |
+| `coherent_set` | multi-path set under isolation > maintain |
+| `isolation_cost` / `maintain_cost` | structural scalars |
+| `structural_decoherence` | drop paths |
+| `visibility_structural` | binary coherence |
+| `amplitude_weight` / `force_A` | complex weights |
+| `path_recombine` / `intensity` / `visibility_amplitude` | interference |
+| `born_extract` | \(\lvert a\rvert^2\) probabilities |
+| `attach_sequential_state` | COM or path-wise \((x,v)\) |
+| `com_velocity_cost` / `pathwise_velocity_cost` | cost of \(\delta v\) for set or path |
+| `preferential_select` / `sequential_tick` | classical sequential update |
+| `phase_accumulate` | path phase from sequential history |
+| `path_recombine_with_velocity` | amplitudes + sequential reconciliation |
+| `com_from_amplitudes` | weighted-mean sequential state |
+| `classical_limit_of_coherence` | decoherence → classical trajectory |
 
 ---
 
-## 6. Status after dogfooding
+## 6. Status
 
-**Closed formally**
-- Explicit \(C_{\rm isolate}\), \(C_{\rm maintain}\) in terms of \(S,B,D\).
-- Binary structural visibility and continuous amplitude visibility.
-- Interference intensity and two-path fringe formula.
-- Born extraction on structural selection.
-- Classical limit of coherence as structural decoherence under environmental sharing.
-- Clean composition with the classical sequential calculus.
+**Closed**
+- Structural multi-path + decoherence.
+- Amplitude interference + Born extraction.
+- COM and path-wise velocity coupling.
+- Phase accumulation as minimal enrichment linking motion to interference.
+- Recombination and decoherence rules that carry sequential state forward.
+- Named interferometer pipeline under bias.
 
-**Still open / next dogfooding targets**
-- Executable two-path simulator (coherent set, isolation threshold, amplitude recombination, Born sampling).
-- Whether relative phase can be forced from binding geometry rather than assigned.
-- Unitary-like free evolution rule between decoherence events derived from structural cost, if possible.
-- Labels, vacuum, discrete spectra (further Route A enrichment).
+**Open / next**
+- Executable path-wise + phase simulator (extend `sim/two_path.py`).
+- Whether \(\varphi_i\) can be forced from binding geometry alone.
+- Multi-cluster interaction forces; continuum fields; spectra.

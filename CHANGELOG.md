@@ -2,28 +2,21 @@
 
 All notable developments of the Expression-Tree Ontology are recorded here.
 
+## [2026-08-06] (velocity coupling)
+
+### Coherent sets carry sequential parameters
+- **COM mode:** single \((x,v)\) for the whole set; collective \(m_{\mathcal{C}}\); ordinary preferential sequentialization.
+- **Path-wise mode:** each path has \((x_i,v_i)\); differential bias allowed (which-path sequential distinction).
+- **`phase_accumulate`:** minimal enrichment linking path sequential history to relative phase.
+- **`path_recombine_with_velocity`** + **`com_from_amplitudes`:** reconcile sequential state on recombination.
+- Decoherence carries surviving path velocity into classical sequential dynamics.
+- Named interferometer pipeline under bias fully specified.
+- `sim/two_path.py` extended with path-wise ticks, phase accumulation, COM from amplitudes, Born+velocity, classical limit with continued motion.
+
 ## [2026-08-06] (QM dogfooding)
 
-### Full named formalisms for the quantum sector
-- Explicit \(C_{\rm isolate}\) and \(C_{\rm maintain}\) in terms of \(S,B,D\).
-- Binary structural visibility + continuous amplitude visibility formula.
-- Two-path interference intensity and fringe visibility \(\mathcal{V}\).
-- Born extraction on structural selection, step-by-step.
-- Classical limit of coherence as structural decoherence under environmental sharing.
-- Composition rules with the classical sequential calculus.
-- Complete named operation register.
-
-### Executable two-path module
-- `sim/two_path.py`: coherent sets, isolation/maintain costs, structural decoherence, path recombination, intensity, visibility, Born sampling, classical-limit demo.
-
-## [2026-08-06] (QM recovery)
-
-- Structural multi-path + minimal amplitude enrichment introduced; operations named.
-
-## [2026-08-06] (position-dependent bias + classical formalisms)
-
-- Harmonic potential, named classical operations, simulator energy tracking.
+- Explicit isolation/maintain costs, interference formulas, Born extraction, two-path toy module.
 
 ## [2026-08-06] (earlier)
 
-- Structural sequential calculus, radical reduction, ontological charter, toy classical simulator.
+- Structural sequential calculus, position-dependent bias, harmonic oscillator, radical reduction, ontological charter.
