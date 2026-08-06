@@ -1,63 +1,82 @@
 # 01 — Core Ontology
 
-## Ontological Charter — What Actually Exists
+## Ontological Status (current)
 
-**Fundamentally real** is structured information: the total system of syntactically bound, composable, evaluable data (the expression forest).
+**Forced by the formalism**
+- Structured, shareable, reducible informational patterns exist.
+- Sequential order is not global; it is constructed locally by repeated `reduce` under strategies that favor low structural disruption.
+- The experienced / measured world of any local evaluator is a high-coherence sequential projection (systematic selection of low-disruption residuals).
+- Un-selected residuals remain real parts of the expression forest; they are simply not currently on a high-\(\kappa\) trajectory.
 
-There is no further substrate. Matter, energy, fields, spacetime geometry, and the coherent sensory world are not additional kinds of thing; they are stable patterns and sequential projections arising within the informational system.
+**Preferred reading (unique non-idle interpretation)**
+Informational monism: the expression forest *is* what fundamentally exists. Any non-informational substrate either (a) duplicates the same capacities and is therefore informational under another name, (b) introduces a regress of isomorphic dynamical levels, or (c) requires an unexplained contact relation with informational evaluators. The monist reading is the unique reading that avoids idle structure, regress, and unexplained contact. It is not a formal theorem, but the space of coherent alternatives is now severely restricted.
 
-This is an **informational monism** with a **holographic** character:
-
-- The underlying reality is a high-dimensional (non-sequential, shared, multi-path) informational structure.
-- Local sequential evaluators construct lower-dimensional, high-coherence projections of selected regions of that structure.
-- These projections are what we experience and measure as “the physical world.” They are real *as projections*, yet systematically omit or compress vast portions of the underlying data. Sensory experience is therefore a veiled holographic measure of a deeper data substrate — not pure illusion, but not fundamental either.
+**Holographic character**
+Local sequential evaluation already implements projection: at each step alternative residuals are not selected. The ordinary sensory and instrumental world is therefore a veiled sequential interface to a larger non-sequential informational structure. This is a direct description of the dynamics, not an optional metaphor.
 
 ### Matter and Energy
+Matter and energy are dual sequential presentations of the same class of informational excitations.
+- High internal sharing density \(\rightarrow\) high structural inertia under trajectory change \(\rightarrow\) matter-like behavior.
+- Configurations that allow residual structure to be released or redistributed at lower net disruption \(\rightarrow\) energy-like behavior.
+Both are measured by the same structural disruption counts. Their unity is required by the common currency, not merely permitted.
 
-Matter and energy are the same kind of excitation of the informational substrate, differently configured.
+## Reduced Primitive Set
 
-- An **excitation** is a localized, relatively stable departure from the lowest-cost background configuration.
-- When an excitation forms a high-resistance, tightly shared, sequentially persistent cluster, local evaluators project it as **matter** (inertia = rewrite resistance).
-- When the same or similar excitation is configured for easier propagation, conversion, or dispersal while conserving a derived cost-like quantity, it is projected as **energy**.
-- The observed distinction and the detailed observational behavior of each are fixed by the excitation’s embedding in the larger multi-path structure and by the sequential cut imposed by the observer. Conversion between them is reconfiguration of informational pattern, not transmutation of distinct substances. The quantitative link that appears in physics as \(E = mc^2\) is the relation between sequential rewrite resistance and releasable residual informational cost.
-
-## Reduced Primitive Set (Radical Reduction)
-
-After adversarial pressure the working inventory was radically reduced. The current minimal generative core is:
-
-### Syntactic / compositional (4)
+### Syntactic / compositional
 - `app` — application
-- `abs` — abstraction (variable binding)
-- `pair` / `proj` — product introduction and elimination
+- `abs` — abstraction
+- `pair` / `proj` — products
 - `eq` — observational equivalence
 
-### Dynamical (2)
-- `reduce` — single evaluation / reduction operator (replaces both earlier `force` and `rewrite`)
-- `share` — explicit sharing of sub-expressions (replaces free unrestricted copying)
+### Dynamical
+- `reduce` — evaluation / reduction
+- `share` — explicit sharing
 
-### Dynamical principle (axiom, not operator)
-- **Preferential low-cost sequentialization**: among possible reduction strategies and residual expressions, those that admit stable, low-cost sequential trajectories are dynamically favored. Concrete numerical cost is treated as derived or later calibrated rather than primitive.
+### Dynamical principle
+Preferential low-disruption sequentialization: local dynamics favor reduction steps that minimize structural disruption.
 
-All previous operators (`id`, `comp`, `bind`, `copy`, `discard`, `fix`, linear variants, labels, vacuum \(V\), bounded signal, explicit amplitude structure, numerical cost function) are demoted. They must now be reconstructed as derived notions, stable patterns, or controlled enrichments justified by necessity.
+## Structural Cost Proxy (replaces primitive numerical cost)
 
-## Core Axioms (updated summary)
+For a reduction step \(E \xrightarrow{s} E'\):
 
-1. **Informational Monism** — What exists fundamentally is structured, evaluable information.
-2. **Compositional Evaluation** — Reality consists in the composition and reduction of expression trees under the reduced primitives.
-3. **No Global Sequential Order** — Sequential order is a local projection constructed by evaluators; the forest itself admits sharing, multiple paths, and non-sequential structure.
-4. **Preferential Low-Cost Sequentialization** — Dynamics favor configurations and reduction strategies that remain stably and cheaply sequentializable.
-5. **Holographic Projection** — The experienced and instrumentally measured world is a high-coherence sequential projection of selected regions of the informational substrate.
-6. **Local Evaluators** — A local consciousness or measuring apparatus is itself an informational pattern that repeatedly applies `reduce` under a strategy and monitors results via `eq` and a derived coherence measure \(\kappa\).
-7. **Excitations** — Matter-like and energy-like phenomena are dual sequential presentations of the same class of informational excitations.
+- \(S\) = number of `share` nodes whose shared content is broken or duplicated
+- \(B\) = net change in open binding sites
+- \(D\) = 1 if the residual fails `eq` under the current strategy, else 0
 
-## Status of Recoverable Structure
+\[
+C = \alpha S + \beta B + \gamma D \qquad (\alpha,\beta,\gamma > 0)
+\]
 
-From the reduced core one can still recover, in principle:
-- Full higher-order compositional power and recursion.
-- Sequential evaluation and a derived coherence measure.
-- Genuine change (reduction that fails to preserve observational equivalence).
-- Sharing-based limited non-locality and multi-path recombination.
-- Fixed points and non-temporal attractors.
-- Classical continuum limits once a usable cost proxy is derived.
+All three quantities are observable using only the reduced primitives. Cost is no longer an extra real-valued primitive; it is a derived counting measure on the effects of `reduce` under sharing and equivalence.
 
-Quantitative cost, amplitudes, conservation labels, vacuum excitations, and bounded signal are no longer free primitives; each must be re-justified or derived.
+**Structural inertia** of a cluster with respect to sequential parameter \(x\):
+\[
+m_{\rm struct} = \langle S(\delta x = 1)\rangle
+\]
+
+**Structural bias** = excess disruption imposed by a persistent context on steps against the preferred direction.
+
+Continuum limit under approximately constant bias:
+\[
+\frac{d^2 x}{dt^2} = -\frac{b_{\rm struct}}{m_{\rm struct}}
+\]
+The Newtonian regime is recovered purely from structural counts.
+
+## Coherence
+\[
+\kappa \sim \frac{1}{1 + \langle C\rangle_{\rm recent}}
+\]
+High \(\kappa\) = successful maintenance of low-disruption sequential projection.
+
+## Core Axioms (current)
+
+1. Structured, evaluable information under the reduced primitives is the operative substrate of the theory.
+2. Sequential order is a local construction.
+3. Dynamics favor minimal structural disruption (\(S, B, D\)).
+4. Local evaluators are themselves informational patterns that generate sequential projections.
+5. Un-selected residuals remain real (non-projected forest structure).
+6. Matter and energy are dual presentations of informational excitations indexed by the same disruption measures.
+
+## Bounded claims
+- Consciousness: high-\(\kappa\) sequential evaluation is the formal counterpart of coherent experience; whether this is exhaustive is left open.
+- Full informational monism: preferred unique non-idle reading, not formal theorem.

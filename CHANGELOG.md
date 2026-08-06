@@ -2,34 +2,38 @@
 
 All notable developments of the Expression-Tree Ontology are recorded here.
 
-## [2026-08-06] (later)
+## [2026-08-06] (dogfooding series)
 
-### Ontological commitment fixed
-- **Informational monism**: structured, evaluable information is what fundamentally exists.
-- **Holographic character**: the ordinary sensory and instrumental world is a high-coherence sequential projection of the underlying expression forest — real as projection, veiled relative to the substrate.
-- **Matter and energy** are the same class of informational excitations, differently configured within the multi-path structure; their observed distinction is fixed by sequential evaluation strategy.
+### Structural cost and continuum limit
+- Numerical cost demoted. Structural proxy defined from observable counts:
+  - \(S\) = shares broken/duplicated
+  - \(B\) = net open-binding change
+  - \(D\) = observational inequivalence
+- Structural inertia \(m_{\rm struct}\) and bias \(b_{\rm struct}\) defined as averages/counts of these quantities.
+- Constant-acceleration continuum limit re-derived purely from structural disruption preference. Newtonian regime no longer depends on a primitive real-valued cost.
 
-### Radical reduction of the primitive set
-Working generative core reduced to:
-- `app`, `abs`, `pair`/`proj`, `eq`
-- `reduce`, `share`
-- Axiom of preferential low-cost sequentialization
+### Ontological tightening
+- Full informational monism narrowed from “forced” to “unique reading that avoids idle structure, regress, or unexplained contact.”
+- Un-selected residuals given precise status: real non-projected forest structure.
+- Consciousness claim bounded: high-\(\kappa\) sequential evaluation is the formal counterpart of coherent experience; exhaustiveness left open.
+- Matter/energy unity strengthened: both indexed by the same disruption counts.
 
-Previous operators (including explicit numerical cost, amplitudes, labels, vacuum, bounded signal, etc.) demoted to derived notions or controlled enrichments that must now be re-justified.
+### Decoherence
+- Structural criterion: multi-path coherence is lost when expected future disruption cost of preserving shares exceeds cost of breaking them.
+
+### Open contentions recorded
+- Path to stricter entailment of monism still open.
+- Quantitative multi-path / interference from structural weights remains the largest formal soft surface.
+- Amplitude structure, empirical numerics, and further emergence questions listed as live contentions.
 
 ### Documentation
-- Major rewrite of `docs/01-core-ontology.md` reflecting the reduced basis and ontological charter.
-- Expanded Open Questions section earlier in the day.
+- `docs/01-core-ontology.md` and `docs/07-roadmap.md` rewritten to reflect the above.
 
 ## [2026-08-06] (earlier)
-### Added
-- Initial repository structure and living documentation.
-- Concrete minimal cost function for a single high-resistance cluster.
-- Continuum-limit derivation yielding constant acceleration (effective \( g = b/m \)).
-- Full recovery of parabolic projectile trajectory from discrete sequential evaluation.
-- Route A enrichment outline (amplitude-valued `force_A`, linear typing, vacuum excitations).
-- Comparison with Standard Model open problems and corresponding resources in the present framework.
-- Proto-axiology based on cost, coherence \(\kappa\), and non-temporal attractors.
+### Ontological commitment and radical reduction
+- Informational monism + holographic projection stated.
+- Primitive set reduced to `app`, `abs`, `pair`/`proj`, `eq`, `reduce`, `share` + preferential sequentialization axiom.
+- Earlier numerical cost function, amplitudes, labels, vacuum, etc., demoted.
 
-### Core primitives established (earlier working set, now superseded by radical reduction)
-`id`, `comp`, `app`, `abs`, `bind`, `copy`, `discard`, `pair`/`proj`, `eq`, `rewrite` (cost-valued), `force`/`force_A`, `fix`, linear variants, labels, vacuum \(V\), bounded signal.
+## [2026-08-06] (initial)
+- Repository structure, first continuum limit with explicit cost, Route A outline, SM comparison, proto-axiology.
