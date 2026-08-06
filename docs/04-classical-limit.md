@@ -1,6 +1,6 @@
 # 04 — Classical Limit
 
-Formal derivations name every operation. See also `docs/02-dynamics.md` for the full sequential calculus.
+Formal derivations name every operation. See also `docs/02-dynamics.md` and `docs/03-quantum-sector.md`.
 
 ---
 
@@ -19,75 +19,63 @@ Formal derivations name every operation. See also `docs/02-dynamics.md` for the 
 
 ## Derivation 1 — Constant bias → constant acceleration
 
-1. **`velocity_cost`**  
-   \(C(\delta v) = \tfrac12 m_{\rm struct}(\delta v)^2 + b_{\rm struct}\,\delta v\)
+1. **`velocity_cost`** — \(C(\delta v)=\tfrac12 m(\delta v)^2+b\,\delta v\)
+2. **`preferential_select`** — \(\delta v^*=-b/m\)
+3. **`sequential_tick`** — integrate rate, advance position
+4. **`continuum_limit`** — \(\ddot x=-b/m=-g_{\rm eff}\)
+5. **`integrate_projectile`** — parabolic trajectories
 
-2. **`preferential_select`**  
-   \(\delta v^* = \arg\min C = -b_{\rm struct}/m_{\rm struct}\)
-
-3. **`sequential_tick`**  
-   \(v \leftarrow v + \delta v^*\,\tau\), \(x \leftarrow x + v\,\tau\)
-
-4. **`continuum_limit`** (\(\tau\to 0\))  
-   \(\ddot{x} = -b_{\rm struct}/m_{\rm struct} = -g_{\rm eff}\)
-
-5. **`integrate_projectile`**  
-   recovers ordinary parabolic trajectories and landing times.
-
-**Executable check:** inverse-acceleration ratio for two share densities is exact in the toy simulator.
+**Executable check:** inverse-acceleration ratio exact in toy simulator.
 
 ---
 
 ## Derivation 2 — Position-dependent bias → Newton’s second law
 
-1. **`position_dependent_bias`**  
-   Let \(b_{\rm struct}(x) = \partial V_{\rm struct}/\partial x\).
-
-2. **`preferential_select`** at each location  
-   \(\delta v^*(x) = -b_{\rm struct}(x)/m_{\rm struct}\)
-
-3. **`continuum_limit`**  
-   \(m_{\rm struct}\,\ddot{x} = -\partial V_{\rm struct}/\partial x\)
-
-This is the conservative form of Newton’s second law. No new ontological primitive is required.
+1. **`position_dependent_bias`** — \(b(x)=\partial V/\partial x\)
+2. **`preferential_select`** at each \(x\)
+3. **`continuum_limit`** — \(m\ddot x=-V'(x)\)
 
 ---
 
 ## Derivation 3 — Harmonic oscillator
 
-1. **`harmonic_potential`**  
-   \(V_{\rm struct}(x) = \tfrac12 k x^2\) \(\Rightarrow\) \(b(x) = kx\)
+1. **`harmonic_potential`** — \(V=\tfrac12 kx^2\)
+2. **`continuum_limit`** — \(\ddot x+(k/m)x=0\)
+3. **`structural_energy`** — \(E=T+V\) approximately conserved (integrator drift only)
 
-2. **`continuum_limit`**  
-   \(\ddot{x} + (k/m_{\rm struct})x = 0\)
+**Executable check:** three periods, relative energy drift \(\sim 6\times 10^{-3}\).
 
-3. **`structural_energy`**  
-   \(E = \tfrac12 m_{\rm struct}v^2 + \tfrac12 k x^2\) is conserved in the continuum; discrete residual drift is integrator artifact only.
+---
 
-**Executable check:** three periods of oscillation with relative energy drift \(\sim 6\times 10^{-3}\) under semi-implicit Euler.
+## Derivation 4 — Classical limit of quantum coherence
+
+1. **`coherent_set`** of share-linked residuals exists while isolation costs remain high.
+2. Macroscopic environment raises maintain cost or lowers isolation cost of alternatives.
+3. **`structural_decoherence`** drops all but one residual.
+4. Surviving dynamics reduce to **`preferential_select`** + **`sequential_tick`** on a single high-\(\kappa\) trajectory (Derivations 1–3).
+
+Quantum and classical regimes are two limits of one preferential sequentialization dynamics, distinguished by whether share isolation remains expensive.
 
 ---
 
 ## Prediction procedure (local evaluator)
 
-1. Maintain sequential model of relevant high-share clusters (`sequential_state`).
-2. Estimate relative structural inertias (`m_struct` from share architecture).
-3. Identify bias context — constant or position-dependent (`evaluate_b_at`).
-4. Evolve by repeated `preferential_select` + `sequential_tick` (or continuum integration).
-5. High-\(\kappa\) regime suppresses deviations; projection remains reliable within ordinary precision.
+1. Maintain sequential model of relevant clusters.
+2. Estimate structural inertias (`m_struct`).
+3. Identify bias context (`evaluate_b_at`).
+4. Evolve by `preferential_select` + `sequential_tick` (or continuum integration).
+5. High-\(\kappa\) regime suppresses deviations.
 
 ---
 
 ## Current reach
 
 **Closed**
-- Single cluster, constant bias → constant acceleration + projectile motion.
-- Inverse relation \(a \propto 1/m_{\rm struct}\) under identical bias.
-- Position-dependent bias → one-dimensional conservative mechanics (harmonic verified).
-- Structural energy accounting under potential bias.
+- Constant-bias Newtonian regime + projectile motion.
+- Position-dependent bias → 1-D conservative mechanics (harmonic verified).
+- Structural energy accounting.
+- Structural decoherence criterion linking quantum multi-path regime to classical single-path regime.
 
-**Still open (same structural principle, no new primitives)**
-- Multi-cluster mutual disruption → interaction forces.
-- Velocity-dependent residual disruption → drag / dissipation.
-- Multi-dimensional sequential parameters → vectors, angular analogues.
-- Many weakly coupled excitations → continuum fields.
+**Still open**
+- Multi-cluster interaction forces, drag, multi-dimensional sequential parameters, continuum fields.
+- Quantitative two-path interference simulation.
