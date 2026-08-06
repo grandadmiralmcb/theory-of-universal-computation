@@ -1,21 +1,25 @@
 # Toy Structural Sequential Simulator
 
-Executable discrete calculus for the Expression-Tree Ontology (reduced primitives).
+Executable discrete calculus for the Expression-Tree Ontology.
 
-## What it implements
+## Named operations implemented
 
-- Structural inertia \(m_{\rm struct}\) from share density
-- Cost of velocity change: \(C(\delta v) = \frac12 m(\delta v)^2 + b(x)\,\delta v\)
-- Preferential low-disruption sequentialization each tick
-- **Constant bias** — recovers inverse-acceleration ratio
-- **Position-dependent bias** (structural potential) — harmonic oscillator demo with energy tracking
+| Operation | Role |
+|-----------|------|
+| `m_struct` | structural inertia from share density |
+| `evaluate_b_at` / `b_struct` | bias strength (constant or \(V'(x)\)) |
+| `velocity_cost` | \(C(\delta v) = \frac12 m(\delta v)^2 + b\,\delta v\) |
+| `preferential_select` | \(\delta v^* = -b/m\) |
+| `sequential_tick` | integrate rate: \(v \leftarrow v + \delta v^*\cdot dt\), advance \(x\) |
+| `structural_energy` | \(T + V\) tracking |
+| `harmonic_potential` | specialized \(V = \frac12 kx^2\) |
 
-## Continuum targets
+## Continuum targets recovered
 
-| Bias | Continuum equation | Status |
-|------|--------------------|--------|
-| Constant \(b\) | \(m\ddot x = -b\) | Confirmed in simulator |
-| Potential \(V(x)\) | \(m\ddot x = -V'(x)\) | Implemented (harmonic) |
+| Bias | Equation | Status |
+|------|----------|--------|
+| Constant \(b\) | \(m\ddot x = -b\) | exact inverse-acceleration ratio |
+| Potential \(V(x)\) | \(m\ddot x = -V'(x)\) | harmonic verified, energy ~conserved |
 
 ## How to run
 
@@ -23,9 +27,6 @@ Executable discrete calculus for the Expression-Tree Ontology (reduced primitive
 python sim/toy_simulator.py
 ```
 
-## Next extensions
+## Formalism reference
 
-1. Replace integer share-density with an actual count of `share` nodes over a small expression tree.
-2. Double-well / barrier potentials.
-3. Two interacting clusters (mutual structural disruption).
-4. Multi-path coherent sets + structural isolation-cost decoherence.
+Full named-operation derivations: `docs/02-dynamics.md`, `docs/04-classical-limit.md`.
