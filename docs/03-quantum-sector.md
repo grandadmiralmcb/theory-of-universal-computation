@@ -1,6 +1,6 @@
 # 03 — Quantum Sector
 
-Structural multi-path coherence, isolation-cost decoherence, minimal amplitude enrichment, classical limit of coherence, and **velocity coupling** between coherent sets and the sequential calculus.
+Structural multi-path coherence, isolation-cost decoherence, **linear reduce on share-weighted residuals** (active direction), velocity coupling, and a toolbox of alternative complexifications.
 
 Every derivation names the operation performed.
 
@@ -11,20 +11,40 @@ Every derivation names the operation performed.
 Reduced primitives and structural cost remain in force:
 
 \[
-C = \alpha S + \beta B + \gamma D
+C = \alpha S + \beta B + \gamma D \qquad (\text{real, non-negative})
 \]
 
-Preferential low-disruption sequentialization (`preferential_select`) is the sole dynamical principle. Classical sequential calculus: `docs/02-dynamics.md`.
+Preferential low-disruption sequentialization remains the dynamical principle for *structural selection*. Classical sequential calculus: `docs/02-dynamics.md`.
 
 ---
 
-## 1. Purely structural multi-path regime
+## 1. Active direction — linear `reduce` + weighted `share`
 
-### 1.1 Share-linked residuals
+This is the adopted upgrade. It is the smallest change to the existing axiom surface that makes QM-compatible expressions native to the share architecture rather than external labels.
 
-**Operation: `share_link`**
+### 1.1 Weighted share
 
-Residuals are co-dependent when connected by `share` nodes.
+**Operation: `share_weight`**
+
+A `share` node may carry a complex weight \(a \in \mathbb{C}\) (or a pure U(1) phase). The weight is an attribute of the share link, not a new ontological kind of substance.
+
+- Co-dependence remains identity of content via `share`.
+- The weight rides on that co-dependence and is available at recombination.
+
+### 1.2 Linear reduce
+
+**Operation: `linear_reduce`**
+
+Where share-linked residuals exist, reduction yields a **weighted sum** rather than a single preferred residual:
+
+\[
+\texttt{linear\_reduce}(E) = \sum_i a_i\, E_i, \qquad a_i \in \mathbb{C}.
+\]
+
+- Superposition is the *form* of the residual under linear reduction, not merely a set of residuals not yet isolated.
+- Ordinary preferential `reduce` (single residual) remains available and is recovered when the coherent set has size 1, or when structural decoherence has already projected.
+
+### 1.3 Structural multi-path (unchanged counts)
 
 **Operation: `coherent_set`**
 
@@ -32,51 +52,32 @@ Residuals are co-dependent when connected by `share` nodes.
 \mathcal{C} = \bigl\{ E_i \;\big|\; C_{\rm isolate}(E_i;\mathcal{C}) > C_{\rm maintain}(\mathcal{C}) \bigr\}.
 \]
 
-### 1.2 Isolation and maintain costs
-
-**Operation: `isolation_cost`**
-
-\[
-C_{\rm isolate}(E_i;\mathcal{C})
-  = \alpha\,\lvert\Sigma_i\rvert + \beta\, B_{\rm isolate}(E_i) + \gamma\, D_{\rm isolate}(E_i)
-\]
-
-**Operation: `maintain_cost`**
-
-\[
-C_{\rm maintain}(\mathcal{C})
-  = \alpha\, S_{\rm maintain} + \beta\, B_{\rm maintain} + \gamma\, D_{\rm maintain}
-\]
-
-### 1.3 Structural decoherence
+**Operation: `isolation_cost`** / **`maintain_cost`** — still real structural counts from Share architecture (see `sim/expr_tree.py`).
 
 **Operation: `structural_decoherence`**
 
 \[
-\textbf{if } C_{\rm isolate}(E_i;\mathcal{C}) \le C_{\rm maintain}(\mathcal{C})
+\textbf{if } C_{\rm isolate}(E_i) \le C_{\rm maintain}
 \quad\textbf{then}\quad
-\mathcal{C} \leftarrow \mathcal{C}\setminus\{E_i\}.
+\text{drop } E_i \text{ from the linear combination}.
 \]
 
-### 1.4 Structural visibility
+Isolation/maintain costs stay real. Linear combination is the free-evolution / multi-path form; structural preference still decides when the combination collapses to a singleton (or classical mixture).
 
-**Operation: `visibility_structural`** — binary: 1 iff all active paths still satisfy isolation > maintain.
+### 1.4 Interference and intensity
 
----
+**Operation: `path_recombine`** — addition of weighted residuals under `linear_reduce`:
 
-## 2. Minimal amplitude enrichment
+\[
+a_{\rm tot} = \sum_i a_i.
+\]
 
-### 2.1 Weights and reduction
+**Operation: `intensity`**
 
-**Operation: `amplitude_weight`** — \(a_i\in\mathbb{C}\) on each residual in \(\mathcal{C}\).
-
-**Operation: `force_A`** — amplitude-valued reduction.
-
-### 2.2 Recombination and interference
-
-**Operation: `path_recombine`** — \(a_{\rm tot}=\sum_i a_i\).
-
-**Operation: `intensity`** — \(I\propto\lvert a_{\rm tot}\rvert^2\).
+\[
+I \propto \lvert a_{\rm tot}\rvert^2
+  = \sum_i \lvert a_i\rvert^2 + 2\sum_{i<j}\mathrm{Re}(a_i^* a_j).
+\]
 
 **Operation: `visibility_amplitude`**
 
@@ -84,214 +85,180 @@ C_{\rm maintain}(\mathcal{C})
 \mathcal{V} = \frac{2\lvert a_1\rvert\lvert a_2\rvert}{\lvert a_1\rvert^2+\lvert a_2\rvert^2}
 \]
 
-when both paths active; else 0.
+when both paths remain in \(\mathcal{C}\); else 0.
 
-### 2.3 Born extraction
-
-**Operation: `born_extract`**
-
-\[
-P(i) = \frac{\lvert a_i\rvert^2}{\sum_j\lvert a_j\rvert^2}.
-\]
-
----
-
-## 3. Velocity coupling
-
-A coherent set is not only a collection of residuals and amplitudes; it can carry sequential parameters. This section derives how classical sequential dynamics and multi-path structure couple.
-
-### 3.1 Sequential parameters on a coherent set
-
-**Operation: `attach_sequential_state`**
-
-Two consistent options:
-
-| Mode | Sequential state | When natural |
-|------|------------------|--------------|
-| **Centre-of-mass (COM)** | single \((x,v)\) for the whole \(\mathcal{C}\) | paths not spatially distinguished; shared trajectory label |
-| **Path-wise** | each \(E_i\) carries \((x_i,v_i)\) | paths diverge in sequential parameter (e.g. different arms of an interferometer) |
-
-Both are permitted by the formalism. COM is the minimal coupling; path-wise is required for differential bias and which-path sequential distinction.
-
----
-
-### 3.2 COM mode — collective sequential dynamics
-
-**Operation: `com_velocity_cost`**
-
-Treat \(\mathcal{C}\) as a single high-resistance object with structural inertia
-
-\[
-m_{\mathcal{C}} = m_{\rm struct}(\mathcal{C})
-\]
-
-(function of total share density of the set). Under bias \(b(x)\):
-
-\[
-C(\delta v) = \tfrac12 m_{\mathcal{C}}(\delta v)^2 + b(x)\,\delta v.
-\]
-
-**Operation: `preferential_select`** (unchanged)
-
-\[
-\delta v^* = -\frac{b(x)}{m_{\mathcal{C}}}.
-\]
-
-**Operation: `sequential_tick`** (on COM)
-
-\[
-v \leftarrow v + \delta v^*\,\tau, \qquad x \leftarrow x + v\,\tau.
-\]
-
-Amplitudes are passengers: they are not altered by COM sequential updates unless a separate free-evolution rule (phase accumulation) is active.
-
-**Continuum limit**
-
-\[
-m_{\mathcal{C}}\,\ddot{x} = -b(x).
-\]
-
-A coherent set in COM mode behaves as one classical body of mass \(m_{\mathcal{C}}\) until `structural_decoherence` or `path_recombine` occurs.
-
----
-
-### 3.3 Path-wise mode — differential sequential dynamics
-
-**Operation: `pathwise_velocity_cost`**
-
-Each active path \(E_i\) has its own sequential state \((x_i,v_i)\) and inertia \(m_i\). Local bias may differ:
-
-\[
-C_i(\delta v_i) = \tfrac12 m_i(\delta v_i)^2 + b_i(x_i)\,\delta v_i.
-\]
-
-**Operation: `preferential_select`** (per path)
-
-\[
-\delta v_i^* = -\frac{b_i(x_i)}{m_i}.
-\]
-
-**Operation: `sequential_tick`** (per path)
-
-\[
-v_i \leftarrow v_i + \delta v_i^*\,\tau, \qquad x_i \leftarrow x_i + v_i\,\tau.
-\]
-
-Paths can separate in sequential parameter space. Share links remain until isolation costs are paid. Differential bias is the structural origin of which-path information: if \(b_1\neq b_2\) strongly, sequential trajectories diverge and isolation often becomes cheap (decoherence).
-
----
-
-### 3.4 Phase accumulation under path-wise motion (minimal enrichment)
+### 1.5 Phase accumulation
 
 **Operation: `phase_accumulate`**
 
-While paths remain in \(\mathcal{C}\), each path may accumulate phase from its sequential history. Minimal rule (controlled enrichment):
+Weights on share-preserving trajectories may evolve:
 
 \[
 a_i(t+\tau) = a_i(t)\,\exp\bigl(-i\,\varphi_i\,\tau\bigr),
 \qquad
-\varphi_i = \varphi_i(x_i,v_i;\text{binding context}).
+\varphi_i = \varphi_i(x_i, v_i; \text{binding context}).
 \]
 
-A simple structural proxy: \(\varphi_i\) proportional to residual binding cost along the path (or to a potential evaluated on that path). Relative phase \(\Delta\phi\) then drives interference upon `path_recombine`.
+\(\varphi_i\) is tied to sequential / binding history (controlled enrichment of the weight dynamics, not a new primitive).
 
-This is the natural bridge between sequential motion and the interference cross term. It is still an enrichment (phase is not forced by \(S,B,D\) alone) but is tightly coupled to the sequential state already maintained by the evaluator.
+### 1.6 Born extraction at structural selection
 
----
+**Operation: `born_extract`**
 
-### 3.5 Recombination with velocity
+When `structural_decoherence` (or an equivalent detection binding) forces a choice:
 
-**Operation: `path_recombine_with_velocity`**
+\[
+P(i) = \frac{\lvert a_i\rvert^2}{\sum_j \lvert a_j\rvert^2}.
+\]
 
-When paths are brought back into a single sequential context (share architecture forces or permits recombination):
+This remains a *reading* of the weights at the moment of structural selection, not a theorem of real cost axioms alone.
 
-1. **`path_recombine`** — amplitudes add: \(a_{\rm tot}=\sum a_i\).
-2. Sequential parameters must be reconciled. Minimal rules:
-   - **COM inheritance:** surviving sequential state is the amplitude-weighted mean
-     \[
-     x = \frac{\sum_i \lvert a_i\rvert^2 x_i}{\sum_j \lvert a_j\rvert^2}, \quad
-     v = \frac{\sum_i \lvert a_i\rvert^2 v_i}{\sum_j \lvert a_j\rvert^2}.
-     \]
-   - **Selection inheritance:** if recombination coincides with `structural_decoherence` / `born_extract`, the chosen path’s \((x_i,v_i)\) becomes the sequential state of the singleton.
-
-**Operation name for the weighted-mean rule:** `com_from_amplitudes`.
-
----
-
-### 3.6 Decoherence with velocity
-
-**Operation: `structural_decoherence`** (velocity-aware)
-
-When a path is dropped:
-
-- Its amplitude is removed from future recombinations.
-- Its sequential state is discarded (or archived as a non-projected residual).
-- The surviving set retains its own sequential parameters (COM or remaining path-wise states).
-
-If environmental share density raises `maintain_cost` until only one path remains, the singleton continues under ordinary classical `sequential_tick` with that path’s \((x,v)\) — the classical limit of coherence with velocity intact.
-
----
-
-### 3.7 Summary derivation — coupled two-path interferometer under bias
-
-**Named pipeline**
-
-1. `share_link` + `amplitude_weight` — prepare two-path coherent set.
-2. `attach_sequential_state` (path-wise) — each arm has \((x_i,v_i)\).
-3. Possibly different `evaluate_b_at` on each arm.
-4. Repeated `preferential_select` + `sequential_tick` (path-wise) + optional `phase_accumulate`.
-5. At the second beamsplitter region: `path_recombine_with_velocity` + `intensity` / `visibility_amplitude`.
-6. If a detector binding raises isolation cost: `structural_decoherence` + `born_extract` + surviving path’s velocity continues classically.
-
-This is a complete, named account of a biased two-path interferometer inside the expression ontology.
-
----
-
-## 4. Classical limit of coherence (with velocity)
+### 1.7 Classical limit of coherence
 
 **Operation: `classical_limit_of_coherence`**
 
-1. Microscopic \(\mathcal{C}\) share-links to a large environmental cluster.
-2. `maintain_cost` rises → `structural_decoherence` → singleton.
-3. Surviving \((x,v)\) evolves by classical `preferential_select` + `sequential_tick` under ambient bias.
+Environmental share density raises `maintain_cost` → `structural_decoherence` → singleton → ordinary real `preferential_select` + `sequential_tick`. Quantum multi-path and classical single-path motion remain two regimes of one preference dynamics, distinguished by whether isolation of alternatives remains expensive.
 
-Quantum multi-path and classical single-path motion remain two regimes of one dynamics, now including sequential velocity throughout.
+### 1.8 Status of the active direction
+
+| Recovered structurally (real counts) | Native after linear reduce + weighted share |
+|--------------------------------------|---------------------------------------------|
+| coherent sets, isolation/maintain | linear combination of residuals |
+| structural decoherence | interference cross term |
+| classical sequential calculus | continuous visibility |
+| inverse share-count acceleration ratio | Born reading at selection |
+
+Unitarity of free weight evolution and a derivation of Born from cost alone remain open.
 
 ---
 
-## 5. Named operation register (full quantum + velocity)
+## 2. Velocity coupling (unchanged in structure)
+
+**Operation: `attach_sequential_state`** — COM or path-wise \((x,v)\).
+
+**COM mode:** collective \(m_{\mathcal{C}}\), ordinary preferential sequentialization; weights are passengers unless `phase_accumulate` is active.
+
+**Path-wise mode:** each arm has \((x_i,v_i)\); differential bias permitted (which-path sequential distinction).
+
+**Operation: `path_recombine_with_velocity`** + **`com_from_amplitudes`** — reconcile sequential state on recombination via amplitude-weighted means, or inherit the selected path’s state on Born extraction.
+
+Named interferometer pipeline under bias remains as before, with `linear_reduce` replacing ad-hoc external amplitude attachment.
+
+---
+
+## 3. Thought toolbox — alternative complexifications
+
+Directions considered but not adopted as the primary upgrade. Kept as a refinement toolbox.
+
+### Toolbox A — Complex / path-integral cost
+
+**Idea:** Replace real structural cost \(C\) by a complex action \(S\), with path weight \(\propto e^{iS/\hbar_{\rm struct}}\). Preferential sequentialization becomes a discrete sum-over-paths (stationary phase recovers classical trajectories).
+
+| Pros | Cons |
+|------|------|
+| Closest to standard path-integral intuition | Changes the *type* of the dynamical principle (argmin → sum of complex weights) |
+| Classical limit via stationary phase matches high-\(\kappa\) regime | Requires a structural \(\hbar\) and a well-defined action on expression steps |
+| Interference from path cancellation | Less continuous with existing real isolation/maintain counts |
+
+**When to revisit:** if linear reduce + weighted share proves insufficient for continuous evolution between decoherence events, or if a natural structural action on reduction steps appears.
+
+---
+
+### Toolbox B — Complexify only `eq`
+
+**Idea:** Observational equivalence becomes a continuous or complex similarity score rather than binary `eq`.
+
+| Pros | Cons |
+|------|------|
+| Soft matching, graded distinguishability | Does not by itself give additive cancellation of path weights |
+| Minimal change to one primitive | No native superposition algebra |
+
+**When to revisit:** for approximate observation, noisy evaluators, or resource-bounded `eq` — not as a primary route to interference.
+
+---
+
+### Toolbox C — Complex sequential parameter only
+
+**Idea:** Sequential state includes a phase coordinate \((x,\theta)\) without changing `reduce`.
+
+| Pros | Cons |
+|------|------|
+| Phase clock tied to sequential motion | Without linear combination of residuals, no fringes |
+| Simple to implement | Phase remains decorative |
+
+**When to revisit:** as a lightweight add-on once linear reduce is in place (overlaps `phase_accumulate`).
+
+---
+
+### Toolbox D — External amplitude attribute (previous minimal enrichment)
+
+**Idea:** Keep `reduce` preferential (single residual / coherent set of residuals) and attach \(a_i\in\mathbb{C}\) as an external label on each residual in \(\mathcal{C}\).
+
+| Pros | Cons |
+|------|------|
+| Minimal formal surface; already partially implemented | Amplitudes are bolted on, not native to share/reduce |
+| Clear boundary with pure structure | Weaker continuity with the compositional substrate |
+
+**When to revisit:** if linear reduce proves technically awkward in the term language; as a fallback implementation style.
+
+---
+
+### Toolbox E — Full process / categorical package
+
+**Idea:** Import dagger-compact or process-theory structure (as in categorical quantum mechanics) so that systems and processes already carry the linear package.
+
+| Pros | Cons |
+|------|------|
+| Mature compositionality; interference native | Large departure from the reduced expression-tree core |
+| Aligns with existing QI reconstructions | Risks replacing the theory rather than refining it |
+
+**When to revisit:** only if the expression-tree program stalls and a full process-theoretic reformulation becomes the clearer route.
+
+---
+
+### Toolbox F — Information-principle reconstruction axioms
+
+**Idea:** Add operational axioms (purification, no-broadcasting, reversibility, …) that force Hilbert-space kinematics, treating the expression forest as a substrate that must satisfy those constraints.
+
+| Pros | Cons |
+|------|------|
+| Connects to Hardy / CDP / CBH-style reconstructions | Does not *derive* amplitudes from share/reduce; selects theories that already have them |
+| Clear external benchmarks | Shifts the project from generative substrate to constraint satisfaction |
+
+**When to revisit:** for comparative foundations work, or if the goal shifts from “generate QM from expressions” to “show the expression ontology can host a unique quantum information theory.”
+
+---
+
+## 4. Named operation register (active direction)
 
 | Operation | Role |
 |-----------|------|
-| `share_link` | co-dependence via `share` |
-| `coherent_set` | multi-path set under isolation > maintain |
-| `isolation_cost` / `maintain_cost` | structural scalars |
-| `structural_decoherence` | drop paths |
-| `visibility_structural` | binary coherence |
-| `amplitude_weight` / `force_A` | complex weights |
+| `share_weight` | complex / U(1) weight on a `share` link |
+| `linear_reduce` | weighted sum of share-linked residuals |
+| `coherent_set` | residuals with isolation > maintain |
+| `isolation_cost` / `maintain_cost` | real structural scalars |
+| `structural_decoherence` | drop terms from the linear combination |
 | `path_recombine` / `intensity` / `visibility_amplitude` | interference |
-| `born_extract` | \(\lvert a\rvert^2\) probabilities |
+| `phase_accumulate` | sequential evolution of share weights |
+| `born_extract` | \(\lvert a\rvert^2\) reading at structural selection |
 | `attach_sequential_state` | COM or path-wise \((x,v)\) |
-| `com_velocity_cost` / `pathwise_velocity_cost` | cost of \(\delta v\) for set or path |
 | `preferential_select` / `sequential_tick` | classical sequential update |
-| `phase_accumulate` | path phase from sequential history |
-| `path_recombine_with_velocity` | amplitudes + sequential reconciliation |
-| `com_from_amplitudes` | weighted-mean sequential state |
+| `path_recombine_with_velocity` / `com_from_amplitudes` | sequential reconciliation |
 | `classical_limit_of_coherence` | decoherence → classical trajectory |
 
 ---
 
-## 6. Status
+## 5. Status
 
-**Closed**
-- Structural multi-path + decoherence.
-- Amplitude interference + Born extraction.
-- COM and path-wise velocity coupling.
-- Phase accumulation as minimal enrichment linking motion to interference.
-- Recombination and decoherence rules that carry sequential state forward.
-- Named interferometer pipeline under bias.
+**Active commitment**
+- Linear `reduce` on share-weighted residuals.
+- Real isolation/maintain costs and structural decoherence retained.
+- Born rule as reading at selection; phase accumulation as weight dynamics on sequential history.
 
-**Open / next**
-- Executable path-wise + phase simulator (extend `sim/two_path.py`).
-- Whether \(\varphi_i\) can be forced from binding geometry alone.
-- Multi-cluster interaction forces; continuum fields; spectra.
+**Toolbox retained** for future refinement: complex action (A), soft `eq` (B), complex sequential parameter (C), external amplitudes (D), categorical process package (E), information-principle constraints (F).
+
+**Still open**
+- Executable implementation of `linear_reduce` over the term language in `sim/expr_tree.py`.
+- Unitarity of weight evolution between decoherence events.
+- Whether \(\varphi_i\) can be forced from binding geometry.
+- Multi-cluster forces, fields, spectra.

@@ -2,41 +2,36 @@
 
 ## Current Contentions
 
-1. **Amplitude structure**  
-   Complex amplitudes restore interference and Born-rule statistics. Contention: can relative phase and \(|a|^2\) weights be forced from share/binding geometry alone, or is \(\mathcal{A}=\mathbb{C}\) an unavoidable controlled enrichment?
+1. **Linear reduce + weighted share vs alternatives**  
+   Active direction adopted. Toolbox A–F retained (`docs/09-complexification-toolbox.md`). Contention: will linear residual algebra suffice for free evolution, or will a complex action (Toolbox A) be required?
 
-2. **Monism vs. formal entailment**  
-   Informational monism remains the unique non-idle reading, not a theorem.
+2. **Born rule**  
+   Still a reading of weights at structural selection, not derived from real \(S,B,D\).
 
-3. **Hard problem of consciousness**  
-   High-\(\kappa\) sequential evaluation is the formal counterpart of coherent experience; exhaustiveness left open.
+3. **Monism**  
+   Unique non-idle reading, not theorem.
 
-4. **Empirical numerics**  
-   Classical inverse-acceleration and harmonic energy conservation are executable. Quantum-side quantitative visibility curves and Born-rule tests are not yet simulated.
+4. **Hard problem of consciousness**  
+   Explicitly open.
 
 ## Open Questions
 
-### Immediate (quantum recovery)
-1. Implement two-path coherent sets + isolation-cost decoherence in the toy simulator.
-2. Add amplitude weights and `path_recombine`; reproduce a basic interference fringe.
-3. Verify that raising environmental share density forces structural decoherence and recovers single-path classical trajectories.
+### Immediate
+1. Implement `linear_reduce` and `share_weight` over the term language in `sim/expr_tree.py` / extend `sim/two_path.py`.
+2. Couple tree-computed \(m_{\rm struct}\) to the velocity integrator (end-to-end parameter-free ratio test).
+3. Test whether a structural proxy for \(\varphi_i\) (binding history) produces usable fringe dynamics.
 
-### Technical classical / structural
-4. Multi-cluster mutual disruption → interaction forces.
-5. Velocity-dependent residual disruption → drag.
-6. Multi-dimensional sequential parameters.
+### Technical
+4. Unitarity (or an acceptable substitute) of weight evolution between decoherence events.
+5. Multi-cluster mutual disruption → interaction forces.
+6. Velocity-dependent residual disruption → drag.
 
 ### Foundational
-7. Derive or further motivate \(\mathcal{A}=\mathbb{C}\) from the reduced basis.
-8. Discrete spectra / particle species from vacuum + labels.
-9. Continuum field limits of many weakly coupled excitations.
-10. Route from dynamics to stricter entailment of monism.
+7. Can Born weights be forced, or must they remain a reading?
+8. When to open Toolbox A (complex action) or E (process package).
+9. Spectra, labels, continuum fields.
 
-### Meta-empirical
-11. Decisive empirical failure modes of structural disruption preference.
-12. Minimal generative core: can any of the six primitives be eliminated?
-
-## Priority order for further dogfooding
-1. Two-path simulator: coherent set, isolation cost, amplitude recombination, Born extraction.
-2. Decoherence by environmental share density → classical limit of coherence.
-3. Only then labels, vacuum, spectra, and field limits.
+## Priority order
+1. Executable linear reduce + weighted share.
+2. End-to-end tree → \(m_{\rm struct}\) → acceleration ratio.
+3. Only then further toolbox activations or particle/field extensions.

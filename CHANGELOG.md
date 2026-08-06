@@ -2,25 +2,31 @@
 
 All notable developments of the Expression-Tree Ontology are recorded here.
 
+## [2026-08-06] (linear reduce + complexification toolbox)
+
+### Active direction adopted
+- `share` may carry complex / U(1) weight (`share_weight`).
+- `reduce` has a linear form on share-linked residuals (`linear_reduce`): \(\sum a_i E_i\).
+- Isolation/maintain costs remain real; structural decoherence projects the linear combination.
+- Born rule remains a reading at structural selection; `phase_accumulate` ties weight dynamics to sequential history.
+
+### Thought toolbox documented
+- `docs/09-complexification-toolbox.md` and §3 of `docs/03-quantum-sector.md`:
+  - A: complex / path-integral cost
+  - B: soft / complex `eq`
+  - C: complex sequential parameter only
+  - D: external amplitude attribute (previous minimal enrichment)
+  - E: process / categorical package
+  - F: information-principle reconstruction axioms
+- Usage rule: do not activate without an explicit adversarial reason that the active direction fails a named requirement.
+
+### Core ontology
+- `docs/01-core-ontology.md` updated: preferential vs linear reduce; weighted share; axiom 4.
+
 ## [2026-08-06] (adversarial pressure points)
 
-### (1) Structural costs from actual expression trees
-- Minimal term language: Var, Abs, App, Pair, Share.
-- `m_struct_from_tree`: inertia from distinct Share node count.
-- `isolation_cost_from_tree` / `maintain_cost_from_tree`: isolation and maintain costs from cross-member share structure.
-- Executable module: `sim/expr_tree.py`.
+- Expression-tree \(m_{\rm struct}\) and isolation costs; phase/amplitudes marked non-derivable from real counts alone; parameter-free inverse share-count acceleration ratio.
 
-### (2) Phase / amplitudes
-- Explicit finding: complex phase and Born weights are **not** derivable from the reduced core + structural counts alone.
-- Permanently marked as controlled enrichments; structural contribution limited to coherent sets and isolation-cost decoherence.
+## [2026-08-06] (earlier)
 
-### (3) Parameter-free prediction
-- Under identical constant bias, acceleration ratio of two clusters equals inverse ratio of their Share counts (read from trees).
-- Ratio is fixed by term structure; \(\alpha,\varepsilon\) cancel. Falsifiable if share counts are fixed and accelerations do not track the inverse ratio.
-
-### Documentation
-- `docs/08-adversarial-pressure.md` records the three pressures and outcomes.
-
-## [2026-08-06] (velocity coupling / QM dogfooding / classical formalisms)
-
-- Path-wise and COM sequential dynamics on coherent sets; two-path simulator; named classical and quantum operations; radical reduction; ontological charter.
+- Velocity coupling, QM structural multi-path, classical formalisms, radical reduction, ontological charter.
