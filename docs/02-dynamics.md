@@ -1,66 +1,107 @@
-# 02 — Dynamics
+# 02 — Dynamics (Structural Sequential Calculus)
 
-## Concrete Cost Function (minimal working version)
+## Structural Cost Proxy
 
-For a single high-resistance expression cluster characterized by inertia parameter \(m > 0\) and sequential trajectory parameter \(x\), a change \(\delta x\) is assigned cost
+Numerical cost is not primitive. For a reduction step \(E \xrightarrow{s} E'\) the structural disruption counts are:
+
+- \(S\) = number of `share` nodes whose shared content is broken or duplicated
+- \(B\) = net change in open binding sites
+- \(D\) = 1 if the residual fails `eq` under the current strategy, else 0
 
 \[
-C(\delta x) = \frac12 m\, (\delta x)^2 + b\, x\, \delta x
+C = \alpha S + \beta B + \gamma D \qquad (\alpha,\beta,\gamma > 0)
 \]
 
-(or, in velocity form, \(C(\delta v) = \frac12 m\, (\delta v)^2 + b\, \delta v\)).
+All three quantities are readable from the reduced primitives alone.
 
-- \(\frac12 m (\delta x)^2\) — inertial cost of changing sequential state.
-- Linear bias term — constant ambient constraint of strength \(b\).
+## Velocity-form cost for sequential clusters
 
-Cost is zero only for the null change and increases with both inertia and magnitude of change.
+For a high-resistance cluster whose sequential state is tracked by parameter \(x\) and velocity \(v\), a change of velocity \(\delta v\) is assigned structural cost
 
-## Discrete Lowest-Cost Dynamics
+\[
+C(\delta v) = \frac12 m_{\rm struct}\,(\delta v)^2 + b_{\rm struct}\,\delta v
+\]
 
-Treating the state as the pair \((x_n, v_n)\) and minimizing cost at each tick of duration \(\tau\) yields the updates
+where
+
+- \(m_{\rm struct} = \langle S(\delta x=1)\rangle\) (or a direct function of share density in the toy model),
+- \(b_{\rm struct}\) = excess disruption imposed by a persistent bias context on steps against the preferred direction.
+
+Minimizing \(C\) with respect to \(\delta v\) immediately yields the optimal update
+
+\[
+\delta v^* = -\frac{b_{\rm struct}}{m_{\rm struct}}.
+\]
+
+## Discrete sequential dynamics
+
+At each tick of duration \(\tau\):
 
 \[
 \begin{align*}
-v_{n+1} &= v_n - \frac{b}{m}\,\tau,\\
+v_{n+1} &= v_n + \delta v^* = v_n - \frac{b_{\rm struct}}{m_{\rm struct}}\,\tau,\\
 x_{n+1} &= x_n + v_n\,\tau.
 \end{align*}
 \]
 
-## Continuum Limit
+## Continuum limit (classical Newtonian regime)
 
-In the limit \(\tau \to 0\), \(n\to\infty\) with \(t = n\tau\) fixed, the discrete system converges to
-
-\[
-\frac{dv}{dt} = -\frac{b}{m}, \qquad \frac{dx}{dt} = v,
-\]
-
-or equivalently the second-order equation
+In the joint limit \(\tau\to 0\), \(n\to\infty\) with \(t=n\tau\) fixed:
 
 \[
-\frac{d^2 x}{dt^2} = -\frac{b}{m} = -g_{\rm eff}.
+\frac{dv}{dt} = -\frac{b_{\rm struct}}{m_{\rm struct}}, \qquad \frac{dx}{dt} = v,
 \]
 
-This is constant acceleration. The effective gravitational acceleration is the positive constant \(g_{\rm eff} = b/m\) (sign conventional).
+or
 
-## Integration — Parabolic Trajectory
+\[
+\frac{d^2 x}{dt^2} = -\frac{b_{\rm struct}}{m_{\rm struct}} = -g_{\rm eff}.
+\]
 
-With initial conditions \(x(0) = h\), \(v(0) = v_0\):
+Constant acceleration is recovered purely from structural counts. No external numerical cost function is required.
+
+## Integration — elementary projectile motion
+
+With initial conditions \(x(0)=h\), \(v(0)=v_0\):
 
 \[
 \begin{align*}
-v(t) &= v_0 - g_{\rm eff}\, t,\\
-x(t) &= h + v_0 t - \frac12 g_{\rm eff}\, t^2.
+v(t) &= v_0 - g_{\rm eff}\,t,\\
+x(t) &= h + v_0 t - \tfrac12 g_{\rm eff}\,t^2.
 \end{align*}
 \]
 
-Landing time (positive root of \(x(t)=0\)) is
+Landing time (positive root of \(x(t)=0\)):
 
 \[
 t_{\rm land} = \frac{v_0 + \sqrt{v_0^2 + 2 g_{\rm eff} h}}{g_{\rm eff}}.
 \]
 
-This recovers elementary projectile motion as the continuum limit of lowest-cost sequential evaluation under constant bias.
+This is ordinary projectile motion, now derived as the continuum limit of lowest-structural-disruption sequential evaluation under constant bias.
 
-## Coherence Measure \(\kappa\)
+## Executable confirmation (toy simulator)
 
-\(\kappa\) quantifies the predictive consistency and narrative continuity of a local sequential model. High \(\kappa\) is dynamically favored. Concrete numerical realizations (inverse error accumulation, mutual information between successive states, residual amplitude dispersion, etc.) remain to be fixed and calibrated.
+`sim/toy_simulator.py` implements the discrete velocity-update dynamics. For two idealized clusters that differ only in share density the measured acceleration ratio satisfies
+
+\[
+\frac{a_1}{a_2} \approx \frac{m_2}{m_1}
+\]
+to within discretization error, confirming the inverse-acceleration prediction inside pure theory.
+
+## Coherence
+
+\[
+\kappa \sim \frac{1}{1+\langle C\rangle_{\rm recent}}
+\]
+
+High \(\kappa\) = successful maintenance of low-disruption sequential projection. Classical regimes are high-\(\kappa\) regimes.
+
+## Status toward richer classical limits
+
+The constant-bias, single-cluster Newtonian regime is closed. Open extensions required for broader classical coverage:
+
+- variable / position-dependent bias (effective potentials),
+- multiple interacting clusters,
+- angular / multi-dimensional sequential parameters,
+- drag-like terms arising from residual share disruption that depends on velocity,
+- continuum field limits of large numbers of weakly coupled excitations.
