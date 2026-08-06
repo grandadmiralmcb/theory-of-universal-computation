@@ -2,25 +2,25 @@
 
 All notable developments of the Expression-Tree Ontology are recorded here.
 
-## [2026-08-06] (theorem chain)
+## [2026-08-06] (R/N formalization + T6 end-to-end + linear_reduce sim)
 
-### Formal theorems from axioms (`docs/11-theorems.md`)
-- **T1–T2:** structural cost well-defined; preferential selection.
-- **T3–T8:** optimal \(\delta v\), discrete dynamics, continuum Newton, inverse share-count ratio (parameter-free), projectile motion, position-dependent bias.
-- **T9–T11:** isolation/maintain from trees, structural decoherence criterion, classical limit of coherence.
-- **T12:** free evolution is share-preserving.
-- **T13:** unitarity on active subspace (conditional on Assumptions R, N).
-- **T14:** structural decoherence is the sole non-unitary locus.
-- Dependency graph and explicit gap list (Born, \(\varphi_i\), sequential parameter from syntax, R/N as theorems).
+### 1. R and N in the term language (`docs/12-RN-formalization.md`)
+- **R★:** free-epoch maps typed as share-preserving invertible linear maps on weights (D13–D15); inverse is free-epoch.
+- **N★:** relative-modulus change requires structural cost (D16–D18); free epochs freeze \(\boldsymbol{\mu}\).
+- **T13★:** unitarity follows from R★ + N★ + T12.
 
-## [2026-08-06] (unitarity from projection)
+### 2. End-to-end T6 (`sim/end_to_end_T6.py`)
+- Expression tree → `m_struct_from_tree` → velocity integrator → measured acceleration ratio.
+- No integer knobs; relative error at machine precision for constant bias.
 
-- Free epoch, share_preserve, R, N, unitarity conditional derivation (`docs/10-unitarity-from-projection.md`).
+### 3. Linear reduce simulator (`sim/linear_reduce.py`)
+- Free-epoch diagonal unitary (`phase_accumulate`) with R/N asserts.
+- General free-epoch unitary matrix step.
+- Structural projection (non-unitary locus) + Born extract + intensity.
 
-## [2026-08-06] (linear reduce + toolbox)
-
-- Active direction; complexification toolbox A–F.
+### Theorems doc updated
+- `docs/11-theorems.md` includes R★, N★, T13★ and executable links.
 
 ## [2026-08-06] (earlier)
 
-- Expression-tree costs, adversarial pressures, velocity coupling, classical formalisms, radical reduction.
+- Theorem chain T1–T14; unitarity from projection; linear reduce adoption; toolbox; tree costs; classical formalisms.
