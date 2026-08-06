@@ -2,21 +2,25 @@
 
 All notable developments of the Expression-Tree Ontology are recorded here.
 
-## [2026-08-06] (velocity coupling)
+## [2026-08-06] (adversarial pressure points)
 
-### Coherent sets carry sequential parameters
-- **COM mode:** single \((x,v)\) for the whole set; collective \(m_{\mathcal{C}}\); ordinary preferential sequentialization.
-- **Path-wise mode:** each path has \((x_i,v_i)\); differential bias allowed (which-path sequential distinction).
-- **`phase_accumulate`:** minimal enrichment linking path sequential history to relative phase.
-- **`path_recombine_with_velocity`** + **`com_from_amplitudes`:** reconcile sequential state on recombination.
-- Decoherence carries surviving path velocity into classical sequential dynamics.
-- Named interferometer pipeline under bias fully specified.
-- `sim/two_path.py` extended with path-wise ticks, phase accumulation, COM from amplitudes, Born+velocity, classical limit with continued motion.
+### (1) Structural costs from actual expression trees
+- Minimal term language: Var, Abs, App, Pair, Share.
+- `m_struct_from_tree`: inertia from distinct Share node count.
+- `isolation_cost_from_tree` / `maintain_cost_from_tree`: isolation and maintain costs from cross-member share structure.
+- Executable module: `sim/expr_tree.py`.
 
-## [2026-08-06] (QM dogfooding)
+### (2) Phase / amplitudes
+- Explicit finding: complex phase and Born weights are **not** derivable from the reduced core + structural counts alone.
+- Permanently marked as controlled enrichments; structural contribution limited to coherent sets and isolation-cost decoherence.
 
-- Explicit isolation/maintain costs, interference formulas, Born extraction, two-path toy module.
+### (3) Parameter-free prediction
+- Under identical constant bias, acceleration ratio of two clusters equals inverse ratio of their Share counts (read from trees).
+- Ratio is fixed by term structure; \(\alpha,\varepsilon\) cancel. Falsifiable if share counts are fixed and accelerations do not track the inverse ratio.
 
-## [2026-08-06] (earlier)
+### Documentation
+- `docs/08-adversarial-pressure.md` records the three pressures and outcomes.
 
-- Structural sequential calculus, position-dependent bias, harmonic oscillator, radical reduction, ontological charter.
+## [2026-08-06] (velocity coupling / QM dogfooding / classical formalisms)
+
+- Path-wise and COM sequential dynamics on coherent sets; two-path simulator; named classical and quantum operations; radical reduction; ontological charter.
