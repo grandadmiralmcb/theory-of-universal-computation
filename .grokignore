@@ -1,0 +1,29 @@
+# Secrets & credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Common noise
+node_modules/
+vendor/
+dist/
+build/
+coverage/
+tmp/
+temp/
+.cache/
+
+*.log
+*.zip
+*.tar
+*.tar.gz
+
+# Agent / local state
+.grok/generated-media/
+.grok/computer/
+.claude/
+.cursor/
