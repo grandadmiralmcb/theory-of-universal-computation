@@ -1,94 +1,61 @@
-# 12 — Formalization of Assumptions R and N in the Term Language
+# 12 — Formalization of R and N (with cost derivation status)
 
-Elevate R and N from interpretive principles to term-language constraints with checkable predicates.
-
----
-
-## Assumption R — Reversibility of share-preserving linear reduce
-
-### Informal statement
-If a share-preserving linear reduction step is admissible, there exists a share-preserving step that undoes it.
-
-### Term-language formalization
-
-**D13 (Share footprint).**  
-For a residual form \(R = \sum_i a_i E_i\) over coherent set \(\mathcal{C}\),
-\[
-\mathrm{Foot}(R) = \bigcup_{E_i\in\mathcal{C}} \{\text{Share nodes of }E_i\}
-\]
-(by object identity).
-
-**D14 (Share-preserving map).**  
-A weight update \(U: (a_i)\mapsto(a_i')\) is *share-preserving* iff it does not remove any element of \(\mathrm{Foot}(R)\) and does not break any share in that footprint (no change to share topology).
-
-**D15 (Linear reduce step on weights).**  
-A free-epoch step is a linear invertible map on the weight vector of active paths, leaving Foot fixed:
-\[
-\mathbf{a}' = M\mathbf{a}, \qquad M\in \mathrm{GL}(|\mathcal{C}|,\mathbb{C}), \quad \mathrm{Foot}\text{ unchanged}.
-\]
-
-**R (formal).**  
-Every free-epoch weight update is of the form D15. Consequently \(M^{-1}\) exists and is itself a free-epoch (share-preserving) update. Operational reversibility is the existence of \(M^{-1}\) in \(\mathrm{GL}(n,\mathbb{C})\).
-
-**Checkable predicate (`is_share_preserving`).**  
-Given before/after Foot sets: Foot_after = Foot_before (same Share object identities). Given weight map matrix \(M\): \(\det M \neq 0\).
-
-**Theorem R★.**  
-If a free-epoch step satisfies D14 and is linear and invertible on weights (D15), then it is reversible by a free-epoch step.  
-*Proof.* \(M^{-1}\) exists in \(\mathrm{GL}(n,\mathbb{C})\); applying it restores weights; Foot unchanged by construction of D14. ☐
-
-R is now: free-epoch dynamics are restricted to D15. That restriction is a term-language typing constraint, not an external metaphysical reading.
+See also `docs/13-derive-RN-from-cost.md` for the derivation attempt from structural cost.
 
 ---
 
-## Principle N — No cost-free relative-modulus change
+## Status summary
 
-### Informal statement
-Relative moduli \(|a_i|/|a_j|\) cannot change unless structural cost is charged.
+| Principle | Bare cost \(S,B,D\) | Extended cost D19 | Residual |
+|-----------|--------------------|-------------------|----------|
+| Foot fixed in free epoch | **Forced** (T12) | Forced | — |
+| N★ (relative moduli frozen) | Not forced | **Forced** | — |
+| Support preservation | Not forced | **Forced** | — |
+| R★ full invertibility | Not forced | Partial | **B_flow** (maps are invertible flows) |
 
-### Term-language formalization
+**Honest line:** R★/N★ are not theorems of the original three-counter cost. N★ and support preservation become theorems once weight-sensitive disruption (D19) is part of cost under A4. Full R★ needs a mild flow/group regularity principle.
 
-**D16 (Relative modulus vector).**  
-For active weights \(\mathbf{a}\) with \(\|\mathbf{a}\|_2 > 0\),
+---
+
+## D19 — Weight-sensitive disruption (adopted when A4 active)
+
+For a weight update \(\mathbf{a}\to\mathbf{a}'\) with topological Foot fixed:
+
+- \(S_w = 0\) if support(\(\mathbf{a}'\))=support(\(\mathbf{a}\)), else \(\ge 1\)
+- \(M_w = \|\boldsymbol{\mu}'-\boldsymbol{\mu}\|_1\)
+
 \[
-\mu_i = \frac{|a_i|}{\|\mathbf{a}\|_2}, \qquad \boldsymbol{\mu}\in S^{n-1}_{+}.
+C^+ = \alpha S + \beta B + \gamma D + \alpha_w S_w + \delta M_w \qquad (\alpha_w,\delta>0)
 \]
 
-**D17 (Modulus-changing step).**  
-A weight update changes relative moduli if \(\boldsymbol{\mu}' \neq \boldsymbol{\mu}\).
-
-**D18 (Structural charge for modulus change).**  
-Any step with \(\boldsymbol{\mu}' \neq \boldsymbol{\mu}\) must either:
-1. break at least one share in Foot (\(S \ge 1\)), or
-2. alter open bindings (\(B \neq 0\)), or
-3. fail observational equivalence (\(D = 1\)),
-so that \(C = \alpha S + \beta B + \gamma D > 0\).
-
-**N (formal).**  
-In a free epoch (Foot fixed, no share break, maintain cheaper than isolate), D18 implies no admissible step may change \(\boldsymbol{\mu}\). Therefore free-epoch maps preserve relative moduli: they lie in the unitary group times global rescaling, and by ray-gauge (Born reading) we fix norm 1 and obtain unitary maps.
-
-**Checkable predicate (`modulus_change_requires_cost`).**  
-If \(\|\boldsymbol{\mu}' - \boldsymbol{\mu}\| > \epsilon\) then computed \(C\) of the step must be \(> 0\). In free-epoch simulation, any proposed non-unitary-modulus-changing update is rejected.
-
-**Theorem N★.**  
-Under N (formal) and free-epoch conditions, free-epoch weight maps preserve \(\boldsymbol{\mu}\). Combined with R★ (invertibility) and norm gauge, they are unitary.  
-*Proof.* Relative moduli fixed \(\Rightarrow\) map is diagonal phase times global scale, or more generally an element of U(n) after norm fix, once invertibility and linearity are given (T13). ☐
+**Theorem (N from cost).** In a free epoch, A3 on \(C^+\) forces \(M_w=0\) and \(S_w=0\). ☐
 
 ---
 
-## Combined consequence
+## R formal (unchanged shape; weaker origin story)
 
-**T13★ (unitarity, upgraded).**  
-Free-epoch dynamics typed as D15 + N-constraint are unitary on the active subspace. Structural decoherence remains the only operation that may change relative moduli (by deleting coordinates) and is therefore the only non-unitary locus.
+**D13–D15.** Foot; share-preserving map; linear weight step.
+
+**R★ under D19 + B_flow.** Free-epoch maps preserve support (D19) and are invertible flows (B_flow) \(\Rightarrow\) lie in \(\mathrm{GL}(n,\mathbb{C})\) with Foot fixed; inverse is free-epoch.
+
+**B_flow.** Free-epoch weight updates are compositions of steps from a continuous one-parameter group of Foot-preserving maps on the active weight space.
 
 ---
 
-## Implementation hooks
+## N formal (now cost-derived under D19)
 
-| Predicate | Module |
-|-----------|--------|
-| `is_share_preserving(foot_before, foot_after)` | `sim/linear_reduce.py` |
-| `is_invertible(M)` | `sim/linear_reduce.py` |
-| `relative_moduli(a)` / `moduli_equal` | `sim/linear_reduce.py` |
-| Free-epoch unitary step (phase / general U(n)) | `sim/linear_reduce.py` |
-| Reject modulus change at zero cost | enforced in free-epoch API |
+**D16–D17.** Relative moduli; modulus-changing step.
+
+**N★.** Free-epoch maps preserve \(\boldsymbol{\mu}\) because any change charges \(\delta M_w>0\) and is dominated under A3 by the zero-change alternative.
+
+---
+
+## T13★
+
+Free epoch + D19 + B_flow + norm gauge \(\Rightarrow\) unitary on active subspace. Structural decoherence (path drop) remains the sole non-unitary locus.
+
+---
+
+## Implementation
+
+Predicates in `sim/linear_reduce.py` still enforce Foot preservation, invertibility, and frozen moduli at the API boundary — consistent with D19+B_flow even when the simulator does not evaluate \(C^+\) numerically on every proposal.
