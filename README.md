@@ -1,33 +1,42 @@
 # Theory of Universal Computation
 
-**Expression-Tree Ontology — Living Document**
+Structured evaluable information with **locally constructed sequential order**, dynamics that prefer **low structural disruption**, and **structural projection** when multi-path co-dependence becomes expensive.
 
-A compositional, information-theoretic framework in which **structured information is what fundamentally exists**. Sequential order, classical trajectories, matter, energy, and the coherent sensory world are treated as holographic projections and stable excitations arising from the evaluation of expression trees under a minimal set of primitives and a preference for low-cost sequentialization.
+Finite expression trees are the default **working model** (exact theorems, simulators). They are not the ontology. See the charter.
 
-**Status**: Working draft (radical reduction + ontological charter)  
-**Repository**: [grandadmiralmcb/theory-of-universal-computation](https://github.com/grandadmiralmcb/theory-of-universal-computation)  
-**Last major update**: 2026-08-06
+## Start here
 
-## Reading Guide
+1. **[docs/00-theory-charter.md](docs/00-theory-charter.md)** — corrected foundation, honesty boundaries, working model vs ontology
+2. [docs/01-core-ontology.md](docs/01-core-ontology.md) — working-model primitives and cost
+3. [docs/11-theorems.md](docs/11-theorems.md) — theorem chain (scoped)
+4. [docs/13-derive-RN-from-cost.md](docs/13-derive-RN-from-cost.md) — what cost can and cannot force
+5. [docs/03-quantum-sector.md](docs/03-quantum-sector.md) — hosted quantum layer
 
-| Document | Content |
-|----------|---------|
-| [01-core-ontology.md](docs/01-core-ontology.md) | Ontological charter, reduced primitives, axioms |
-| [02-dynamics.md](docs/02-dynamics.md) | Cost function and continuum-limit derivation (pre-reduction form) |
-| [03-quantum-sector.md](docs/03-quantum-sector.md) | Route A enrichments |
-| [04-classical-limit.md](docs/04-classical-limit.md) | Effective Newtonian regime |
-| [05-standard-model.md](docs/05-standard-model.md) | Comparison with the Standard Model |
-| [06-axiology.md](docs/06-axiology.md) | Proto-value structure |
-| [07-roadmap.md](docs/07-roadmap.md) | Open questions and next steps |
+## What is solid
 
-## Core Idea
+- Preferential sequentialization and structural cost in the finite model
+- Classical sequential calculus and continuum idealization under bias
+- **T6:** inverse share-count acceleration ratio — parameter-free, executable end-to-end (`sim/end_to_end_T6.py`)
+- Structural multi-path coexistence and isolation-cost decoherence
+- Clear split: derived classical/structural core vs hosted linear quantum kinematics
 
-Reality is structured, evaluable information. Local sequential evaluators construct high-coherence projections of the expression forest; these projections appear to us as the physical world of objects, trajectories, matter, and energy. Matter and energy are dual configurations of the same informational excitations. Spacetime order, classical mechanics, and quantum-like behavior are emergent sequential and multi-path phenomena, not fundamental.
+## What is not claimed
 
-## How to contribute / extend
+- Finite trees as the only form of reality
+- Complex amplitudes or Born rule derived from integer disruption counts alone
+- Unitarity from bare three-counter cost (requires extended cost D19 + flow regularity)
+- Full Standard Model / continuum fields as theorems
 
-This repository is the canonical living source. Major advances should be recorded in `CHANGELOG.md` and reflected in the relevant `docs/` files.
+## Simulators
 
-## License
+| Module | Role |
+|--------|------|
+| `sim/expr_tree.py` | Share counts, isolation/maintain from trees |
+| `sim/end_to_end_T6.py` | Tree → m_struct → measured acceleration ratio |
+| `sim/toy_simulator.py` | Constant / position-dependent bias sequential calculus |
+| `sim/linear_reduce.py` | Free-epoch unitary weights + structural projection |
+| `sim/two_path.py` | Multi-path + velocity coupling toys |
 
-To be determined by the repository owner.
+## Charter rule
+
+Where older notes conflict with `docs/00-theory-charter.md` on finite-tree ontology, amplitude derivation, or unitarity-from-bare-cost, the **charter wins**.

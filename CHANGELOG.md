@@ -1,15 +1,16 @@
 # Changelog
 
-## [2026-08-06] (derive R/N from cost)
+## [2026-08-06] (theory fix — charter)
 
-### Result (`docs/13-derive-RN-from-cost.md`)
-- **Forced from bare \(S,B,D\):** Foot preservation in free epochs only (T12).
-- **Not forced from bare cost:** invertibility (R), frozen relative moduli (N) — weights are invisible to the three counters.
-- **Adopted D19:** weight-sensitive disruption \(S_w\), \(M_w\) extends cost when A4 is active.
-- **Under D19:** N★ and support preservation become theorems of A3.
-- **Residual for full R★:** B_flow (free-epoch maps are invertible flows / group actions).
-- Honest scorecard: pure derivation from original cost is impossible; minimal extension D19 closes N and most of R.
+### Corrected foundation (`docs/00-theory-charter.md`)
+- **Ontology:** structured evaluable information, local sequentialization, preferential low disruption, real unprojected residuals — carrier-independent.
+- **Finite expression trees demoted** to working model (lab bench), not ontological necessity. Original role: thought exercise for programmable / temporally nonlinear information.
+- **Continuity:** continuum Newton and smooth trajectories are idealizations of sequential calculus, not discrete identities.
+- **Quantum sector:** hosted linear kinematics + Born reading; constrained by D19 + B_flow; not derived from bare \(S,B,D\).
+- **R★/N★:** not theorems of three-counter cost (see docs/13); N and support from extended cost D19; full R needs B_flow.
+- Authority order: charter overrides older overclaims on trees-as-ontology, amplitude derivation, unitarity-from-bare-cost.
+- README and core ontology aligned to charter.
 
 ## [2026-08-06] (earlier)
 
-- R/N formalization as typing constraints; T6 end-to-end; linear_reduce sim; theorem chain T1–T14; unitarity from projection; linear reduce; toolbox.
+- Derive R/N from cost (D19); R/N formalization; T6 end-to-end; linear_reduce; theorem chain; unitarity notes; linear reduce adoption; toolbox; tree costs; classical formalisms.

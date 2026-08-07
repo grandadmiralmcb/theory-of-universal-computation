@@ -1,78 +1,84 @@
-# 01 — Core Ontology
+# 01 — Core Ontology (working model)
 
-## Ontological Status (current)
+Authority on ontology and honesty boundaries: **`docs/00-theory-charter.md`**.
 
-**Forced by the formalism**
-- Structured, shareable, reducible informational patterns exist.
-- Sequential order is not global; it is constructed locally by repeated reduction under strategies that favor low structural disruption.
-- The experienced / measured world of any local evaluator is a high-coherence sequential projection (systematic selection of low-disruption residuals).
-- Un-selected residuals remain real parts of the expression forest; they are simply not currently on a high-\(\kappa\) trajectory.
+This file specifies the **finite working model** used for proofs and simulators.
 
-**Preferred reading (unique non-idle interpretation)**
-Informational monism: the expression forest *is* what fundamentally exists. Any non-informational substrate either (a) duplicates the same capacities and is therefore informational under another name, (b) introduces a regress of isomorphic dynamical levels, or (c) requires an unexplained contact relation with informational evaluators. The monist reading is the unique reading that avoids idle structure, regress, and unexplained contact. It is not a formal theorem, but the space of coherent alternatives is now severely restricted.
+---
+
+## Ontological status
+
+**Forced by the dynamical idea (carrier-independent)**
+- Structured, shareable, evaluable information exists.
+- Sequential order is constructed locally by reduction under strategies.
+- Dynamics favor low structural disruption.
+- Unprojected residuals remain real.
+
+**Working model carrier**
+Finite terms under `app`, `abs`, `pair`/`proj`, `eq`, `reduce`, `share`. Integer disruption counters. Discrete ticks. Default lab bench — not the exclusive form of the substrate (charter §3).
+
+**Preferred reading**
+Informational monism: unique non-idle reading, not theorem.
 
 **Holographic character**
-Local sequential evaluation already implements projection: at each step alternative residuals are not selected (or, under linear reduce, not yet projected by structural decoherence). The ordinary sensory and instrumental world is a veiled sequential interface to a larger informational structure.
+Local sequential evaluation is projection: alternatives not selected (or not yet projected). Experienced world = high-coherence sequential interface to larger structure.
 
-### Matter and Energy
-Matter and energy are dual sequential presentations of the same class of informational excitations.
-- High internal sharing density → high structural inertia → matter-like behavior.
-- Configurations that release or redistribute residual structure at lower net disruption → energy-like behavior.
-Both are measured by the same structural disruption counts.
+**Matter / energy**
+Dual sequential presentations of informational excitations indexed by disruption (high share density → inertia / matter-like; releasable structure → energy-like). Interpretive unity under common currency.
 
-## Reduced Primitive Set
+---
 
-### Syntactic / compositional
-- `app` — application
-- `abs` — abstraction
-- `pair` / `proj` — products
-- `eq` — observational equivalence
+## Reduced primitive set (working model)
 
-### Dynamical
-- `reduce` — evaluation / reduction
-  - **Preferential form:** selects a single low-disruption residual (classical sequentialization).
-  - **Linear form (`linear_reduce`):** on share-linked residuals, yields a weighted sum \(\sum a_i E_i\) (quantum-compatible multi-path form). See `docs/03-quantum-sector.md`.
-- `share` — explicit sharing
-  - May carry a complex weight \(a\in\mathbb{C}\) (or U(1) phase): **`share_weight`**.
+**Syntactic:** `app`, `abs`, `pair`/`proj`, `eq`  
+**Dynamical:** `reduce` (preferential | linear under A4), `share` (optional `share_weight`)
 
-### Dynamical principle
-Preferential low-disruption sequentialization for structural selection and classical trajectories. Linear reduce supplies multi-path residual algebra while isolation remains expensive; structural decoherence restores preferential single-path dynamics when isolation becomes cheap.
+**Principle:** preferential low-disruption sequentialization.
 
-## Structural Cost Proxy
+---
 
-For a reduction step (preferential or as the real cost underlying isolation/maintain):
-
-- \(S\) = shares broken/duplicated
-- \(B\) = net open-binding change
-- \(D\) = observational inequivalence
+## Structural cost (working model)
 
 \[
-C = \alpha S + \beta B + \gamma D \qquad (\alpha,\beta,\gamma > 0)
+C = \alpha S + \beta B + \gamma D
 \]
 
-**Structural inertia:** \(m_{\rm struct} = \langle S(\delta x=1)\rangle\) (computable from expression trees; `sim/expr_tree.py`).
+When linear weights are active (A4), extended cost **D19**:
+\[
+C^+ = C + \alpha_w S_w + \delta M_w
+\]
+(support collapse and relative-modulus change charged).
 
-**Continuum limit (constant bias):** \(\ddot{x} = -b_{\rm struct}/m_{\rm struct}\).
+**Inertia:** \(m_{\rm struct} = \alpha n_{\rm share} + \varepsilon\) (tree-computable).
+
+**Continuum idealization:** \(\ddot x = -b/m_{\rm struct}\) under smooth bias (limit of discrete sequential calculus — not a discrete identity).
+
+---
 
 ## Coherence
 
 \[
-\kappa \sim \frac{1}{1 + \langle C\rangle_{\rm recent}}
+\kappa \sim 1/(1+\langle C\rangle_{\rm recent})
 \]
 
-High \(\kappa\) = successful low-disruption sequential projection (classical regime).
+High \(\kappa\) = sustained low-disruption sequential projection.
 
-## Core Axioms (current)
+---
 
-1. Structured, evaluable information under the reduced primitives is the operative substrate.
-2. Sequential order is a local construction.
-3. Dynamics favor minimal structural disruption (\(S,B,D\)) for selection and classical trajectories.
-4. On share-linked residuals, reduction may be linear (weighted sum); weights live on `share`.
-5. Local evaluators are informational patterns that generate sequential projections.
-6. Un-selected / not-yet-projected residuals remain real forest structure.
-7. Matter and energy are dual presentations of informational excitations indexed by the same disruption measures.
+## Axioms (working model)
+
+1. Substrate represented as evaluable structure under the reduced primitives (working carrier of charter commitments).
+2. Sequential order is local construction.
+3. Dynamics minimize structural disruption (\(C\) or \(C^+\)).
+4. On share-linked residuals, reduction may be linear with complex weights (hosted quantum layer).
+5. Evaluators are informational patterns generating sequential projections.
+6. Unprojected residuals remain real.
+7. Matter/energy dual presentations under disruption measures (interpretive).
 
 ## Bounded claims
-- Consciousness: high-\(\kappa\) sequential evaluation is the formal counterpart of coherent experience; exhaustiveness left open.
-- Informational monism: preferred unique non-idle reading, not formal theorem.
-- Complex weights and linear reduce: controlled upgrade of existing primitives, not theorems of real cost counts alone; Born rule is a reading at structural selection.
+
+- Finite trees: working model, not ontology.
+- Continuum Newton: idealization.
+- Amplitudes / Born: hosted; Born is a reading at projection.
+- Unitarity: free epoch under D19 + B_flow + norm gauge — not bare three-counter cost.
+- Consciousness / monism: open / preferred reading.
