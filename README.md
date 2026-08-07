@@ -1,42 +1,22 @@
 # Theory of Universal Computation
 
-Structured evaluable information with **locally constructed sequential order**, dynamics that prefer **low structural disruption**, and **structural projection** when multi-path co-dependence becomes expensive.
+**Derivation-first.** Ontology is four minima (O1–O4). Only F1–F5 are forced from those. Everything else requires explicit postulates.
 
-Finite expression trees are the default **working model** (exact theorems, simulators). They are not the ontology. See the charter.
+## Read in order
 
-## Start here
+1. **[docs/00-theory-charter.md](docs/00-theory-charter.md)** — minima, forced vs not, postulates
+2. **[docs/14-derivation-from-ontology.md](docs/14-derivation-from-ontology.md)** — derivation spine F1–F5 and build-out map
+3. [docs/11-theorems.md](docs/11-theorems.md) — theorems with full hypothesis lists
+4. [docs/13-derive-RN-from-cost.md](docs/13-derive-RN-from-cost.md) — fixed negative result on bare cost → R/N
 
-1. **[docs/00-theory-charter.md](docs/00-theory-charter.md)** — corrected foundation, honesty boundaries, working model vs ontology
-2. [docs/01-core-ontology.md](docs/01-core-ontology.md) — working-model primitives and cost
-3. [docs/11-theorems.md](docs/11-theorems.md) — theorem chain (scoped)
-4. [docs/13-derive-RN-from-cost.md](docs/13-derive-RN-from-cost.md) — what cost can and cannot force
-5. [docs/03-quantum-sector.md](docs/03-quantum-sector.md) — hosted quantum layer
+## Forced from ontology alone
 
-## What is solid
+Local sequential chains · minimal-disruption selection (under finiteness) · unselected structure real · co-dependence comparable by disruption · structural projection when breaking co-dependence is not more disruptive than maintaining it
 
-- Preferential sequentialization and structural cost in the finite model
-- Classical sequential calculus and continuum idealization under bias
-- **T6:** inverse share-count acceleration ratio — parameter-free, executable end-to-end (`sim/end_to_end_T6.py`)
-- Structural multi-path coexistence and isolation-cost decoherence
-- Clear split: derived classical/structural core vs hosted linear quantum kinematics
+## Not forced (requires postulates)
 
-## What is not claimed
+Finite trees · cardinal cost formula · continuum mechanics · complex amplitudes · unitarity · Born rule
 
-- Finite trees as the only form of reality
-- Complex amplitudes or Born rule derived from integer disruption counts alone
-- Unitarity from bare three-counter cost (requires extended cost D19 + flow regularity)
-- Full Standard Model / continuum fields as theorems
+## Working model value
 
-## Simulators
-
-| Module | Role |
-|--------|------|
-| `sim/expr_tree.py` | Share counts, isolation/maintain from trees |
-| `sim/end_to_end_T6.py` | Tree → m_struct → measured acceleration ratio |
-| `sim/toy_simulator.py` | Constant / position-dependent bias sequential calculus |
-| `sim/linear_reduce.py` | Free-epoch unitary weights + structural projection |
-| `sim/two_path.py` | Multi-path + velocity coupling toys |
-
-## Charter rule
-
-Where older notes conflict with `docs/00-theory-charter.md` on finite-tree ontology, amplitude derivation, or unitarity-from-bare-cost, the **charter wins**.
+Finite terms + numeric cost give exact theorems and sims (especially **T6** inverse share-count acceleration ratio). That does not enlarge the ontology.
