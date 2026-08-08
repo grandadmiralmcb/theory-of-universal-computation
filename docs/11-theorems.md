@@ -46,9 +46,10 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 **N★** [T12, A4, D19, O3] Relative moduli frozen — on D19's stated domain (Foot fixed); across reconfigurations (T15) the \(M_w\) comparison is undefined, so N★ constrains nothing there (docs/17 §3).  
 **R★** [T12+, B_flow] Invertible free-epoch weight maps.  
 **T13** [R★, N★, norm gauge] Free-epoch maps are **diagonal** unitary on the active subspace (phase drift). No longer contended: general (non-diagonal) unitaries live at reconfiguration events (T16), matching QM's own architecture (free evolution diagonal in the co-rotating eigenbasis; mixing at interactions).  
-**T15** [WM1, A4, O4, F5] Event trichotomy: free-epoch map | reconfiguration (decomposition changes, nothing dropped) | structural projection; mixed events factor. (docs/17 §2)  
-**T16a** [A4, R-principle, T15] Reconfiguration maps are injective linear, determined by the rewrite.  
-**T16b** [A4, T15, T16a, D20, O4] Reconfiguration maps are isometries; unitary at constant class count. (D20 is an explication, flagged in docs/17 §4.)  
+**T15** [WM1, A4, O4, F5] Event trichotomy: free-epoch map | reconfiguration (decomposition changes, nothing dropped) | structural projection; mixed events factor. (docs/17 §2) *Scope: a classification of outcomes, not a dynamical theorem — it does not entail that type-2 rewrites occur or are preferred; occurrence is governed by structural cost and device structure (contention 7).*  
+**T16a** [A4, R-principle, T15] Reconfiguration maps are injective linear, determined by the rewrite — "determined" made concrete by the functor F on its domain (docs/18 §1; tags remain device data outside the symmetric case).  
+**T16b** [A4, T15, T16a, D20, O4] Reconfiguration maps are isometries; unitary at constant class count. (D20 is postulate-grade — charter §3.)  
+**L2–L5** [WM1, A4, D20, T16b] Splitter functor results: moduli forced by routing fractions; the symmetric 2→2 isometry filter pins the Hadamard up to diagonal gauge; Mach-Zehnder fringes \(\cos^2(\varphi/2)\) end to end; merges are never pure reconfigurations (no \(\mathbb{C}^2\to\mathbb{C}^1\) isometry). (docs/18 §2)  
 **T14′** [T13, T15, T16b, T10] Non-isometric weight change ⇔ structural projection. (Supersedes T14's earlier caveated form.)  
 **D12** Born reading — **not a theorem**.
 
@@ -73,4 +74,5 @@ Amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees a
 T6: `sim/end_to_end_T6.py` — consistency check only: measured and predicted ratios derive from the same \(m\) (docs/08 §3)  
 T9–T12 pattern: `sim/expr_tree.py`  
 HQ free epoch / projection: `sim/linear_reduce.py` — unrunnable (SyntaxError) until 2026-08-08; "executable" claims for this file predating that date preceded any successful run  
-SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-phase toy spectrum; dark-sector stability)
+SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-phase toy spectrum; dark-sector stability)  
+L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)

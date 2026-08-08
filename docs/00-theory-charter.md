@@ -60,6 +60,7 @@ Each extension is a **postulate**, used only when stated in a theorem’s hypoth
 | **D19** | Extended cost charges support collapse and relative-modulus change | Weight-sensitive cost |
 | **B_flow** | Free-epoch weight maps are invertible flows | Regularity for R |
 | **D12** | Born reading \(P\propto\|a\|^2\) at projection | Probability reading |
+| **D20** | Weight measures persisting structure: \(|a_i|^2\) is the measure of class \(i\)'s persisting residual structure. Supplies *meaning only* — the probability reading remains D12, non-derived | Weight semantics (postulate grade, same as A4; upgraded from explication per adversarial review — docs/18 §5) |
 | **SB1** | Share nodes carry labels in a finitely generated abelian group \(G\); admissible reductions act by merge / split / pair-create / pair-annihilate (typing) | Charge structure (docs/15) |
 | **SB2** | All cost functionals are invariant under a designated subgroup \(\Gamma \le \mathrm{Aut}(G)\); observables are \(\Gamma\)-invariants | Structural gauge principle |
 | **SB3** | Particle = minimal-rest-cost stable excitation in its label class; ground configuration = minimal-cost \(Q=0\) | Spectrum definitions |

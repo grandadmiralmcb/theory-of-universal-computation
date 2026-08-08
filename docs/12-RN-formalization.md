@@ -52,7 +52,7 @@ C^+ = \alpha S + \beta B + \gamma D + \alpha_w S_w + \delta M_w \qquad (\alpha_w
 
 **D17 (Modulus-changing step).** A step with \(\lVert\boldsymbol{\mu}' - \boldsymbol{\mu}\rVert_1 > 0\).
 
-**D20 (Weight as measure of persisting structure).** \(|a_i|^2\) quantifies the persisting residual structure of class \(i\); D12's Born reading at projection is its selection-time special case. (Explication of D12 × O4 — see `docs/17-forced-resolution-contention-1.md` §4.)
+**D20 (Weight as measure of persisting structure).** \(|a_i|^2\) quantifies the persisting residual structure of class \(i\); D12's Born reading at projection is its selection-time special case. (Originally an explication of D12 × O4 — docs/17 §4; **upgraded to a named postulate**, charter §3, per adversarial review: hypothesis lists cite it at the same grade as A4. It supplies meaning, not probability — Born remains the non-derived D12.)
 
 **N★.** Free-epoch maps preserve \(\boldsymbol{\mu}\) because any change charges \(\delta M_w>0\) and is dominated under A3 by the zero-change alternative.
 

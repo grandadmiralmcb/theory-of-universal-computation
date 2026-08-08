@@ -30,6 +30,7 @@ python sim/expr_tree.py
 python sim/two_path.py
 python sim/linear_reduce.py
 python sim/spectrum_toy.py
+python sim/splitter_rewrite.py
 ```
 
 Every file must execute cleanly; a sim that does not run must not be cited
