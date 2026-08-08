@@ -107,7 +107,7 @@ Consequence: wave-packet spreading is not a phenomenon the WM weight layer hosts
 
 ## 9. What this pass deliberately does not claim
 
-- AD1–AD3 are postulates. Totality (AD1) in particular is substantive — F2′ shows the F-layer does not need it, so it is an honest *extra* strength bought for cardinality, not smuggled.
+- AD1–AD3 are postulates. Totality (AD1) in particular is substantive — F2′ shows the F-layer does not need it, so it is an honest *extra* strength bought for cardinality, not smuggled. **[Superseded by docs/20:** AD2 has since been derived; AD1 and AD3 are proven independent of O1–O4 and sharpened to CP and CC respectively, with the RM2 dichotomy bounding what denial yields.**]**
 - D20 remains a postulate (charter §3); nothing here re-derives it.
 - Born (D12) remains a reading. T17 protects it from tampering; it does not derive it.
 - The φ enrichment (phase tags from binding geometry), the functor on full WM terms, and all continuum questions remain open as before.

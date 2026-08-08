@@ -52,7 +52,9 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 **T14′** [T13′, T15, T16′, T10] Non-isometric weight change ⇔ structural projection. (Supersedes T14's earlier caveated form.)  
 **T17** [T13′, T16′, Q1, WM2] Cost-decoupling: no admissible dynamics biases Born statistics toward structurally cheap outcomes — both weight-map types are functions of structure alone. Discharges docs/16 criterion C4; see contention 7 for its architectural bearing. (docs/19 §7)  
 **L6** [A4, T15, CI1] Spreading lemma: an interaction-free cluster is a single class with a single weight — no internal position-weights exist to spread. Discharges docs/16 criterion C3. (docs/19 §6)  
-**RM1** [O3, AD1–AD3, WM1] Hölder representation: disruption order embeds in \((\mathbb{R}_{\ge0},+)\) uniquely up to scale; with counter generation, \(C=\alpha S+\beta B+\gamma D\). WM2's form is derived, not stipulated. (docs/19 §5)  
+**RM1** [M1/M2, PC, IND, CP, CC, WM1] Hölder representation: disruption order embeds in \((\mathbb{R}_{\ge0},+)\) uniquely up to scale; with counter generation, \(C=\alpha S+\beta B+\gamma D\). WM2's form is derived, not stipulated. (Hypotheses restated per docs/20: AD2 grounded; AD1→CP, AD3→CC.)  
+**RM2** [CP, AD2-grounded] Dichotomy: the disruption order is Archimedean (⇒ \(\mathbb{R}\), Hölder, WM2 form) or stratified (⇒ Hahn lexicographic product; priority-ranked cost). CC selects the first branch; ¬CC is coherent. (docs/20 §5)  
+**Q2** [O1–O4, M1/M2, PC, IND] Separation: the entire qualitative theory (F-layer with F2′, T2, T9–T12, T15, T13′/T16′/T14′/T17 given the weight postulates) needs neither CP nor CC; those two bits are needed exactly for RM1 and the quantitative classical chain T3–T8. (docs/20 §6)  
 **F2′** [O3, well-foundedness] Minimal-disruption residuals exist under a well-founded (partial) preorder — F2's finiteness and totality hypotheses both weakened. (docs/19 §4)  
 **D12** Born reading — **not a theorem**.
 

@@ -30,6 +30,7 @@
 5. **Linear reduce** — stipulated type upgrade; not derived from real counts.
 6. **Monism** — unique non-idle reading, not entailment.
 7. **Weight-blind selection seam** (adversarial review of T15/T16; `docs/18` §4) — O3 never sees weights outside projection: which reconfiguration occurs is selected on weight-blind structural cost, the induced map transforms weights as passengers, and interferometric device structure is external data. Entailed by D19's typing, but open whether it is final or whether selection should couple to weights (any coupling must survive N★ on fixed decompositions). **T17 (docs/19 §7) puts a standing argument on the "feature" side: the seam is exactly what makes Born statistics untamperable — closing it would reopen the cheating channel.**
+8. **One currency (CC)** — O1–O4 permit a coherent *stratified-cost* variant (¬CC: some change-type lexically dominates; Hahn embedding, RM2 — docs/20 §5), and no finite calibration can distinguish infinite priority from huge-finite priority. Is CC final, or does the stratified variant deserve parallel development? CP's status is the analogous (weaker) question for comparability.
 
 ## Priority order
 
@@ -37,7 +38,7 @@
 2. Independent operationalization of share count, so the T6 ratio becomes a test rather than a consistency check (docs/08 §3).
 3. ~~Formalize R, N in the term language~~ **Done** — R and N are theorems/corollaries (docs/19 §§2–3); remaining term-language work folds into the functor lift (item 1).
 4. Structural proxy for \(\varphi_i\).
-5. Ontological grounding of the order axioms AD1–AD3 (docs/19 §5): argue or refute totality, disjoint additivity, and Archimedeanness of disruption comparison from the nature of O3's preference — the last stipulations beneath the classical chain.
+5. ~~Ontological grounding of the order axioms AD1–AD3~~ **Discharged to its floor (docs/20):** AD2 derived (M1/M2 analytic + PC from O2/SI + IND from O2/SC); AD1 and AD3 proven **independent** of O1–O4 by countermodels and sharpened to **CP** (universal comparability) and **CC** (common currency), with the RM2 Hölder/Hahn dichotomy showing exactly what each denial yields. The classical quantitative chain's stipulation content is now two bits (Q2). Residue: the status of the readings SI/SC, and contention 8.
 6. Bridge targets (docs/15): Noether-style derivation of SM-B1 from SB2; the continuum-limit spectrum question (SM-B2 beyond integer counters); causal order → geometry (dimension, local Lorentz — inherited open from causal-set theory).
 7. Only then Toolbox activation or further particle/field extensions beyond the SB layer.
 
