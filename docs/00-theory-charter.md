@@ -49,7 +49,8 @@ Each extension is a **postulate**, used only when stated in a theorem’s hypoth
 | ID | Postulate | Role |
 |----|-----------|------|
 | **WM1** | Carrier is finite terms under `app`,`abs`,`pair`/`proj`,`eq`,`reduce`,`share` | Working model |
-| **WM2** | Disruption measured by \(C=\alpha S+\beta B+\gamma D\) | Quantitative WM cost |
+| **AD1–AD3** | Disruption comparison is total (AD1), disjoint-additive and cancellative (AD2), Archimedean (AD3) | Order axioms beneath WM2 (docs/19 §5) |
+| **WM2** | Disruption measured by \(C=\alpha S+\beta B+\gamma D\) — **derivable via RM1** from AD1–AD3 + WM1 generation, unique up to positive scale (docs/19 §5) | Quantitative WM cost |
 | **CI1** | Sequential labels include real \((x,v)\) | Continuum kinematics |
 | **CI2** | Continuum limit of discrete ticks | ODE idealization |
 | **CI3** | Smooth bias / potential \(b(x)\), \(V\) | Force law idealization |
@@ -58,7 +59,7 @@ Each extension is a **postulate**, used only when stated in a theorem’s hypoth
 | **CI4** | Sequential-state changes are charged the per-tick functional \(C_\tau(\delta v)=m_{\rm struct}(\delta v)^2/2\tau+b_{\rm struct}\,\delta v\); not an instance of WM2 (it is signed relative to the null change; the additive gauge \(b^2\tau/2m\) restores non-negativity without changing selection) | Velocity-form dynamics |
 | **A4** | Share-linked residuals may form \(\sum a_i E_i\), \(a_i\in\mathbb{C}\) | Hosted linear layer |
 | **D19** | Extended cost charges support collapse and relative-modulus change | Weight-sensitive cost |
-| **B_flow** | Free-epoch weight maps are invertible flows | Regularity for R |
+| ~~**B_flow**~~ | ~~Free-epoch weight maps are invertible flows~~ **Demoted to derived** (docs/19 §2): T13′ obtains diagonal-unimodular free-epoch maps from A4 + D19 + norm gauge alone; invertibility is a consequence | Removed from the postulate roster |
 | **D12** | Born reading \(P\propto\|a\|^2\) at projection | Probability reading |
 | **D20** | Weight measures persisting structure: \(|a_i|^2\) is the measure of class \(i\)'s persisting residual structure. Supplies *meaning only* — the probability reading remains D12, non-derived | Weight semantics (postulate grade, same as A4; upgraded from explication per adversarial review — docs/18 §5) |
 | **SB1** | Share nodes carry labels in a finitely generated abelian group \(G\); admissible reductions act by merge / split / pair-create / pair-annihilate (typing) | Charge structure (docs/15) |

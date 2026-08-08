@@ -1,6 +1,6 @@
 # 16 — Contention 1 Under Review: The N★/Interference Fork
 
-*Status: analysis document — **superseded in outcome by `docs/17-forced-resolution-contention-1.md`**, which resolves the fork by derivation rather than recommendation: the third category of §2 is a theorem (T15), the M_w scoping turned out to be D19's own stated hypothesis, criterion C1 is discharged (T16a/b), and horns (b)/(c2) are closed by the method rules. This survey remains as the record of the option space and of criteria C2–C4, which carry forward as constructions.*
+*Status: analysis document — **superseded in outcome by `docs/17-forced-resolution-contention-1.md`**, which resolves the fork by derivation rather than recommendation: the third category of §2 is a theorem (T15), the M_w scoping turned out to be D19's own stated hypothesis, criterion C1 is discharged (T16a/b), and horns (b)/(c2) are closed by the method rules. This survey remains as the record of the option space. All four criteria are now discharged: C1 by docs/17 (T15, T16), C2 by docs/18 (`sim/splitter_rewrite.py`), C3 by L6 and C4 by T17 (docs/19).*
 
 Authority for what is at stake: `docs/12-RN-formalization.md` (scope note), `docs/03-quantum-sector.md` §3, `docs/11-theorems.md` (N★, T13).
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## [2026-08-08] (tightening pass: fewer postulates, deeper roots)
+
+- `docs/19-tightening-derivations.md`: seven results shrinking the postulate base and pushing stipulations down to more primitive axioms.
+  - **Q1** (operator totality) named as the shared lemma licensing every "for all states" step — exposing exactly where weight-blindness is load-bearing.
+  - **T13′**: free-epoch maps diagonal-unimodular from A4 + D19 + norm gauge alone — **B_flow demoted from postulate to derived** (HQ roster shrinks to A4, D19, D12, D20); R★ becomes a corollary.
+  - **T16′**: the T16a/b split unified; isometry from [A4, D20, O4, T15, Q1]; injectivity a corollary — **the R-principle is no longer a hypothesis anywhere**. Contention 3 (R and N) resolved.
+  - **F2′**: F2's finiteness *and* totality hypotheses weakened to a well-founded partial preorder at the ontological root.
+  - **RM1**: WM2's linear cost form derived via Hölder representation from new order axioms **AD1–AD3** (total, disjoint-additive/cancellative, Archimedean) — the stipulation moves from a formula down to arguable order axioms, unique up to scale; N1 refined, not overturned.
+  - **L6** (spreading lemma): an interaction-free cluster is one class with one weight — no internal position-weights exist to spread. docs/16 criterion C3 discharged.
+  - **T17** (cost-decoupling): no admissible dynamics can bias Born statistics toward cheap outcomes — both weight-map types are functions of structure alone. docs/16 criterion C4 discharged, and contention 7 gains a standing "feature" argument.
+- All four docs/16 criteria now discharged (C1 docs/17, C2 docs/18, C3/C4 docs/19). Charter, docs/07/10/11/12/14/16 updated accordingly.
+
 ## [2026-08-08] (splitter functor built; adversarial review of T15/T16 applied)
 
 - `sim/splitter_rewrite.py` + `docs/18-splitter-functor.md`: the induced-map functor F exhibited at unit-share granularity. Moduli are **computed** from routing fractions (D20); enumerating all ±1 orientation tags for the symmetric 2→2 recombiner, exactly the odd-sign-flip half passes the T16b isometry filter and **every survivor is the Hadamard up to diagonal gauge** — the beam splitter is derived, not stipulated. Mach-Zehnder end to end: \(P(C)=\cos^2(\varphi/2)\), visibility 1, Monte Carlo agreement. Negative cases: merges admit no isometric map (always contain a projection component); non-channel-disjoint routings violate D20 and fall outside F's domain.
