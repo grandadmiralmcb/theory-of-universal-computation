@@ -8,7 +8,7 @@ Authority: `docs/00-theory-charter.md`, `docs/11-theorems.md`, `docs/13-derive-R
 
 Unitarity is a theorem of the **hosted quantum layer (HQ)**, not of bare working-model cost.
 
-**Required:** A4 (linear weights), D19 (extended cost), B_flow (invertible flows), free epoch (T12), norm gauge.
+**Required:** A4 (linear weights), D19 (extended cost), free epoch (T12), norm gauge. (B_flow was demoted to derived — docs/19 §2; invertibility now follows from T13′.)
 
 **Not required to be claimed:** derivation of A4 or Born from integer \(S,B,D\).
 

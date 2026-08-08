@@ -40,7 +40,7 @@ that chain *is* sequential order for that evaluator.
 
 **Derivation.** Finite non-empty set + total preorder \(\Rightarrow\) non-empty set of minima. O3: dynamics prefer lower disruption \(\Rightarrow\) selection among minima. ☐
 
-**Note.** Finiteness of \(\mathcal{R}\) is a regularity hypothesis for this lemma, not part of O1–O4. Without it, one needs existence of minima by other means (e.g. well-foundedness).
+**Note.** Finiteness of \(\mathcal{R}\) is a regularity hypothesis for this lemma, not part of O1–O4. Without it, one needs existence of minima by other means (e.g. well-foundedness). **Tightened 2026-08-08:** F2′ (docs/19 §4) weakens both hypotheses — a well-founded *partial* preorder suffices (minimality replaces minimum; neither finiteness nor totality is required). F2 is the finite-total special case.
 
 ---
 
@@ -162,8 +162,8 @@ No arrow from O1–O4 alone to continuum, amplitudes, or Born.
 1. **New claims** must cite O1–O4 and every postulate used.
 2. **WM results** stay valuable as exact theorems under WM1–WM3; they do not upgrade ontology.
 3. **Next derivation targets** (in order of loyalty to derivation-first):
-   - Weaken finiteness in F2 (well-founded disruption or compact residual spaces).
-   - Derive a cardinal disruption measure from representation theorems (if any) rather than stipulating WM2.
+   - ~~Weaken finiteness in F2~~ **Done** — F2′ (docs/19 §4): well-founded partial preorder suffices.
+   - ~~Derive a cardinal disruption measure from representation theorems~~ **Done conditionally** — RM1 (docs/19 §5): Hölder representation from AD1–AD3 yields WM2's form unique up to scale; the stipulation moved down to order axioms.
    - Internalize sequential labels in structure (reduce dependence on CI1 as external).
    - Born: either derive from extended preference at F5 or permanently mark D12 non-derived.
 4. **Do not** re-ontologize finite trees or treat A4 as forced by O3.

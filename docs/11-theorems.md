@@ -42,15 +42,18 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 
 ## Hosted quantum (add A4, D19, B_flow; Born = D12)
 
+**Q1** [WM2, D19-typing, A4] Operator totality: admissibility and cost are weight-blind, so epoch/event maps are single state-independent linear operators on the hosted span. (docs/19 §1)  
 **T12+** [T12, A4, D19, O3] Support frozen in free epoch.  
 **N★** [T12, A4, D19, O3] Relative moduli frozen — on D19's stated domain (Foot fixed); across reconfigurations (T15) the \(M_w\) comparison is undefined, so N★ constrains nothing there (docs/17 §3).  
-**R★** [T12+, B_flow] Invertible free-epoch weight maps.  
-**T13** [R★, N★, norm gauge] Free-epoch maps are **diagonal** unitary on the active subspace (phase drift). No longer contended: general (non-diagonal) unitaries live at reconfiguration events (T16), matching QM's own architecture (free evolution diagonal in the co-rotating eigenbasis; mixing at interactions).  
+**T13′** [A4, N★, norm gauge, Q1] Free-epoch maps are **diagonal unimodular** (phase drift); invertibility follows. **B_flow is not needed and is demoted to derived; R★ is a corollary, not a premise.** (docs/19 §2)  
 **T15** [WM1, A4, O4, F5] Event trichotomy: free-epoch map | reconfiguration (decomposition changes, nothing dropped) | structural projection; mixed events factor. (docs/17 §2) *Scope: a classification of outcomes, not a dynamical theorem — it does not entail that type-2 rewrites occur or are preferred; occurrence is governed by structural cost and device structure (contention 7).*  
-**T16a** [A4, R-principle, T15] Reconfiguration maps are injective linear, determined by the rewrite — "determined" made concrete by the functor F on its domain (docs/18 §1; tags remain device data outside the symmetric case).  
-**T16b** [A4, T15, T16a, D20, O4] Reconfiguration maps are isometries; unitary at constant class count. (D20 is postulate-grade — charter §3.)  
+**T16′** [A4, D20, O4, T15, Q1] Reconfiguration maps are isometries (unitary at constant class count); injectivity — hence "no irreversible weight loss outside projection" — is a **corollary**, so the R-principle is demoted from hypothesis to consequence (docs/19 §3). "Determined by the rewrite" is concrete via the functor F on its domain (docs/18 §1; tags remain device data outside the symmetric case). Supersedes the T16a/T16b split.  
 **L2–L5** [WM1, A4, D20, T16b] Splitter functor results: moduli forced by routing fractions; the symmetric 2→2 isometry filter pins the Hadamard up to diagonal gauge; Mach-Zehnder fringes \(\cos^2(\varphi/2)\) end to end; merges are never pure reconfigurations (no \(\mathbb{C}^2\to\mathbb{C}^1\) isometry). (docs/18 §2)  
-**T14′** [T13, T15, T16b, T10] Non-isometric weight change ⇔ structural projection. (Supersedes T14's earlier caveated form.)  
+**T14′** [T13′, T15, T16′, T10] Non-isometric weight change ⇔ structural projection. (Supersedes T14's earlier caveated form.)  
+**T17** [T13′, T16′, Q1, WM2] Cost-decoupling: no admissible dynamics biases Born statistics toward structurally cheap outcomes — both weight-map types are functions of structure alone. Discharges docs/16 criterion C4; see contention 7 for its architectural bearing. (docs/19 §7)  
+**L6** [A4, T15, CI1] Spreading lemma: an interaction-free cluster is a single class with a single weight — no internal position-weights exist to spread. Discharges docs/16 criterion C3. (docs/19 §6)  
+**RM1** [O3, AD1–AD3, WM1] Hölder representation: disruption order embeds in \((\mathbb{R}_{\ge0},+)\) uniquely up to scale; with counter generation, \(C=\alpha S+\beta B+\gamma D\). WM2's form is derived, not stipulated. (docs/19 §5)  
+**F2′** [O3, well-foundedness] Minimal-disruption residuals exist under a well-founded (partial) preorder — F2's finiteness and totality hypotheses both weakened. (docs/19 §4)  
 **D12** Born reading — **not a theorem**.
 
 ---
