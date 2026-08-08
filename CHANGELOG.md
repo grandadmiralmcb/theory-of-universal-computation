@@ -1,5 +1,11 @@
 # Changelog
 
+## [2026-08-08] (splitter functor built; adversarial review of T15/T16 applied)
+
+- `sim/splitter_rewrite.py` + `docs/18-splitter-functor.md`: the induced-map functor F exhibited at unit-share granularity. Moduli are **computed** from routing fractions (D20); enumerating all ±1 orientation tags for the symmetric 2→2 recombiner, exactly the odd-sign-flip half passes the T16b isometry filter and **every survivor is the Hadamard up to diagonal gauge** — the beam splitter is derived, not stipulated. Mach-Zehnder end to end: \(P(C)=\cos^2(\varphi/2)\), visibility 1, Monte Carlo agreement. Negative cases: merges admit no isometric map (always contain a projection component); non-channel-disjoint routings violate D20 and fall outside F's domain.
+- Adversarial-review dispositions (docs/18 §5): **D20 upgraded to a named postulate** (charter §3, same grade as A4; supplies meaning, not probability — Born remains D12); **T15 rescoped** as a classification of outcomes, not a dynamical entailment; the **weight-blind selection seam** recorded as contention 7 (O3 never sees weights outside projection; device structure is external data); docs/17's "no new postulate" headline amended via addendum.
+- docs/07: functor priority discharged at toy level; remaining debts stated (F on full WM terms; φ from binding geometry; spreading lemma).
+
 ## [2026-08-08] (contention 1 resolved by derivation)
 
 - `docs/17-forced-resolution-contention-1.md`: the fork is resolved by entailment from prior commitments, not by preference. Decomposition co-motion is definitional (O1, O4, WM1); the **event trichotomy T15** (free-epoch map / reconfiguration / projection) is a theorem of case exhaustion; N★ never applied across reconfigurations because D19's \(M_w\) is typed on a fixed decomposition — its own stated hypothesis; reconfiguration maps are injective (**T16a**, forced) and isometric (**T16b**, forced given the **D20** explication — the one added sentence, flagged); **T14′**: non-isometry ⇔ projection. Horn (b) barred as unforced revision of an unrefuted commitment; Toolbox-A license lapsed with its named trigger discharged. Readout rules reconciled (interference sum = matrix element of the screen isometry, then Born).

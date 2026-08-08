@@ -104,3 +104,16 @@ The fork is resolved without any act of preference.
 2. **Spreading precision** (criterion C3): state formally that an environment-disconnected class carries no internal position-weights; docs/16 §2's dissolution then becomes a lemma.
 3. **Continuum limits** — dense sequences of reconfigurations → continuous generators (Schrödinger-type limits): the standing CI-style idealization question, now well-posed but open.
 4. **Born as theorem** — D12 (and now D20) remain readings; unchanged by this resolution.
+
+---
+
+## Addendum — adversarial-review dispositions (2026-08-08)
+
+A subsequent adversarial review of T15/T16 ([full dispositions: `docs/18-splitter-functor.md` §5]) forced four amendments to how this document's claims are stated:
+
+1. **"No new postulate" is amended.** D20 is upgraded from explication to a **named postulate** (charter §3, same grade as A4). The honest count for this resolution: one postulate (D20), one principle-extension (R to case 2), one construction obligation — the rewrite→\(M\) functor, since discharged at toy level (docs/18, `sim/splitter_rewrite.py`, where the Hadamard is *derived* from routing + the isometry filter).
+2. **T15 is a classification of outcomes, not a dynamical theorem.** It forces the category, not the occurrence: nothing in T15 entails that type-2 rewrites happen or are preferred — occurrence is governed by weight-blind structural cost and device structure (contention 7). The (3)∘(2) factoring of mixed events is bookkeeping convention, not forced temporal order.
+3. **The selection seam is named** (contention 7, docs/07): O3 never sees weights outside projection; the induced map transforms weights as passengers of a structurally-selected rewrite. Entailed by D19's typing, but an architectural seam deserving its own ledger entry.
+4. **D20 does not derive Born.** It gives \(|a|^2\) a structural meaning; \(P \propto |a|^2\) at projection remains the non-derived reading D12.
+
+"Resolved without preference" stands for the fork between horns; it never claimed amplitudes are forced from O1–O4 — they are hosted (A4), disciplined on free epochs (N★), and extended to reconfigurations by D20 + the functor.

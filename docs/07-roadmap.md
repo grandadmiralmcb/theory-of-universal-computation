@@ -24,10 +24,11 @@
 4. **Born rule** — reading vs theorem.
 5. **Linear reduce** — stipulated type upgrade; not derived from real counts.
 6. **Monism** — unique non-idle reading, not entailment.
+7. **Weight-blind selection seam** (adversarial review of T15/T16; `docs/18` §4) — O3 never sees weights outside projection: which reconfiguration occurs is selected on weight-blind structural cost, the induced map transforms weights as passengers, and interferometric device structure is external data. Entailed by D19's typing, but open whether it is final or whether selection should couple to weights (any coupling must survive N★ on fixed decompositions).
 
 ## Priority order
 
-1. Construct the induced-map functor: a concrete splitter rewrite in `sim/` whose isometry is computed from the rewrite's share bookkeeping, with fringes from Born-at-screen (docs/17 §7, docs/16 criterion C2); plus the spreading lemma (criterion C3).
+1. ~~Construct the induced-map functor~~ **Discharged at toy level** (`docs/18`, `sim/splitter_rewrite.py`): moduli computed from routing fractions (D20); the symmetric recombiner's Hadamard pinned up to gauge by the T16b isometry filter; Mach-Zehnder fringes end to end. Remaining: lift F from unit-share granularity to full WM terms; phase tags from binding geometry (φ enrichment); the spreading lemma (docs/16 criterion C3).
 2. Independent operationalization of share count, so the T6 ratio becomes a test rather than a consistency check (docs/08 §3).
 3. Formalize R, N in the term language.
 4. Structural proxy for \(\varphi_i\).
