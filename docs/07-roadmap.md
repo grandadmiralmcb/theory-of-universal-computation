@@ -16,7 +16,7 @@
 
 ## Current Contentions
 
-1. **N★ vs interference** — the D19+A3 argument forbids *all* modulus-changing free-epoch maps, including non-diagonal unitaries; beam-splitter-like recombination therefore has no category (neither free-epoch map nor projection), and the two readout rules (\(|\sum a_i|^2\) interference vs \(|a_i|^2\) Born) are unreconciled. Fork: (a) free epochs are phases-only and modulus-changing events get their own cost story, or (b) N★ is weakened and T13 redone. See docs/12 scope note, docs/03 §3.
+1. **N★ vs interference** — the D19+A3 argument forbids *all* modulus-changing free-epoch maps, including non-diagonal unitaries; beam-splitter-like recombination therefore has no category (neither free-epoch map nor projection), and the two readout rules (\(|\sum a_i|^2\) interference vs \(|a_i|^2\) Born) are unreconciled. Fork: (a) free epochs are phases-only and modulus-changing events get their own cost story, or (b) N★ is weakened and T13 redone. See docs/12 scope note, docs/03 §3. **Full fork review with horn taxonomy, decision criteria, and a recommendation: `docs/16-contention-1-review.md`** (recommends (a) with the Toolbox-A path integral as licensed fallback; horn (b) assessed as dominated).
 2. **Gravitational bias coupling** — free-fall universality forces \(b_{\rm grav} = m_{\rm struct}\,g\) (docs/02 §6); not derived, and it removes the T6 ratio for gravity. T6's scope is cluster-independent (applied-force) bias only.
 3. **R and N** — elevate to theorems or mark permanent semi-forced principles.
 4. **Born rule** — reading vs theorem.

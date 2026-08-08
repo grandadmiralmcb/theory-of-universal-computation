@@ -1,5 +1,9 @@
 # Changelog
 
+## [2026-08-08] (contention 1 fork review)
+
+- `docs/16-contention-1-review.md`: full analysis of the N★/interference fork. Key reframing: QM itself is phases-only in the co-rotating eigenbasis, so the contention is about **basis rigidity**, not phase-onlyness. Horn taxonomy extended beyond the recorded (a)/(b) with (c1) co-moving decomposition (folds into (a)), (c2) Toolbox-A path integral (now formally licensed by the Toolbox usage rule, since contention 1 is its named trigger), and (c3) instrumentalist retreat (rejected — fails the two-slit test). Partial formal results stated: induced-map isometry target (L0) and swap-symmetry one-parameter family (L1, with the balanced-splitter \(\theta\)-pinning residue). Wave-packet spreading objection assessed as likely dissolving under (a) (one class, no position-weights, absent environmental shares). Recommendation: pursue (a), fallback (c2), (b) dominated; decision criteria C1–C4 recorded. Analysis only — no theory content changed.
+
 ## [2026-08-08] (Standard-Model bridge)
 
 - New postulate family **SB1–SB4** (labels + typing, structural gauge principle with designated invariance subgroup \(\Gamma\), particle/vacuum definitions, causal order from reduction dependence) — `docs/15-sm-bridge.md`; charter table and layer list updated.
