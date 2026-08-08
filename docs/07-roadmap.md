@@ -10,6 +10,9 @@
 | T12 | Free epoch share-preserving | Proved [WM] |
 | T13 | Diagonal-unitary free epoch under all-states N★ | Contended (see contention 1) |
 | T14 | Non-unitary locus = structural projection | Relative to T13 as restated |
+| SM-B1 | Label conservation by typing | Proved [WM1, SB1, SB1-typing] |
+| SM-B2 | Discrete WM spectrum per label class | Proved [WM1–3, SB1, SB3] (counter artifact; continuum open) |
+| SM-B3 | Causal partial order of reduction events | Proved [WM1, F1] |
 
 ## Current Contentions
 
@@ -26,6 +29,7 @@
 2. Independent operationalization of share count, so the T6 ratio becomes a test rather than a consistency check (docs/08 §3).
 3. Formalize R, N in the term language.
 4. Structural proxy for \(\varphi_i\).
-5. Only then Toolbox activation or particle/field extensions.
+5. Bridge targets (docs/15): Noether-style derivation of SM-B1 from SB2; the continuum-limit spectrum question (SM-B2 beyond integer counters); causal order → geometry (dimension, local Lorentz — inherited open from causal-set theory).
+6. Only then Toolbox activation or further particle/field extensions beyond the SB layer.
 
 Done since last revision: end-to-end tree → `m_struct_from_tree` → integrator pipeline (`sim/end_to_end_T6.py`, consistency-check status); `linear_reduce` + free-epoch weight updates in `sim/` (runnable as of 2026-08-08 — a syntax error had previously made it unexecutable).

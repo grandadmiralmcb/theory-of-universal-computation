@@ -51,9 +51,17 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 
 ---
 
+## Structural bridge (add SB1–SB4; docs/15)
+
+**SM-B1** [WM1, SB1, SB1-typing] Label sums are invariant under every admissible reduction. Conservation by *typing*, not Noether; a derivation from SB2 invariance is open.  
+**SM-B2** [WM1–WM3, SB1, SB3] The WM rest-cost spectrum per label class is discrete. (Artifact of integer counters; continuum-limit discreteness is open and is the physical question.)  
+**SM-B3** [WM1, F1] Reduction-event dependence is a strict partial order (causal-set structure); each F1 chain is a total suborder. Metric, dimension, Lorentz: open.
+
+---
+
 ## Non-theorems
 
-Amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity.
+Amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
 
 ---
 
@@ -61,4 +69,5 @@ Amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees a
 
 T6: `sim/end_to_end_T6.py` — consistency check only: measured and predicted ratios derive from the same \(m\) (docs/08 §3)  
 T9–T12 pattern: `sim/expr_tree.py`  
-HQ free epoch / projection: `sim/linear_reduce.py` — unrunnable (SyntaxError) until 2026-08-08; "executable" claims for this file predating that date preceded any successful run
+HQ free epoch / projection: `sim/linear_reduce.py` — unrunnable (SyntaxError) until 2026-08-08; "executable" claims for this file predating that date preceded any successful run  
+SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-phase toy spectrum; dark-sector stability)

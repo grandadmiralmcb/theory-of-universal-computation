@@ -1,5 +1,13 @@
 # Changelog
 
+## [2026-08-08] (Standard-Model bridge)
+
+- New postulate family **SB1–SB4** (labels + typing, structural gauge principle with designated invariance subgroup \(\Gamma\), particle/vacuum definitions, causal order from reduction dependence) — `docs/15-sm-bridge.md`; charter table and layer list updated.
+- Theorems **SM-B1** (conservation by typing — explicitly *not* Noether), **SM-B2** (WM spectrum discreteness, flagged as an integer-counter artifact), **SM-B3** (causal-set structure of reduction events) added to `docs/11-theorems.md` with full hypotheses.
+- `docs/05-standard-model.md` rewritten charter-aligned: gap-by-gap reexamination with a fixed verdict vocabulary (native purchase / reformulation / research program / blocked / no purchase). Measurement identified as the strongest native purchase (structural definiteness criterion + structural preferred basis); dark matter as a native mechanism (conserved label + label-blind inertia); baryogenesis and continuous gauge groups recorded as blocked behind contention 1; hierarchy and vacuum-energy claims from the pre-rebuild version explicitly retracted.
+- Pre-rebuild orphans rehabilitated in charter-compliant form: vacuum \(V\) → SB3 ground configuration; labels/charges → SB1; bounded signal \(c\) → qualitative causal bound of SB4 (quantitative speed needs a metric, open).
+- `sim/spectrum_toy.py`: SM-B1 conservation property test (admissible moves conserve charge; an inadmissible deletion breaks it), two-phase toy spectrum (unit-share phase vs clumped phase with emergent charge quantum \(\approx\sqrt{\alpha_m/\lambda}\)), dark-sector stability demonstration.
+
 ## [2026-08-08] (adversarial review fixes)
 
 - `sim/linear_reduce.py`: fixed the SyntaxError that had made the file unrunnable since it was committed — every earlier "executable HQ confirmation" citing it predated any successful run. The general-matrix step now rejects norm-changing proposals and warns on modulus-changing ones instead of silently rescaling; the demo exercises a Hadamard to display contention 1.
