@@ -60,6 +60,10 @@ Each extension is a **postulate**, used only when stated in a theorem’s hypoth
 | **D19** | Extended cost charges support collapse and relative-modulus change | Weight-sensitive cost |
 | **B_flow** | Free-epoch weight maps are invertible flows | Regularity for R |
 | **D12** | Born reading \(P\propto\|a\|^2\) at projection | Probability reading |
+| **SB1** | Share nodes carry labels in a finitely generated abelian group \(G\); admissible reductions act by merge / split / pair-create / pair-annihilate (typing) | Charge structure (docs/15) |
+| **SB2** | All cost functionals are invariant under a designated subgroup \(\Gamma \le \mathrm{Aut}(G)\); observables are \(\Gamma\)-invariants | Structural gauge principle |
+| **SB3** | Particle = minimal-rest-cost stable excitation in its label class; ground configuration = minimal-cost \(Q=0\) | Spectrum definitions |
+| **SB4** | Events = reduction steps, ordered by data dependence | Causal order (SM-B3) |
 
 No theorem may treat these as forced by O1–O4.
 
@@ -69,9 +73,10 @@ No theorem may treat these as forced by O1–O4.
 
 1. **Ontology** — O1–O4 only.
 2. **Forced corollaries** — F1–F5.
-3. **Working model (WM)** — WM1–WM3; finite trees; executable tests.
+3. **Working model (WM)** — WM1–WM4; finite trees; executable tests.
 4. **Continuum idealization (CI)** — CI1–CI4 on top of WM sequential calculus.
 5. **Hosted quantum (HQ)** — A4, D19, B_flow, D12; structural projection (F5) as irreversible locus.
+6. **Structural bridge (SB)** — SB1–SB4; SM-facing definitions and gap reexamination (docs/15, docs/05).
 
 ---
 
