@@ -9,10 +9,12 @@ Supports constant bias and position-dependent bias from a structural potential.
 Continuum target under a potential V(x):
     m_struct * ẍ = - V'(x)
 
-The optimal velocity change rate from minimizing
-    C(dv) = ½ m (dv)² + b(x) dv
-is dv* = -b/m.  The integrator applies this as a *rate*:
-    v <- v + dv* * dt
+Per-tick cost (postulate CI4, docs/02 §2):
+    C_dt(dv) = m (dv)² / (2 dt) + b(x) dv
+Its minimizer is a velocity *increment* for the tick (no rate
+reinterpretation needed):
+    dv* = -(b/m) dt
+    v <- v + dv*
     x <- x + v * dt
 """
 
@@ -51,10 +53,11 @@ class Bias:
 def m_struct(cluster: Seq) -> float:
     return ALPHA * float(cluster.share_density) + 0.05
 
-def cost_of_dv(cluster: Seq, dv: float, bias: Optional[Bias]) -> Tuple[float, dict]:
+def cost_of_dv(cluster: Seq, dv: float, bias: Optional[Bias], dt: float) -> Tuple[float, dict]:
+    """Per-tick cost C_dt(dv) = m dv²/(2 dt) + b dv (postulate CI4)."""
     m = m_struct(cluster)
     b = bias.b_at(cluster.x) if bias is not None else 0.0
-    C = 0.5 * m * (dv ** 2) + b * dv
+    C = 0.5 * m * (dv ** 2) / dt + b * dv
     return C, {"m": m, "b": b, "dv": dv, "C": C}
 
 @dataclass
@@ -71,26 +74,27 @@ class SequentialEvaluator:
         self.state = state
         self.dt = dt
         self.use_analytic = use_analytic
-        self.dv_candidates = dv_candidates or [i * 0.05 for i in range(-40, 41)]
+        # candidate increments scale with dt (they are per-tick velocity changes)
+        self.dv_candidates = dv_candidates or [i * 0.05 * dt for i in range(-40, 41)]
 
     def tick(self) -> dict:
         m = m_struct(self.state.cluster)
         b = self.state.bias.b_at(self.state.cluster.x) if self.state.bias else 0.0
-        dv_star = -b / m if m != 0 else 0.0
+        dv_star = -(b / m) * self.dt if m != 0 else 0.0
 
         if self.use_analytic:
             best_dv = dv_star
-            best_C = 0.5 * m * (dv_star ** 2) + b * dv_star
+            best_C = 0.5 * m * (dv_star ** 2) / self.dt + b * dv_star
         else:
             candidates = []
             for dv in self.dv_candidates:
-                C, breakdown = cost_of_dv(self.state.cluster, dv, self.state.bias)
+                C, breakdown = cost_of_dv(self.state.cluster, dv, self.state.bias, self.dt)
                 candidates.append((C, dv, breakdown))
             candidates.sort(key=lambda t: t[0])
             best_C, best_dv, _ = candidates[0]
 
-        # dv* is a *rate* (acceleration); integrate it
-        self.state.cluster.v += best_dv * self.dt
+        # dv* is the per-tick velocity increment (CI4 minimizer); apply directly
+        self.state.cluster.v += best_dv
         self.state.cluster.x += self.state.cluster.v * self.dt
         self.state.tick += 1
 

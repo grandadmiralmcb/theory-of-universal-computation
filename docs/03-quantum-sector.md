@@ -20,7 +20,7 @@ Working model cost \(C\); preferential sequentialization (A3). Classical sequent
 | **D19** | Charge \(S_w\), \(M_w\) | Extended cost when A4 active |
 | **B_flow** | Free-epoch maps invertible flows | Regularity |
 | **T12** | Foot fixed in free epoch | WM theorem |
-| **T12+, N★, R★, T13** | Support/moduli frozen; unitary free epoch | HQ theorems |
+| **T12+, N★, R★, T13** | Support/moduli frozen; free-epoch maps diagonal-unitary under the all-states reading of N★ | HQ theorems (T13 scope contended — docs/07 contention 1) |
 | **T10, T14** | Structural projection = non-unitary locus | WM + HQ |
 | **D12** Born reading | \(P\propto\|a\|^2\) at projection | Reading, not theorem |
 | **`phase_accumulate`** | Diagonal phase from sequential history | Enrichment for \(\varphi_i\) |
@@ -36,6 +36,8 @@ Working model cost \(C\); preferential sequentialization (A3). Classical sequent
 ## 3. Interference (HQ)
 
 `path_recombine`, `intensity`, `visibility_amplitude` — available once A4 is active. Not derived from integer share counts.
+
+**Open contradiction (contention 1).** Recombination is a modulus-changing operation, and N★ (via D19 + A3) forbids modulus change in free epochs — so beam-splitter-like events currently have **no category**: they are neither free-epoch maps nor structural projections. Until resolved, `path_recombine` is a readout formula, not a dynamical step, and the two readout rules in play (\(|\sum_i a_i|^2\) for interference, \(|a_i|^2\) for Born) are unreconciled. See `docs/07-roadmap.md` contention 1 and the scope note in `docs/12-RN-formalization.md`.
 
 ---
 
@@ -54,5 +56,5 @@ COM / path-wise sequential state on coherent sets; `com_from_amplitudes`; classi
 ## 6. Status
 
 **Solid (WM):** multi-path coexistence, isolation-cost decoherence, classical limit of coherence.  
-**Hosted (HQ):** linear weights, free-epoch unitarity under D19+B_flow, Born reading.  
-**Open:** Born as theorem; \(\varphi_i\) from binding geometry; continuum residual families / fields.
+**Hosted (HQ):** linear weights; free-epoch *diagonal* unitarity under D19+B_flow (general unitarity contended — docs/07 contention 1); Born reading.  
+**Open:** Born as theorem; \(\varphi_i\) from binding geometry; a cost locus for modulus-changing (beam-splitter) events; continuum residual families / fields.

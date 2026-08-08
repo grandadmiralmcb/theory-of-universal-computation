@@ -8,17 +8,18 @@ Keep the theory coherent, precise, and extensible. Prefer formal clarity, consis
 
 ## Core Principles
 
-- Reality is modeled as evaluation of syntactically bound expression trees under cost minimization and preferential sequentialization.
+- Claims follow the derivation-first charter (`docs/00-theory-charter.md`): only O1–O4 are ontology; everything further is a numbered postulate (WM, CI, HQ) that must appear in theorem hypotheses.
 - Maintain a small, stable set of primitive functions.
-- Classical and quantum-like regimes should emerge cleanly from the same primitives.
+- Classical and quantum-like regimes should emerge cleanly from the same primitives; where they currently do not, record the gap as a named contention in `docs/07-roadmap.md` rather than papering over it.
 - Record major conceptual advances in `CHANGELOG.md`.
 
 ## Repository Structure
 
 | Path | Purpose |
 |------|---------|
-| `README.md` | Front page + reading guide |
-| `docs/` | Numbered core theory documents (01–07) |
+| `README.md` | Front page + reading order |
+| `docs/` | Numbered theory documents (00–14); `docs/00-theory-charter.md` and `docs/14-derivation-from-ontology.md` are authoritative |
+| `sim/` | Executable toy simulators instantiating the working model |
 | `CHANGELOG.md` | Chronological record of advances |
 | `notes/` (optional) | Experimental or speculative ideas |
 
@@ -39,8 +40,9 @@ Keep the theory coherent, precise, and extensible. Prefer formal clarity, consis
 
 ## Safety & Scope
 
-- This is a pure theory / documentation repository.
-- Do not add executable code, secrets, or personal data.
+- This is a theory / documentation repository with a small executable `sim/` suite.
+- Executable code is limited to `sim/`. Every sim must run (`python3 sim/<file>.py`) — run it before citing it as an executable confirmation in any doc. A sim that does not execute must not be cited as evidence.
+- Do not add secrets or personal data.
 - Do not claim endorsement by any organization.
 
 ## Useful First Prompts for Grok

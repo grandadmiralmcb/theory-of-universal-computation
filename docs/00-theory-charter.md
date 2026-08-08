@@ -53,7 +53,9 @@ Each extension is a **postulate**, used only when stated in a theorem’s hypoth
 | **CI1** | Sequential labels include real \((x,v)\) | Continuum kinematics |
 | **CI2** | Continuum limit of discrete ticks | ODE idealization |
 | **CI3** | Smooth bias / potential \(b(x)\), \(V\) | Force law idealization |
-| **WM3** | \(m_{\rm struct}=\alpha n_{\rm share}+\varepsilon\) | Inertia proxy in WM |
+| **WM3** | \(m_{\rm struct}=\alpha_m n_{\rm share}+\varepsilon\) (\(\alpha_m\) distinct from the WM2 counter weight \(\alpha\)) | Inertia proxy in WM |
+| **WM4** | Environmental monitoring is charged to the maintain ledger only: environment-crossing shares raise \(C_{\rm maintain}\), not \(C_{\rm isolate}\) | Decoherence asymmetry (drives T11) |
+| **CI4** | Sequential-state changes are charged the per-tick functional \(C_\tau(\delta v)=m_{\rm struct}(\delta v)^2/2\tau+b_{\rm struct}\,\delta v\); not an instance of WM2 (it is signed relative to the null change; the additive gauge \(b^2\tau/2m\) restores non-negativity without changing selection) | Velocity-form dynamics |
 | **A4** | Share-linked residuals may form \(\sum a_i E_i\), \(a_i\in\mathbb{C}\) | Hosted linear layer |
 | **D19** | Extended cost charges support collapse and relative-modulus change | Weight-sensitive cost |
 | **B_flow** | Free-epoch weight maps are invertible flows | Regularity for R |
@@ -68,7 +70,7 @@ No theorem may treat these as forced by O1–O4.
 1. **Ontology** — O1–O4 only.
 2. **Forced corollaries** — F1–F5.
 3. **Working model (WM)** — WM1–WM3; finite trees; executable tests.
-4. **Continuum idealization (CI)** — CI1–CI3 on top of WM sequential calculus.
+4. **Continuum idealization (CI)** — CI1–CI4 on top of WM sequential calculus.
 5. **Hosted quantum (HQ)** — A4, D19, B_flow, D12; structural projection (F5) as irreversible locus.
 
 ---

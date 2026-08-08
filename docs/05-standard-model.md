@@ -1,5 +1,7 @@
 # 05 — Relation to the Standard Model
 
+> **STATUS: PRE-REBUILD DOCUMENT (superseded, retained for history).** Written before the derivation-first charter. Where it conflicts with `docs/00-theory-charter.md` and `docs/11-theorems.md`, it is void (charter §5). Known void or orphaned content: Born-rule statistics described as arising naturally (Born is reading D12, not a theorem); vacuum \(V\), labels/charges, `force_A`, and bounded signal \(c\) are not part of the reduced primitive set. Pending rewrite.
+
 ## Ontological contrast
 
 | Aspect              | Standard Model                              | Expression-Tree Ontology                          |
@@ -12,7 +14,7 @@
 
 ## Success of Hilbert-space mathematics
 
-Hilbert space is an exceptionally well-adapted *effective* description of amplitude-valued multi-path reduction (`force_A`) in coherent sequential regimes. Superposition, interference, Born-rule statistics, and entanglement arise naturally from the amplitude structure and shared-subexpression recombination already present in Route A. The SM’s empirical triumph demonstrates the power of that effective linear-amplitude language once correct particle content and gauge structure are supplied. In the present framework Hilbert space is relocated from fundamental ontology to highly successful calculational framework for a particular dynamical regime.
+Hilbert space is an exceptionally well-adapted *effective* description of amplitude-valued multi-path reduction (`force_A`) in coherent sequential regimes. Superposition and interference are hosted by the amplitude structure of the linear layer; Born-rule statistics enter as the D12 reading, not as consequences (`docs/11-theorems.md`), and entanglement corresponds to shared-subexpression structure. The SM’s empirical triumph demonstrates the power of that effective linear-amplitude language once correct particle content and gauge structure are supplied. In the present framework Hilbert space is relocated from fundamental ontology to highly successful calculational framework for a particular dynamical regime.
 
 ## Hard problems of the SM and corresponding resources here
 

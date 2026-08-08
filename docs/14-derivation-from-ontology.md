@@ -112,7 +112,7 @@ Every use of WM1–WM3 must appear in the hypothesis list.
 
 ## Part IV — Continuum idealization as optional limit
 
-Postulates **CI1–CI3** + WM sequential updates (T3–T4 under WM2, WM3, CI1) yield:
+Postulates **CI1–CI4** + WM sequential updates (T3–T4 under WM3, CI1, CI4) yield:
 
 - **T5 [CI]:** \(\ddot x = -b/m\) in the tick continuum limit.
 - **T6 [WM+CI]:** acceleration ratio = inverse inertia ratio for two clusters under same \(b\).
@@ -148,7 +148,7 @@ O1, O2, O3, O4
     └─ F5 structural projection when break ≤ maintain
 
 F1–F5  +  WM1,WM2,WM3  →  quantitative WM theorems (cost, isolation, T10–T12)
-WM theorems  +  CI1,CI2,CI3  →  continuum sequential calculus (T5–T8), T6 ratio
+WM theorems  +  CI1,CI2,CI3,CI4  →  continuum sequential calculus (T5–T8), T6 ratio
 F5  +  A4,D19,B_flow  →  unitary free epoch, projection as non-unitary locus
 (+ D12)  →  Born statistics at projection (reading)
 ```
