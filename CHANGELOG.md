@@ -1,5 +1,16 @@
 # Changelog
 
+## [2026-08-08] (stratified variant developed; contention 8 at a decision point)
+
+- `docs/21-stratified-variant.md` + `sim/stratified_cost.py`: the ¬CC branch of RM2 built out.
+  - Core observation: lexicographic cost factorizes selection into **constraint-then-cost** — a top stratum is an exact rule, the floor is a force.
+  - **TS1**: splitting CI4's terms across strata degenerates classical dynamics (frozen or runaway) — Newton requires co-stratal ingredients.
+  - **TS2**: identity-flag-on-top freezes decoherence at any environmental pressure — T11 lost; observed classicality **forces the dynamical floor to be one-currency** (first empirical constraint on contention 8).
+  - **TS3**: stratification is observationally reachable only as exact rules — it cannot masquerade as a graded tendency.
+  - **TS4 + ST1**: SB1-typing recovered as a top-stratum violation charge — conservation without admissibility fiat, plus graceful minimal-violation behavior in forced-violation situations that brute typing cannot express (a discriminating prediction-shape; speculative hook to Sakharov-style violation physics flagged as such).
+  - Synthesis candidate **CC′**: exact strata above one Archimedean floor — both RM2 branches realized in different roles. Adoption of CC′+ST1 (which would close contention 8 at the price of one identification postulate) left to owner adjudication.
+- Charter CC row, docs/07 contention 8, docs/11 (TS1–TS4 + executable), docs/15 (alternative conservation mechanism note) updated.
+
 ## [2026-08-08] (AD1–AD3 grounded to their floor)
 
 - `docs/20-grounding-AD-axioms.md`: the order axioms beneath the classical chain are taken as deep as derivation permits.

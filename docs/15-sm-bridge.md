@@ -37,6 +37,8 @@ Unlabeled structure is unrestricted. Deletion of a share with \(q \neq 0\) is in
 
 **Honesty.** Conservation here is *enforced* (a typing discipline, in the linear-logic tradition), not *derived* from a symmetry. A Noether-style route — obtaining SM-B1 from SB2 invariance plus the selection principle A3 — is **open**, and its existence is not obvious: SB2 constrains description, A3 constrains selection, and neither obviously yields additivity along histories. Do not cite SM-B1 as "Noether recovered."
 
+**Alternative mechanism (docs/21 §5, adoption open).** Under postulate ST1, the typing rule is replaced by a lexically dominant violation charge: conservation then follows from stratified cost-minimization (TS4) rather than admissibility fiat, and degrades gracefully in forced-violation situations that brute typing cannot express.
+
 **Status note.** SB1 reintroduces the pre-rebuild "labels/charges" in charter-compliant form. Non-abelian labels / representation categories are a strict extension (Toolbox E territory, docs/09), not assumed.
 
 ---

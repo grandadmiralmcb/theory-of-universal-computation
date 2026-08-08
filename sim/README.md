@@ -31,6 +31,7 @@ python sim/two_path.py
 python sim/linear_reduce.py
 python sim/spectrum_toy.py
 python sim/splitter_rewrite.py
+python sim/stratified_cost.py
 ```
 
 Every file must execute cleanly; a sim that does not run must not be cited
