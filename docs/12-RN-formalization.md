@@ -42,7 +42,7 @@ C^+ = \alpha S + \beta B + \gamma D + \alpha_w S_w + \delta M_w \qquad (\alpha_w
 
 **R★ under D19 + B_flow.** Free-epoch maps preserve support (D19) and are invertible flows (B_flow) \(\Rightarrow\) lie in \(\mathrm{GL}(n,\mathbb{C})\) with Foot fixed; inverse is free-epoch.
 
-**B_flow.** Free-epoch weight updates are compositions of steps from a continuous one-parameter group of Foot-preserving maps on the active weight space.
+**B_flow.** Free-epoch weight updates are compositions of steps from a continuous one-parameter group of Foot-preserving maps on the active weight space. **[Demoted 2026-08-08: no longer a postulate.** T13′ (docs/19 §2) obtains diagonal-unimodular free-epoch maps — hence invertibility — from A4 + D19 + norm gauge + Q1 alone; B_flow's content is now a consequence, retained here for the historical record.**]**
 
 ---
 
