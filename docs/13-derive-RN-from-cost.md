@@ -18,6 +18,8 @@ forces **support preservation** and **N★** (relative moduli frozen) by A3.
 
 Pure derivation of R★/N★ from the original three counters is **impossible**. That is a fixed negative result, not an open gap.
 
+**Companion overshoot (fixed, 2026-08-08).** The same D19+A3 argument that yields N★ also forbids every modulus-changing free-epoch map — including the non-diagonal unitaries interference requires. The derivation is sound; its conclusion is narrower than "unitarity": diagonal phase drift. See the scope note in `docs/12-RN-formalization.md` and contention 1 in `docs/07-roadmap.md`.
+
 ---
 
 ## Scorecard

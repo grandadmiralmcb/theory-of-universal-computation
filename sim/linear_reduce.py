@@ -10,6 +10,11 @@ Implements:
   - structural projection (non-unitary locus)
 
 See docs/12-RN-formalization.md and docs/10-unitarity-from-projection.md.
+
+Note (docs/07 contention 1): enforcing N* across all states confines free
+epochs to diagonal phase drift — a general (non-diagonal) unitary changes
+relative moduli. The general-matrix step below therefore WARNS when a
+proposal changes relative moduli rather than silently permitting it.
 """
 
 from __future__ import annotations
@@ -138,9 +143,11 @@ def free_epoch_diagonal_unitary(cs: CoherentLinear, dt: float) -> None:
 
 def free_epoch_unitary_matrix(cs: CoherentLinear, M: List[List[complex]]) -> None:
     """
-    General free-epoch step: a <- M a, with M unitary (hence invertible,
-    norm-preserving, relative-moduli structure preserved in the norm sense).
-    Rejects non-invertible or Foot-changing proposals.
+    General free-epoch step: a <- M a.
+    Rejects non-invertible, Foot-changing, or norm-changing proposals
+    (norm gauge is a constraint, not a silent repair).
+    Warns on relative-modulus change: under D19+A3 such a map is dominated
+    by the zero-change alternative in a free epoch (docs/07 contention 1).
     """
     active = cs.active()
     n = len(active)
@@ -150,12 +157,14 @@ def free_epoch_unitary_matrix(cs: CoherentLinear, M: List[List[complex]]) -> Non
     a = [p.weight for p in active]
     nrm_before = norm2(a)
     a_new = apply_matrix(M, a)
-    # enforce norm preservation (unitary); if caller passed unitary this is no-op
     nrm_after = norm2(a_new)
-    if nrm_after > 0 and abs(nrm_after - nrm_before) > 1e-9 * max(nrm_before, 1.0):
-        # rescale to restore norm (N: no free relative-modulus + norm drift)
-        scale = math.sqrt(nrm_before / nrm_after)
-        a_new = [w * scale for w in a_new]
+    assert abs(nrm_after - nrm_before) <= 1e-9 * max(nrm_before, 1.0), \
+        "norm gauge violated: M is not norm-preserving on this state"
+    mu_before = relative_moduli(a)
+    mu_after = relative_moduli(a_new)
+    if not moduli_equal(mu_before, mu_after):
+        print("   [N* contention] modulus-changing map in a free epoch — "
+              "forbidden under D19+A3; see docs/07 contention 1")
     cs.set_weights(a_new)
     foot_after = cs.foot()
     assert is_share_preserving(foot_before, foot_after), "R violated: Foot changed"
@@ -234,7 +243,19 @@ def demo():
         if ch:
             counts[ch.name] += 1
     print(f"   N=5000  arm1={counts['arm1']/5000:.3f}  arm2={counts['arm2']/5000:.3f}  "
-          f"(expect ~{|cs.paths[0].weight|**2:.3f}, {|cs.paths[1].weight|**2:.3f})")
+          f"(expect ~{abs(cs.paths[0].weight)**2:.3f}, {abs(cs.paths[1].weight)**2:.3f})")
+
+    print("\n5. General unitary (Hadamard) — exercises contention 1")
+    p1 = PathState("arm1", 1 / math.sqrt(2), 5.0, share_ids={"c", "a"})
+    p2 = PathState("arm2", 1 / math.sqrt(2), 5.0, share_ids={"c", "b"})
+    cs = CoherentLinear([p1, p2], maintain_cost=1.0)
+    h = 1 / math.sqrt(2)
+    H = [[complex(h), complex(h)], [complex(h), complex(-h)]]
+    free_epoch_unitary_matrix(cs, H)
+    print(f"   after H: μ={tuple(round(x, 4) for x in relative_moduli(cs.weights()))}  "
+          f"||a||^2={norm2(cs.weights()):.6f}")
+    print("   (a beam splitter is neither a diagonal free-epoch map nor a projection;")
+    print("    its cost locus is open — docs/07 contention 1)")
     print("=" * 64)
 
 if __name__ == "__main__":

@@ -24,15 +24,15 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 **T2** [O3, F2, WM2] Preferential select attains min \(C\).  
 **T9** [WM1,WM2] Isolation/maintain costs well-defined.  
 **T10** [O3, T2, T9] If \(C_{\rm isolate}\le C_{\rm maintain}\), isolate. (Numeric form of F5.)  
-**T11** [T10] Rising maintain cost \(\Rightarrow\) singleton \(\Rightarrow\) classical sequentialization.  
+**T11** [T10, WM4] Rising maintain cost \(\Rightarrow\) singleton \(\Rightarrow\) classical sequentialization. (WM4 supplies the environment→maintain-ledger asymmetry; without it, environmental shares could equally be charged to isolation, inverting the conclusion.)  
 **T12** [T10, free epoch] Foot fixed in free epoch.
 
 ---
 
-## Continuum idealization (add CI1–CI3, WM3)
+## Continuum idealization (add CI1–CI4, WM3)
 
-**T3** [WM2,WM3,CI1] \(\delta v^*=-b/m\).  
-**T4** [T3] Discrete sequential updates.  
+**T3** [WM3,CI1,CI4] \(\delta v^*=-(b/m)\,\tau\) per tick. (WM2 does not supply the velocity-form cost; CI4 does — see docs/02 §2.)  
+**T4** [T3] Discrete sequential updates \(v_{n+1}=v_n+\delta v^*\).  
 **T5** [T4,CI2] \(\ddot x=-b/m\) in continuum limit.  
 **T6** [T5,WM3] \(a_A/a_B=m_B/m_A\) under same constant \(b\).  
 **T7** [T5] Projectile kinematics.  
@@ -43,10 +43,10 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 ## Hosted quantum (add A4, D19, B_flow; Born = D12)
 
 **T12+** [T12, A4, D19, O3] Support frozen in free epoch.  
-**N★** [T12, D19, O3] Relative moduli frozen.  
+**N★** [T12, A4, D19, O3] Relative moduli frozen. **Scope warning:** the same argument forbids *all* modulus-changing free-epoch maps, including non-diagonal unitaries — see docs/07 contention 1.  
 **R★** [T12+, B_flow] Invertible free-epoch weight maps.  
-**T13** [R★, N★, norm gauge] Unitarity on active subspace.  
-**T14** [T13, T10] Sole non-unitary locus = structural projection.  
+**T13** [R★, N★ (all-states), norm gauge] Free-epoch maps are **diagonal** unitary on the active subspace (phase drift). Under the trajectory-only reading of N★, unitarity does not follow at all. General (non-diagonal) unitarity is contended — docs/07 contention 1, docs/12 scope note.  
+**T14** [T13, T10] Sole non-unitary locus = structural projection (relative to T13 as restated).  
 **D12** Born reading — **not a theorem**.
 
 ---
@@ -59,6 +59,6 @@ Amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees a
 
 ## Executable
 
-T6: `sim/end_to_end_T6.py`  
+T6: `sim/end_to_end_T6.py` — consistency check only: measured and predicted ratios derive from the same \(m\) (docs/08 §3)  
 T9–T12 pattern: `sim/expr_tree.py`  
-HQ free epoch / projection: `sim/linear_reduce.py`
+HQ free epoch / projection: `sim/linear_reduce.py` — unrunnable (SyntaxError) until 2026-08-08; "executable" claims for this file predating that date preceded any successful run

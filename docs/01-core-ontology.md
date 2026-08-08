@@ -49,7 +49,7 @@ C^+ = C + \alpha_w S_w + \delta M_w
 \]
 (support collapse and relative-modulus change charged).
 
-**Inertia:** \(m_{\rm struct} = \alpha n_{\rm share} + \varepsilon\) (tree-computable).
+**Inertia:** \(m_{\rm struct} = \alpha_m n_{\rm share} + \varepsilon\) (tree-computable; \(\alpha_m\) is WM3's coefficient, distinct from the WM2 counter weight \(\alpha\)).
 
 **Continuum idealization:** \(\ddot x = -b/m_{\rm struct}\) under smooth bias (limit of discrete sequential calculus — not a discrete identity).
 
@@ -79,6 +79,7 @@ High \(\kappa\) = sustained low-disruption sequential projection.
 
 - Finite trees: working model, not ontology.
 - Continuum Newton: idealization.
+- Velocity-form cost: postulate CI4, not an instance of WM2 (`docs/02-dynamics.md` §2).
 - Amplitudes / Born: hosted; Born is a reading at projection.
-- Unitarity: free epoch under D19 + B_flow + norm gauge — not bare three-counter cost.
+- Unitarity: free epoch under D19 + B_flow + norm gauge — not bare three-counter cost; under the all-states reading of N★ it collapses to diagonal phase drift (contention 1, `docs/07-roadmap.md`).
 - Consciousness / monism: open / preferred reading.

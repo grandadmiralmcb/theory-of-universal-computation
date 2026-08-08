@@ -1,5 +1,7 @@
 # 06 — Proto-Axiology
 
+> **STATUS: PRE-REBUILD DOCUMENT (superseded, retained for history).** Written before the derivation-first charter. The non-temporal attractors \(\mathcal{H}\)/\(\mathcal{L}\) referenced below belong to a discarded axiom set and have no counterpart in the current core (`docs/01-core-ontology.md`); the coherence measure \(\kappa\) survives (docs/02 §11). Pending rewrite or removal.
+
 ## Distinction
 
 Primitive functions = elementary capacities (verbs) of reality.  

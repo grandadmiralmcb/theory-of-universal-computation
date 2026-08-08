@@ -66,14 +66,14 @@ def born_extract(cs: CoherentSet) -> Optional[Path]:
             return p
     return active[-1]
 
-def preferential_select_dv(m: float, b: float) -> float:
-    """δv* = -b/m"""
-    return -b / m if m != 0 else 0.0
+def preferential_select_dv(m: float, b: float, dt: float) -> float:
+    """δv* = -(b/m)·dt (CI4 per-tick increment)"""
+    return -(b / m) * dt if m != 0 else 0.0
 
 def sequential_tick_path(p: Path, b: float, dt: float) -> None:
     """path-wise preferential_select + sequential_tick"""
-    dv_star = preferential_select_dv(p.m, b)
-    p.v += dv_star * dt
+    dv_star = preferential_select_dv(p.m, b, dt)
+    p.v += dv_star
     p.x += p.v * dt
 
 def phase_accumulate(p: Path, dt: float) -> None:

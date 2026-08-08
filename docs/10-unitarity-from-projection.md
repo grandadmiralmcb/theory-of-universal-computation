@@ -20,14 +20,16 @@ Unitarity is a theorem of the **hosted quantum layer (HQ)**, not of bare working
 2. **T12+** [HQ/D19] — support frozen.
 3. **N★** [HQ/D19] — relative moduli frozen.
 4. **R★** [HQ/D19+B_flow] — invertible free-epoch weight maps.
-5. **T13** [HQ] — invertible + moduli frozen + norm gauge \(\Rightarrow\) unitary on active subspace.
-6. **T14** [HQ] — structural decoherence (T10) = sole non-unitary locus.
+5. **T13** [HQ] — invertible + moduli frozen (all states) + norm gauge \(\Rightarrow\) **diagonal** unitary on the active subspace (phase drift). Under the trajectory-only reading of N★, unitarity does not follow. See docs/12 scope note.
+6. **T14** [HQ] — structural decoherence (T10) = sole non-unitary locus (relative to T13 as restated).
 
 ---
 
 ## Conceptual content
 
 Irreversibility is tied to structural payment (isolation). Free evolution under maintained co-dependence does not silently erase weight information (R) or reweight selection odds at zero cost (N under D19). That is consistency of the hybrid, packaged as unitarity after norm fix.
+
+Caveat: as derived, the same cost argument that freezes moduli also forbids beam-splitter-like recombination in free epochs — the operation interference phenomenology requires. See docs/07 contention 1.
 
 ---
 
@@ -38,5 +40,5 @@ Irreversibility is tied to structural payment (isolation). Free evolution under 
 | Foot fixed in free epoch | WM theorem (T12) |
 | Support / moduli frozen | HQ theorems under D19 |
 | Invertibility | HQ under B_flow |
-| Unitarity | HQ under full package |
+| Unitarity | Diagonal-unitary under full package (all-states N★); general unitarity contended (docs/07 contention 1) |
 | Born | Reading, not theorem |

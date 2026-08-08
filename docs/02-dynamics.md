@@ -28,16 +28,18 @@ C(E \xrightarrow{s} E') = \alpha S + \beta B + \gamma D \qquad (\alpha,\beta,\ga
 
 **Operation: sequential-state abstraction**
 
-A high-share-density cluster is abstracted to a sequential state \((x, v)\) maintained by a local evaluator. A proposed change of velocity \(\delta v\) is assigned cost by the same structural principle:
+A high-share-density cluster is abstracted to a sequential state \((x, v)\) maintained by a local evaluator. A proposed change of velocity \(\delta v\) over one tick of duration \(\tau\) is assigned the **per-tick cost** (postulate **CI4**, charter §3):
 
 \[
-C(\delta v) = \tfrac12 m_{\rm struct}\,(\delta v)^2 + b_{\rm struct}\,\delta v
+C_\tau(\delta v) = \frac{m_{\rm struct}\,(\delta v)^2}{2\tau} + b_{\rm struct}\,\delta v
 \]
 
 where
 
 - **Operation `m_struct`:** \(m_{\rm struct} = \langle S(\delta x = 1)\rangle\) (average share disruption for unit sequential change; in the toy model proportional to share density).
 - **Operation `b_struct`:** excess disruption imposed by a persistent bias context on steps against the preferred direction.
+
+**Status of CI4.** This functional is *modeled on* the structural principle but is **not an instance of WM2**: it can be negative relative to the null change (minimum value \(-b^2\tau/2m\)), whereas WM2 counters are non-negative by construction. Adding the gauge constant \(b^2\tau/2m\) restores non-negativity without changing which \(\delta v\) is selected. The quadratic form is likewise stipulated, not derived from counter statistics (the naive reading of \(m=\langle S\rangle\) suggests a linear \(m\,|\delta v|\) cost, which yields no Newtonian dynamics). CI4 therefore appears explicitly in the hypotheses of T3–T8. Dimensionally, with \(b_{\rm struct}\) force-like, both terms of \(C_\tau\) are disruption rates and \(g_{\rm eff}=b/m\) below is a genuine acceleration.
 
 **Operation name:** `velocity_cost`
 
@@ -47,13 +49,13 @@ where
 
 **Operation: preferential low-disruption sequentialization**
 
-The evaluator selects the velocity change that minimizes structural cost:
+The evaluator selects the velocity change that minimizes per-tick structural cost:
 
 \[
-\delta v^* = \arg\min_{\delta v}\, C(\delta v) = -\frac{b_{\rm struct}}{m_{\rm struct}}
+\delta v^* = \arg\min_{\delta v}\, C_\tau(\delta v) = -\frac{b_{\rm struct}}{m_{\rm struct}}\,\tau
 \]
 
-(analytic minimum of the quadratic). This is the discrete embodiment of the dynamical axiom.
+(analytic minimum of the quadratic). The selected quantity is a velocity **increment** for the tick, proportional to \(\tau\); no reinterpretation as a rate is needed downstream. This is the discrete embodiment of the dynamical axiom.
 
 **Operation name:** `preferential_select` (equivalently `argmin_C`)
 
@@ -67,7 +69,7 @@ At tick duration \(\tau\):
 
 \[
 \begin{align*}
-v_{n+1} &= v_n + \delta v^*\,\tau = v_n - \frac{b_{\rm struct}}{m_{\rm struct}}\,\tau,\\
+v_{n+1} &= v_n + \delta v^* = v_n - \frac{b_{\rm struct}}{m_{\rm struct}}\,\tau,\\
 x_{n+1} &= x_n + v_{n+1}\,\tau
 \end{align*}
 \]
@@ -96,7 +98,7 @@ Equivalently:
 
 **Operation name:** `continuum_limit`
 
-Constant acceleration is recovered solely from structural counts and preferential selection. No external numerical cost primitive is required.
+Constant acceleration follows from preferential selection under the CI4 functional. CI4 itself is a stipulated postulate, not a consequence of structural counts (see §2).
 
 ---
 
@@ -120,6 +122,8 @@ t_{\rm land} = \frac{v_0 + \sqrt{v_0^2 + 2 g_{\rm eff} h}}{g_{\rm eff}}.
 \]
 
 **Operation name:** `integrate_projectile`
+
+**Gravitational reading and free-fall universality.** If the constant bias is read as gravity, universality of free fall (verified to \(\sim 10^{-15}\)) forces the gravitational bias to scale with structural inertia: \(b_{\rm grav} = m_{\rm struct}\, g\), so that \(g_{\rm eff} = g\) is cluster-independent. A cluster-*independent* constant \(b\) models an applied force, not gravity; the T6 inverse-ratio prediction (docs/08 §3) applies only to that non-gravitational case, where its content coincides with \(a = F/m\). Nothing in the working model yet derives the \(b_{\rm grav} \propto m_{\rm struct}\) coupling; it is a consistency requirement imposed by observation.
 
 ---
 
@@ -185,9 +189,9 @@ Under purely position-dependent bias (no explicit velocity dependence in the cos
 
 `sim/toy_simulator.py` implements:
 
-- `structural_cost` / `velocity_cost`
-- `preferential_select` (analytic `dv*`)
-- `sequential_tick` with rate integration \(v \leftarrow v + \mathrm{dv}^*\cdot\mathrm{dt}\)
+- `structural_cost` / `velocity_cost` (per-tick CI4 form)
+- `preferential_select` (analytic \(\delta v^* = -(b/m)\,\mathrm{dt}\))
+- `sequential_tick` (\(v \leftarrow v + \delta v^*\), then advance \(x\))
 - `position_dependent_bias` via callable potential/force
 - `structural_energy` tracking
 
@@ -197,6 +201,8 @@ Confirmed results:
 |------------|------------|-------------|
 | Constant bias, two share densities | \(a_1/a_2 = m_2/m_1\) | exact match |
 | Harmonic oscillator, 3 periods | bounded oscillation, \(E\) conserved | relative energy drift \(\sim 6\times 10^{-3}\) |
+
+**Scope of confirmation.** These runs verify internal consistency of the discrete calculus and its continuum targets: the integrator realizes the equations it claims to realize. The inverse-ratio experiment is **not** an independent test — the simulator computes \(\delta v^*\) from the same \(m\) the prediction uses, so the match is by construction. Independent content requires an external operationalization of share count (docs/08 §3).
 
 ---
 
@@ -219,7 +225,7 @@ High \(\kappa\) = successful maintenance of low-disruption sequential projection
 **Closed**
 - Constant-bias Newtonian regime (projectile motion).
 - Position-dependent bias → conservative one-dimensional mechanics (harmonic verified).
-- Inverse-acceleration relation under identical bias.
+- Inverse-acceleration relation under identical bias (consistency-checked in sim; independent test open).
 
 **Open extensions (same structural principle)**
 - Multi-cluster mutual disruption (interaction forces).

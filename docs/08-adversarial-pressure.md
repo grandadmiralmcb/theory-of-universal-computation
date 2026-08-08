@@ -13,7 +13,7 @@ Response to the three pressures from the adversarial review.
 Given a term built from `Var`, `Abs`, `App`, `Pair`, `Share`:
 
 \[
-m_{\rm struct}(E) = \alpha\,\lvert\{\text{distinct Share nodes in }E\}\rvert + \varepsilon
+m_{\rm struct}(E) = \alpha_m\,\lvert\{\text{distinct Share nodes in }E\}\rvert + \varepsilon
 \]
 
 with \(\varepsilon>0\) a floor. Share nodes are counted by object identity (true sharing, not syntactic duplication).
@@ -41,7 +41,7 @@ C_{\rm maintain} = \alpha\,(\lvert\text{cross-member shares}\rvert + N_{\rm env}
 Executable realization: `sim/expr_tree.py`.
 
 **Remaining gap**  
-The sequential parameter \(x\) is still attached externally; a full derivation would obtain sequential labels from evaluator strategy over the tree, not only inertia from Share counts. That is the next structural debt.
+The sequential parameter \(x\) is still attached externally; a full derivation would obtain sequential labels from evaluator strategy over the tree, not only inertia from Share counts. Also still external: the bias \(b\) (set by hand in every sim — there is no `b_struct_from_tree`) and the environment in `maintain_cost_from_tree`, which enters as an integer knob (`env_share_count`) rather than as tree structure. Pressure 1 is discharged for inertia only.
 
 ---
 
@@ -92,10 +92,10 @@ What it does not supply:
 Let \(E_A\) and \(E_B\) be two expression clusters that differ only in the number of distinct `Share` nodes (\(n_A\), \(n_B\)). Under identical constant structural bias \(b\), the continuum sequential calculus requires
 
 \[
-\frac{a_A}{a_B} = \frac{m_B}{m_A} = \frac{\alpha n_B + \varepsilon}{\alpha n_A + \varepsilon}.
+\frac{a_A}{a_B} = \frac{m_B}{m_A} = \frac{\alpha_m n_B + \varepsilon}{\alpha_m n_A + \varepsilon}.
 \]
 
-When \(\varepsilon \ll \alpha n_A, \alpha n_B\) (or when the same \(\alpha,\varepsilon\) apply to both),
+When \(\varepsilon \ll \alpha_m n_A, \alpha_m n_B\) (or when the same \(\alpha_m,\varepsilon\) apply to both),
 
 \[
 \frac{a_A}{a_B} \to \frac{n_B}{n_A}.
@@ -104,12 +104,17 @@ When \(\varepsilon \ll \alpha n_A, \alpha n_B\) (or when the same \(\alpha,\vare
 **Why this is not tunable away**
 
 - \(n_A\), \(n_B\) are read from the trees by `count_shares` / `m_struct_from_tree`.
-- \(\alpha\) and \(\varepsilon\) cancel in the leading ratio (or affect both sides equally).
+- \(\alpha_m\) and \(\varepsilon\) cancel in the leading ratio (or affect both sides equally).
 - The prediction fails if, once share counts are fixed by real term structure, measured sequential accelerations under a common bias do not track the inverse share-count ratio.
 
 **Executable check**
 
-`sim/expr_tree.py` builds clusters with prescribed Share counts and reports the required ratio. Coupling those trees to the velocity integrator of `sim/toy_simulator.py` (replacing the integer `share_density` knob with `m_struct_from_tree`) makes the prediction an end-to-end test inside pure theory.
+`sim/expr_tree.py` builds clusters with prescribed Share counts and reports the required ratio. `sim/end_to_end_T6.py` couples those trees to the velocity integrator.
+
+**Caveats (adversarial review, 2026-08-08)**
+
+- The current executable is a **consistency check, not a test**: the integrator computes \(\delta v^*\) from the same \(m\) the prediction uses, so the ratio matches to floating-point error by construction — failure is impossible short of a typo. Independent content begins only with an external operationalization of share count.
+- **Scope**: the prediction applies to cluster-*independent* biases (applied forces). It must not be read gravitationally — free-fall universality forces \(b_{\rm grav} \propto m_{\rm struct}\) (docs/02 §6), under which the ratio prediction evaporates. For cluster-independent \(b\) with \(m\) identified structurally, the content coincides with \(a = F/m\); the added value is the tree-level identification of \(m\), which is exactly the part that needs the independent measurement.
 
 **Empirical counterpart (future)**
 

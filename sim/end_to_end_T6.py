@@ -7,6 +7,11 @@ acceleration ratio under identical constant bias.
 
 No integer share_density knobs. Prediction from T6:
   a_A / a_B = m_B / m_A
+
+Scope: this is a pipeline CONSISTENCY CHECK, not an independent test —
+the integrator computes dv* from the same m the prediction uses, so the
+ratio matches by construction. Independent content requires an external
+operationalization of share count (docs/08 §3).
 """
 
 from __future__ import annotations
@@ -66,8 +71,8 @@ class SeqState:
 def run_constant_bias(m: float, b: float, ticks: int = 200, dt: float = 0.05) -> SeqState:
     st = SeqState(m=m)
     for t in range(ticks):
-        dv_star = -b / st.m
-        st.v += dv_star * dt
+        dv_star = -(b / st.m) * dt   # CI4 per-tick increment
+        st.v += dv_star
         st.x += st.v * dt
         st.history.append({"t": (t + 1) * dt, "x": st.x, "v": st.v})
     return st
@@ -106,7 +111,9 @@ def demo():
     print(f"  Relative error = {abs(obs_ratio - pred_ratio)/pred_ratio:.2e}")
 
     passed = abs(obs_ratio - pred_ratio) / pred_ratio < 1e-6
-    print(f"\n  T6 end-to-end: {'PASS' if passed else 'FAIL'}")
+    print(f"\n  T6 end-to-end consistency: {'PASS' if passed else 'FAIL'}")
+    print("  (Internal consistency only: measured and predicted ratios derive")
+    print("   from the same m; independent test open — docs/08 §3.)")
     print("=" * 64)
     return passed
 

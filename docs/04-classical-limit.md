@@ -19,13 +19,15 @@ Formal derivations name every operation. See also `docs/02-dynamics.md` and `doc
 
 ## Derivation 1 — Constant bias → constant acceleration
 
-1. **`velocity_cost`** — \(C(\delta v)=\tfrac12 m(\delta v)^2+b\,\delta v\)
-2. **`preferential_select`** — \(\delta v^*=-b/m\)
-3. **`sequential_tick`** — integrate rate, advance position
+1. **`velocity_cost`** — per-tick \(C_\tau(\delta v)=m(\delta v)^2/2\tau+b\,\delta v\) (postulate CI4)
+2. **`preferential_select`** — \(\delta v^*=-(b/m)\,\tau\) (a per-tick increment)
+3. **`sequential_tick`** — \(v \leftarrow v+\delta v^*\), advance position
 4. **`continuum_limit`** — \(\ddot x=-b/m=-g_{\rm eff}\)
 5. **`integrate_projectile`** — parabolic trajectories
 
-**Executable check:** inverse-acceleration ratio exact in toy simulator.
+**Executable check:** inverse-acceleration ratio exact in toy simulator (internal consistency only — docs/02 §10, docs/08 §3).
+
+**Gravitational reading:** free-fall universality requires \(b_{\rm grav}=m_{\rm struct}\,g\) (docs/02 §6); a cluster-independent \(b\) models an applied force, not gravity.
 
 ---
 

@@ -113,6 +113,10 @@ def m_struct_from_tree(term: Term, alpha: float = 1.0, floor: float = 0.05) -> f
     Structural inertia = alpha * (number of distinct Share nodes)
     + small floor so m > 0 even for share-free terms.
 
+    Note: `alpha` here is WM3's inertia coefficient (written α_m in the
+    docs), distinct from the WM2 cost-counter weight α; the defaults
+    coinciding at 1.0 is incidental.
+
     Rationale: changing the sequential trajectory of a cluster requires
     disturbing each independent shared sub-expression that participates
     in the cluster's identity under sequential probing.
@@ -156,13 +160,16 @@ def maintain_cost_from_tree(
     env_share_count: int = 0,
     alpha: float = 1.0,
     beta: float = 0.5,
-    gamma: float = 0.0,
 ) -> float:
     """
     Operation: maintain_cost_from_tree
 
     Ongoing cost of keeping all cross-member share links + optional
     environmental shares intact.
+
+    `env_share_count` is an integer proxy knob, not tree-derived (see
+    docs/08 §1 remaining gap). Charging the environment to the maintain
+    ledger only is postulate WM4 (docs/00 §3); it is what drives T11.
     """
     # all distinct shares that appear in more than one member
     id_to_count: Dict[int, int] = {}
@@ -180,7 +187,7 @@ def maintain_cost_from_tree(
     cross = [id_to_share[i] for i, c in id_to_count.items() if c >= 2]
     S = len(cross) + env_share_count
     B = sum(open_bindings(s.content) for s in cross)
-    return alpha * S + beta * B + gamma * 0.0
+    return alpha * S + beta * B
 
 # ---------------------------------------------------------------------------
 # Demo: inertia ratio from real trees (parameter-free prediction)
