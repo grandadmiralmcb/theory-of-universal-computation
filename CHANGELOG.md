@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026-08-08] (AD1–AD3 grounded to their floor)
+
+- `docs/20-grounding-AD-axioms.md`: the order axioms beneath the classical chain are taken as deep as derivation permits.
+  - **AD2 derived**: decomposed into M1/M2 (analytic to O3's "disruption = change"), PC (position covariance from O2 + structural individuation SI), and IND (independence of disjoint context, from O2's local selection + selection coherence SC) — with a counterexample showing the translation-invariance clause genuinely needed IND (rank \(x+y+xy\) is monotone but not additive).
+  - **AD1 and AD3 proven independent of O1–O4** by countermodels (componentwise order on \(\mathbb{N}^k\); lexicographic order on \(\mathbb{N}^2\)) and sharpened to **CP** (universal comparability) and **CC** (common currency — tying down docs/01's own phrase).
+  - **RM2 (dichotomy)**: under CP + grounded AD2, disruption is either Archimedean (Hölder ⇒ \(\mathbb{R}\), WM2's form) or stratified (Hahn ⇒ lexicographic product; priority-ranked cost) — there is no third shape; ¬CC is a coherent theory variant, recorded as contention 8.
+  - **Q2 (separation)**: the entire qualitative theory needs neither CP nor CC; they are needed exactly for the cardinal representation and the quantitative classical chain. The classical sector's stipulation content is now **two bits**.
+- Charter postulate table updated (AD row → CP/CC with grounding status); RM1 hypotheses restated; roadmap priority 5 discharged to its floor; contention 8 added.
+
 ## [2026-08-08] (tightening pass: fewer postulates, deeper roots)
 
 - `docs/19-tightening-derivations.md`: seven results shrinking the postulate base and pushing stipulations down to more primitive axioms.
