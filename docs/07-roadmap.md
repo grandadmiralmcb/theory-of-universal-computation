@@ -8,15 +8,17 @@
 | T3–T8 | Classical sequential calculus, Newton, ratio, projectile, potential | Proved [WM3, CI1–CI4] |
 | T9–T11 | Isolation/maintain, decoherence, classical limit of coherence | Proved [WM1, WM2; T11 also WM4] |
 | T12 | Free epoch share-preserving | Proved [WM] |
-| T13 | Diagonal-unitary free epoch under all-states N★ | Contended (see contention 1) |
-| T14 | Non-unitary locus = structural projection | Relative to T13 as restated |
+| T13 | Diagonal-unitary free epoch | Proved [R★, N★, norm gauge] (docs/17) |
+| T15 | Event trichotomy: free map / reconfiguration / projection | Proved [WM1, A4, O4, F5] |
+| T16a/b | Reconfiguration maps injective; isometric | Proved [A4, R-principle] / [+ D20, O4] |
+| T14′ | Non-isometric change ⇔ structural projection | Proved [T13, T15, T16b, T10] |
 | SM-B1 | Label conservation by typing | Proved [WM1, SB1, SB1-typing] |
 | SM-B2 | Discrete WM spectrum per label class | Proved [WM1–3, SB1, SB3] (counter artifact; continuum open) |
 | SM-B3 | Causal partial order of reduction events | Proved [WM1, F1] |
 
 ## Current Contentions
 
-1. **N★ vs interference** — the D19+A3 argument forbids *all* modulus-changing free-epoch maps, including non-diagonal unitaries; beam-splitter-like recombination therefore has no category (neither free-epoch map nor projection), and the two readout rules (\(|\sum a_i|^2\) interference vs \(|a_i|^2\) Born) are unreconciled. Fork: (a) free epochs are phases-only and modulus-changing events get their own cost story, or (b) N★ is weakened and T13 redone. See docs/12 scope note, docs/03 §3.
+1. **N★ vs interference — RESOLVED by derivation (`docs/17-forced-resolution-contention-1.md`).** The fork dissolved: the event trichotomy (T15) is a theorem of case exhaustion; N★ never applied across reconfigurations (D19's \(M_w\) is typed on a fixed decomposition — its own stated hypothesis); reconfiguration maps are injective (T16a, forced) and isometric (T16b, forced given the D20 explication). Horn (b) was barred as unforced revision of an unrefuted commitment; the Toolbox-A license lapsed with the named failure discharged. Survey of the option space preserved in `docs/16-contention-1-review.md`. Residue is construction, not choice: the induced-map functor / splitter rewrite (docs/17 §7).
 2. **Gravitational bias coupling** — free-fall universality forces \(b_{\rm grav} = m_{\rm struct}\,g\) (docs/02 §6); not derived, and it removes the T6 ratio for gravity. T6's scope is cluster-independent (applied-force) bias only.
 3. **R and N** — elevate to theorems or mark permanent semi-forced principles.
 4. **Born rule** — reading vs theorem.
@@ -25,7 +27,7 @@
 
 ## Priority order
 
-1. Resolve contention 1: a cost locus for modulus-changing (beam-splitter) events, or a weakened N★ with T13 redone.
+1. Construct the induced-map functor: a concrete splitter rewrite in `sim/` whose isometry is computed from the rewrite's share bookkeeping, with fringes from Born-at-screen (docs/17 §7, docs/16 criterion C2); plus the spreading lemma (criterion C3).
 2. Independent operationalization of share count, so the T6 ratio becomes a test rather than a consistency check (docs/08 §3).
 3. Formalize R, N in the term language.
 4. Structural proxy for \(\varphi_i\).

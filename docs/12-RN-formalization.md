@@ -52,9 +52,11 @@ C^+ = \alpha S + \beta B + \gamma D + \alpha_w S_w + \delta M_w \qquad (\alpha_w
 
 **D17 (Modulus-changing step).** A step with \(\lVert\boldsymbol{\mu}' - \boldsymbol{\mu}\rVert_1 > 0\).
 
+**D20 (Weight as measure of persisting structure).** \(|a_i|^2\) quantifies the persisting residual structure of class \(i\); D12's Born reading at projection is its selection-time special case. (Explication of D12 × O4 — see `docs/17-forced-resolution-contention-1.md` §4.)
+
 **N★.** Free-epoch maps preserve \(\boldsymbol{\mu}\) because any change charges \(\delta M_w>0\) and is dominated under A3 by the zero-change alternative.
 
-**Scope (adversarial review, 2026-08-08).** The argument proves more than intended: *any* modulus-changing free-epoch map is dominated by the zero-change alternative — including every non-diagonal unitary (a Hadamard maximally changes \(\boldsymbol{\mu}\)). Read across all states, N★ therefore confines free epochs to diagonal phase drift, and T13's "unitary" is the diagonal subgroup; read along the realized trajectory only, invertibility + norm gauge do **not** imply unitarity (many non-unitary invertible maps preserve one vector's moduli and norm). Beam-splitter-like recombination has no category in the present formalism — neither free-epoch map nor projection. This is contention 1 in `docs/07-roadmap.md`.
+**Scope (resolved 2026-08-08 — `docs/17-forced-resolution-contention-1.md`).** The adversarial review initially read this argument as forbidding all modulus-changing maps, leaving beam splitters with no category (former contention 1). The resolution is a *reading of this section's own hypothesis*: the clause above is stated **"with topological Foot fixed,"** and \(M_w, S_w\) are typed on a common class index set — so the comparison N★ invokes is undefined across a decomposition change. By the event trichotomy (T15): free-epoch maps (fixed decomposition) are diagonal phase drift, exactly as N★ says; **reconfigurations** (decomposition changes, nothing dropped) are structural events, weight-blind in cost (WM2), whose induced maps are injective (T16a) and isometric given D20 (T16b); projections drop weight. N★ is true on its stated domain and constrains nothing else.
 
 ---
 

@@ -81,5 +81,5 @@ High \(\kappa\) = sustained low-disruption sequential projection.
 - Continuum Newton: idealization.
 - Velocity-form cost: postulate CI4, not an instance of WM2 (`docs/02-dynamics.md` §2).
 - Amplitudes / Born: hosted; Born is a reading at projection.
-- Unitarity: free epoch under D19 + B_flow + norm gauge — not bare three-counter cost; under the all-states reading of N★ it collapses to diagonal phase drift (contention 1, `docs/07-roadmap.md`).
+- Unitarity: free epochs are diagonal phase drift (T13); reconfiguration events carry the non-diagonal isometries (T15/T16, `docs/17`); non-isometry only at projection (T14′). Not derivable from bare three-counter cost.
 - Consciousness / monism: open / preferred reading.

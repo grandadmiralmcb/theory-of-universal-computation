@@ -11,10 +11,11 @@ Implements:
 
 See docs/12-RN-formalization.md and docs/10-unitarity-from-projection.md.
 
-Note (docs/07 contention 1): enforcing N* across all states confines free
-epochs to diagonal phase drift — a general (non-diagonal) unitary changes
-relative moduli. The general-matrix step below therefore WARNS when a
-proposal changes relative moduli rather than silently permitting it.
+Note (docs/17): N* applies to fixed-decomposition (free-epoch) updates
+only. A modulus-changing map is not a free-epoch update — it corresponds
+to a reconfiguration event (T15), whose induced map must be an isometry
+(T16). The general-matrix step below WARNS when a proposal changes
+relative moduli, so misuse as a free-epoch map stays visible.
 """
 
 from __future__ import annotations
@@ -163,8 +164,9 @@ def free_epoch_unitary_matrix(cs: CoherentLinear, M: List[List[complex]]) -> Non
     mu_before = relative_moduli(a)
     mu_after = relative_moduli(a_new)
     if not moduli_equal(mu_before, mu_after):
-        print("   [N* contention] modulus-changing map in a free epoch — "
-              "forbidden under D19+A3; see docs/07 contention 1")
+        print("   [reconfiguration] modulus-changing map: not a free-epoch "
+              "update — classify as a reconfiguration event (T15/T16); "
+              "see docs/17")
     cs.set_weights(a_new)
     foot_after = cs.foot()
     assert is_share_preserving(foot_before, foot_after), "R violated: Foot changed"
@@ -245,7 +247,7 @@ def demo():
     print(f"   N=5000  arm1={counts['arm1']/5000:.3f}  arm2={counts['arm2']/5000:.3f}  "
           f"(expect ~{abs(cs.paths[0].weight)**2:.3f}, {abs(cs.paths[1].weight)**2:.3f})")
 
-    print("\n5. General unitary (Hadamard) — exercises contention 1")
+    print("\n5. General unitary (Hadamard) — a reconfiguration-event map (docs/17)")
     p1 = PathState("arm1", 1 / math.sqrt(2), 5.0, share_ids={"c", "a"})
     p2 = PathState("arm2", 1 / math.sqrt(2), 5.0, share_ids={"c", "b"})
     cs = CoherentLinear([p1, p2], maintain_cost=1.0)
@@ -254,8 +256,8 @@ def demo():
     free_epoch_unitary_matrix(cs, H)
     print(f"   after H: μ={tuple(round(x, 4) for x in relative_moduli(cs.weights()))}  "
           f"||a||^2={norm2(cs.weights()):.6f}")
-    print("   (a beam splitter is neither a diagonal free-epoch map nor a projection;")
-    print("    its cost locus is open — docs/07 contention 1)")
+    print("   (a beam splitter is a reconfiguration event: weight-blind structural")
+    print("    cost, induced isometry per T16 — docs/17)")
     print("=" * 64)
 
 if __name__ == "__main__":
