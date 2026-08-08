@@ -62,15 +62,15 @@ Each gap gets a verdict from a fixed vocabulary, so no claim can hide in prose:
 
 *Honesty.* Nothing gravitates in the framework yet. The ground configuration has a residual rest cost (SB3), but whether residual cost *sources* anything is a question for an unbuilt gravity sector. The pre-rebuild phrase "opening room for dynamical suppression" was content-free and is **retracted**.
 
-### 3.6 Matter–antimatter asymmetry — **blocked (contention 1)**
+### 3.6 Matter–antimatter asymmetry — **research program** *(unblocked by docs/17)*
 
 *The gap.* Baryogenesis requires C and CP violation (Sakharov).
 
-*Resources.* Charge conjugation \(q \to -q\) is native (SB1), and SB2's \(\Gamma\) makes the cost C-symmetric — so the framework states cleanly *what would have to break*: either drop conjugation from \(\Gamma\) (a conjugation-asymmetric cost term — a new postulate), or violate the CP-analogue in the complex-weight dynamics. The weight dynamics is exactly the contended territory (which free-epoch maps exist at all), so nothing can be claimed until contention 1 resolves.
+*Resources.* Charge conjugation \(q \to -q\) is native (SB1), and SB2's \(\Gamma\) makes the cost C-symmetric — so the framework states cleanly *what would have to break*: either drop conjugation from \(\Gamma\) (a conjugation-asymmetric cost term — a new postulate), or violate the CP-analogue in the weight layer. With contention 1 resolved (docs/17), the second option has a definite locus: the **induced isometries of reconfiguration events**. A CP-asymmetry is a conjugation-asymmetric rewrite whose induced map is not conjugation-covariant — a concrete structural object to look for, though none is exhibited.
 
-### 3.7 Origin of gauge group and particle content — **research program, partially blocked (contention 1)**
+### 3.7 Origin of gauge group and particle content — **research program** *(unblocked by docs/17)*
 
-*Resources.* SB2 explains the *existence* of gauge redundancy — labels are description, invariants are physics — at the price of a postulate, and honestly locates where the *shape* of the group enters: the choice of the invariance subgroup \(\Gamma\) is data. Discrete symmetries live in WM. The only candidate home for continuous groups is the \(U(n)\)-stabilizer construction on the A4 weight layer (docs/15 §2), blocked behind contention 1.
+*Resources.* SB2 explains the *existence* of gauge redundancy — labels are description, invariants are physics — at the price of a postulate, and honestly locates where the *shape* of the group enters: the choice of the invariance subgroup \(\Gamma\) is data. Discrete symmetries live in WM. Continuous groups now have a definite home: the **isometries induced by reconfiguration events** (T15/T16, docs/17) — candidate gauge groups are stabilizers of the cost structure among induced maps, making gauge structure a property of *interactions*, as in physics.
 
 *Honesty.* The specific group \(SU(3)\times SU(2)\times U(1)\) and its representation content: **no purchase**.
 
@@ -84,7 +84,7 @@ Listed to keep the ledger complete (charter §5). No framework resource currentl
 
 ## 4. The success of Hilbert-space mathematics (relocated, restated)
 
-Hilbert space is read as the effective description of the hosted linear layer (A4) in coherent regimes: superposition and interference are *hosted*; Born statistics enter as the D12 reading, not as consequences; entanglement corresponds to shared substructure. What the relocation buys is §3.1 — measurement gets a structural criterion. What it costs is visible in §§3.6–3.7: everything that needs nontrivial weight *dynamics* waits on contention 1.
+Hilbert space is read as the effective description of the hosted linear layer (A4) in coherent regimes: superposition and interference are *hosted*; Born statistics enter as the D12 reading, not as consequences; entanglement corresponds to shared substructure. What the relocation buys is §3.1 — measurement gets a structural criterion — and, since docs/17, a clean event taxonomy: diagonal drift in free epochs, isometries at reconfigurations, non-isometry only at projection (T14′). The outstanding cost is constructive: exhibiting concrete rewrites whose induced maps realize the interactions of §§3.6–3.7.
 
 ## 5. Scorecard
 
@@ -95,8 +95,8 @@ Hilbert space is read as the effective description of the hosted linear layer (A
 | Hierarchy / naturalness | No purchase (claim retracted) |
 | Dark matter | Reformulation, native mechanism |
 | Vacuum energy | No purchase (claim retracted) |
-| Matter–antimatter asymmetry | Blocked (contention 1) |
-| Gauge group / particle content | Research program, partially blocked (contention 1) |
+| Matter–antimatter asymmetry | Research program (locus: reconfiguration isometries — docs/17) |
+| Gauge group / particle content | Research program (locus: reconfiguration isometries — docs/17) |
 | Three generations, masses, mixings | No purchase; probe defined |
 | Neutrino masses; strong CP | No purchase |
 

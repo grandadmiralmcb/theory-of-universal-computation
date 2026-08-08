@@ -43,10 +43,13 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 ## Hosted quantum (add A4, D19, B_flow; Born = D12)
 
 **T12+** [T12, A4, D19, O3] Support frozen in free epoch.  
-**N★** [T12, A4, D19, O3] Relative moduli frozen. **Scope warning:** the same argument forbids *all* modulus-changing free-epoch maps, including non-diagonal unitaries — see docs/07 contention 1.  
+**N★** [T12, A4, D19, O3] Relative moduli frozen — on D19's stated domain (Foot fixed); across reconfigurations (T15) the \(M_w\) comparison is undefined, so N★ constrains nothing there (docs/17 §3).  
 **R★** [T12+, B_flow] Invertible free-epoch weight maps.  
-**T13** [R★, N★ (all-states), norm gauge] Free-epoch maps are **diagonal** unitary on the active subspace (phase drift). Under the trajectory-only reading of N★, unitarity does not follow at all. General (non-diagonal) unitarity is contended — docs/07 contention 1, docs/12 scope note.  
-**T14** [T13, T10] Sole non-unitary locus = structural projection (relative to T13 as restated).  
+**T13** [R★, N★, norm gauge] Free-epoch maps are **diagonal** unitary on the active subspace (phase drift). No longer contended: general (non-diagonal) unitaries live at reconfiguration events (T16), matching QM's own architecture (free evolution diagonal in the co-rotating eigenbasis; mixing at interactions).  
+**T15** [WM1, A4, O4, F5] Event trichotomy: free-epoch map | reconfiguration (decomposition changes, nothing dropped) | structural projection; mixed events factor. (docs/17 §2)  
+**T16a** [A4, R-principle, T15] Reconfiguration maps are injective linear, determined by the rewrite.  
+**T16b** [A4, T15, T16a, D20, O4] Reconfiguration maps are isometries; unitary at constant class count. (D20 is an explication, flagged in docs/17 §4.)  
+**T14′** [T13, T15, T16b, T10] Non-isometric weight change ⇔ structural projection. (Supersedes T14's earlier caveated form.)  
 **D12** Born reading — **not a theorem**.
 
 ---

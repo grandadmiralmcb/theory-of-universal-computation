@@ -50,7 +50,7 @@ Unlabeled structure is unrestricted. Deletion of a share with \(q \neq 0\) is in
 **What SB2 buys and what it does not:**
 - It gives gauge redundancy a natural home: "why is there gauge symmetry?" reframes as "why is dynamics label-blind?" — which SB2 answers *by postulate*, no better.
 - Conjugation \(q \to -q\) in \(\Gamma\) makes cost C-symmetric; a matter–antimatter asymmetry would require breaking exactly this (docs/05 §3.6).
-- In WM, available symmetry groups are **discrete**. Continuous gauge groups have exactly one candidate home: the A4 weight layer — the stabilizer of the extended cost structure inside \(U(n)\) acting on share-linked residuals. That construction is **blocked behind contention 1** (which free-epoch maps exist at all is the contended question). \(SU(3)\times SU(2)\times U(1)\) is *not derived*; at best the framework locates where it would have to live.
+- In WM, available symmetry groups are **discrete**. Continuous gauge groups have exactly one candidate home: the A4 weight layer — and since the resolution of contention 1 (docs/17), a definite locus within it: the **isometries induced by reconfiguration events** (T15/T16), with candidate gauge groups as stabilizers of the cost structure among induced maps. \(SU(3)\times SU(2)\times U(1)\) remains *not derived*; the framework locates where it must live.
 - **Local** gauge transformations (per-region relabeling) require a locality notion on the structure (SB4 adjacency) plus a compatibility condition along shares — the connection analogue. Formulating it is open.
 
 ---
@@ -101,7 +101,7 @@ The bridge, as it stands, has **no resources** for: the specific group \(SU(3)\t
 SB1 (labels) ──> SM-B1 conservation (with SB1-typing)     [proved, WM]
 SB1+SB3      ──> SM-B2 discrete WM spectrum               [proved, flagged artifact]
 SB2 (Γ-invariance) ──> gauge redundancy; C-symmetry       [postulate]
-SB2 + A4     ──> continuous gauge candidate (U(n) stabilizer)  [BLOCKED: contention 1]
+SB2 + A4     ──> continuous gauge candidate (U(n) stabilizer)  [locus: reconfiguration isometries, docs/17]
 SB4 + F1     ──> SM-B3 causal order                       [proved, WM]
 SB4 + metric(?) ──> spacetime, Lorentz, gravity           [open; contention 2 adjacent]
 ```

@@ -1,5 +1,11 @@
 # Changelog
 
+## [2026-08-08] (contention 1 resolved by derivation)
+
+- `docs/17-forced-resolution-contention-1.md`: the fork is resolved by entailment from prior commitments, not by preference. Decomposition co-motion is definitional (O1, O4, WM1); the **event trichotomy T15** (free-epoch map / reconfiguration / projection) is a theorem of case exhaustion; N★ never applied across reconfigurations because D19's \(M_w\) is typed on a fixed decomposition — its own stated hypothesis; reconfiguration maps are injective (**T16a**, forced) and isometric (**T16b**, forced given the **D20** explication — the one added sentence, flagged); **T14′**: non-isometry ⇔ projection. Horn (b) barred as unforced revision of an unrefuted commitment; Toolbox-A license lapsed with its named trigger discharged. Readout rules reconciled (interference sum = matrix element of the screen isometry, then Born).
+- Applied across docs/01, 03, 05, 07, 11, 12, 13, 15, 16 and `sim/linear_reduce.py`: T13 no longer contended; contention 1 marked resolved; baryogenesis and continuous-gauge verdicts in docs/05 upgraded from "blocked" to "research program" with the concrete locus (reconfiguration isometries).
+- Residue is construction, not choice: the induced-map functor / concrete splitter rewrite in `sim/` (docs/17 §7).
+
 ## [2026-08-08] (contention 1 fork review)
 
 - `docs/16-contention-1-review.md`: full analysis of the N★/interference fork. Key reframing: QM itself is phases-only in the co-rotating eigenbasis, so the contention is about **basis rigidity**, not phase-onlyness. Horn taxonomy extended beyond the recorded (a)/(b) with (c1) co-moving decomposition (folds into (a)), (c2) Toolbox-A path integral (now formally licensed by the Toolbox usage rule, since contention 1 is its named trigger), and (c3) instrumentalist retreat (rejected — fails the two-slit test). Partial formal results stated: induced-map isometry target (L0) and swap-symmetry one-parameter family (L1, with the balanced-splitter \(\theta\)-pinning residue). Wave-packet spreading objection assessed as likely dissolving under (a) (one class, no position-weights, absent environmental shares). Recommendation: pursue (a), fallback (c2), (b) dominated; decision criteria C1–C4 recorded. Analysis only — no theory content changed.
