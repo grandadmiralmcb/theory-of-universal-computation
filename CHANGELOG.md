@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026-08-08] (forced-violation states developed)
+
+- `docs/22-forced-violation.md` + `sim/forced_violation.py`: the question inherited from contention 8's closure — are forced-violation states physically realized? — pulled to its structure.
+  - **Reframing (FV1):** FV realization is a **progress-theorem question** about the conserving (V=0) fragment — the exact question type theory asks of a calculus. Progress + preservation ⇒ absolute conservation on-domain; violations realized ⇔ progress fails. FV states are the "stuck terms" of the conserving calculus, and ST1 gives them dynamics instead of undefinedness.
+  - **FV2:** the general question is undecidable (halting reduction); per-rule-set analysis required. The toy shows both outcomes are structurally cheap: open configurations provably have progress (200-tick runs, zero violations); packing + capacity clamps break it with a 3-cell example.
+  - **Derived phenomenology:** minimal-step selection rule (forced violations take the smallest available charge step), locality of the violation event, and out-of-equilibrium **by construction** (an FV state is jammed conserving flow).
+  - **FV3 + Sakharov counterparts:** all three baryogenesis conditions map structurally — number violation ← FV events; C/CP ← conjugation-asymmetric **floor** tie-breaking at V-ties (top-stratum law stays exactly symmetric; demo: +0.5 floor bias converts −32/2000 noise into −2000/2000 deterministic drift); out-of-equilibrium ← FV definition. Mechanism shape only; no rates.
+  - docs/05 §3.6 verdict refined; successor open target recorded: progress analysis of the actual WM conserving fragment (docs/22 §6).
+
 ## [2026-08-08] (CC′ + ST1 adopted; contention 8 closed)
 
 - **Owner decision:** CC′ (exact strata above one Archimedean dynamical floor) and ST1 (conservation typing as a lexically dominant violation charge) are adopted as charter postulates; CC is superseded; contention 8 is closed.

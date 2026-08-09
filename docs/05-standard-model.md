@@ -66,7 +66,9 @@ Each gap gets a verdict from a fixed vocabulary, so no claim can hide in prose:
 
 *The gap.* Baryogenesis requires C and CP violation (Sakharov).
 
-*Resources.* Charge conjugation \(q \to -q\) is native (SB1), and SB2's \(\Gamma\) makes the cost C-symmetric — so the framework states cleanly *what would have to break*: either drop conjugation from \(\Gamma\) (a conjugation-asymmetric cost term — a new postulate), or violate the CP-analogue in the weight layer. With contention 1 resolved (docs/17), the second option has a definite locus: the **induced isometries of reconfiguration events**. A CP-asymmetry is a conjugation-asymmetric rewrite whose induced map is not conjugation-covariant — a concrete structural object to look for, though none is exhibited.
+*Resources.* Charge conjugation \(q \to -q\) is native (SB1), and SB2's \(\Gamma\) makes the top-stratum law C-symmetric. With forced-violation states developed (docs/22), **all three Sakharov conditions have structural counterparts**: number violation ← FV events (progress failure of the conserving fragment); C/CP asymmetry ← conjugation-asymmetric *floor* tie-breaking at V-ties (the exact law stays exact — the bias lives in the Archimedean floor, where finite asymmetries are cheap); out-of-equilibrium ← FV states are jammed conserving flow by definition. Toy-demonstrated in `sim/forced_violation.py` (finite floor bias converts noise-level drift into deterministic drift). The weight-layer route via conjugation-asymmetric reconfiguration isometries (docs/17) remains a parallel locus.
+
+*Verdict refinement:* mechanism **shape** with all three counterparts identified and toy-demonstrated; no rates or abundances; contingent on the real WM rule-set actually realizing FV states (docs/22 §6 — open).
 
 ### 3.7 Origin of gauge group and particle content — **research program** *(unblocked by docs/17)*
 
