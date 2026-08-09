@@ -1,5 +1,15 @@
 # Changelog
 
+## [2026-08-08] (CC′ + ST1 adopted; contention 8 closed)
+
+- **Owner decision:** CC′ (exact strata above one Archimedean dynamical floor) and ST1 (conservation typing as a lexically dominant violation charge) are adopted as charter postulates; CC is superseded; contention 8 is closed.
+- Consequences applied:
+  - **SM-B1 → SM-B1′** (docs/15, docs/11): conservation is *stratification-derived* and **conditional** — exact wherever a conserving continuation exists (which includes the entire working-model domain exhibited to date); in forced-violation states, selection degrades to minimal violation (TS4). Honesty note updated: better mechanism than typing fiat, still not Noether.
+  - **RM1** reads CC′'s floor clause; the Hölder representation is a statement about the dynamical floor.
+  - TS1–TS4 reclassified from variant results to theorems of the theory's architecture.
+  - New open question inherited by the theory proper (docs/07 contention 8 closure note): are forced-violation states physically realized? The minimal-violation decay shape is the discriminating prediction.
+  - `sim/spectrum_toy.py` docstring reframed (V=0 stratum, not typing fiat); README read-order extended with the docs/17–21 resolution chain.
+
 ## [2026-08-08] (stratified variant developed; contention 8 at a decision point)
 
 - `docs/21-stratified-variant.md` + `sim/stratified_cost.py`: the ¬CC branch of RM2 built out.

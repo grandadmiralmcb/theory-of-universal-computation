@@ -52,18 +52,18 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 **T14′** [T13′, T15, T16′, T10] Non-isometric weight change ⇔ structural projection. (Supersedes T14's earlier caveated form.)  
 **T17** [T13′, T16′, Q1, WM2] Cost-decoupling: no admissible dynamics biases Born statistics toward structurally cheap outcomes — both weight-map types are functions of structure alone. Discharges docs/16 criterion C4; see contention 7 for its architectural bearing. (docs/19 §7)  
 **L6** [A4, T15, CI1] Spreading lemma: an interaction-free cluster is a single class with a single weight — no internal position-weights exist to spread. Discharges docs/16 criterion C3. (docs/19 §6)  
-**RM1** [M1/M2, PC, IND, CP, CC, WM1] Hölder representation: disruption order embeds in \((\mathbb{R}_{\ge0},+)\) uniquely up to scale; with counter generation, \(C=\alpha S+\beta B+\gamma D\). WM2's form is derived, not stipulated. (Hypotheses restated per docs/20: AD2 grounded; AD1→CP, AD3→CC.)  
+**RM1** [M1/M2, PC, IND, CP, CC′ (floor clause), WM1] Hölder representation of the **dynamical floor**: the floor's disruption order embeds in \((\mathbb{R}_{\ge0},+)\) uniquely up to scale; with counter generation, \(C=\alpha S+\beta B+\gamma D\). WM2's form is derived, not stipulated. (Hypotheses restated per docs/20; currency clause reads CC′'s Archimedean floor since adoption.)  
 **RM2** [CP, AD2-grounded] Dichotomy: the disruption order is Archimedean (⇒ \(\mathbb{R}\), Hölder, WM2 form) or stratified (⇒ Hahn lexicographic product; priority-ranked cost). CC selects the first branch; ¬CC is coherent. (docs/20 §5)  
 **Q2** [O1–O4, M1/M2, PC, IND] Separation: the entire qualitative theory (F-layer with F2′, T2, T9–T12, T15, T13′/T16′/T14′/T17 given the weight postulates) needs neither CP nor CC; those two bits are needed exactly for RM1 and the quantitative classical chain T3–T8. (docs/20 §6)  
 **F2′** [O3, well-foundedness] Minimal-disruption residuals exist under a well-founded (partial) preorder — F2's finiteness and totality hypotheses both weakened. (docs/19 §4)  
-**TS1–TS4** [lex-argmin analysis; TS4 also ST1] Stratified-variant results: CI4 ingredients must be co-stratal or classical dynamics degenerates (TS1); identity-flag-on-top freezes decoherence, losing T11 — observed classicality forces a one-currency dynamical floor (TS2); stratification is observable only as exact rules (TS3); SB1-typing is recoverable as a top-stratum charge with graceful forced-violation behavior (TS4). Synthesis candidate CC′ recorded, adoption open. (docs/21)  
+**TS1–TS4** [lex-argmin analysis; TS4 also ST1] Stratified-architecture results: CI4 ingredients must be co-stratal or classical dynamics degenerates (TS1); identity-flag-on-top freezes decoherence, losing T11 — observed classicality forces a one-currency dynamical floor (TS2); stratification is observable only as exact rules (TS3); conservation typing is the derived V=0 behavior of a top-stratum charge (TS4). **CC′ and ST1 adopted 2026-08-08 (owner decision)** — these are now theorems *of the theory's architecture*, not of a variant. (docs/21)  
 **D12** Born reading — **not a theorem**.
 
 ---
 
 ## Structural bridge (add SB1–SB4; docs/15)
 
-**SM-B1** [WM1, SB1, SB1-typing] Label sums are invariant under every admissible reduction. Conservation by *typing*, not Noether; a derivation from SB2 invariance is open.  
+**SM-B1′** [WM1, SB1, ST1, CC′] Label sums are invariant along every selected reduction through states admitting a conserving continuation; in forced-violation states selection degrades to minimal violation (TS4). Conservation by *stratification* (ST1 adopted — charter §3), not typing fiat and still not Noether; the symmetry route from SB2 remains open. Supersedes SM-B1.  
 **SM-B2** [WM1–WM3, SB1, SB3] The WM rest-cost spectrum per label class is discrete. (Artifact of integer counters; continuum-limit discreteness is open and is the physical question.)  
 **SM-B3** [WM1, F1] Reduction-event dependence is a strict partial order (causal-set structure); each F1 chain is a total suborder. Metric, dimension, Lorentz: open.
 

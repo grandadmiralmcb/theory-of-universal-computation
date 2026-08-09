@@ -67,4 +67,6 @@ Under CC′: RM1/WM2 remain correct as statements about the floor; SM-B1 remains
 | CC′ | **Synthesis proposal**, not a theorem: the "exact strata above, one floor below" architecture is consistent with everything proved and demanded by nothing beyond TS1/TS2's viability constraints plus ST1's elegance |
 | Forced-violation phenomenology (§5) | Speculative hook, flagged; no quantitative content |
 
-**Adjudication state for contention 8:** developed to a decision point. Adopting CC′ + ST1 closes the contention (both RM2 branches realized in role-separated form) at the price of one identification postulate; retaining brute typing + bare CC keeps the old architecture with typing as unexplained fiat. The corpus records CC′ as the candidate and leaves adoption to the owner.
+**Adjudication state for contention 8:** developed to a decision point. Adopting CC′ + ST1 closes the contention (both RM2 branches realized in role-separated form) at the price of one identification postulate; retaining brute typing + bare CC keeps the old architecture with typing as unexplained fiat.
+
+**ADOPTED (2026-08-08, owner decision).** CC′ and ST1 are now charter postulates (docs/00 §3); contention 8 is closed. Consequences applied: SB1-typing is reclassified as the derived V=0 behavior of ST1 (docs/15); SM-B1's conservation is restated as conditional on non-forced states (docs/11); RM1's currency clause reads the floor of CC′. The forced-violation prediction-shape of §5 moves from speculation-about-a-variant to an open question *of the theory*.

@@ -7,10 +7,16 @@ Executable demonstrations for docs/15-sm-bridge.md (SB1, SB1-typing, SB3;
 theorems SM-B1, SM-B2). Mechanism only — no Standard-Model value is
 predicted or fitted.
 
-  1. SM-B1 property test: total charge is invariant under long random
-     sequences of admissible moves (merge / split / pair-create /
-     pair-annihilate), and a deliberately inadmissible move (deleting a
-     charged share) breaks it — the typing is doing the work.
+  1. SM-B1' property test: total charge is invariant under long random
+     sequences of conserving moves (merge / split / pair-create /
+     pair-annihilate), and a deliberately violating move (deleting a
+     charged share) breaks it. Since the adoption of ST1 + CC'
+     (charter, docs/21 §5), "admissible" means V=0 (zero top-stratum
+     violation charge), not typing fiat: this move set is the derived
+     V=0 stratum, and every configuration here admits a conserving
+     continuation, so conditional conservation (SM-B1') coincides with
+     absolute conservation on this domain. The stratified selection
+     mechanism itself is exercised in sim/stratified_cost.py §4.
   2. Two-phase toy spectrum: minimal excitation of charge Q is
      Q unit shares when lambda > alpha_m/2 (exact linear m(Q)); for
      lambda < alpha_m/2 the optimum clumps into shares of characteristic
