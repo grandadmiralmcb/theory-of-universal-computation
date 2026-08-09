@@ -57,6 +57,9 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 **Q2** [O1–O4, M1/M2, PC, IND] Separation: the entire qualitative theory (F-layer with F2′, T2, T9–T12, T15, T13′/T16′/T14′/T17 given the weight postulates) needs neither CP nor CC; those two bits are needed exactly for RM1 and the quantitative classical chain T3–T8. (docs/20 §6)  
 **F2′** [O3, well-foundedness] Minimal-disruption residuals exist under a well-founded (partial) preorder — F2's finiteness and totality hypotheses both weakened. (docs/19 §4)  
 **TS1–TS4** [lex-argmin analysis; TS4 also ST1] Stratified-architecture results: CI4 ingredients must be co-stratal or classical dynamics degenerates (TS1); identity-flag-on-top freezes decoherence, losing T11 — observed classicality forces a one-currency dynamical floor (TS2); stratification is observable only as exact rules (TS3); conservation typing is the derived V=0 behavior of a top-stratum charge (TS4). **CC′ and ST1 adopted 2026-08-08 (owner decision)** — these are now theorems *of the theory's architecture*, not of a variant. (docs/21)  
+**FV1** [ST1, CC′] Forced violations are realized from an initial class **iff** the conserving fragment fails progress there; under progress + preservation, SM-B1′ reduces to absolute conservation on-domain. (docs/22 §2)  
+**FV2** [WM1 universality] Reachable V=0-stuckness is undecidable in general; FV-realization must be settled per rule-set. (docs/22 §3)  
+**FV3** [ST1, CC′] At V-ties between conjugate violation channels the Archimedean floor decides; any finite conjugation-asymmetric floor bias yields systematic charge drift over FV ensembles, with the top-stratum law exactly symmetric. (docs/22 §5)  
 **D12** Born reading — **not a theorem**.
 
 ---
@@ -82,4 +85,5 @@ T9–T12 pattern: `sim/expr_tree.py`
 HQ free epoch / projection: `sim/linear_reduce.py` — unrunnable (SyntaxError) until 2026-08-08; "executable" claims for this file predating that date preceded any successful run  
 SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-phase toy spectrum; dark-sector stability)  
 L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)  
-TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)
+TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)  
+FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)
