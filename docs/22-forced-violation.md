@@ -56,6 +56,8 @@ Baryogenesis requires (i) violation of the conserved number, (ii) C and CP viola
 
 **Progress analysis of the actual WM conserving fragment**: does the reduced primitive set (`app`, `abs`, `pair`/`proj`, `eq`, `reduce`, `share` with SB1 labels under ST1) admit reachable V=0-stuck states from well-formed initial configurations? The toy shows the answer is decided by structural features (packing, capacity, clamp-like obligations) that the real rule-set may or may not possess. A progress proof would make conservation absolute on-domain (FV1); a reachable counterexample would make forced violation a *prediction* of the working model.
 
+**ANSWERED (docs/23-progress-analysis.md).** Progress **fails** for the unrestricted calculus — an explicit two-step term reaches an FV state from a purely conserving start (PA2) — and **holds** on the charge-relevant (λI-relativized) class (PA1, sketch level). Duplication is charge-safe by reference-sharing (PA0), so discards are the only violation channel; realization therefore relocates to the **initial class** (PA3): a boundary-condition question, with the SB3 ground configuration's charge-relevance as the successor probe.
+
 ## 7. Ledger
 
 | Item | Status |

@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026-08-08] (progress analysis performed — the FV question answered)
+
+- `docs/23-progress-analysis.md` + `sim/progress_analysis.py`: the successor target of docs/22 §6 executed against a mini sharing calculus faithful to the WM primitives (app/abs/pair/proj over labeled shares, substitution by reference).
+  - **PA0**: duplication is charge-safe — sharing is by reference, so contraction copies references, never shares. The `share` primitive is exactly what makes contraction conserving; **discards are the only violation channel** (K-redex arguments, unprojected pair components), and dropping a non-last reference is V=0.
+  - **PA2 (fully rigorous)**: FV states are **reachable** in the unrestricted calculus — \((\lambda f. f S)(\lambda x. c)\) has only a conserving redex, and one β-step later the only redex discards the charged share. Progress fails, non-trivially.
+  - **PA1 (sketch)**: progress + preservation hold on the charge-relevant class (Church's λI discipline relativized to charge — vacuous binding forbidden for charged flows only); conservation absolute there; conservative static checker + dynamic audit demonstrate the pattern, with checker incompleteness shown honestly.
+  - **PA3 (relocation)**: forced-violation realization is a property of the **initial class**, not the dynamics — baryon-number violation becomes a boundary-condition question. Explains retroactively why every prior sim conserved absolutely (their move sets are charge-relevant by construction). Successor probe: is the SB3 ground configuration charge-relevant?
+- docs/22 §6 marked answered; docs/05 §3.6 verdict updated; docs/07, docs/11 (PA0–PA3 + executable), sim/README wired.
+
 ## [2026-08-08] (forced-violation states developed)
 
 - `docs/22-forced-violation.md` + `sim/forced_violation.py`: the question inherited from contention 8's closure — are forced-violation states physically realized? — pulled to its structure.

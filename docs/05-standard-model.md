@@ -68,7 +68,7 @@ Each gap gets a verdict from a fixed vocabulary, so no claim can hide in prose:
 
 *Resources.* Charge conjugation \(q \to -q\) is native (SB1), and SB2's \(\Gamma\) makes the top-stratum law C-symmetric. With forced-violation states developed (docs/22), **all three Sakharov conditions have structural counterparts**: number violation ← FV events (progress failure of the conserving fragment); C/CP asymmetry ← conjugation-asymmetric *floor* tie-breaking at V-ties (the exact law stays exact — the bias lives in the Archimedean floor, where finite asymmetries are cheap); out-of-equilibrium ← FV states are jammed conserving flow by definition. Toy-demonstrated in `sim/forced_violation.py` (finite floor bias converts noise-level drift into deterministic drift). The weight-layer route via conjugation-asymmetric reconfiguration isometries (docs/17) remains a parallel locus.
 
-*Verdict refinement:* mechanism **shape** with all three counterparts identified and toy-demonstrated; no rates or abundances; contingent on the real WM rule-set actually realizing FV states (docs/22 §6 — open).
+*Verdict refinement:* mechanism **shape** with all three counterparts identified and toy-demonstrated; no rates or abundances. The realization question has been analyzed (docs/23): FV states are reachable in the raw calculus (PA2) and excluded exactly on the charge-relevant class (PA1) — so **whether baryogenesis-by-forced-violation occurs is a boundary-condition question** (is physical initial structure charge-relevant?), with the ground configuration's structure as the deciding probe.
 
 ### 3.7 Origin of gauge group and particle content — **research program** *(unblocked by docs/17)*
 
