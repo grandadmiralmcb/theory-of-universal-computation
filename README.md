@@ -10,6 +10,7 @@
 4. [docs/13-derive-RN-from-cost.md](docs/13-derive-RN-from-cost.md) — fixed negative result on bare cost → R/N
 5. [docs/15-sm-bridge.md](docs/15-sm-bridge.md) — SB postulates: labels, structural gauge, particles/vacuum, causal order
 6. [docs/05-standard-model.md](docs/05-standard-model.md) — gap-by-gap Standard-Model reexamination with fixed verdicts
+7. [docs/17](docs/17-forced-resolution-contention-1.md)–[21](docs/21-stratified-variant.md) — resolution chain: event trichotomy and reconfiguration isometries; splitter functor; tightening (B_flow/R demoted); AD grounding (CP/CC′); stratified architecture — exact strata above one Archimedean floor (CC′+ST1 adopted)
 
 ## Forced from ontology alone
 

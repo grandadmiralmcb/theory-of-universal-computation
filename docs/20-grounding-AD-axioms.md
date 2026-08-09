@@ -81,3 +81,5 @@ Take the **lexicographic order on \(\mathbb{N}^2\)** (identity-changes lexically
 | Classical-chain stipulations | "AD1–AD3" (a block) | **CP + CC** (two principles, each with an exact alternative) |
 
 **Residue, honestly:** SI and SC are readings of O1/O2 — arguably constitutive, but a determined skeptic can price them; they are named so the price is visible. CP and CC are genuine commitments; RM2 guarantees there is no third option to look for. Whether the *stratified* (¬CC) variant deserves parallel development is a legitimate open question — it is the one place in the classical sector where O1–O4 permit a structurally different theory.
+
+**Update (2026-08-08):** the stratified variant was developed (docs/21) and the question resolved by synthesis and adoption: **CC′** (exact strata above one Archimedean floor) supersedes CC as a charter postulate, with TS1/TS2 supplying the phenomenological argument that the *dynamical floor* must be Archimedean. This document's independence proofs stand unchanged; CC's role is now played by CC′'s floor clause.

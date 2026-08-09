@@ -24,20 +24,20 @@ These readings motivate the postulates; they do not prove them.
 
 **Postulate SB1.** Each `Share` node carries a label \(q\) in a finitely generated abelian group \(G = \mathbb{Z}^k \times F\) (\(F\) finite). The **cluster charge** is \(Q(E) = \sum q_i\) over distinct Share nodes. Independent charge sectors are factors of \(G\).
 
-**SB1-typing (admissible label dynamics).** Reductions act on labeled shares only by:
+**SB1-typing (label dynamics — now derived from ST1).** The label-conserving operations are:
 - **merge**: \((q_1), (q_2) \to (q_1+q_2)\)
 - **split**: \((q) \to (q_1), (q_2)\) with \(q_1+q_2=q\)
 - **pair creation**: \(\varnothing \to (q), (-q)\)
 - **pair annihilation**: \((q), (-q) \to \varnothing\)
 
-Unlabeled structure is unrestricted. Deletion of a share with \(q \neq 0\) is inadmissible; shares with \(q=0\) in every sector may be created or removed freely.
+Unlabeled structure is unrestricted; shares with \(q=0\) in every sector may be created or removed freely. **Mechanism (ST1, adopted — charter §3, docs/21 §5):** label-violating rewrites (e.g. deleting a charged share) are not inadmissible by fiat — they carry a lexically dominant violation charge \(V\), and stratified selection (CC′) never chooses them while a conserving alternative exists. The clause list above is the derived \(V=0\) stratum, not a primitive rule.
 
-**Theorem SM-B1 (conservation by typing).** [WM1, SB1, SB1-typing] \(Q(E)\) is invariant under every admissible reduction sequence.
-*Proof.* Each typing clause preserves the label sum; induction on the sequence. ∎
+**Theorem SM-B1′ (conservation by stratification).** [WM1, SB1, ST1, CC′] \(Q(E)\) is invariant along every selected reduction sequence **through states admitting a conserving continuation**; in forced-violation states (none exhibited in the working model to date), selection degrades to the minimal violation (TS4).
+*Proof.* Each \(V=0\) clause preserves the label sum; TS4's factorization guarantees a \(V=0\) move is selected whenever one exists; induction. ∎
 
-**Honesty.** Conservation here is *enforced* (a typing discipline, in the linear-logic tradition), not *derived* from a symmetry. A Noether-style route — obtaining SM-B1 from SB2 invariance plus the selection principle A3 — is **open**, and its existence is not obvious: SB2 constrains description, A3 constrains selection, and neither obviously yields additivity along histories. Do not cite SM-B1 as "Noether recovered."
+*Note.* Absolute conservation (the old SM-B1) is recovered exactly on the domain where conserving continuations always exist — which includes every configuration reachable in `sim/spectrum_toy.py`'s move set. Whether forced-violation states are physically realized is now an open question *of the theory*, not of a variant.
 
-**Alternative mechanism (docs/21 §5, adoption open).** Under postulate ST1, the typing rule is replaced by a lexically dominant violation charge: conservation then follows from stratified cost-minimization (TS4) rather than admissibility fiat, and degrades gracefully in forced-violation situations that brute typing cannot express.
+**Honesty.** Conservation is now *stratification-derived* (ST1 + CC′), no longer typing fiat — an upgrade in mechanism, but still not Noether: a symmetry-based route — obtaining SM-B1′ from SB2 invariance plus the selection principle A3 — remains **open**, and its existence is not obvious (SB2 constrains description, A3 constrains selection, and neither obviously yields additivity along histories). Do not cite SM-B1′ as "Noether recovered." Note also what adoption cost: conservation is *conditional* (exact only where conserving continuations exist), which is weaker in principle and richer in prediction-shape than the old absolute claim.
 
 **Status note.** SB1 reintroduces the pre-rebuild "labels/charges" in charter-compliant form. Non-abelian labels / representation categories are a strict extension (Toolbox E territory, docs/09), not assumed.
 
