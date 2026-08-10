@@ -33,6 +33,7 @@ python sim/spectrum_toy.py
 python sim/splitter_rewrite.py
 python sim/stratified_cost.py
 python sim/forced_violation.py
+python sim/progress_analysis.py
 ```
 
 Every file must execute cleanly; a sim that does not run must not be cited

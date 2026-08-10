@@ -60,6 +60,10 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 **FV1** [ST1, CC′] Forced violations are realized from an initial class **iff** the conserving fragment fails progress there; under progress + preservation, SM-B1′ reduces to absolute conservation on-domain. (docs/22 §2)  
 **FV2** [WM1 universality] Reachable V=0-stuckness is undecidable in general; FV-realization must be settled per rule-set. (docs/22 §3)  
 **FV3** [ST1, CC′] At V-ties between conjugate violation channels the Archimedean floor decides; any finite conjugation-asymmetric floor bias yields systematic charge drift over FV ensembles, with the top-stratum law exactly symmetric. (docs/22 §5)  
+**PA0** [WM1, SB1] Duplication is charge-safe: sharing is by reference, so contraction copies references, never shares — discards are the calculus's only violation channel. (docs/23 §1)  
+**PA1** [WM1, SB1, ST1] Progress + preservation on the charge-relevant (λI-relativized) class: conservation absolute there. *Sketch level; mechanization open.* (docs/23 §3)  
+**PA2** [WM1, SB1, ST1] FV states are **reachable** in the unrestricted calculus: \((\lambda f. f S)(\lambda x. c)\) reaches a state whose only redex discards the charged share, in one conserving step. Fully rigorous. (docs/23 §2)  
+**PA3** [FV1, PA1, PA2] Relocation: forced-violation realization is a property of the **initial class** (boundary conditions), not of the dynamics. (docs/23 §4)  
 **D12** Born reading — **not a theorem**.
 
 ---
@@ -86,4 +90,5 @@ HQ free epoch / projection: `sim/linear_reduce.py` — unrunnable (SyntaxError) 
 SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-phase toy spectrum; dark-sector stability)  
 L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)  
 TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)  
-FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)
+FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)  
+PA0–PA2: `sim/progress_analysis.py` (mini sharing calculus; charge-safe duplication; the reachable FV term; projection discards; reference subtlety; conservative relevance checker vs dynamic audit)
