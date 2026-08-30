@@ -18,7 +18,8 @@ Authority: `docs/00-theory-charter.md`. Companion bridge: `docs/15-sm-bridge.md`
 | Einstein equation | TH1–TH5 + TG1–TG5 | **TH6**, postulational |
 | \(G\) = reciprocal ground cut density | TH6 + TG2 | **TH7**, identification |
 | Weak equivalence principle | WM3 + TH2 (one counter, two roles) | **TH8**, closes contention 2 |
-| Merged hole is bigger | TH4 + SM-B3 | **TH9/TH10** |
+| Entropy adds on disjoint systems; the defect is the shared count | AD2 (already grounded) + WM2's \(S\) counter | **TH12**, forced given WM1+WM2 |
+| Merged hole is bigger | TH12a additivity + TH4 monotonicity | **TH9/TH10** |
 
 ---
 
@@ -64,6 +65,38 @@ S(\chi) \;=\; s_0\,N(\chi), \qquad s_0 \equiv \log d .
 \]
 
 **Reading.** The framework did not *add* holography; docs/01 already listed "holographic character" as an ontological reading. TH2 says why: the theory's disruption currency is a **severed-sharing count**, and severed sharing is a boundary relation. A volume-extensive cost would require charging structure that is not disturbed. The area law is not a discovery about gravity here — it is the shape of WM2.
+
+### 2.1 TH12 — Additivity, and its exact defect
+
+*"The entropy of two systems combined is the sum of their entropies."* That principle is **already an axiom of this framework**, it is exactly what makes the cost cardinal, and the place it fails is exactly where the framework locates sharing. All three parts matter.
+
+**TH12a (disjoint additivity — not a new assumption).** [WM1, WM2, AD2] For regions \(A,B\) with no share linking them,
+\[
+N(\chi_{A\sqcup B}) = N(\chi_A) + N(\chi_B), \qquad S = S_A + S_B, \qquad S_{\rm rel} = S_{{\rm rel},A} + S_{{\rm rel},B}.
+\]
+This is **AD2** — disjoint additivity — which docs/20 §3 already grounded (M1 + PC from O2/SI, plus IND from O2/SC), and which RM1's Hölder representation *requires*: without additivity the disruption order embeds in no additive group and the cost stays merely ordinal. **The framework's cost is cardinal because entropy is additive.** The principle is not an add-on to this layer; it is load-bearing two layers down.
+
+**TH12b (the defect is the cross-share count).** [WM1, WM2, TH2′, O1/F4] When \(A\) and \(B\) do share, additivity fails by exactly the mutual information, and the framework's own counter bounds it:
+\[
+I(A{:}B) \;=\; S_A + S_B - S_{AB} \;\le\; 2\,s_0\,N(A\!\leftrightarrow\! B),
+\]
+saturated when the shared content is maximally correlated. Additivity therefore holds **iff** \(N(A\!\leftrightarrow\!B)=0\) — iff \(A\) and \(B\) are not co-dependent in the sense of F4.
+
+*Proof of the count.* A share linking \(A\) to \(B\) is severed by \(A\)'s cut and by \(B\)'s cut, but lies interior to the union and is severed by neither. So it is counted twice on the right and zero times on the left, giving the deficit \(2N(A\!\leftrightarrow\!B)\); the entropy bound follows from TH2′ and saturates at maximal correlation. ∎ (Executable: `sim/thermo_gravity.py` §7a — exact for \(n_{\rm cross}=0,1,3,7\); §7c exhibits saturation, one shared Bell pair giving \(I=2\ln 2\) while \(S_{AB}=0\).)
+
+**The factor of 2 is a cut-membership fact.** It is not put in by hand and it is not quantum mechanics imported: a cross share belongs to two cuts and to no third. That is the whole of it.
+
+**TH12c (universal additivity would be fatal, not conservative).** If entropy were additive for *every* composition, then \(I(A{:}B)=0\) identically, so no two regions could be correlated. There would be no co-dependent sets, hence no F4 comparison, hence no F5 structural projection, hence no coherent sets, no interference, no measurement account, and no HQ layer. **The framework needs additivity to fail precisely where sharing exists** — and TH12b says it fails there and nowhere else, by an amount the theory already counts. The correct reading is not "entropy is additive" versus "entropy is subadditive"; it is *additivity plus a co-dependence term*, with O1's sharing supplying the term.
+
+**TH12d (extensivity and the area law are not in conflict).** An area law for a region and an extensive entropy for bulk matter look incompatible until the reference is fixed (§1). The ground configuration's cut count is an **area** (TH2); excitations above it contribute relative entropy that is **volume-extensive** for thermal matter, by additivity over disjoint cells (TH12a). \(S_{\rm gen} = \eta A + S_{\rm out}\) is exactly that split. Neither term is the whole entropy, and only their sum is reference-independent.
+
+**TH12e (additivity is the first step of the merger inequality).** TH10b does not need — and must not use — a counting identity across the merger. Its structure is:
+
+> **additivity on disjoint components** (TH12a: at an early cut of the final horizon, where the two holes are still separate and quiescent, the cut has two disjoint components and their areas add) **+ monotonicity along the horizon** (TH9) \(\Rightarrow A_f \ge A_1 + A_2\).
+
+Both inputs are exactly the principle above and its companion. This is why the subadditivity objection of §7 never bites: the interior–interior shares between the two pre-merger holes are a *mutual-information* term living in \(S_{\rm out}\), not a term in the disjoint area sum. Executable: `sim/thermo_gravity.py` §7d.
+
+---
 
 ---
 
@@ -253,7 +286,7 @@ Checked against four observed mergers in `sim/thermo_gravity.py` §5 (GW150914, 
 
 **Corollary TH10c (black-hole first law).** [TG3, TH7] With \(T=\kappa/2\pi\) and \(S=A/4G\), \(dM = T\,dS\) holds identically for Schwarzschild (\(T=1/8\pi GM\), \(S=4\pi GM^2\)); \(T_H\) is the Unruh temperature of the horizon's own modular flow. Verified numerically in §5 of the sim.
 
-**The subadditivity objection, answered.** Entanglement entropy is *sub*additive (\(S(AB)\le S(A)+S(B)\)) while TH10b is *super*additive — a real tension worth stating plainly. The resolution is that the two statements are about different objects. Subadditivity compares two regions of **one state at one time**; TH10b compares **two cuts of one horizon at two times**. Interior–interior shares between the pre-merger holes genuinely drop out of the final cut — that is the subadditive effect, and it is real — but it is over-compensated by focusing driven by the infalling modular energy. TH10b is not a counting identity; it is a dynamical consequence of positivity (TH4/TH9). Anyone reading TH2 as "entropy is literally the pairwise share count, so the second law is combinatorics" has the argument wrong.
+**The subadditivity objection, answered.** Entanglement entropy is *sub*additive (\(S(AB)\le S(A)+S(B)\)) while TH10b is *super*additive — a real tension worth stating plainly. The resolution is that the two statements are about different objects. Subadditivity compares two regions of **one state at one time**; TH10b compares **two cuts of one horizon at two times**. Interior–interior shares between the pre-merger holes genuinely drop out of the final cut — that is the subadditive effect, it is real, and by TH12b it is exactly \(2s_0N(A\!\leftrightarrow\!B)\) — but it lives in \(S_{\rm out}\), not in the area sum. TH10b's actual structure is **TH12e**: additivity on *disjoint* components at an early cut, then monotonicity along the horizon. No counting identity across the merger is used, so the subadditive term never enters. Anyone reading TH2 as "entropy is literally the pairwise share count, so the second law is combinatorics" has the argument wrong — and TH12c says why the framework could not want that reading anyway.
 
 ### TH11 — Bekenstein bound
 
@@ -297,6 +330,8 @@ The TG layer has **no resources** for: the value of \(\eta_N\) (hence of \(G\));
 
 ```
 WM1,WM2 ──> TH2 area law (forced in WM: the S-counter is a boundary quantity)
+WM1,WM2,AD2 ──> TH12 additivity on disjoint systems; defect = 2*s0*N(A<->B)
+             └─> TH12c universal additivity would delete F4/F5 and the whole HQ layer
 RM1,CI4,WM1 ──> TH1 only relative entropy is observable
 F3/O4,SB4,SM-B3 ──> TH3 horizons leave real inaccessible structure
 T15,T13',T16',T14' ──> TH4 monotonicity (= data processing; all production at projection)
@@ -311,7 +346,8 @@ WM3 + TH2 + TG1,TG2 ──> TH8 weak equivalence principle  [closes contention 2
                      └─> TH8' Eötvös bounds floor stratification (contention 8)
 
 TH4 ──> TH9 generalized second law
-     └─> TH10a area theorem ──> TH10b  A_f ≥ A_1 + A_2  (mergers; fission forbidden)
+     └─> TH10a area theorem
+TH12a + TH9 ──> TH10b  A_f ≥ A_1 + A_2  (mergers; fission forbidden)
      └─> TH10c dM = T dS
 TH5 ──> TH11 Bekenstein bound
 ```
@@ -325,4 +361,5 @@ TH5 ──> TH11 Bekenstein bound
 3. **TH4**: monotonicity under a unitary (free epoch), an isometry (reconfiguration), and dephasing+restriction (projection) — classical and qubit versions.
 4. **TH6**: the \(\ell^4\) coefficients \(-2\pi/15\) (exact geodesic balls on \(S^3\)) and \(8\pi^2/15\) (quadrature); both routes agree on \(\eta = 1/4G\).
 5. **TH10**: \(dM=T\,dS\); area theorem and the merger inequality on GW150914 / GW151226 / GW170814 / GW190521, Schwarzschild and Kerr forms, plus the radiated-fraction bound and the forbidden fission.
-6. **TH8**: entropic bias \(\propto\) share count ⇒ identical accelerations for clusters of different inertia, contrasted with T6's cluster-independent-bias regime; Verlinde cross-check recovering \(GMm/r^2\).
+6. **TH12**: cut-count additivity exact at zero cross-shares and off by exactly \(2n_{\rm cross}\) otherwise; \(S_{\rm rel}\) additive on products; a Bell pair saturating \(I=2\ln2\) at \(S_{AB}=0\); the merger's additivity step.
+7. **TH8**: entropic bias \(\propto\) share count ⇒ identical accelerations for clusters of different inertia, contrasted with T6's cluster-independent-bias regime; Verlinde cross-check recovering \(GMm/r^2\).

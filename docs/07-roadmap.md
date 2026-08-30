@@ -25,6 +25,7 @@
 | TH6–TH7 | Einstein equation by two routes; \(G=1/(4s_0\eta_N)\) | Proved [TG1–TG5] — **conditional on TG2**, the unsolved continuum limit |
 | TH8 | Weak equivalence principle from one shared counter | Proved [WM3, TH2, TG1, TG2] — **closes contention 2** |
 | TH9–TH11 | Generalized second law; area theorem + merger inequality; Bekenstein | Proved [TH4, SM-B3] / [TH5] |
+| TH12 | Additivity on disjoint systems (= AD2); defect = mutual information = \(2s_0N_{\rm cross}\) | Proved [WM1, WM2, AD2] (docs/24 §2.1) |
 
 ## Current Contentions
 

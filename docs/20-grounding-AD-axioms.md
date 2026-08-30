@@ -44,6 +44,8 @@ For position-disjoint events, \(\Delta(e \sqcup e') = \Delta(e) \uplus \Delta(e'
 
 **Verdict.** AD2 holds given {M1, M2, PC, IND}, of which the non-analytic residue is SI and SC — both readings of O1/O2 (structure-individuation; local selection coheres with global preference) rather than new physics. AD2 is retired from the charter's postulate row and re-listed as derived.
 
+**Later load (docs/24, TH12).** AD2 turns out to carry more than the Hölder representation. It *is* the thermodynamic additivity principle — "the entropy of two systems combined is the sum of their entropies" — restricted, correctly, to systems that share nothing. Its scope condition is not a caveat but the framework's own content: the defect from additivity is exactly \(2s_0N(A\!\leftrightarrow\!B)\), the co-dependence counter of F4. So the same axiom makes the cost cardinal (RM1) and makes entropy extensive (TH12a/d), and its failure mode is what makes the HQ layer possible at all (TH12c). Anything that strengthened AD2 to *unrestricted* additivity would destroy both.
+
 ## 4. AD1 is independent: the partial-order countermodel
 
 Take the disruption order to be **componentwise order on \(\mathbb{N}^k\)** (change-set inclusion up to iso). This satisfies O1–O4, M1/M2, PC, IND (vector order is translation-invariant), and is cancellative — but **not total**: (2 sharing-changes, 0 identity-changes) and (0, 1) are incomparable. All qualitative dynamics survives: F2′ needs only well-founded partial preorders; minimal-disruption selection, T2, T9–T12, T15, T16′ are untouched.

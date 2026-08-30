@@ -29,6 +29,11 @@ Demonstrations:
      Schwarzschild; A_f >= A_1 + A_2 checked against observed binary
      black hole mergers (Schwarzschild and Kerr forms); the radiated
      fraction bound; fission shown thermodynamically forbidden.
+  7. TH12 (additivity): cut counts add exactly when nothing is shared, and
+     fail by exactly twice the cross-share count otherwise — the framework's
+     mutual information. Additivity is AD2, the axiom that made the cost
+     cardinal; its failure is co-dependence, without which there is no
+     HQ layer. It is also the first step of the merger inequality.
   6. TH8 (weak equivalence principle, closing contention 2): an entropic
      bias proportional to share count gives cluster-independent
      acceleration, where a cluster-independent bias (T6's regime) does
@@ -592,6 +597,95 @@ def demo_equivalence() -> None:
     print("   -> exact. Consistency check only: TH6 already gives the full field equation.")
 
 
+
+# ---------------------------------------------------------------------------
+# 7. TH12 — additivity and its exact defect
+# ---------------------------------------------------------------------------
+
+def mk_shares(tag: str, n: int) -> List[Share]:
+    return [Share(id=f"{tag}-{i}", content=Var(f"v{i}")) for i in range(n)]
+
+
+def von_neumann_2x2(rho: Mat) -> float:
+    vals, _ = _herm_eig_2x2(rho)
+    return -sum(l * math.log(l) for l in vals if l > 1e-15)
+
+
+def partial_trace_B(psi: Sequence[complex]) -> Mat:
+    """Reduced state on A for a pure state of two qubits, psi indexed |a b>."""
+    out: Mat = [[0j, 0j], [0j, 0j]]
+    for a in range(2):
+        for ap in range(2):
+            acc = 0j
+            for b in range(2):
+                acc += psi[2 * a + b] * psi[2 * ap + b].conjugate()
+            out[a][ap] = acc
+    return out
+
+
+def demo_additivity() -> None:
+    print("   (a) cut counts on real trees: additive exactly when nothing is shared")
+    n_A, n_B, n_AE, n_BE = 4, 6, 2, 5
+    locA, locB = mk_shares("la", n_A), mk_shares("lb", n_B)
+    envA, envB = mk_shares("ea", n_AE), mk_shares("eb", n_BE)
+    env_rest = mk_shares("e", 1)
+    print(f"   {'n_cross':>8} {'N(A)':>6} {'N(B)':>6} {'N(A+B)':>8} {'defect':>8} {'2*n_cross':>10}")
+    for n_c in (0, 1, 3, 7):
+        cross = mk_shares("x", n_c)
+        A = pair_up(locA + cross + envA)
+        B = pair_up(locB + cross + envB)
+        AB = pair_up(locA + locB + cross + envA + envB)
+        ENV = pair_up(envA + envB + env_rest)
+        NA = len(cut_shares(A, pair_up([B, ENV])))
+        NB = len(cut_shares(B, pair_up([A, ENV])))
+        NAB = len(cut_shares(AB, ENV))
+        defect = NA + NB - NAB
+        print(f"   {n_c:>8} {NA:>6} {NB:>6} {NAB:>8} {defect:>8} {2 * n_c:>10}")
+        assert defect == 2 * n_c
+    print("   -> additivity is EXACT at n_cross = 0 and fails by exactly 2*n_cross otherwise.")
+    print("      The factor 2 is a counting fact about cut membership: a cross share is")
+    print("      counted once by A's cut and once by B's, and zero times by the union's.")
+
+    print("\n   (b) relative entropy is additive on independent (product) composition:")
+    pA, qA = [0.6, 0.4], [0.5, 0.5]
+    pB, qB = [0.2, 0.3, 0.5], [0.4, 0.4, 0.2]
+    prod_p = [x * y for x in pA for y in pB]
+    prod_q = [x * y for x in qA for y in qB]
+    rA, rB = rel_entropy(pA, qA), rel_entropy(pB, qB)
+    rAB = rel_entropy(prod_p, prod_q)
+    print(f"      S_rel(A) = {rA:.9f}   S_rel(B) = {rB:.9f}")
+    print(f"      S_rel(AB) = {rAB:.9f}   sum = {rA + rB:.9f}")
+    assert abs(rAB - (rA + rB)) < 1e-12
+    print("      -> exact. This is AD2 (disjoint additivity, docs/20 section 3) — the axiom")
+    print("         that made the cost cardinal via RM1's Holder representation.")
+
+    print("\n   (c) the maximally non-additive case: one shared Bell pair")
+    inv = 1.0 / math.sqrt(2.0)
+    bell: List[complex] = [inv + 0j, 0j, 0j, inv + 0j]
+    rho_A = partial_trace_B(bell)
+    S_A = von_neumann_2x2(rho_A)
+    S_AB = 0.0   # the global state is pure
+    print(f"      S(A) = {S_A:.9f} = ln 2 = {math.log(2):.9f}")
+    print(f"      S(B) = {S_A:.9f}   S(AB) = {S_AB:.9f}  (pure)")
+    print(f"      I(A:B) = S(A)+S(B)-S(AB) = {2 * S_A:.9f} = 2 ln 2 = {2 * math.log(2):.9f}")
+    assert abs(S_A - math.log(2)) < 1e-12
+    print("      -> the ONE share linking A to B carries I = 2 s0, saturating the bound")
+    print("         of (a). Universal additivity would force I = 0 here — i.e. no")
+    print("         co-dependence, no F4/F5, no coherent sets, no HQ layer at all.")
+
+    print("\n   (d) additivity is the first step of the merger inequality (TH10b):")
+    m1, m2, Mf, chif = 35.6, 30.6, 63.1, 0.69
+    A1, A2 = kerr_area(m1), kerr_area(m2)
+    A_early = A1 + A2          # two DISJOINT components of one horizon: areas add
+    A_late = kerr_area(Mf, chif)
+    print(f"      early cut, two disjoint components: A = {A1:.0f} + {A2:.0f} = {A_early:.0f}")
+    print(f"      late cut, one component:            A = {A_late:.0f}")
+    print(f"      monotonicity (TH9) along the horizon: {A_late:.0f} >= {A_early:.0f}  "
+          f"-> {'holds' if A_late >= A_early else 'FAILS'}")
+    assert A_late >= A_early
+    print("   -> TH10b = additivity on disjoint components + monotonicity. No counting")
+    print("      identity is needed, so subadditivity of the matter term never bites.")
+
 # ---------------------------------------------------------------------------
 
 def demo() -> None:
@@ -610,6 +704,8 @@ def demo() -> None:
     demo_black_holes()
     print("\n6. TH8 — the weak equivalence principle (contention 2)")
     demo_equivalence()
+    print("\n7. TH12 — additivity and its exact defect")
+    demo_additivity()
     print("=" * 74)
 
 
