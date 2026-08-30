@@ -108,8 +108,11 @@ What exists: SM-B3 gives a causal order, and by Malament's theorem a causal orde
 | Area law | Measurable now: volume grows as \(r^d\), cut as \(r^{d-1}\). A locality budget rather than a yes/no |
 | Manifoldlikeness | Where causal sets are stuck. We have two resources they lack: a dynamics that is not a free choice, and a share graph giving adjacency independent of the order |
 | Local Lorentz invariance | Deepest. Causal sets get it from Poisson sprinkling; a deterministic argmin may instead select a frame. See stage two on confluence |
+| Signature | New with `docs/27`: the cost metric is asymmetric and Lorentzian separation obeys a *reverse* triangle inequality. Whether the first can be turned into the second is the first thing to check on the Lorentzian-length-space route |
 
-**Machine:** none. This stage has no primitive of its own; it is the previous stages viewed at a scale where a metric is assumed to exist.
+**Narrowed by `docs/27`.** The debt is smaller than this section first recorded. Topology comes with the order, the cost structure *is already a metric* in Lawvere's sense (MG1), and curvature is definable on it with no manifold (MG2). What is missing is specifically **manifoldlikeness** — that the metric space is locally like \(\mathbb{R}^n\), with a dimension and a Lorentzian signature. The precise target is whether the structure is a **Lorentzian length space** (`docs/27` §6).
+
+**Machine:** none. This stage has no primitive of its own; it is the previous stages viewed at a scale where a metric on *physical* space is assumed to exist. Note that a metric on *configuration* space was there from O3 onward.
 **Figure:** three-dimensional, and this is the only stage that earns it. See §8.
 
 ---

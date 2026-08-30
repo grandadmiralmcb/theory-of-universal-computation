@@ -108,6 +108,16 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 
 ---
 
+## Mathematics from the minima (docs/27)
+
+**MG1** [O1, O3, WM2] The cost structure is a metric. With \(d(A,B)\) the least total cost of a reduction path, \(d(A,A)=0\), \(d\ge0\) and the triangle inequality hold. These are exactly Lawvere's axioms for a metric space as a category enriched over \(([0,\infty],\ge,+)\); symmetry and separation are extra conditions rather than part of the definition, and symmetry fails precisely where reduction is one-way. **The framework has had a metric since O3 — on configuration space, not on physical space.**
+**MG2** [MG1, counting measure] Curvature is definable with no manifold, chart or dimension, via Ollivier's coarse Ricci, and agrees with the classical value wherever one exists (trees \(-1/3\) and \(-1/2\), flat lattices \(0\) in 2-D and 3-D, \(K_8\) at \(4/7\), all exact).
+**Consequence for contention 9.** Topology comes with the order, the metric with the cost and curvature with both. The geometric debt is therefore **manifoldlikeness** alone — locally Euclidean, with a dimension and a Lorentzian signature — and its precise form is whether the structure is a *Lorentzian length space*. Curvature does not fix dimension: flat 2-D and 3-D lattices both return exactly zero.
+
+*Non-theorems of this layer:* that any generated structure is manifoldlike; that dimension is well defined away from hand-built lattices; that the signature is Lorentzian; that physical space appears inside configuration-space geometry.
+
+---
+
 ## Non-theorems
 
 Geometry, area, curvature or the Einstein equation without TG2–TG5; sequential order as emergent from entropy (AT1′); the past hypothesis; amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
@@ -123,6 +133,7 @@ SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-ph
 L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)  
 TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)  
 FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)  
+MG1–MG2: `sim/metric_from_cost.py` (metric axioms verified, asymmetry exhibited on a one-way chain; Ollivier curvature by exact min-cost flow reproducing the analytic values; the two flat lattices returning zero, which is the numerical form of curvature not knowing its dimension)  
 AT1–AT6: `sim/arrow_of_time.py` (isometric chains reversed exactly; projection's non-injectivity exhibited; exclusion stable over 200 steps; arrow density swept 0→99.8%; recurrent isometric clock vs monotone projection counter)  
 TH1–TH12: `sim/thermo_gravity.py` (area law at fixed cut; relative-entropy gauge invariance against divergent \(S\); monotonicity across the event trichotomy; both small-ball coefficients verified against exact \(S^3\) balls and quadrature; \(dM=T\,dS\); the merger inequality on observed binary black holes; WEP universality and its \(\varepsilon\)-floor residue; additivity exact at zero cross-shares and off by exactly \(2n_{\rm cross}\) otherwise)  
 PA0–PA2: `sim/progress_analysis.py` (mini sharing calculus; charge-safe duplication; the reachable FV term; projection discards; reference subtlety; conservative relevance checker vs dynamic audit)
