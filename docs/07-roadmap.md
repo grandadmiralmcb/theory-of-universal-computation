@@ -29,7 +29,8 @@
 | AT1–AT2 | Order forced by O2 and prior to entropy; order fixes no orientation | Proved [O2, F1, SM-B3] (docs/25) |
 | AT3–AT4 | Orientation lives at projection alone; the ratchet is F5 + stable exclusion | Proved [TH4, T14′] / [F5, O4, SM-B3] — **arrow sits below the TG stack** |
 | AT5–AT6 | Arrow density = decoherence density; duration counted by projection events | Proved [T10, T11, WM4] / [AT3, TH5] |
-| MG1–MG2 | The cost structure is a Lawvere metric; curvature definable with no manifold | Proved [O1, O3, WM2] (docs/27) — narrows contention 9 to manifoldlikeness |
+| MG1 | The cost structure is a Lawvere metric | Proved [O1, O3, WM2, B5, B6] (docs/27) — B5/B6 were unstated in the first version |
+| MG2′ | Curvature definable **on the reversible sector**, with no manifold | Proved [MG1, B7, symmetry]. The unrestricted MG2 was **false**: asymmetric metrics give the same edge two answers |
 
 ## Current Contentions
 
@@ -44,6 +45,9 @@
 9. **The geometric limit (TG2)** — **narrowed by docs/27.** Topology, metric and curvature all turn out to be available without any geometric assumption (MG1, MG2), so the debt is not "no geometry" but **manifoldlikeness** specifically: locally Euclidean, with a dimension and a Lorentzian signature. The precise target is whether the structure is a *Lorentzian length space* (Kunzinger–Sämann), which is an answerable question in an active field rather than a vague one. Still the largest single debt. Everything in docs/24 §§5–7 (Einstein equation, \(G\), the area theorem's continuum form) is conditional on a coarse-graining of the SB4 order to a Lorentzian manifold with a finite share-per-area density. This is the causal-set continuum problem (dimension, local Lorentz), inherited **unsolved** from docs/15 §4. The TG layer does not weaken it; it raises the stakes, because more now rests on it.
 10. **The past hypothesis** — new with docs/25. AT3/AT4 give the arrow its direction but say nothing about why the initial class was far from equilibrium. This relocates exactly as PA3 relocated forced-violation realization (docs/23 §4): a **boundary-condition question**, not a dynamical one. Two of the framework's open problems now have the same shape, and the shared probe is the same — the structure of the initial class.
 11. **Is \(\varepsilon\) real?** — WM3's inertia floor was a convenience; TH8-ε turns it into a WEP-violation prediction that grows for lighter bodies. Either operationalize \(\varepsilon\) (which would also discharge docs/08 §3) or establish that the entropic bias carries the same floor, making TH8 exact.
+
+12. **Admissibility is undefined (B3).** O3 and F2 both quantify over "admissible reductions" and nothing in the charter or `docs/14` says what makes a reduction admissible. In WM1 it means "there is a redex", which is a carrier fact. The framework's only dynamical law therefore ranges over an uncharacterised set. Found by the background audit (charter §6).
+13. **Identity for sharing is not axiomatised (B4).** What makes two holders hold *the same* substructure is supplied by SI — which `docs/20` §2 explicitly calls a reading — or by object identity in the simulator. Sharing is the primitive that separates this framework from a theory of bits, and its identity criterion has only a reading behind it. Found by the same audit.
 
 ## Priority order
 

@@ -96,3 +96,27 @@ No theorem may treat these as forced by O1–O4.
 `docs/14-derivation-from-ontology.md` is the derivation spine.  
 `docs/11-theorems.md` must list hypotheses including every postulate used.  
 Older text that claims amplitudes, unitarity, continuum Newton, or finite trees as forced by ontology alone is **void**.
+
+---
+
+## 6. Background assumptions (the B-ledger)
+
+**Why this section exists.** §3 tracks the framework's *physics* postulates — WM, CI, HQ, SB, ST, TG. It has never tracked its *mathematical* ones. So sets, real numbers, infima, additivity along composition, choices of measure, and the logic of the metalanguage have all entered results without appearing in any hypothesis list. That is the reason a reader can follow every step of a derivation and still feel that more is being assumed than is being said: the ledger had no column for it.
+
+These are not defects to be removed. Most are unavoidable. The requirement is only that they be **named and cited**, on the same terms as everything else.
+
+| ID | Assumption | Where it bites |
+|----|------------|----------------|
+| **B1** | Structures form a set, or a class with well-defined hom-costs | Any claim about "the space of structures" — MG1, and the carrier question (docs/26 §7.1) |
+| **B2** | The metalanguage is classical set theory | Every proof in the repository. Note the tension: docs/27 §2 suggests the *object* logic is naturally intuitionistic while every *proof about it* is classical |
+| **B3** | **Admissibility is well defined.** O3 and F2 both quantify over "admissible reductions" and the notion is **used throughout and defined nowhere** | The selection principle itself. In WM1 it silently means "there is a redex", which is a carrier fact, not an ontological one |
+| **B4** | **Identity of shared substructure.** What makes two holders hold *the same* thing rather than two alike things | O1's `share`, and therefore F4, F5, TH12 and the whole HQ layer. Currently supplied either by **SI**, which docs/20 §2 calls a reading, or by object identity in the carrier (docs/08 §1). **Neither is an axiom** |
+| **B5** | Cost is additive along **sequential** composition | MG1. Distinct from AD2, which is additivity over **position-disjoint** events and does not imply it |
+| **B6** | Infima over path sets exist | MG1 |
+| **B7** | A choice of neighbourhood measure | MG2′ and any transport or curvature quantity. Ollivier curvature is defined only relative to such a choice; values are convention-dependent even where signs are not |
+| **B8** | Reduction chains are countable | F1 permits transfinite chains; essentially every result assumes \(\omega\) |
+
+**Rule.** A theorem that uses a B-item names it in its hypothesis list, exactly as it names WM2 or TG2. The two that are more than bookkeeping are **B3** and **B4**: an undefined admissibility relation sits underneath the only dynamical law, and an unaxiomatised identity criterion sits underneath the primitive that distinguishes this framework from a theory of bits. Both are recorded as contentions in `docs/07`.
+
+**What this does not fix.** Naming an assumption is not discharging it, and a long B-ledger is not a virtue. The list exists so that the honesty discipline of §§1–3 covers the mathematics as well as the physics, and so that "this feels less basic than it claims" becomes a checkable complaint rather than an impression.
+
