@@ -6,7 +6,9 @@
 
 ## New here?
 
-**[learn/counting-the-world.html](learn/counting-the-world.html)** — a nine-module visual course for non-specialists, built on one image (knots tied with strings) with six interactive 3D scenes. It teaches the charter's forced/assumed/not-claimed discipline first, then the area law, relative entropy, additivity, the equivalence principle, the arrow of time and black-hole mergers. No math required. Open the file in a browser.
+**[learn/how-a-world-is-made.html](learn/how-a-world-is-made.html)** — a nine-step course for readers with no physics, built outward from the four assumptions rather than inward toward them. Eight machines you can operate: a comparator that produces a bit rather than consuming one, a junction beside its impostor the copier, holes and plugs, the balance and its latch, and the move that cannot be undone. Figures follow `docs/26` §8 — one dimension for order, two for structure, and three only at the step where geometry is assumed, which the reader presses a button to do and can press again to undo.
+
+*Superseded:* [learn/counting-the-world.html](learn/counting-the-world.html) motivates the assumptions from below rather than deriving outward from them, and renders the boundary count in three dimensions where two suffice (`docs/26` §8). Retained for history.
 
 ## Read in order
 

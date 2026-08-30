@@ -1,5 +1,16 @@
 # Changelog
 
+## [2026-08-30] (a second course, built to the spine)
+
+- `learn/how-a-world-is-made.html`: nine steps for readers with no physics, built **outward from O1–O4** rather than motivating them from below, which is what the first course did and what made it start in the wrong place. Eight machines, all operable.
+  - **The comparator comes first, and the bit comes out of it.** Two things in, one light out. This is where the framework's claim about information is made visible: a bit is not a thing the world is built from, it is what you get when a comparison is made, so ones and zeros arrive at the end of the story rather than the beginning.
+  - **The junction beside its impostor the copier.** Two machines that look alike until something is cut: cutting the junction empties both holders, cutting a copy empties one. Sharing stated as the claim that there is one thing in two places, which a list of bits cannot make.
+  - Holes and plugs for `abs`/`app`/`reduce`, with the stepping as the clock; the record as a bare line with two ends and no direction; the balance with its **latch**, which is the difference between a priced tendency and an inviolable rule, drawn so that no amount of cheapness buys past it; and the cut where Back stops working.
+  - **Figures follow `docs/26` §8.** One dimension for the record of events, two for structure and boundary counting, and three only at step 08 — where the reader presses a button labelled *assume it has a shape*, the same flat diagram tilts under a CSS perspective, and the badge turns amber. Nothing is added to the picture; a dimension is assumed, and the button can be pressed again to take it back. The TG2 debt is a control rather than a paragraph.
+  - Step 00 carries stage zero's split — assumed origin, forced persistence — and step 09 is the non-purchase ledger, including that the theory says nothing about why there is experience.
+  - Verified headless: eight figures render, no page errors, no horizontal overflow at 390px or 1000px, and light and dark both resolve. One real fault caught in review: the balance tilted the wrong way, with the lighter pan sinking. Fixed, and the chosen move is now marked, since "cheaper wins" means the raised pan is the winner and that needed saying.
+- `learn/counting-the-world.html` marked superseded in README and retained, per the repo's habit with `docs/06`. `docs/07` priority 8 discharged for the course; the presentation rule is still unapplied to figures inside the numbered documents.
+
 ## [2026-08-30] (the outward spine; forced-layer audit opened)
 
 - `docs/26-outward-spine.md`: `docs/14` derives outward from O1–O4 as far as physics; this continues the same spine through the stages it never reached, in dependency order rather than the historical order the repository grew in. No new physics — the work is placing existing results on the rungs they occupy and making the empty rungs visible.
