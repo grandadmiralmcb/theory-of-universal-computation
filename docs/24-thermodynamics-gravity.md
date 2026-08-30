@@ -136,7 +136,7 @@ with **equality** on free epochs and reconfigurations, and strict decrease possi
 
 *Proof.* T15's trichotomy exhausts the event types. (i) Free-epoch maps are diagonal unimodular (T13′), hence unitary; \(S_{\rm rel}\) is unitarily invariant. (ii) Reconfiguration maps are isometries (T16′); \(S_{\rm rel}(V\rho V^\dagger\Vert V\sigma V^\dagger)=S_{\rm rel}(\rho\Vert\sigma)\) for \(V^\dagger V=\mathbb{1}\). (iii) A structural projection acts on the accessible description as class-dephasing followed by restriction to the surviving class algebra; both are CPTP, and \(S_{\rm rel}\) is monotone under CPTP maps (Uhlmann). ∎
 
-**Reading — the load-bearing sentence of this document.** The framework already located *all* irreversibility at one event type (T14′: non-isometric weight change ⇔ structural projection). TH4 says the **second law has the same locus**. Entropy production and the measurement problem are not two mysteries: they are one event, seen through two ledgers.
+**Reading — the load-bearing sentence of this document.** The framework already located *all* irreversibility at one event type (T14′: non-isometric weight change ⇔ structural projection). TH4 says the **second law has the same locus**. Entropy production and the measurement problem are not two mysteries: they are one event, seen through two ledgers. *(docs/25 adds the third ledger: AT3 shows the same event carries the arrow of time, and AT4 places its root in F5 — below this layer, so the arrow survives TG2's failure.)*
 
 ### TH5 — First law of structural entanglement
 

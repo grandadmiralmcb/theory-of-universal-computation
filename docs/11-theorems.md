@@ -95,9 +95,22 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 
 ---
 
+## Time and the arrow (docs/25)
+
+**AT1** [O2, F1, SM-B3] Sequential order is forced by O2 alone — no cost, no entropy, no state functional. **AT1′**: deriving *order* from an entropy gradient would therefore be circular here, since entropy is a functional of states and states are indexed by the chain. Order is prior and not emergent.  
+**AT2** [SM-B3] A strict partial order's converse is a strict partial order and F1 is reversal-invariant, so order fixes **no orientation**. The gap is real and something must fill it.  
+**AT3** [TH4, T13′, T16′, T14′, TH9] Orientation is carried by structural projection and by no other event type: isometric events preserve \(S_{\rm rel}\) and have admissible inverses (no orientation); projection is non-isometric and **non-injective**, so no admissible map runs it backwards. **The arrow of time, entropy production and structural projection are one event.**  
+**AT4** [F5, O4/F3, SM-B3] The gradient *measures* the arrow; F5 **is** the arrow. Projection breaks the co-dependence linking unselected residuals to the chain, and causal exclusion is stable, so re-inclusion has no data-dependence path. \(\Delta S_{\rm gen}\ge0\) is the readout of a forced-layer ratchet — which puts the arrow **below** the TG stack, so it survives even if TG2 (contention 9) fails, and explains why the gradient never changes sign.  
+**AT5** [T10, T11, WM4, AT3] The arrow's density equals decoherence density: sweeping environmental share pressure moves the oriented-tick fraction from ~0 (isolated, near-reversible) to ~1 (classical, saturated). Why the arrow is macroscopically ubiquitous and microscopically absent — T11 read in the temporal ledger.  
+**AT6** [AT3, TH4, TH5] Flow and duration: the generator of time's flow is the maintain ledger (\(K=C_{\rm maintain}/\Theta\), the thermal-time reading); and since a record undoable by an admissible inverse certifies nothing, **measurable duration is counted by projection events**. An isometric clock's readings recur and certify no duration.
+
+*Non-theorems of this layer:* the past hypothesis (relocated to the initial class exactly as PA3 relocated FV realization — a boundary-condition question); duration in physical units (needs decoherence rates, still the docs/08 §1 knob); global time (barred by O2); time dilation and simultaneity (need TG2); CPT as a derived symmetry.
+
+---
+
 ## Non-theorems
 
-Geometry, area, curvature or the Einstein equation without TG2–TG5; amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
+Geometry, area, curvature or the Einstein equation without TG2–TG5; sequential order as emergent from entropy (AT1′); the past hypothesis; amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
 
 ---
 
@@ -110,5 +123,6 @@ SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-ph
 L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)  
 TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)  
 FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)  
+AT1–AT6: `sim/arrow_of_time.py` (isometric chains reversed exactly; projection's non-injectivity exhibited; exclusion stable over 200 steps; arrow density swept 0→99.8%; recurrent isometric clock vs monotone projection counter)  
 TH1–TH12: `sim/thermo_gravity.py` (area law at fixed cut; relative-entropy gauge invariance against divergent \(S\); monotonicity across the event trichotomy; both small-ball coefficients verified against exact \(S^3\) balls and quadrature; \(dM=T\,dS\); the merger inequality on observed binary black holes; WEP universality and its \(\varepsilon\)-floor residue; additivity exact at zero cross-shares and off by exactly \(2n_{\rm cross}\) otherwise)  
 PA0–PA2: `sim/progress_analysis.py` (mini sharing calculus; charge-safe duplication; the reachable FV term; projection discards; reference subtlety; conservative relevance checker vs dynamic audit)

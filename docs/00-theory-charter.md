@@ -87,6 +87,7 @@ No theorem may treat these as forced by O1–O4.
 5. **Hosted quantum (HQ)** — A4, D19, B_flow, D12; structural projection (F5) as irreversible locus.
 6. **Structural bridge (SB)** — SB1–SB4; SM-facing definitions and gap reexamination (docs/15, docs/05).
 7. **Thermodynamics & gravity (TG)** — TG1–TG5 on top of WM+CI+HQ+SB; relative entropy as the only observable, the area law as WM2's own shape, and the Einstein equation as the resulting equation of state (docs/24).
+8. **Time and the arrow (AT)** — no new postulates: order is forced (O2/F1/SM-B3), orientation is carried by F5 alone, and the entropy gradient is its readout (docs/25). Sits *below* the TG layer — the arrow does not depend on TG1–TG5.
 
 ---
 

@@ -38,6 +38,7 @@ python sim/stratified_cost.py
 python sim/forced_violation.py
 python sim/progress_analysis.py
 python sim/thermo_gravity.py
+python sim/arrow_of_time.py
 ```
 
 Every file must execute cleanly; a sim that does not run must not be cited
@@ -47,3 +48,4 @@ as an executable confirmation in the docs.
 
 Full named-operation derivations: `docs/02-dynamics.md`, `docs/04-classical-limit.md`.
 Thermodynamics and gravity: `docs/24-thermodynamics-gravity.md`.
+Time and the arrow: `docs/25-time-and-the-arrow.md`.

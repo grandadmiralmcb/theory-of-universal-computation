@@ -153,6 +153,9 @@ WM theorems  +  CI1,CI2,CI3,CI4  →  continuum sequential calculus (T5–T8), T
 F5  +  A4,D19,B_flow  →  unitary free epoch, projection as non-unitary locus
 (+ D12)  →  Born statistics at projection (reading)
 
+O2 alone              →  AT1 order, prior to entropy (AT1': the converse is barred
+                         as circular — entropy is a functional of chain-indexed states)
+F5 + O4 + SM-B3       →  AT4 the ratchet: orientation, below the TG stack
 WM1,WM2 alone         →  TH2 area law (isolation cost is a cut quantity)
 T15,T13',T16',T14'    →  TH4 relative-entropy monotonicity (second law's locus)
 (+ SB4, TG1..TG5)     →  TH6 Einstein eq, TH7 G, TH8 equivalence principle,
