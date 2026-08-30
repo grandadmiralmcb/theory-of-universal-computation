@@ -4,6 +4,10 @@
 
 *Relevant entropy is relative information.* The thermodynamic layer (docs/24) rests on that one sentence: the framework's own gauge freedoms leave no absolute entropy standing, only differences against the ground configuration — and gravity is what those differences do.
 
+## New here?
+
+**[learn/counting-the-world.html](learn/counting-the-world.html)** — a nine-module visual course for non-specialists, built on one image (knots tied with strings) with six interactive 3D scenes. It teaches the charter's forced/assumed/not-claimed discipline first, then the area law, relative entropy, additivity, the equivalence principle, the arrow of time and black-hole mergers. No math required. Open the file in a browser.
+
 ## Read in order
 
 1. **[docs/00-theory-charter.md](docs/00-theory-charter.md)** — minima, forced vs not, postulates

@@ -1,0 +1,1017 @@
+<title>Counting the World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#EDF0F2; --paper-2:#E3E8EB; --card:#F7F9FA;
+  --ink:#151A1F; --ink-2:#3D4750; --ink-3:#6B7780;
+  --rule:#CBD3D8;
+  --thread:#0E7C86; --thread-soft:#D3E9EB;
+  --cut:#B4451F; --cut-soft:#F2DDD4;
+  --assumed:#8A5A0B; --assumed-soft:#F0E5CE;
+  --forced:#1F5F4A; --forced-soft:#D8E9E2;
+  --panel:#0B1013; --panel-rule:#1E2A30; --panel-ink:#C6D3D8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1317; --paper-2:#141B20; --card:#151C21;
+    --ink:#E4EAED; --ink-2:#AAB6BD; --ink-3:#7C8991;
+    --rule:#28333A;
+    --thread:#3FBEC6; --thread-soft:#0E2F33;
+    --cut:#E8834F; --cut-soft:#372016;
+    --assumed:#D6A64A; --assumed-soft:#33270F;
+    --forced:#5FC0A0; --forced-soft:#122C25;
+    --panel-rule:#222E35;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1317; --paper-2:#141B20; --card:#151C21;
+  --ink:#E4EAED; --ink-2:#AAB6BD; --ink-3:#7C8991;
+  --rule:#28333A;
+  --thread:#3FBEC6; --thread-soft:#0E2F33;
+  --cut:#E8834F; --cut-soft:#372016;
+  --assumed:#D6A64A; --assumed-soft:#33270F;
+  --forced:#5FC0A0; --forced-soft:#122C25;
+  --panel-rule:#222E35;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px; line-height:1.65; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--thread)}
+:focus-visible{outline:2px solid var(--thread); outline-offset:3px; border-radius:2px}
+
+/* ---------- shell ---------- */
+.shell{display:grid; grid-template-columns:minmax(0,1fr); max-width:1180px; margin:0 auto; padding:0 24px}
+@media(min-width:1000px){
+  .shell{grid-template-columns:210px minmax(0,1fr); gap:56px; padding:0 40px}
+}
+.rail{display:none}
+@media(min-width:1000px){
+  .rail{display:block; position:sticky; top:0; align-self:start; height:100vh; overflow-y:auto; padding:96px 0 48px}
+}
+.rail ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px}
+.rail a{
+  display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:baseline;
+  text-decoration:none; color:var(--ink-3); padding:7px 10px 7px 8px;
+  border-left:2px solid transparent; font-size:13.5px; line-height:1.35;
+  transition:color .15s, border-color .15s, background .15s;
+}
+.rail a:hover{color:var(--ink); background:var(--paper-2)}
+.rail a.on{color:var(--ink); border-left-color:var(--thread); background:var(--paper-2)}
+.rail .n{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--thread); font-variant-numeric:tabular-nums}
+.rail h6{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 14px 10px; font-weight:500;
+}
+
+main{min-width:0; padding-bottom:120px}
+
+/* ---------- type ---------- */
+.col{max-width:65ch}
+h1{
+  font-family:Newsreader,Georgia,serif; font-weight:500; font-size:clamp(44px,7vw,78px);
+  line-height:1.02; letter-spacing:-.02em; margin:0 0 20px; text-wrap:balance;
+}
+h2{
+  font-family:Newsreader,Georgia,serif; font-weight:500; font-size:clamp(28px,3.6vw,40px);
+  line-height:1.12; letter-spacing:-.015em; margin:0 0 8px; text-wrap:balance;
+}
+h3{font-size:15px; font-weight:600; margin:0 0 8px; letter-spacing:-.005em}
+p{margin:0 0 18px}
+.lede{font-size:20px; line-height:1.55; color:var(--ink-2); max-width:62ch}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-3); display:flex; align-items:center; gap:12px; margin:0 0 14px;
+}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--rule)}
+em{font-style:italic}
+strong{font-weight:600}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.88em}
+
+/* ---------- hero ---------- */
+header.hero{padding:96px 0 8px}
+.hero .kicker{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--thread); margin:0 0 22px;
+}
+.hero .thesis{
+  font-family:Newsreader,Georgia,serif; font-size:clamp(21px,2.5vw,26px); line-height:1.45;
+  color:var(--ink-2); max-width:56ch; margin:0 0 34px; font-style:italic;
+}
+.meta{
+  display:flex; flex-wrap:wrap; gap:10px 28px; padding:20px 0; border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule); font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:12px; color:var(--ink-3); letter-spacing:.03em;
+}
+
+/* ---------- modules ---------- */
+section.mod{padding:76px 0 0; scroll-margin-top:24px}
+.hook{
+  font-family:Newsreader,Georgia,serif; font-size:21px; line-height:1.5; color:var(--ink-2);
+  border-left:2px solid var(--thread); padding-left:20px; margin:0 0 26px; max-width:58ch;
+}
+
+/* ---------- claim tags ---------- */
+.tag{
+  display:inline-flex; align-items:center; gap:6px; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px;
+  border-radius:2px; font-weight:500;
+}
+.tag.forced{background:var(--forced-soft); color:var(--forced)}
+.tag.assumed{background:var(--assumed-soft); color:var(--assumed)}
+.tag.none{background:var(--paper-2); color:var(--ink-3); text-decoration:line-through}
+.tag.thread{background:var(--thread-soft); color:var(--thread)}
+
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px}
+
+/* ---------- panels (instruments) ---------- */
+.instr{
+  margin:34px 0 30px; background:var(--panel); border:1px solid var(--panel-rule);
+  border-radius:3px; overflow:hidden; color:var(--panel-ink);
+}
+@media(min-width:1000px){ .instr{margin-right:-40px} }
+@media(min-width:1240px){ .instr{margin-right:-90px} }
+.instr .bar{
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  padding:11px 16px; border-bottom:1px solid var(--panel-rule); background:#0E151A;
+}
+.instr .bar h4{
+  margin:0; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:#7FA0AB; font-weight:500;
+}
+.instr .hint{font-size:11.5px; color:#5D7580; font-family:"IBM Plex Mono",ui-monospace,monospace}
+.stage{position:relative; width:100%; height:400px; background:var(--panel)}
+.stage canvas{display:block; width:100%; height:100%}
+.stage .lbl{
+  position:absolute; top:14px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px;
+  letter-spacing:.13em; text-transform:uppercase; color:#7FA0AB; pointer-events:none;
+}
+@media(max-width:640px){ .stage{height:300px} }
+.controls{
+  display:flex; flex-wrap:wrap; gap:18px 26px; align-items:center;
+  padding:14px 16px; border-top:1px solid var(--panel-rule); background:#0E151A;
+}
+.ctl{display:flex; flex-direction:column; gap:5px; min-width:150px; flex:1 1 150px}
+.ctl label{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:#6E8892;
+}
+input[type=range]{
+  -webkit-appearance:none; appearance:none; width:100%; height:3px; background:#243239;
+  border-radius:2px; outline:none; cursor:grab;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:15px; height:15px; border-radius:50%;
+  background:#2FD3DB; cursor:grab; border:2px solid var(--panel);
+}
+input[type=range]::-moz-range-thumb{
+  width:15px; height:15px; border-radius:50%; background:#2FD3DB; cursor:grab; border:2px solid var(--panel);
+}
+button.btn{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; padding:8px 14px; border-radius:2px; cursor:pointer;
+  background:transparent; color:#9FB8C1; border:1px solid #2A3A42; transition:.15s;
+}
+button.btn:hover:not(:disabled){border-color:#2FD3DB; color:#2FD3DB}
+button.btn[aria-pressed=true]{background:#0E2F33; border-color:#2FD3DB; color:#5FE4EB}
+button.btn:disabled{opacity:.35; cursor:not-allowed}
+.readout{
+  display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--panel-rule); background:#080D10;
+}
+.readout .cell{
+  flex:1 1 110px; padding:12px 16px; border-right:1px solid var(--panel-rule);
+}
+.readout .cell:last-child{border-right:none}
+.readout .k{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10px; letter-spacing:.11em;
+  text-transform:uppercase; color:#5D7580; display:block; margin-bottom:3px;
+}
+.readout .v{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:23px; font-variant-numeric:tabular-nums;
+  color:#DCE7EB; line-height:1.15;
+}
+.readout .v.thread{color:#2FD3DB}
+.readout .v.cut{color:#FF8A5B}
+.readout .v.flat{color:#9BE8A0}
+.caption{
+  padding:12px 16px; border-top:1px solid var(--panel-rule); background:#080D10;
+  font-size:13.5px; line-height:1.55; color:#8FA6AE;
+}
+.caption b{color:#C6D9DF; font-weight:600}
+
+/* ---------- says / doesn't say ---------- */
+.ledger{
+  display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule);
+  border-radius:3px; margin:26px 0; overflow:hidden;
+}
+@media(min-width:760px){ .ledger{grid-template-columns:1fr 1fr} }
+.ledger > div{background:var(--card); padding:18px 20px}
+.ledger h5{
+  margin:0 0 9px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px;
+  letter-spacing:.13em; text-transform:uppercase; font-weight:500;
+}
+.ledger .yes h5{color:var(--forced)}
+.ledger .no h5{color:var(--cut)}
+.ledger p{margin:0; font-size:15.5px; line-height:1.6; color:var(--ink-2)}
+
+.check{
+  border-top:1px solid var(--rule); margin-top:26px; padding-top:16px;
+  font-size:15px; color:var(--ink-2); max-width:62ch;
+}
+.check b{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:6px; font-weight:500;
+}
+
+table.mini{width:100%; border-collapse:collapse; margin:22px 0; font-size:15px}
+table.mini th,table.mini td{text-align:left; padding:9px 12px 9px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+table.mini th{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500;
+}
+table.mini td.num{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+.scroll{overflow-x:auto}
+
+footer{border-top:1px solid var(--rule); margin-top:90px; padding:36px 0 0; color:var(--ink-3); font-size:14.5px}
+footer .col{max-width:65ch}
+footer code{
+  background:var(--paper-2); padding:2px 6px; border-radius:2px; color:var(--ink-2);
+  display:inline-block; margin:2px 0;
+}
+@media(prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important} }
+</style>
+
+<div class="shell">
+<nav class="rail" aria-label="Modules">
+  <h6>Nine modules</h6>
+  <ol id="rail"></ol>
+</nav>
+
+<main>
+<header class="hero col">
+  <p class="kicker">A course for people who don't do the math</p>
+  <h1>Counting the World</h1>
+  <p class="thesis">There is a way of doing physics in which almost everything reduces to one question: how many strings would you have to cut?</p>
+  <p class="lede">This is a nine-module tour of the expression-tree approach to physics. It has no equations you need to solve and no prior physics. What it does have is one picture — knots tied together with strings — that turns out to carry gravity, entropy, black holes and the direction of time.</p>
+  <div class="meta">
+    <span>Nine modules</span><span>Six interactive scenes</span><span>Drag to rotate</span><span>No math required</span>
+  </div>
+</header>
+
+<section class="mod" id="m0" data-title="How to read a claim">
+  <div class="col">
+    <p class="eyebrow">Module 00 &nbsp;·&nbsp; Reading rules</p>
+    <h2>How to read a claim</h2>
+    <p class="hook">Start here, because it is the habit that makes the rest safe. Most physics writing you meet blends what is established with what is hoped for. This project refuses to.</p>
+    <p>Every statement in this framework carries a label saying how much it costs to believe. There are three, and once you can spot them you can read anything here without being sold to.</p>
+    <div class="tagrow">
+      <span class="tag forced">Forced</span>
+      <span class="tag assumed">Assumed</span>
+      <span class="tag none">Not claimed</span>
+    </div>
+    <p><span class="tag forced">Forced</span> means it follows from the four starting assumptions and nothing else. Very little qualifies — five results in total.</p>
+    <p><span class="tag assumed">Assumed</span> means an extra assumption was added, and that assumption is <em>named and numbered</em>. Most of the interesting physics lives here. Because the assumption has a name, you can always ask the useful question: what happens if it is false?</p>
+    <p><span class="tag none">Not claimed</span> means the project says plainly that it has nothing to offer. These are written down on purpose, in a list, so that nobody can quietly forget them.</p>
+    <div class="ledger">
+      <div class="yes"><h5>Why this matters</h5><p>When you read “gravity is derived here,” you have somewhere to go. You ask which label it carries, and there is an answer. In Module 06 the answer turns out to be: assumed, resting on one specific unproven thing.</p></div>
+      <div class="no"><h5>The trap it avoids</h5><p>A result that quietly borrows an assumption looks stronger than it is. The whole point of labelling is that the reader, not the author, gets to decide whether the price was worth paying.</p></div>
+    </div>
+    <div class="check"><b>Check yourself</b>Someone tells you this framework “explains why gravity is weak.” What is the first question you should ask?</div>
+  </div>
+</section>
+
+<section class="mod" id="m1" data-title="Four assumptions">
+  <div class="col">
+    <p class="eyebrow">Module 01 &nbsp;·&nbsp; The starting point</p>
+    <h2>Four assumptions, and that is all</h2>
+    <p class="hook">Physics usually begins with space, time, and things moving in them. This begins with none of those.</p>
+    <p>The entire ontology is four sentences. Everything else in the course is either squeezed out of these or is an extra assumption with a name.</p>
+    <div class="scroll"><table class="mini">
+      <tr><th style="width:52px">ID</th><th>In plain language</th></tr>
+      <tr><td class="num">O1</td><td>There is structured information — things made of parts, where two things can genuinely <em>share</em> a part rather than each having a copy.</td></tr>
+      <tr><td class="num">O2</td><td>There is no master clock. Order gets built up locally, one step at a time, by whatever is doing the stepping.</td></tr>
+      <tr><td class="num">O3</td><td>When several things could happen next, what happens is whatever disturbs the existing structure least.</td></tr>
+      <tr><td class="num">O4</td><td>The options that did not happen do not vanish. They are still there; they are just no longer yours.</td></tr>
+    </table></div>
+    <p>Notice what is missing: no space, no time as a background, no particles, no fields, no probability. Those all have to be earned later, and some of them are never earned.</p>
+    <p>Notice also that <strong>O3 is the only dynamical law</strong>. There is no force law here. There is a preference for the least disruptive move, and the rest of this course is working out what “least disruptive” costs.</p>
+    <div class="check"><b>Check yourself</b>O4 says unchosen options stay real. Why would a theory bother saying that, instead of just letting them disappear? (Module 07 gives the payoff.)</div>
+  </div>
+</section>
+
+<section class="mod" id="m2" data-title="Knots and strings">
+  <div class="col">
+    <p class="eyebrow">Module 02 &nbsp;·&nbsp; The picture</p>
+    <h2>Knots and strings</h2>
+    <p class="hook">Here is the one image the whole course runs on. Hold on to it and you will follow everything that comes after.</p>
+    <p>Picture the world as knots tied together with strings. When two knots hold <em>the same</em> string — not a copy of it, the same one — they are sharing. Sharing is the whole of structure in this theory.</p>
+    <p>Now: to pull any part of this away from the rest, you must cut strings. So we count three things whenever anything happens.</p>
+    <div class="scroll"><table class="mini">
+      <tr><th style="width:52px">Count</th><th>What it counts</th></tr>
+      <tr><td class="num">S</td><td>Strings you had to cut.</td></tr>
+      <tr><td class="num">B</td><td>Loose ends you left dangling.</td></tr>
+      <tr><td class="num">D</td><td>Whether the thing is still recognisably itself afterwards — one or zero.</td></tr>
+    </table></div>
+    <p>Add those up with weights and you have the <strong>cost</strong> of a move. Assumption O3 then says the obvious thing: the world takes the cheapest move available.</p>
+    <p>That is the entire machine. Everything from here — the area of a black hole, why everything falls at the same rate, why time has a direction — is this counter, applied somewhere new.</p>
+    <div class="ledger">
+      <div class="yes"><h5>Worth knowing</h5><p>“Heavy” in this picture means <em>many strings</em>. A thing with a lot of shared structure is hard to shift, because shifting it disturbs all of them. That is what inertia is here.</p></div>
+      <div class="no"><h5>Already an assumption</h5><p>That cost is a <em>number</em> at all — rather than just “this is worse than that” — is an extra assumption. It was later traced back to more basic rules about comparing and combining, but it is not free.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mod" id="m3" data-title="Only the edge counts">
+  <div class="col">
+    <p class="eyebrow">Module 03 &nbsp;·&nbsp; The centrepiece</p>
+    <h2>Only the edge counts</h2>
+    <p class="hook">This is the single most important thing in the course, and you can see it directly. Drag the scene to rotate it.</p>
+    <p>To separate a region from everything else, you cut the strings that cross its <em>surface</em>. The strings buried inside are never touched — they are still tied at both ends, both ends inside. So the cost of separating something does not depend on how much is in it.</p>
+  </div>
+
+  <div class="instr">
+    <div class="bar"><h4>Scene 01 — the cut counter</h4><span class="hint">drag to rotate</span></div>
+    <div class="stage" id="s1"></div>
+    <div class="controls">
+      <div class="ctl"><label for="s1a">Structure inside</label><input type="range" id="s1a" min="0" max="260" value="90"></div>
+      <div class="ctl"><label for="s1b">Strings crossing the surface</label><input type="range" id="s1b" min="2" max="18" value="7"></div>
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label for="s1c">&nbsp;</label><button class="btn" id="s1c" aria-pressed="true">Show boundary</button></div>
+    </div>
+    <div class="readout">
+      <div class="cell"><span class="k">Knots inside</span><span class="v" id="s1n">—</span></div>
+      <div class="cell"><span class="k">Strings inside</span><span class="v" id="s1i">—</span></div>
+      <div class="cell"><span class="k">Crossing the surface</span><span class="v thread" id="s1x">—</span></div>
+      <div class="cell"><span class="k">Cost to separate</span><span class="v flat" id="s1c2">—</span></div>
+    </div>
+    <div class="caption">Push <b>structure inside</b> all the way up. The interior fills with hundreds of strings — and the cost to separate the region <b>does not move</b>. Now push <b>strings crossing the surface</b>: the cost tracks it exactly, one for one.</div>
+  </div>
+
+  <div class="col">
+    <p>That is a real result, not a simplification for the course. It is forced by the counter itself: the counter only ever counts <em>severed</em> strings, and severing happens at a boundary.</p>
+    <p>Physicists have a name for the idea that what is inside a region is governed by what is on its surface: <strong>holography</strong>. In most approaches it is a surprising discovery that has to be argued for. Here it is not imported at all. It is just the shape of the counter.</p>
+    <div class="tagrow"><span class="tag forced">Forced</span></div>
+    <p>That label is the strong one from Module 00: this needs the four assumptions and the counter, and nothing else.</p>
+    <div class="ledger">
+      <div class="yes"><h5>What it says</h5><p>Separation cost is a surface quantity. Grow the contents a hundredfold and nothing changes. This is where every later result about area comes from.</p></div>
+      <div class="no"><h5>What it does not say</h5><p>Nothing here gives you <em>area in square metres</em>. “Surface” so far means “the set of strings you would cut” — a count, not a measured size. Turning that into geometry is Module 06's unpaid bill.</p></div>
+    </div>
+    <div class="check"><b>Check yourself</b>Two sealed boxes have identical surfaces. One is empty, one is packed with intricate machinery. Which is more expensive to isolate from the world?</div>
+  </div>
+</section>
+
+<section class="mod" id="m4" data-title="Only differences are real">
+  <div class="col">
+    <p class="eyebrow">Module 04 &nbsp;·&nbsp; The honest measurement</p>
+    <h2>Only differences are real</h2>
+    <p class="hook">Here is an awkward question. If everything is a count of strings — who decided how thick a string is?</p>
+    <p>Nobody did. And that is a problem, because you could redraw every string in the picture as ten thinner strings without changing anything physical. Do that, and every count you have made multiplies by ten.</p>
+    <p>So which count was the right one? Neither. <strong>Absolute counts are an artefact of how finely you chose to draw.</strong></p>
+  </div>
+
+  <div class="instr">
+    <div class="bar"><h4>Scene 02 — the redrawing problem</h4><span class="hint">drag to rotate</span></div>
+    <div class="stage" id="s2"><span class="lbl" style="left:22%">the state</span><span class="lbl" style="left:63%">the baseline</span></div>
+    <div class="controls">
+      <div class="ctl"><label for="s2a">Redraw each string as … strands</label><input type="range" id="s2a" min="1" max="6" value="1"></div>
+    </div>
+    <div class="readout">
+      <div class="cell"><span class="k">Strands drawn</span><span class="v" id="s2k">—</span></div>
+      <div class="cell"><span class="k">Total count (absolute)</span><span class="v cut" id="s2abs">—</span></div>
+      <div class="cell"><span class="k">Distance from baseline</span><span class="v flat" id="s2rel">—</span></div>
+    </div>
+    <div class="caption">Two arrangements are shown: the <b>state</b> on the left, the <b>baseline</b> on the right. Refining adds strands to <b>both, identically</b> — so when you ask how far apart they are, the added strands cancel exactly. The absolute number runs away; the difference does not move at all.</div>
+  </div>
+
+  <div class="col">
+    <p>The fix is to stop asking for an absolute amount and only ever ask: <em>how far is this from the baseline?</em> The baseline is the emptiest arrangement — the vacuum. That quantity is called <strong>relative entropy</strong>, and it is immune to the redrawing.</p>
+    <p>This is not a technicality. Physicists have known for decades that when you try to compute the entanglement entropy of a region of space you get infinity, and the infinity depends on an arbitrary choice of how finely to slice things. In this framework that infinity is not a physical fact and not a crisis. <strong>It is the redrawing freedom, showing up exactly where you would predict.</strong></p>
+    <div class="tagrow"><span class="tag forced">Forced</span></div>
+    <div class="ledger">
+      <div class="yes"><h5>The rule to carry forward</h5><p>Every quantity in this course that does real work is a <em>difference</em> from the vacuum. Never an absolute. If you catch someone quoting an absolute entropy, they have quoted a drawing convention.</p></div>
+      <div class="no"><h5>Not solved by this</h5><p>It does not tell you what the vacuum <em>is</em>, only that you must measure against it. Identifying the real one is a separate, open problem.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mod" id="m5" data-title="When entropies add">
+  <div class="col">
+    <p class="eyebrow">Module 05 &nbsp;·&nbsp; Bookkeeping</p>
+    <h2>When do two systems just add up?</h2>
+    <p class="hook">Put two boxes side by side. Is the total disorder the sum of the two? Sometimes exactly. Sometimes not at all — and the gap is worth more than the rule.</p>
+    <p>If the two regions share nothing, their counts add. Perfectly, with no correction. Share some strings and they stop adding — and the shortfall is not vague, it is <strong>exactly twice the number of shared strings</strong>.</p>
+  </div>
+
+  <div class="instr">
+    <div class="bar"><h4>Scene 03 — two regions</h4><span class="hint">drag to rotate</span></div>
+    <div class="stage" id="s3"></div>
+    <div class="controls">
+      <div class="ctl"><label for="s3a">Strings shared between A and B</label><input type="range" id="s3a" min="0" max="7" value="3"></div>
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label for="s3b">&nbsp;</label><button class="btn" id="s3b" aria-pressed="false">Draw one boundary around both</button></div>
+    </div>
+    <div class="readout">
+      <div class="cell"><span class="k">A's surface</span><span class="v" id="s3na">—</span></div>
+      <div class="cell"><span class="k">B's surface</span><span class="v" id="s3nb">—</span></div>
+      <div class="cell"><span class="k">A and B together</span><span class="v thread" id="s3nab">—</span></div>
+      <div class="cell"><span class="k">Shortfall</span><span class="v cut" id="s3gap">—</span></div>
+    </div>
+    <div class="caption">The <b style="color:#E8B33F">amber</b> strings are the ones A and B share; the teal ones run off to the rest of the world. Press <b>draw one boundary around both</b> and the amber strings turn dim — they are now <b>inside</b> the combined region, so the combined boundary cuts neither of them. Each one was counted by A's surface <em>and</em> by B's, and by the combined surface <b>zero times</b>. That is the entire origin of the factor of two.</div>
+  </div>
+
+  <div class="col">
+    <p>That shortfall has a name in physics — <strong>mutual information</strong> — and it is the standard measure of “these two things are not independent.” Here it is just a counting fact about which boundary cuts what.</p>
+    <p>Now the important part, and it is the opposite of what you would guess. You might think a tidy theory would want entropies to <em>always</em> add. It would be a disaster. If they always added, the shortfall would always be zero, which would mean no two regions could ever be correlated — no entanglement, no interference, no measurement, nothing quantum at all. <strong>The framework needs this rule to fail, and it fails in exactly one place: wherever things share.</strong></p>
+    <div class="tagrow"><span class="tag forced">Forced</span></div>
+    <p>And there is a bonus: this same adding-up rule is what lets cost be a <em>number</em> at all, rather than just a ranking. The bookkeeping of this module and the arithmetic of Module 02 are the same rule, doing two jobs.</p>
+    <div class="check"><b>Check yourself</b>Two regions share four strings. By how much do their surface counts overshoot the count for the pair taken together?</div>
+  </div>
+</section>
+
+<section class="mod" id="m6" data-title="One counter, two jobs">
+  <div class="col">
+    <p class="eyebrow">Module 06 &nbsp;·&nbsp; Gravity</p>
+    <h2>One counter doing two jobs</h2>
+    <p class="hook">Drop a hammer and a feather on the Moon and they land together. Everyone knows this. Almost nobody can say why it isn't an outrageous coincidence.</p>
+    <p>It <em>is</em> outrageous. Being hard to push and being pulled hard by gravity are two unrelated-sounding properties, and in ordinary physics they are two separate numbers that just happen to be equal, to fifteen decimal places, for every substance ever tested. Newton noticed. Einstein made it an axiom rather than explaining it.</p>
+    <p>In this picture there is nothing to explain, because there is only one number.</p>
+    <div class="scroll"><table class="mini">
+      <tr><th>Property</th><th>What it turns out to count</th></tr>
+      <tr><td>How hard a thing is to shove</td><td class="num">its strings</td></tr>
+      <tr><td>How hard gravity pulls it</td><td class="num">its strings</td></tr>
+    </table></div>
+    <p>Gravity here is not a force in the usual sense. It is a <em>pull toward arrangements with more ways to be</em> — and how strongly a thing feels that pull depends on how many strings it brings. Which is the same count that makes it sluggish. Divide one by the other and the strings cancel. Everything falls at the same rate.</p>
+  </div>
+
+  <div class="instr">
+    <div class="bar"><h4>Scene 04 — shove it, or drop it</h4><span class="hint">two objects, one light and one heavy</span></div>
+    <div class="stage" id="s4"></div>
+    <div class="controls">
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label>&nbsp;</label><button class="btn" id="s4a" aria-pressed="true">Shove with a rope</button></div>
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label>&nbsp;</label><button class="btn" id="s4b" aria-pressed="false">Let gravity pull</button></div>
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label>&nbsp;</label><button class="btn" id="s4r">Replay</button></div>
+    </div>
+    <div class="readout">
+      <div class="cell"><span class="k">Light object</span><span class="v" id="s4l">3 strings</span></div>
+      <div class="cell"><span class="k">Heavy object</span><span class="v" id="s4h">12 strings</span></div>
+      <div class="cell"><span class="k">Result</span><span class="v thread" id="s4v">—</span></div>
+    </div>
+    <div class="caption">A rope pulls both with the same force, so the heavy one lags — four times the strings, a quarter the acceleration. Switch to gravity and the pull itself scales with the strings, so they stay <b>exactly level</b>. Same objects. The difference is entirely in whether the pull counts strings.</div>
+  </div>
+
+  <div class="col">
+    <p>Run that accounting not for one falling object but for every small region of space and every direction at once, and what comes out the other end is <strong>Einstein's field equation</strong> — the equation of general relativity. It arrives twice, by two independent routes that were not built to agree, and they agree.</p>
+    <p>One more thing falls out. Newton's gravitational constant — the number that says how strong gravity is — stops being a fundamental constant and becomes a description of the vacuum: <strong>how densely the empty world shares strings across a surface.</strong> Gravity is feeble because the vacuum shares extraordinarily densely.</p>
+    <div class="tagrow"><span class="tag assumed">Assumed — smooth space</span></div>
+    <div class="ledger">
+      <div class="yes"><h5>What was earned</h5><p>Everything falling at the same rate stops being a coincidence. And gravity's strength becomes a property of the vacuum rather than a number written on a card.</p></div>
+      <div class="no"><h5>What was borrowed</h5><p>All of it rests on assuming the step-by-step order of events smooths out into ordinary space with ordinary areas. <strong>Nobody has shown that it does.</strong> It is the framework's largest single debt, and if it fails this module falls with it. The value of gravity's strength is also not predicted — only re-described.</p></div>
+    </div>
+    <div class="check"><b>Check yourself</b>Module 00 asked you to find the label. This module's headline result — Einstein's equation — carries which one, and resting on what?</div>
+  </div>
+</section>
+
+<section class="mod" id="m7" data-title="Which way is later?">
+  <div class="col">
+    <p class="eyebrow">Module 07 &nbsp;·&nbsp; Time</p>
+    <h2>Which way is later?</h2>
+    <p class="hook">Films of a pendulum look fine backwards. Films of a smashed cup do not. The difference is smaller and stranger than it looks.</p>
+    <p>Two quite different things get called “time,” and keeping them apart is the whole module.</p>
+    <div class="scroll"><table class="mini">
+      <tr><th style="width:110px">Order</th><td>Which step comes after which. This comes free — assumption O2 already builds order, one step at a time. It was never in doubt.</td></tr>
+      <tr><th style="width:110px">Direction</th><td>Which end of that sequence is the past. This is <em>not</em> settled by order. Run the sequence backwards and every rule about ordering is equally satisfied.</td></tr>
+    </table></div>
+    <p>So where does direction come from? From the one move that cannot be undone.</p>
+    <p>Almost everything that happens is a <strong>re-tying</strong>: strings get rearranged, nothing is lost, and you could put it back exactly. Play it backwards and nothing looks wrong. These moves carry no direction at all.</p>
+    <p>But sometimes the world <strong>commits</strong> — it takes one option and drops the others. By assumption O4 the dropped options are still real. They are simply no longer reachable from where you now are. And there is no move that reaches back.</p>
+  </div>
+
+  <div class="instr">
+    <div class="bar"><h4>Scene 05 — step it forwards, then try to go back</h4><span class="hint">the Back button is the lesson</span></div>
+    <div class="stage" id="s5"></div>
+    <div class="controls">
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label>&nbsp;</label><button class="btn" id="s5b">◀ Back</button></div>
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label>&nbsp;</label><button class="btn" id="s5f">Forward ▶</button></div>
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label>&nbsp;</label><button class="btn" id="s5r">Reset demo</button></div>
+      <div class="ctl"><label>Step</label><span class="mono" id="s5lab" style="color:#9FB8C1;font-size:13px">1 of 4 — re-tying</span></div>
+    </div>
+    <div class="readout">
+      <div class="cell"><span class="k">Move type</span><span class="v" id="s5t" style="font-size:17px">Re-tying</span></div>
+      <div class="cell"><span class="k">Can it be undone?</span><span class="v flat" id="s5u" style="font-size:17px">Yes</span></div>
+      <div class="cell"><span class="k">Direction so far</span><span class="v" id="s5d" style="font-size:17px">None</span></div>
+    </div>
+    <div class="caption">Steps one to three are re-tyings and <b>Back</b> works. Step four cuts, and <b>Back stops working</b> — not because the button is broken, but because there is no move that undoes it. That disabled button <em>is</em> the arrow of time. (<b>Reset demo</b> restarts the illustration — it does not undo the move.)</div>
+  </div>
+
+  <div class="col">
+    <p>Three things in this framework turn out to be the same event, which is the sort of thing you hope for and rarely get: <strong>the arrow of time, the production of entropy, and the moment a quantum measurement gets a definite answer.</strong> Not three mysteries. One event, viewed through three different ledgers.</p>
+    <p>It also explains something you already know but may never have had explained. Why does time obviously flow for a cup, and not obviously at all for an isolated atom? Because committing happens constantly for big things touching an environment, and almost never for small isolated ones. <strong>Direction is exactly as common as the world's tendency to look definite</strong> — and that is one inequality, not two facts.</p>
+    <p>Last consequence, and a pretty one. A clock that only ever re-ties cannot tell you the time: its readings cycle and come back, so it can never distinguish now from four steps ago. <strong>To measure duration a clock must do something it cannot take back.</strong></p>
+    <div class="tagrow"><span class="tag forced">Forced</span></div>
+    <p>Worth pausing on that label. Unlike Module 06, none of this leans on the assumption that smooth space comes out. The arrow of time sits <em>below</em> gravity in the framework — if the smooth-space assumption failed tomorrow, Module 06 would fall and this module would not.</p>
+    <div class="ledger">
+      <div class="yes"><h5>What it says</h5><p>Order is free; direction is not, and direction is exactly the set of committing moments. Entropy measures the arrow — it does not create it.</p></div>
+      <div class="no"><h5>What it does not say</h5><p>Nothing here explains why the universe <em>started</em> so orderly. The direction points away from a very tidy beginning, and why the beginning was tidy is untouched — an open problem, listed as one.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mod" id="m8" data-title="Black holes">
+  <div class="col">
+    <p class="eyebrow">Module 08 &nbsp;·&nbsp; The test case</p>
+    <h2>Two black holes walk into a bar</h2>
+    <p class="hook">In 2015 two black holes merged a billion light years away and the ripple reached Earth. It is the cleanest test this framework has, because the numbers are public.</p>
+    <p>A horizon is a boundary you cannot reach back across. Everything from Module 03 applies directly: its size is the count of strings crossing it.</p>
+    <p>Now put Module 07 next to Module 05 and the result writes itself. Committing only ever adds to the count, so <strong>a horizon can only grow</strong>. And early in a merger, when the two holes are still far apart and sharing nothing, their boundaries are separate pieces — so by Module 05 their areas simply add.</p>
+  </div>
+
+  <div class="instr">
+    <div class="bar"><h4>Scene 06 — GW150914, as measured</h4><span class="hint">press replay to watch the merger</span></div>
+    <div class="stage" id="s6"></div>
+    <div class="controls">
+      <div class="ctl" style="flex:0 0 auto;min-width:0"><label>&nbsp;</label><button class="btn" id="s6r">Replay merger</button></div>
+      <div class="ctl"><label>Masses, in Suns</label><span class="mono" id="s6m" style="color:#9FB8C1;font-size:13px">35.6 + 30.6 → 63.1</span></div>
+    </div>
+    <div class="readout">
+      <div class="cell"><span class="k">Area before</span><span class="v" id="s6a">110,771</span></div>
+      <div class="cell"><span class="k">Area after</span><span class="v thread" id="s6b">172,499</span></div>
+      <div class="cell"><span class="k">Change</span><span class="v flat" id="s6c">+56%</span></div>
+      <div class="cell"><span class="k">Energy radiated</span><span class="v cut" id="s6d">4.7%</span></div>
+    </div>
+    <div class="caption">Two Suns' worth of mass left as gravitational waves — and the horizon still grew by more than half. The framework sets a hard ceiling of <b>29.3%</b> on how much of a merger's mass can escape as radiation. This event spent 4.7% of its budget.</div>
+  </div>
+
+  <div class="col">
+    <p>The prediction is checked against four real mergers. Every one grows; none comes close to the ceiling.</p>
+    <div class="scroll"><table class="mini">
+      <tr><th>Event</th><th>Masses (Suns)</th><th>Area change</th><th>Radiated</th><th>Ceiling</th></tr>
+      <tr><td>GW150914</td><td class="num">35.6 + 30.6 → 63.1</td><td class="num">+56%</td><td class="num">4.7%</td><td class="num">29.1%</td></tr>
+      <tr><td>GW151226</td><td class="num">13.7 + 7.7 → 20.5</td><td class="num">+42%</td><td class="num">4.2%</td><td class="num">26.6%</td></tr>
+      <tr><td>GW170814</td><td class="num">30.7 + 25.3 → 53.4</td><td class="num">+53%</td><td class="num">4.6%</td><td class="num">29.0%</td></tr>
+      <tr><td>GW190521</td><td class="num">85.0 + 66.0 → 142.0</td><td class="num">+47%</td><td class="num">6.0%</td><td class="num">28.7%</td></tr>
+    </table></div>
+    <p>And the reverse is not merely improbable, it is <strong>impossible</strong>. Split a black hole any way you like and the total area drops. There is no sequence of moves that does it, for the same reason the Back button stopped working in Module 07.</p>
+    <div class="ledger">
+      <div class="yes"><h5>Honest scoring</h5><p>This is not a new prediction — Hawking proved the area theorem in 1971 and these events confirm it. What is new is the <em>route</em>: it arrives here from string-counting and the one-way move, not from the geometry of spacetime.</p></div>
+      <div class="no"><h5>Still borrowed</h5><p>The step from “string count” to “area in square kilometres” is Module 06's unpaid assumption, again. The inequality is solid; the translation into geometry is not.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mod" id="m9" data-title="What is missing">
+  <div class="col">
+    <p class="eyebrow">Module 09 &nbsp;·&nbsp; The ledger</p>
+    <h2>What is missing</h2>
+    <p class="hook">A course that ended at Module 08 would have taught you the content and missed the method. This list is the method.</p>
+    <p>These are written down in the project itself, numbered, so that nobody has to rediscover them by being disappointed.</p>
+    <div class="scroll"><table class="mini">
+      <tr><th style="width:34%">Open problem</th><th>Where it bites</th></tr>
+      <tr><td><strong>Does smooth space come out?</strong></td><td>The biggest debt by far. Everything about gravity assumes the step-by-step order of events smooths into ordinary space with ordinary areas. Nobody has shown it does. Modules 06 and 08 are exactly as strong as this and no stronger.</td></tr>
+      <tr><td><strong>Why did it start so tidy?</strong></td><td>Module 07 gives time a direction but not a starting point. Why the early universe was so orderly is untouched. It is a question about initial conditions, not about the rules.</td></tr>
+      <tr><td><strong>How strong is gravity?</strong></td><td>Gravity's strength is <em>re-described</em> as the vacuum's sharing density — not calculated. Same for the cosmological constant: the framework says why the usual calculation is the wrong question, and does not answer the right one.</td></tr>
+      <tr><td><strong>A quantum theory of gravity</strong></td><td>Not here. What Module 06 produces is the equation of state of the underlying structure — closer to deriving the gas laws than to deriving the atom.</td></tr>
+      <tr><td><strong>The particles</strong></td><td>No purchase on the particle families, their masses, or the specific forces of the Standard Model. Listed as no purchase, in those words.</td></tr>
+    </table></div>
+    <p>If you take one thing from this course, take the shape of that table rather than any single result in Modules 03 to 08. A framework that keeps its own list of failures is doing something most do not.</p>
+  </div>
+
+  <footer>
+    <div class="col">
+      <p><strong>Check any of it yourself.</strong> Every claim in Modules 03 to 08 has a program attached that verifies it and prints the numbers. They need only Python — no libraries, no setup.</p>
+      <p><code>python3 sim/thermo_gravity.py</code> — the area law with the interior grown 130×, the redrawing test, the merger inequality against all four events.<br>
+      <code>python3 sim/arrow_of_time.py</code> — reversible chains run backwards exactly; the move with no inverse; the clock that cannot tell time.</p>
+      <p>The theory itself is in the numbered documents: the reading rules of Module 00 are <span class="mono">docs/00-theory-charter.md</span>, and every theorem lists its full assumptions in <span class="mono">docs/11-theorems.md</span>.</p>
+    </div>
+  </footer>
+</section>
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- rail nav ---------- */
+var mods = Array.prototype.slice.call(document.querySelectorAll("section.mod"));
+var rail = document.getElementById("rail");
+mods.forEach(function(s,i){
+  var li=document.createElement("li"), a=document.createElement("a");
+  a.href="#"+s.id;
+  a.innerHTML='<span class="n">'+String(i).padStart(2,"0")+'</span><span>'+s.dataset.title+'</span>';
+  li.appendChild(a); rail.appendChild(li);
+});
+var links = Array.prototype.slice.call(rail.querySelectorAll("a"));
+if ("IntersectionObserver" in window){
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i = mods.indexOf(e.target);
+      links.forEach(function(l,j){ l.classList.toggle("on", j===i); });
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  mods.forEach(function(s){ spy.observe(s); });
+}
+
+if(!window.THREE){ return; }
+
+/* ---------- shared helpers ---------- */
+function rng(seed){ var s=seed; return function(){ s=(s*1664525+1013904223)%4294967296; return s/4294967296; }; }
+
+var DOT = (function(){
+  var c=document.createElement("canvas"); c.width=c.height=64;
+  var g=c.getContext("2d"), gr=g.createRadialGradient(32,32,0,32,32,32);
+  gr.addColorStop(0,"rgba(255,255,255,1)"); gr.addColorStop(.42,"rgba(232,244,248,.98)");
+  gr.addColorStop(.62,"rgba(190,220,232,.55)"); gr.addColorStop(1,"rgba(150,190,205,0)");
+  g.fillStyle=gr; g.beginPath(); g.arc(32,32,32,0,6.2832); g.fill();
+  var t=new THREE.Texture(c); t.needsUpdate=true; return t;
+})();
+
+var C_THREAD = new THREE.Color(0x2FD3DB);
+var C_DIM    = new THREE.Color(0x3D6673);
+var C_CUT    = new THREE.Color(0xFF7A4D);
+var C_SHARE  = new THREE.Color(0xE8B33F);
+var C_GHOST  = new THREE.Color(0x2E4C57);
+
+var live = [];
+function stage(id, camZ){
+  var el = document.getElementById(id);
+  if(!el) return null;
+  var w = el.clientWidth||640, h = el.clientHeight||400;
+  var renderer = new THREE.WebGLRenderer({antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
+  renderer.setSize(w,h); renderer.setClearColor(0x0B1013, 1);
+  el.appendChild(renderer.domElement);
+  var scene = new THREE.Scene();
+  var cam = new THREE.PerspectiveCamera(45, w/h, .1, 200);
+  cam.position.set(0,0,camZ);
+  var root = new THREE.Group(); scene.add(root);
+
+  var rx=0, ry=0, drag=false, px=0, py=0, spin = REDUCED?0:0.0016;
+  function down(e){ drag=true; var t=e.touches?e.touches[0]:e; px=t.clientX; py=t.clientY; }
+  function move(e){
+    if(!drag) return;
+    var t=e.touches?e.touches[0]:e;
+    ry += (t.clientX-px)*.008; rx += (t.clientY-py)*.008;
+    rx = Math.max(-1.2, Math.min(1.2, rx));
+    px=t.clientX; py=t.clientY;
+    if(e.touches) e.preventDefault();
+  }
+  function up(){ drag=false; }
+  el.addEventListener("mousedown",down); window.addEventListener("mousemove",move);
+  window.addEventListener("mouseup",up);
+  el.addEventListener("touchstart",down,{passive:true});
+  el.addEventListener("touchmove",move,{passive:false});
+  window.addEventListener("touchend",up);
+
+  var obj = {el:el, scene:scene, cam:cam, root:root, renderer:renderer,
+             visible:false, tick:null,
+             setSpin:function(v){ spin=v; },
+             step:function(){
+               if(!drag) ry += spin;
+               root.rotation.y = ry; root.rotation.x = rx;
+               if(obj.tick) obj.tick();
+               renderer.render(scene,cam);
+             }};
+  function resize(){
+    var W=el.clientWidth, H=el.clientHeight;
+    if(!W||!H) return;
+    renderer.setSize(W,H); cam.aspect=W/H; cam.updateProjectionMatrix();
+  }
+  window.addEventListener("resize", resize);
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(es){ obj.visible = es[0].isIntersecting; },{rootMargin:"120px"}).observe(el);
+  } else { obj.visible = true; }
+  live.push(obj);
+  return obj;
+}
+
+function points(pos, size, color){
+  var g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(pos,3));
+  return new THREE.Points(g, new THREE.PointsMaterial({
+    size:size, map:DOT, color:color===undefined?0xDCEAEF:color,
+    transparent:true, depthWrite:false, sizeAttenuation:true, opacity:.95
+  }));
+}
+function knots(pos, r, color){
+  var mat = new THREE.MeshBasicMaterial({color:color===undefined?0xE9F5F8:color, transparent:true, opacity:1});
+  var geo = new THREE.SphereGeometry(r, 14, 10);
+  var g = new THREE.Group();
+  pos.forEach(function(p){ var m=new THREE.Mesh(geo,mat); m.position.set(p[0],p[1],p[2]); g.add(m); });
+  g.userData.material = mat;
+  return g;
+}
+function lines(){
+  var g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute([],3));
+  g.setAttribute("color", new THREE.Float32BufferAttribute([],3));
+  return new THREE.LineSegments(g, new THREE.LineBasicMaterial({vertexColors:true, transparent:true, opacity:.85}));
+}
+function setLines(mesh, segs){
+  var p=[], c=[];
+  segs.forEach(function(s){
+    p.push(s.a[0],s.a[1],s.a[2], s.b[0],s.b[1],s.b[2]);
+    c.push(s.c.r,s.c.g,s.c.b, s.c.r,s.c.g,s.c.b);
+  });
+  mesh.geometry.setAttribute("position", new THREE.Float32BufferAttribute(p,3));
+  mesh.geometry.setAttribute("color", new THREE.Float32BufferAttribute(c,3));
+  mesh.geometry.attributes.position.needsUpdate = true;
+}
+function shell(r, col, op){
+  return new THREE.Mesh(new THREE.SphereGeometry(r,32,24),
+    new THREE.MeshBasicMaterial({color:col, transparent:true, opacity:op, side:THREE.DoubleSide, depthWrite:false}));
+}
+function inBall(rand, r0, r1){
+  var u=rand(), v=rand(), w=rand();
+  var th=u*6.2832, ph=Math.acos(2*v-1), rr=r0+(r1-r0)*Math.cbrt(w);
+  return [rr*Math.sin(ph)*Math.cos(th), rr*Math.sin(ph)*Math.sin(th), rr*Math.cos(ph)];
+}
+function txt(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+
+(function loop(){
+  requestAnimationFrame(loop);
+  for(var i=0;i<live.length;i++){ if(live[i].visible) live[i].step(); }
+})();
+
+/* ================= Scene 1 — the cut counter ================= */
+(function(){
+  var S = stage("s1", 7.4); if(!S) return;
+  var rand = rng(7);
+  var IN=[], OUT=[];
+  for(var i=0;i<200;i++) IN.push(inBall(rand,0,1.68));
+  for(var j=0;j<40;j++) OUT.push(inBall(rand,2.45,3.15));
+
+  var pIn = points([].concat.apply([],IN), .095, 0xC9DEE6);
+  var pOut= points([].concat.apply([],OUT), .085, 0x86A3AE);
+  var ln  = lines();
+  var bnd = shell(2.02, 0x2FD3DB, .055);
+  var wire= new THREE.Mesh(new THREE.SphereGeometry(2.02,14,9),
+            new THREE.MeshBasicMaterial({color:0x8FD8DD, wireframe:true, transparent:true, opacity:.055}));
+  S.root.add(pIn,pOut,ln,bnd,wire);
+
+  var a=document.getElementById("s1a"), b=document.getElementById("s1b"), btn=document.getElementById("s1c");
+  var showB = true;
+  function build(){
+    var nIn = +a.value, nX = +b.value, segs=[], r2=rng(31);
+    for(var i=0;i<nIn;i++){
+      var p=IN[Math.floor(r2()*IN.length)], q=IN[Math.floor(r2()*IN.length)];
+      segs.push({a:p,b:q,c:C_DIM});
+    }
+    var r3 = rng(101);
+    for(var k=0;k<nX;k++){
+      var th=r3()*6.2832, ph=Math.acos(2*r3()-1);
+      var dx=Math.sin(ph)*Math.cos(th), dy=Math.sin(ph)*Math.sin(th), dz=Math.cos(ph);
+      var ri=1.15+r3()*0.45, ro=2.6+r3()*0.55;
+      var w=0.16;
+      segs.push({a:[dx*ri,dy*ri,dz*ri],
+                 b:[(dx+(r3()-.5)*w)*ro,(dy+(r3()-.5)*w)*ro,(dz+(r3()-.5)*w)*ro], c:C_THREAD});
+    }
+    setLines(ln, segs);
+    txt("s1n", Math.min(180, 24+Math.round(nIn*0.6)));
+    txt("s1i", nIn);
+    txt("s1x", nX);
+    txt("s1c2", nX);
+  }
+  a.addEventListener("input",build); b.addEventListener("input",build);
+  btn.addEventListener("click",function(){
+    showB=!showB; bnd.visible=showB; wire.visible=showB;
+    btn.setAttribute("aria-pressed", showB?"true":"false");
+  });
+  build();
+})();
+
+/* ================= Scene 2 — the redrawing problem ================= */
+(function(){
+  var S = stage("s2", 9); if(!S) return;
+  var A=[[-2.3,.9,0],[-3.1,-.3,.5],[-1.6,-.7,-.4],[-2.6,-1.3,-.2],[-1.4,.5,.6]];
+  var B=[[2.3,.9,0],[3.1,-.3,.5],[1.6,-.7,-.4],[2.5,-1.2,.3]];
+  var eA=[[0,1],[0,2],[1,3],[2,3],[0,4],[2,4],[1,2],[3,4],[0,3]];
+  var eB=[[0,1],[0,2],[1,3],[2,3],[0,3],[1,2]];
+  var pA=knots(A, .105, 0xE9F5F8);
+  var pB=knots(B, .105, 0xE9F5F8);
+  var ln=lines(); S.root.add(pA,pB,ln);
+
+  function label(x,y,z,t){ return null; }
+  var k=document.getElementById("s2a");
+  function build(){
+    var K=+k.value, segs=[];
+    function fan(P,E,base){
+      E.forEach(function(e,ei){
+        for(var s=0;s<K;s++){
+          var off=(s-(K-1)/2)*0.085;
+          var p=P[e[0]], q=P[e[1]];
+          segs.push({a:[p[0],p[1]+off,p[2]+off*.6], b:[q[0],q[1]+off,q[2]+off*.6],
+                     c: s===0? base : C_GHOST});
+        }
+      });
+    }
+    fan(A,eA,C_THREAD); fan(B,eB,C_THREAD);
+    setLines(ln,segs);
+    txt("s2k", K);
+    txt("s2abs", (eA.length*K));
+    txt("s2rel", "0.1137");
+  }
+  k.addEventListener("input",build); build();
+})();
+
+/* ================= Scene 3 — two regions ================= */
+(function(){
+  var S = stage("s3", 10.2); if(!S) return;
+  var rand=rng(19);
+  function at(p,dx){ return [p[0]+dx,p[1],p[2]]; }
+  var A=[],B=[],EL=[],ER=[];
+  for(var i=0;i<44;i++) A.push(at(inBall(rand,0,1.02),-1.75));
+  for(var j=0;j<44;j++) B.push(at(inBall(rand,0,1.02), 1.75));
+  for(var m=0;m<6;m++) EL.push(at(inBall(rand,0,0.62),-4.35));
+  for(var n=0;n<6;n++) ER.push(at(inBall(rand,0,0.62), 4.35));
+
+  var pts=points([].concat.apply([],A.concat(B)), .1, 0xC9DEE6);
+  var env=points([].concat.apply([],EL.concat(ER)), .085, 0x86A3AE);
+  var ln=lines();
+  var sA=shell(1.38,0x2FD3DB,.06), sB=shell(1.38,0x2FD3DB,.06);
+  sA.position.x=-1.75; sB.position.x=1.75;
+  var both=new THREE.Mesh(new THREE.SphereGeometry(1.42,32,24),
+           new THREE.MeshBasicMaterial({color:0x9BE8A0,transparent:true,opacity:.055,side:THREE.DoubleSide,depthWrite:false}));
+  both.scale.set(2.42,1.02,1.02); both.visible=false;
+  S.root.add(pts,env,ln,sA,sB,both);
+
+  var sl=document.getElementById("s3a"), btn=document.getElementById("s3b"), merged=false;
+  function build(){
+    var nc=+sl.value, segs=[], r2=rng(5);
+    for(var q=0;q<20;q++){
+      segs.push({a:A[q%A.length], b:A[(q*7+3)%A.length], c:C_DIM});
+      segs.push({a:B[q%B.length], b:B[(q*7+3)%B.length], c:C_DIM});
+    }
+    for(var i=0;i<2;i++) segs.push({a:A[Math.floor(r2()*A.length)], b:EL[i], c:C_THREAD});
+    for(var j=0;j<5;j++) segs.push({a:B[Math.floor(r2()*B.length)], b:ER[j], c:C_THREAD});
+    for(var k=0;k<nc;k++) segs.push({a:A[Math.floor(r2()*A.length)], b:B[Math.floor(r2()*B.length)],
+                                     c: merged? C_DIM : C_SHARE});
+    setLines(ln,segs);
+    txt("s3na", nc+2); txt("s3nb", nc+5); txt("s3nab", 7); txt("s3gap", 2*nc);
+  }
+  sl.addEventListener("input",build);
+  btn.addEventListener("click",function(){
+    merged=!merged; both.visible=merged; sA.visible=!merged; sB.visible=!merged;
+    btn.setAttribute("aria-pressed", merged?"true":"false");
+    btn.textContent = merged? "Separate boundaries again" : "Draw one boundary around both";
+    build();
+  });
+  build();
+})();
+
+/* ================= Scene 4 — shove it, or drop it ================= */
+(function(){
+  var S = stage("s4", 9); if(!S) return;
+  var rand=rng(3);
+  function cluster(n,dx){
+    var P=[]; for(var i=0;i<n;i++) P.push(inBall(rand,0,n>6?.95:.5));
+    var g=new THREE.Group();
+    g.add(knots(P, .145, 0xE9F5F8));
+    var ln=lines(), segs=[];
+    for(var k=0;k<n*2;k++) segs.push({a:P[k%n], b:P[(k*3+1)%n], c:C_THREAD});
+    setLines(ln,segs); g.add(ln); g.position.x=dx; return g;
+  }
+  var light=cluster(3,-2.5), heavy=cluster(12,2.5);
+  S.root.add(light,heavy);
+  var floor=new THREE.Mesh(new THREE.PlaneGeometry(12,.045),
+            new THREE.MeshBasicMaterial({color:0x35505C}));
+  floor.position.y=-2.95; S.root.add(floor);
+  S.setSpin(0);
+
+  var mode="rope", t=0, running=true;
+  var y0=2.4;
+  function reset(){ t=0; running=true; light.position.y=y0; heavy.position.y=y0; }
+  S.tick=function(){
+    if(!running) return;
+    t += REDUCED?0.05:0.016;
+    var aL, aH;
+    if(mode==="rope"){ aL = 1/3; aH = 1/12; }        /* same force, a = F/m */
+    else             { aL = 1/3; aH = 1/3;  }        /* pull scales with strings */
+    var k=9.5;
+    light.position.y = Math.max(-2.75, y0 - .5*aL*k*t*t);
+    heavy.position.y = Math.max(-2.75, y0 - .5*aH*k*t*t);
+    if(light.position.y<=-2.75 && heavy.position.y<=-2.75){ running=false; }
+  };
+  reset();
+  var bR=document.getElementById("s4a"), bG=document.getElementById("s4b"), bP=document.getElementById("s4r");
+  function setMode(m){
+    mode=m;
+    bR.setAttribute("aria-pressed", m==="rope"?"true":"false");
+    bG.setAttribute("aria-pressed", m==="grav"?"true":"false");
+    txt("s4v", m==="rope" ? "heavy lags 4×" : "dead level");
+    reset();
+  }
+  bR.addEventListener("click",function(){setMode("rope");});
+  bG.addEventListener("click",function(){setMode("grav");});
+  bP.addEventListener("click",reset);
+  setMode("rope");
+})();
+
+/* ================= Scene 5 — re-tying, then a cut ================= */
+(function(){
+  var S = stage("s5", 8.4); if(!S) return;
+  var KEEP=[[-2.4,1.25,0],[-2.4,-1.25,.3],[-.5,1.7,-.4],[-.5,-1.7,.2]];
+  var GONE=[[1.9,1.2,.1],[1.9,-1.2,-.3]];
+  var STEPS=[
+    {keep:[[0,1],[2,3],[0,2],[1,3]], link:[[2,0],[3,1]], cut:false},
+    {keep:[[0,1],[2,3],[1,2],[0,3]], link:[[2,0],[3,1]], cut:false},
+    {keep:[[0,2],[1,3],[0,1],[2,3]], link:[[2,1],[3,0]], cut:false},
+    {keep:[[0,2],[1,3],[0,1],[2,3]], link:[],            cut:true}
+  ];
+  var pKeep=knots(KEEP, .125, 0xE9F5F8);
+  var pGone=knots(GONE, .125, 0xE9F5F8);
+  var gone=new THREE.Group(); gone.add(pGone);
+  var lnK=lines(), lnG=lines(), lnCut=lines();
+  gone.add(lnG);
+  S.root.add(pKeep,lnK,lnCut,gone);
+
+  var i=0, drift=0;
+  var fb=document.getElementById("s5f"), bb=document.getElementById("s5b"), rb=document.getElementById("s5r");
+
+  S.tick=function(){
+    var target = STEPS[i].cut ? 1 : 0;
+    drift += (target-drift)*0.045;
+    gone.position.x = drift*2.5;
+    pGone.userData.material.opacity = 1 - drift*.72;
+    lnG.material.opacity = .85 - drift*.62;
+  };
+
+  function draw(){
+    var st=STEPS[i], segs=[], gsegs=[], cuts=[];
+    st.keep.forEach(function(e){ segs.push({a:KEEP[e[0]],b:KEEP[e[1]],c:C_THREAD}); });
+    st.link.forEach(function(e){ segs.push({a:KEEP[e[0]],b:GONE[e[1]-0]===undefined?GONE[0]:GONE[e[1]],c:C_THREAD}); });
+    gsegs.push({a:GONE[0],b:GONE[1],c:C_THREAD});
+    if(st.cut){
+      cuts.push({a:[-.15,1.55,-.35],b:[.75,1.35,0],c:C_CUT});
+      cuts.push({a:[-.15,-1.55,.18],b:[.75,-1.35,0],c:C_CUT});
+    }
+    setLines(lnK,segs); setLines(lnG,gsegs); setLines(lnCut,cuts);
+    txt("s5lab", (i+1)+" of 4 — "+(st.cut?"a cut":"re-tying"));
+    txt("s5t", st.cut?"Cut":"Re-tying");
+    txt("s5u", st.cut?"No":"Yes");
+    document.getElementById("s5u").className = "v "+(st.cut?"cut":"flat");
+    txt("s5d", st.cut?"Forwards only":"None");
+    bb.disabled = st.cut || i===0;
+    fb.disabled = i===STEPS.length-1;
+    rb.disabled = i===0;
+  }
+  fb.addEventListener("click",function(){ if(i<STEPS.length-1){i++;draw();} });
+  bb.addEventListener("click",function(){ if(i>0 && !STEPS[i].cut){i--;draw();} });
+  rb.addEventListener("click",function(){ i=0; drift=0; draw(); });
+  draw();
+})();
+
+/* ================= Scene 6 — GW150914 ================= */
+(function(){
+  var S = stage("s6", 11.6); if(!S) return;
+  var m1=35.6, m2=30.6, mf=63.1, k=0.040;
+  function hole(r){
+    var g=new THREE.Group();
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(r,32,24), new THREE.MeshBasicMaterial({color:0x04080A})));
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(r*1.16,32,24),
+      new THREE.MeshBasicMaterial({color:0x2FD3DB,transparent:true,opacity:.26,side:THREE.BackSide,depthWrite:false})));
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(r*1.35,32,24),
+      new THREE.MeshBasicMaterial({color:0x2FD3DB,transparent:true,opacity:.07,side:THREE.BackSide,depthWrite:false})));
+    return g;
+  }
+  var h1=hole(m1*k), h2=hole(m2*k), hf=hole(mf*k);
+  hf.visible=false; S.root.add(h1,h2,hf);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(mf*k*1.25, mf*k*1.30, 64),
+    new THREE.MeshBasicMaterial({color:0x2FD3DB,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));
+  S.root.add(ring);
+  S.setSpin(0);
+  var after=document.getElementById("s6b");
+
+  var t=0, PRE=0.30, MERGE=0.92;
+  S.tick=function(){
+    if(t<1) t=Math.min(1, t + (REDUCED?0.5:0.0035));
+    var sep, ang;
+    if(t<PRE){ sep=3.2; ang=(t/PRE)*3.2; }
+    else{
+      var u=Math.min(1,(t-PRE)/(MERGE-PRE));
+      sep=3.2*Math.pow(1-u,1.7)+0.02;
+      ang=3.2+u*u*13;
+    }
+    var f1=(m2/(m1+m2)), f2=(m1/(m1+m2));
+    h1.position.set(Math.cos(ang)*sep*f1*2, Math.sin(ang)*sep*f1*0.26, 0);
+    h2.position.set(-Math.cos(ang)*sep*f2*2, -Math.sin(ang)*sep*f2*0.26, 0);
+    var done = t>=MERGE;
+    h1.visible=!done; h2.visible=!done; hf.visible=done;
+    if(after) after.style.opacity = done? "1" : "0.28";
+    if(done){
+      var d=(t-MERGE)/(1-MERGE);
+      ring.material.opacity = Math.max(0,.55*(1-d));
+      ring.scale.setScalar(1+d*2.6);
+    } else { ring.material.opacity=0; }
+  };
+  document.getElementById("s6r").addEventListener("click",function(){ t=0; });
+})();
+
+})();
+</script>

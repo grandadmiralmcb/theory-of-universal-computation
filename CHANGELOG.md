@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026-08-30] (non-technical curriculum)
+
+- `learn/counting-the-world.html`: a nine-module visual course for readers without the math, built on the observation that this framework's whole content is **counting** — so one image (knots tied with strings, and how many you would have to cut) carries the area law, relative entropy, additivity, the equivalence principle, the arrow of time and the merger inequality.
+  - Six interactive 3D scenes (Three.js, pinned r128 from CDN; no build step, no other dependencies): the cut counter with the interior grown at fixed boundary; the redrawing/refinement problem; two regions with shared strings and the factor-of-two shortfall; rope-versus-gravity acceleration; a step-through where the Back button stops working at the cut; and the GW150914 merger at measured masses.
+  - **Module 00 teaches the charter discipline first** — forced / assumed / not claimed — so every later result carries its label, and Module 09 is the non-purchase ledger. The TG2 debt is stated plainly in Modules 06, 08 and 09 rather than buried.
+  - Every number shown is taken from the sims, not re-derived for the page: cut counts, the four merger events, the 29.3% radiated ceiling.
+  - Page is theme-aware; the scene panels are deliberately single-theme instrument viewports so the thread/cut colour coding reads identically in both. Verified headless: no page errors, no horizontal overflow at 390px, and all three theme states resolve.
+- `learn/` added to the AGENTS.md structure table with the rule that it must track the theory; README gains a "New here?" entry point.
+
 ## [2026-08-30] (time and the arrow — the AT results)
 
 - `docs/25-time-and-the-arrow.md` + `sim/arrow_of_time.py`: the claim *"time is emergent from the entropy gradient"* examined and resolved into three separate notions. Verdict: **half right, and the right half is a theorem the framework already owned.** No new postulates — the AT layer adds none.
