@@ -21,6 +21,7 @@ Keep the theory coherent, precise, and extensible. Prefer formal clarity, consis
 | `docs/` | Numbered theory documents (00–14); `docs/00-theory-charter.md` and `docs/14-derivation-from-ontology.md` are authoritative |
 | `sim/` | Executable toy simulators instantiating the working model |
 | `CHANGELOG.md` | Chronological record of advances |
+| `learn/` | Non-technical curriculum (`counting-the-world.html`) — self-contained page, Three.js from CDN. Must track the theory: when a theorem changes, check the module that teaches it |
 | `notes/` (optional) | Experimental or speculative ideas |
 
 ## Working Style
@@ -40,7 +41,7 @@ Keep the theory coherent, precise, and extensible. Prefer formal clarity, consis
 
 ## Safety & Scope
 
-- This is a theory / documentation repository with a small executable `sim/` suite.
+- This is a theory / documentation repository with a small executable `sim/` suite and one static teaching page in `learn/`.
 - Executable code is limited to `sim/`. Every sim must run (`python3 sim/<file>.py`) — run it before citing it as an executable confirmation in any doc. A sim that does not execute must not be cited as evidence.
 - Do not add secrets or personal data.
 - Do not claim endorsement by any organization.

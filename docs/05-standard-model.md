@@ -17,7 +17,7 @@ Each gap gets a verdict from a fixed vocabulary, so no claim can hide in prose:
 | Aspect | Standard Model | This framework |
 |---|---|---|
 | Basic entities | Quantum fields on spacetime | Labeled expression structure under reduction (WM carrier) |
-| Spacetime | Fundamental background | Causal order of reduction events (SB4, SM-B3); metric open |
+| Spacetime | Fundamental background | Causal order of reduction events (SB4, SM-B3); metric postulated in the TG layer (TG2), not derived |
 | Particles | Field quanta | Minimal-rest-cost stable labeled excitations (SB3) |
 | Forces | Local gauge interactions | Label-blind cost + label typing (SB1–SB2); continuous gauge home blocked (contention 1) |
 | Measurement | Interpretation-dependent | Isolation/maintain cost criterion (T9–T11, F5) |
@@ -40,7 +40,9 @@ Each gap gets a verdict from a fixed vocabulary, so no claim can hide in prose:
 
 *Resources.* Background independence is native (O2), and SM-B3 delivers causal-set structure by definition rather than postulate: events partially ordered by information flow. Qualitative causality (no influence outside the order) is free.
 
-*Honesty.* Everything geometric is open — dimension, metric, Lorentz invariance, the Einstein limit — and the inertia–geometry coupling is contention 2. The reframed question ("which reduction statistics yield 3+1 locally-Lorentz order?") is imported *unsolved* from causal-set theory. Reformulation, not progress, until one such statistic is exhibited.
+*Added since (docs/24, TG layer).* Given the geometric limit as a **postulate** (TG2), the Einstein equation follows by two independent routes (TH6), \(G\) is identified with the ground configuration's cut share density (TH7), and the inertia–geometry coupling — contention 2 — is **derived** (TH8). What the framework contributes on its own, without TG2, is sharper: the area law is the shape of WM2's own \(S\)-counter (TH2), horizon thermality's origin is F3 (TH3), and entropy monotonicity is the event trichotomy (TH4).
+
+*Honesty.* The one thing that would make this a solution is exactly the thing still assumed. Dimension, metric and Lorentz invariance remain open; TG2 packages them into one postulate rather than solving any of them, and the reframed question ("which reduction statistics yield 3+1 locally-Lorentz order?") is still imported *unsolved* from causal-set theory (now docs/07 contention 9). Nothing here quantizes the metric. Verdict stays **reformulation + research program** — but the program is now specific: exhibit one order statistic with a finite share-per-area density, and a named block of results turns on.
 
 ### 3.3 Hierarchy / naturalness — **no purchase** *(previous claim retracted)*
 
@@ -54,13 +56,15 @@ Each gap gets a verdict from a fixed vocabulary, so no claim can hide in prose:
 
 *Resources.* Under SB1/SB3, inertia-without-handle is *generic*, not exotic: stability requires only some conserved label; inertia (WM3) is label-blind; so any sector charged under a factor of \(G\) that mediates no interaction is stable, massive, and invisible to the interacting sectors. Executable demonstration: `sim/spectrum_toy.py` §3.
 
-*Caveats.* "Gravitates but does not interact" cannot yet be formalized because gravitation itself is not (contention 2). No abundance, distribution, or detection predictions — the mechanism explains why such sectors are *unsurprising*, nothing more.
+*Caveats.* "Gravitates but does not interact" is now *formalizable* (docs/24): gravitational coupling is to share count (TH8), which is label-blind, while interaction requires a label handle — so a dark sector gravitates with exactly the same universality as everything else, and this is a consequence rather than a stipulation. That is a coherence gain, not a prediction: still no abundance, distribution, or detection claims, and it inherits TG2. The mechanism explains why such sectors are *unsurprising*, nothing more.
 
-### 3.5 Vacuum energy / cosmological constant — **no purchase** *(previous claim retracted)*
+### 3.5 Vacuum energy / cosmological constant — **reformulation** *(upgraded from no purchase; the 2026-08-08 retraction stands)*
 
 *The gap.* Why vacuum energy does not gravitate at its naive QFT scale.
 
-*Honesty.* Nothing gravitates in the framework yet. The ground configuration has a residual rest cost (SB3), but whether residual cost *sources* anything is a question for an unbuilt gravity sector. The pre-rebuild phrase "opening room for dynamical suppression" was content-free and is **retracted**.
+*Resources (docs/24).* Both routes to TH6 source curvature from **variations of relative entropy against the ground configuration**. The ground configuration's own cost is the reference and cancels identically, so "sum the vacuum modes' energy and gravitate it" is not a computation this framework performs — TH1 says so structurally (CI4's additive gauge: cost has no zero, so \(\langle K\rangle\) has no absolute value, only \(\Delta\langle K\rangle\)). \(\Lambda\) enters instead as a **constant of integration** in the Bianchi step.
+
+*Honesty.* This dissolves the naive-scale question and answers nothing about the observed value: an integration constant is not a prediction, and no framework resource fixes it. "Why is \(\Lambda\) that size?" remains **no purchase**. The pre-rebuild phrase "opening room for dynamical suppression" stays **retracted** — what replaced it is a specific structural reason the naive computation is ill-posed, not a suppression mechanism.
 
 ### 3.6 Matter–antimatter asymmetry — **research program** *(unblocked by docs/17)*
 
@@ -93,10 +97,10 @@ Hilbert space is read as the effective description of the hosted linear layer (A
 | Gap | Verdict |
 |---|---|
 | Measurement problem | Native purchase + research program |
-| Quantum gravity / spacetime | Reformulation + research program |
+| Quantum gravity / spacetime | Reformulation + research program (TG layer, docs/24 — conditional on TG2) |
 | Hierarchy / naturalness | No purchase (claim retracted) |
-| Dark matter | Reformulation, native mechanism |
-| Vacuum energy | No purchase (claim retracted) |
+| Dark matter | Reformulation, native mechanism (gravitational universality now derived) |
+| Vacuum energy | Reformulation: naive-scale question dissolved (docs/24 §5); observed value still no purchase |
 | Matter–antimatter asymmetry | Research program (locus: reconfiguration isometries — docs/17) |
 | Gauge group / particle content | Research program (locus: reconfiguration isometries — docs/17) |
 | Three generations, masses, mixings | No purchase; probe defined |

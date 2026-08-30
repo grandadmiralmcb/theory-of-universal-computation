@@ -21,7 +21,7 @@ Finite terms under `app`, `abs`, `pair`/`proj`, `eq`, `reduce`, `share`. Integer
 Informational monism: unique non-idle reading, not theorem.
 
 **Holographic character**
-Local sequential evaluation is projection: alternatives not selected (or not yet projected). Experienced world = high-coherence sequential interface to larger structure.
+Local sequential evaluation is projection: alternatives not selected (or not yet projected). Experienced world = high-coherence sequential interface to larger structure. *Formal content since docs/24 (TH2):* the disruption cost of isolating a region is a function of the **cut** alone — holography is not an added principle here, it is the shape of the \(S\)-counter.
 
 **Matter / energy**
 Dual sequential presentations of informational excitations indexed by disruption (high share density → inertia / matter-like; releasable structure → energy-like). Interpretive unity under common currency.
@@ -83,3 +83,4 @@ High \(\kappa\) = sustained low-disruption sequential projection.
 - Amplitudes / Born: hosted; Born is a reading at projection.
 - Unitarity: free epochs are diagonal phase drift (T13); reconfiguration events carry the non-diagonal isometries (T15/T16, `docs/17`); non-isometry only at projection (T14′). Not derivable from bare three-counter cost.
 - Consciousness / monism: open / preferred reading.
+- Thermodynamics / gravity: the area law (TH2) and entropy monotonicity (TH4) are WM/HQ results; metric geometry, the Einstein equation and \(G\) require TG2–TG5 (docs/24) and are conditional on an unsolved continuum limit.

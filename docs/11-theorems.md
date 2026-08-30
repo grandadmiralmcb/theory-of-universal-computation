@@ -76,9 +76,41 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 
 ---
 
+## Thermodynamics & gravity (add TG1–TG5; docs/24)
+
+**TH1** [RM1, CI4, WM1] Relativity of entropy: under \(k\)-fold granularity refinement the von Neumann entropy diverges as \(N\log k\) while \(S_{\rm rel}(\rho\Vert\sigma)\) against the SB3 ground configuration is exactly invariant; with RM1's scale gauge (entropy is a count, not a cost) and CI4's additive gauge (modular energy has no zero), **every thermodynamic quantity that does work in this layer is a difference against the ground configuration**. (docs/24 §1)  
+**TH2** [WM1, WM2] Structural area law: \(C_{\rm isolate}\) is a function of the cut alone — \(\alpha N(\chi)+\beta B(\chi)+\gamma[N>0]\) — independent of interior structure. Holography is not added; it is the shape of the \(S\)-counter. **TH2′** [+TG1, D20] \(S(\chi)=s_0N(\chi)\).  
+**TH3** [F1, F3/O4, SB4, SM-B3, A4] Horizon reduction: an evaluator whose accessible past is proper has a proper subalgebra and a generically mixed restricted state, with entropy TH2′ on the horizon cut. Thermality's *origin* is F3 (the unselected persists); only the KMS normalization is postulated (TG3).  
+**TH4** [A4, D20, T15, T13′, T16′, T14′] Structural monotonicity: \(S_{\rm rel}(\Phi\rho\Vert\Phi\sigma)\le S_{\rm rel}(\rho\Vert\sigma)\), with equality on free epochs and reconfigurations and strict decrease possible only at structural projection. The framework's data-processing inequality; **entropy production and the measurement problem have one locus.**  
+**TH5** [TG1, A4] First law of structural entanglement: \(S_{\rm rel}=\Delta\langle K\rangle-\Delta S\ge0\) with vanishing first variation, so \(\delta S=\delta\langle K\rangle\); under TG1, \(K=C_{\rm maintain}/\Theta+\)const — the modular Hamiltonian **is** the WM4 maintain ledger.  
+**TH6** [TG1–TG4 (+TG5 for Route A), TH2′, TH3, TH5] Einstein equation \(G_{ab}+\Lambda g_{ab}=(2\pi/\eta)T_{ab}\), by two independent routes (Clausius flux; small-ball relative-entropy equilibrium) that agree. \(\Lambda\) is an integration constant, not a vacuum-energy sum.  
+**TH7** [TH6] \(\eta=1/4G\), i.e. \(G=1/(4s_0\eta_N)\): Newton's constant is the reciprocal ground-configuration share density across a cut. Identification, **not** a computation of \(G\) — that needs TG2 solved.  
+**TH8** [WM3, TH2, TH2′, TG1, TG2] Weak equivalence principle: the entropic bias is \(b_{\rm grav}=m_{\rm struct}\,g\), so \(g_{\rm eff}\) is cluster-independent — because inertia (WM3) and horizon entropy (TH2) count the **same shares**. **Closes contention 2** (previously an observational consistency requirement, docs/02 §6). **TH8-ε**: exact only to \(O(\varepsilon/\alpha_m n)\); WM3's floor predicts \(\eta_E\simeq(\varepsilon/\alpha_m)\,|n_1^{-1}-n_2^{-1}|\), a WEP violation growing for lighter bodies. **TH8′**: Eötvös bounds therefore constrain floor stratification (contention 8) independently of TS2.  
+**TH9** [TH4, TH3, TG3, TG4] Generalized second law: \(S_{\rm gen}=\eta A+S_{\rm out}\) is non-decreasing along a horizon, by monotonicity under the shrinking exterior algebra. Not a postulate and not an ignorance story — it is TH4.  
+**TH10** [TH9, SM-B3] **a**: area theorem \(\Delta A\ge0\). **b**: merger inequality \(A_f\ge A_1+A_2\), so a merged hole is necessarily bigger and fission is thermodynamically **forbidden**; for Schwarzschild, \(M_f\ge\sqrt{m_1^2+m_2^2}\) and \(f_{\rm rad}\le1-1/\sqrt2\approx29.3\%\) at equal masses. **c**: \(dM=T\,dS\) with \(T=\kappa/2\pi\), \(S=A/4G\).  
+**TH12** [WM1, WM2, AD2] Additivity and its defect. **a**: for regions sharing nothing, cut counts and entropies add — this is **AD2**, already grounded (docs/20 §3), and is exactly what RM1's Hölder representation needs to make the cost cardinal rather than ordinal. **b**: otherwise the defect is the mutual information, \(I(A{:}B)=S_A+S_B-S_{AB}\le 2s_0N(A\!\leftrightarrow\!B)\), saturated at maximal correlation — a cross share is severed by two cuts and by no third, which is the whole source of the factor 2. **c**: universal additivity would force \(I\equiv0\), deleting co-dependence, F4, F5, coherent sets and the entire HQ layer — the framework *needs* additivity to fail exactly where sharing exists. **d**: area law and bulk extensivity are the two terms of \(S_{\rm gen}=\eta A+S_{\rm out}\), not rivals. **e**: TH10b = TH12a on disjoint components + TH9 monotonicity, so no counting identity crosses the merger. (docs/24 §2.1)
+**TH11** [TH5] Bekenstein bound \(S-S_{\rm gnd}\le2\pi ER\), as the content of \(S_{\rm rel}\ge0\).
+
+*Non-theorems of this layer:* the value of \(\eta_N\) (hence \(G\)); the value of \(\Lambda\); spacetime dimension; local Lorentz invariance; a quantum theory of the metric; the Page curve (docs/24 §8 defines a probe only).
+
+---
+
+## Time and the arrow (docs/25)
+
+**AT1** [O2, F1, SM-B3] Sequential order is forced by O2 alone — no cost, no entropy, no state functional. **AT1′**: deriving *order* from an entropy gradient would therefore be circular here, since entropy is a functional of states and states are indexed by the chain. Order is prior and not emergent.  
+**AT2** [SM-B3] A strict partial order's converse is a strict partial order and F1 is reversal-invariant, so order fixes **no orientation**. The gap is real and something must fill it.  
+**AT3** [TH4, T13′, T16′, T14′, TH9] Orientation is carried by structural projection and by no other event type: isometric events preserve \(S_{\rm rel}\) and have admissible inverses (no orientation); projection is non-isometric and **non-injective**, so no admissible map runs it backwards. **The arrow of time, entropy production and structural projection are one event.**  
+**AT4** [F5, O4/F3, SM-B3] The gradient *measures* the arrow; F5 **is** the arrow. Projection breaks the co-dependence linking unselected residuals to the chain, and causal exclusion is stable, so re-inclusion has no data-dependence path. \(\Delta S_{\rm gen}\ge0\) is the readout of a forced-layer ratchet — which puts the arrow **below** the TG stack, so it survives even if TG2 (contention 9) fails, and explains why the gradient never changes sign.  
+**AT5** [T10, T11, WM4, AT3] The arrow's density equals decoherence density: sweeping environmental share pressure moves the oriented-tick fraction from ~0 (isolated, near-reversible) to ~1 (classical, saturated). Why the arrow is macroscopically ubiquitous and microscopically absent — T11 read in the temporal ledger.  
+**AT6** [AT3, TH4, TH5] Flow and duration: the generator of time's flow is the maintain ledger (\(K=C_{\rm maintain}/\Theta\), the thermal-time reading); and since a record undoable by an admissible inverse certifies nothing, **measurable duration is counted by projection events**. An isometric clock's readings recur and certify no duration.
+
+*Non-theorems of this layer:* the past hypothesis (relocated to the initial class exactly as PA3 relocated FV realization — a boundary-condition question); duration in physical units (needs decoherence rates, still the docs/08 §1 knob); global time (barred by O2); time dilation and simultaneity (need TG2); CPT as a derived symmetry.
+
+---
+
 ## Non-theorems
 
-Amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
+Geometry, area, curvature or the Einstein equation without TG2–TG5; sequential order as emergent from entropy (AT1′); the past hypothesis; amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
 
 ---
 
@@ -91,4 +123,6 @@ SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-ph
 L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)  
 TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)  
 FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)  
+AT1–AT6: `sim/arrow_of_time.py` (isometric chains reversed exactly; projection's non-injectivity exhibited; exclusion stable over 200 steps; arrow density swept 0→99.8%; recurrent isometric clock vs monotone projection counter)  
+TH1–TH12: `sim/thermo_gravity.py` (area law at fixed cut; relative-entropy gauge invariance against divergent \(S\); monotonicity across the event trichotomy; both small-ball coefficients verified against exact \(S^3\) balls and quadrature; \(dM=T\,dS\); the merger inequality on observed binary black holes; WEP universality and its \(\varepsilon\)-floor residue; additivity exact at zero cross-shares and off by exactly \(2n_{\rm cross}\) otherwise)  
 PA0–PA2: `sim/progress_analysis.py` (mini sharing calculus; charge-safe duplication; the reachable FV term; projection discards; reference subtlety; conservative relevance checker vs dynamic audit)

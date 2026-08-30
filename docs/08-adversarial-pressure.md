@@ -122,6 +122,23 @@ Any laboratory or simulated system for which an independent estimate of “share
 
 ---
 
+## Pressure 4 — Entropic gravity should destroy interference
+
+### Status: answered in shape, not in rate
+
+**The pressure** (Kobakhidze's objection to entropic gravity, imported deliberately since docs/24's TH8 makes the framework a target for it). If gravity is a thermodynamic force sourced by a horizon's entropy, the associated bath should decohere a neutron in a gravitational field. Neutron interferometry (COW) and gravitationally bound neutron states (qBounce) show no such decoherence. Any entropic account of gravity must survive this.
+
+**The framework's answer.** The gravitational bias of TH8 is a **floor** bias — it lives in the Archimedean dynamical currency (CC′), where selection is weight-blind. Two existing results do the work:
+
+- **Q1 / T17 (cost-decoupling).** Admissible maps are functions of structure alone; no dynamics can bias Born statistics toward structurally cheap outcomes. A bias that does not *structurally distinguish* the branches of a coherent set therefore acts on all of them identically — a common factor, carrying no which-path record.
+- **WM4 (decoherence asymmetry).** Decoherence in this framework requires environment-crossing shares raising the **maintain** ledger. A uniform gravitational bias supplies no such shares: it changes the sequential-state ledger, not the coherent set's isolation/maintain competition (T9–T11).
+
+So the framework predicts *no* anomalous decoherence in a uniform field, and locates where gravitationally induced decoherence would have to come from: **gradients steep enough to resolve the branches' share structure**, i.e. tidal terms that make the two arms structurally distinguishable, at which point ordinary WM4 decoherence applies.
+
+**What this is worth.** A prediction *shape*, matching the observed null result, derived from machinery that predates the gravity layer (T17 and WM4 were not built for this). It is **not** a rate: converting "resolves the branches' share structure" into a decoherence time needs tree-level environment modeling, which is still the integer knob of Pressure 1. Anyone wanting to falsify TH8 should push here — a measured gravitational decoherence *without* a structure-resolving gradient would break it.
+
+---
+
 ## Summary
 
 | Pressure | Outcome |
@@ -129,3 +146,6 @@ Any laboratory or simulated system for which an independent estimate of “share
 | (1) Costs from real trees | Formal ops + executable `sim/expr_tree.py` |
 | (2) Derive phase/amplitudes | **Cannot** from current core; marked enrichment |
 | (3) Untunable quantitative prediction | Inverse share-count acceleration ratio |
+| (4) Entropic gravity vs. neutron interference | Answered in shape (T17 + WM4); no rate |
+
+**Note on Pressure 3 and the TG layer.** docs/24's TH8-ε adds a second parameter-free ratio of the same family: if WM3's floor \(arepsilon\) is real, the Eötvös parameter between two bodies is \(\eta_E \simeq (arepsilon/lpha_m)|n_1^{-1}-n_2^{-1}|\) — a WEP violation that **grows for lighter bodies**. It shares Pressure 3's weakness exactly (share count is still not independently operationalized) and its strength: nothing tunes it away once \(n\) is fixed by real term structure.

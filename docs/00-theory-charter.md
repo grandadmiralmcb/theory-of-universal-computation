@@ -39,6 +39,7 @@ These are the only ontological commitments. They are **assumptions**, not theore
 - \(m_{\rm struct} \propto\) share count (definitional in WM, not forced)
 - Complex weights, linear residuals, unitarity, Born rule
 - Consciousness, monism as theorem, spacetime, fields
+- Metric geometry, area, curvature, the Einstein equation (TG2–TG5; docs/24)
 
 ---
 
@@ -67,6 +68,11 @@ Each extension is a **postulate**, used only when stated in a theorem’s hypoth
 | **SB2** | All cost functionals are invariant under a designated subgroup \(\Gamma \le \mathrm{Aut}(G)\); observables are \(\Gamma\)-invariants | Structural gauge principle |
 | **SB3** | Particle = minimal-rest-cost stable excitation in its label class; ground configuration = minimal-cost \(Q=0\) | Spectrum definitions |
 | **SB4** | Events = reduction steps, ordered by data dependence | Causal order (SM-B3) |
+| **TG1** | Statistical coarse-graining: retaining only \(\Gamma\)-invariant macroscopic data induces the relative-entropy-minimizing (MaxEnt / Gibbs) measure \(p\propto\sigma e^{-C/\Theta}\) over compatible microstructures | Structural statistical mechanics (docs/24 §3). O3 gives an argmin, not an ensemble — TG1 is a genuine addition |
+| **TG2** | Geometric limit: the SB4 event order coarse-grains to a Lorentzian \((M,g)\) in which the ground cut share count converges to \(\eta_N A\) | The entire geometric debt — the causal-set continuum problem, **imported unsolved**. Everything in docs/24 §§5–7 rests on it |
+| **TG3** | Local modular flow: the accessible algebra's modular flow in the ground state is the boost generator, KMS-periodic at \(2\pi\) | Unruh relation \(T=\kappa/2\pi\); source of \(G\)'s normalization (docs/24 §3) |
+| **TG4** | Modular energy is stress-energy: \(\delta\langle K\rangle = 2\pi\!\int T_{ab}\chi^a d\Sigma^b\), with \(\nabla^aT_{ab}=0\) | Source term for the field equation |
+| **TG5** | Entanglement equilibrium: the ground configuration extremizes total entropy in a small ball at fixed volume | Route A only; Route B (Clausius) does not need it, and the two agreeing is the check on TG5 |
 
 No theorem may treat these as forced by O1–O4.
 
@@ -80,6 +86,8 @@ No theorem may treat these as forced by O1–O4.
 4. **Continuum idealization (CI)** — CI1–CI4 on top of WM sequential calculus.
 5. **Hosted quantum (HQ)** — A4, D19, B_flow, D12; structural projection (F5) as irreversible locus.
 6. **Structural bridge (SB)** — SB1–SB4; SM-facing definitions and gap reexamination (docs/15, docs/05).
+7. **Thermodynamics & gravity (TG)** — TG1–TG5 on top of WM+CI+HQ+SB; relative entropy as the only observable, the area law as WM2's own shape, and the Einstein equation as the resulting equation of state (docs/24).
+8. **Time and the arrow (AT)** — no new postulates: order is forced (O2/F1/SM-B3), orientation is carried by F5 alone, and the entropy gradient is its readout (docs/25). Sits *below* the TG layer — the arrow does not depend on TG1–TG5.
 
 ---
 
