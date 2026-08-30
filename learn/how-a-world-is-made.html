@@ -1,0 +1,759 @@
+<title>How a World Is Made</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --paper:#F3F4F1; --panel:#FBFCFA; --sunk:#E8EBE6;
+  --ink:#191C18; --ink-2:#4A5148; --ink-3:#787F76;
+  --rule:#CFD4CB;
+  --blue:#1B4F9C; --blue-soft:#DCE6F4; --blue-line:#2E6BC4;
+  --red:#A82F1C; --red-soft:#F5DED9;
+  --amber:#7E5A05; --amber-soft:#F3E8CC;
+  --ok:#1F6042;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141713; --panel:#1B1F1A; --sunk:#0E110D;
+    --ink:#E8EBE4; --ink-2:#AEB6AA; --ink-3:#7E877B;
+    --rule:#2E342C;
+    --blue:#6FA6EE; --blue-soft:#152435; --blue-line:#6FA6EE;
+    --red:#F0836A; --red-soft:#33180F;
+    --amber:#DCAE4A; --amber-soft:#2E2410;
+    --ok:#63BE93;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141713; --panel:#1B1F1A; --sunk:#0E110D;
+  --ink:#E8EBE4; --ink-2:#AEB6AA; --ink-3:#7E877B;
+  --rule:#2E342C;
+  --blue:#6FA6EE; --blue-soft:#152435; --blue-line:#6FA6EE;
+  --red:#F0836A; --red-soft:#33180F;
+  --amber:#DCAE4A; --amber-soft:#2E2410;
+  --ok:#63BE93;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Source Sans 3",system-ui,-apple-system,sans-serif;
+  font-size:18px; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 22px}
+h1{
+  font-family:Archivo,system-ui,sans-serif; font-weight:700; font-size:clamp(38px,7vw,64px);
+  line-height:1.03; letter-spacing:-.025em; margin:0 0 18px; text-wrap:balance;
+}
+h2{
+  font-family:Archivo,system-ui,sans-serif; font-weight:600; font-size:clamp(25px,4vw,34px);
+  line-height:1.15; letter-spacing:-.018em; margin:0 0 14px; text-wrap:balance;
+}
+h3{font-family:Archivo,system-ui,sans-serif; font-weight:600; font-size:17px; margin:0 0 6px}
+p{margin:0 0 17px}
+a{color:var(--blue)}
+:focus-visible{outline:2px solid var(--blue); outline-offset:3px}
+em{font-style:italic}
+strong{font-weight:600}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+
+header.top{padding:84px 0 28px}
+.kick{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11.5px; letter-spacing:.19em;
+  text-transform:uppercase; color:var(--blue); margin:0 0 20px;
+}
+.lede{font-size:21px; line-height:1.55; color:var(--ink-2)}
+.facts{
+  display:flex; flex-wrap:wrap; gap:8px 24px; padding:16px 0; margin-top:12px;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--ink-3);
+}
+
+section{padding:64px 0 0}
+.step{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); display:flex; gap:11px; align-items:center; margin:0 0 12px;
+}
+.step b{color:var(--blue); font-weight:500}
+.step::after{content:""; flex:1; height:1px; background:var(--rule)}
+
+/* ---- figure panels ---- */
+figure.fig{
+  margin:30px 0 26px; background:var(--panel); border:1px solid var(--rule);
+  border-radius:4px; overflow:hidden;
+}
+figure.fig.dim3{background:var(--sunk)}
+.fig .head{
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  padding:10px 15px; border-bottom:1px solid var(--rule);
+}
+.fig .head .t{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-2);
+}
+.badge{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; padding:2px 7px; border-radius:2px; white-space:nowrap;
+}
+.badge.d1{background:var(--blue-soft); color:var(--blue)}
+.badge.d2{background:var(--blue-soft); color:var(--blue)}
+.badge.d3{background:var(--amber-soft); color:var(--amber)}
+.stage{display:block; width:100%; background:transparent}
+.stage svg{display:block; width:100%; height:auto}
+.ctr{
+  display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center;
+  padding:12px 15px; border-top:1px solid var(--rule);
+}
+button.b{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11.5px; letter-spacing:.07em;
+  padding:8px 13px; border-radius:3px; cursor:pointer; background:transparent;
+  color:var(--ink-2); border:1px solid var(--rule); transition:.14s;
+}
+button.b:hover:not(:disabled){border-color:var(--blue); color:var(--blue)}
+button.b[aria-pressed=true]{background:var(--blue-soft); border-color:var(--blue); color:var(--blue)}
+button.b:disabled{opacity:.36; cursor:not-allowed}
+label.sl{display:flex; flex-direction:column; gap:4px; flex:1 1 160px; min-width:150px}
+label.sl span{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:10.5px;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3);
+}
+input[type=range]{
+  -webkit-appearance:none; appearance:none; width:100%; height:3px;
+  background:var(--rule); border-radius:2px; outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:15px; height:15px; border-radius:50%;
+  background:var(--blue); border:2px solid var(--panel); cursor:grab;
+}
+input[type=range]::-moz-range-thumb{
+  width:15px; height:15px; border-radius:50%; background:var(--blue);
+  border:2px solid var(--panel); cursor:grab;
+}
+.out{display:flex; flex-wrap:wrap; border-top:1px solid var(--rule); background:var(--sunk)}
+.out div{flex:1 1 96px; padding:10px 15px; border-right:1px solid var(--rule)}
+.out div:last-child{border-right:none}
+.out .k{
+  display:block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:9.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); margin-bottom:2px;
+}
+.out .v{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:21px;
+  font-variant-numeric:tabular-nums; color:var(--ink);
+}
+.out .v.blue{color:var(--blue)} .out .v.red{color:var(--red)} .out .v.ok{color:var(--ok)}
+figcaption{padding:12px 15px; border-top:1px solid var(--rule); font-size:15.5px; line-height:1.58; color:var(--ink-2)}
+figcaption b{color:var(--ink); font-weight:600}
+
+.note{
+  border-left:3px solid var(--rule); padding:2px 0 2px 18px; margin:24px 0;
+  color:var(--ink-2); font-size:16.5px;
+}
+.note.warn{border-left-color:var(--amber)}
+.note h3{color:var(--ink)}
+.tag{
+  display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:10.5px;
+  letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:2px; font-weight:500;
+}
+.tag.forced{background:var(--blue-soft); color:var(--blue)}
+.tag.assumed{background:var(--amber-soft); color:var(--amber)}
+.tag.none{background:var(--sunk); color:var(--ink-3)}
+table{width:100%; border-collapse:collapse; margin:20px 0; font-size:16px}
+th,td{text-align:left; padding:9px 12px 9px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+th{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500;
+}
+.scroll{overflow-x:auto}
+footer{border-top:1px solid var(--rule); margin-top:80px; padding:30px 0 90px; color:var(--ink-3); font-size:15px}
+code{background:var(--sunk); padding:2px 6px; border-radius:2px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.87em; color:var(--ink-2)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+/* the tilt: the same flat drawing, given a dimension */
+.tiltbox{perspective:900px; padding:12px 0}
+.tilt{transition:transform .9s cubic-bezier(.4,0,.2,1); transform-origin:50% 55%}
+.tilt.on{transform:rotateX(62deg) rotateZ(-12deg)}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <p class="kick">A build-up from four ideas</p>
+  <h1>How a World Is Made</h1>
+  <p class="lede">This is a short course in a theory that starts with almost nothing and tries to get to everything. It begins with four assumptions, and then adds one small machine at a time. Nothing here needs mathematics beyond counting, and each step can be worked by hand before you read what it means.</p>
+  <div class="facts"><span>Nine steps</span><span>Eight machines you can operate</span><span>Counting only</span></div>
+</header>
+
+<section id="s0">
+  <p class="step"><b>Step 00</b> Before anything else</p>
+  <h2>Why is there anything to look at?</h2>
+  <p>The theory starts with four assumptions and tries to earn everything else. Before meeting them it is worth asking the awkward question, because the theory has to survive it.</p>
+  <p>The rule that drives everything here is that when the world has a choice, it takes whichever option disturbs the least. Nothing at all would seem to disturb nothing at all. So why has the world not simply stopped?</p>
+  <p>The answer is that the rule compares <em>moves</em>, not <em>situations</em>. A situation sitting still has no cost to compare. Cost is charged to a change, so “nothing is cheapest” is not a losing option, it is not an option at all. And there is no move that would get you there: the moves available rearrange what exists, and none of them empties the world.</p>
+  <p>So the honest position is a split, and this course will keep pointing at splits like this one.</p>
+  <div class="scroll"><table>
+    <tr><th style="width:58%">Claim</th><th>Status</th></tr>
+    <tr><td>There is something rather than nothing</td><td><span class="tag assumed">Assumed</span></td></tr>
+    <tr><td>Once there is something, it cannot become nothing</td><td><span class="tag forced">Follows</span></td></tr>
+  </table></div>
+  <p>The theory does not explain why there is anything. It explains why, given anything at all, there is always something. That is less than you might want and more than most starting points manage, and pretending otherwise would spoil the rest of the course.</p>
+  <div class="note">
+    <h3>How to read the labels</h3>
+    <p>Three labels appear throughout. <span class="tag forced">Follows</span> means it comes from the four assumptions and nothing else. <span class="tag assumed">Assumed</span> means something extra was added, and you will always be told what. <span class="tag none">Not claimed</span> means the theory says plainly that it has nothing to offer.</p>
+  </div>
+</section>
+
+<section id="s1">
+  <p class="step"><b>Step 01</b> The first machine</p>
+  <h2>Telling two things apart</h2>
+  <p>The smallest thing that can happen is that two things are compared and found to be the same, or not. That comparison is the first machine, and it is the only machine that makes something out of nothing but a relation.</p>
+  <p>Put two things in. One light comes out.</p>
+
+  <figure class="fig">
+    <div class="head"><span class="t">Machine 1 — the comparator</span><span class="badge d2">flat · a relation</span></div>
+    <div class="stage" id="m1"></div>
+    <div class="ctr">
+      <button class="b" id="m1a">Change the left thing</button>
+      <button class="b" id="m1b">Change the right thing</button>
+    </div>
+    <div class="out">
+      <div><span class="k">Left</span><span class="v" id="m1L">—</span></div>
+      <div><span class="k">Right</span><span class="v" id="m1R">—</span></div>
+      <div><span class="k">Light</span><span class="v blue" id="m1O">—</span></div>
+    </div>
+    <figcaption>The light is either on or off. There is no third setting, because “the same” either holds or it does not. <b>That light is a bit</b>, and notice where it came from: it was not fed in, it came out. A bit is not a thing the world is built from. It is what you get when a comparison is made.</figcaption>
+  </figure>
+
+  <p>This matters more than it looks. People often say the world is made of ones and zeros. But a one or a zero cannot exist by itself. To have a bit you need two things that could be told apart, something doing the telling, and an answer. Those requirements are not built out of bits; bits are built out of them.</p>
+  <p>Count how many comparisons it takes to pin down which of several possibilities you are looking at, and you have rebuilt the ordinary measure of information. It arrives at the end of the story rather than the beginning.</p>
+</section>
+
+<section id="s2">
+  <p class="step"><b>Step 02</b> The one that changes everything</p>
+  <h2>Holding the same thing, or holding a copy</h2>
+  <p>Here are two machines that look almost identical and are not. Getting the difference between them is most of the work of this course; everything later depends on it.</p>
+  <p>On the left, one thing is held by two holders. There is one of it. On the right, a copier has made a second thing, so there are two.</p>
+  <p>They behave the same until something is cut.</p>
+
+  <figure class="fig">
+    <div class="head"><span class="t">Machine 2 — a junction, and its impostor</span><span class="badge d2">flat · structure</span></div>
+    <div class="stage" id="m2"></div>
+    <div class="ctr">
+      <button class="b" id="m2a">Cut the junction</button>
+      <button class="b" id="m2b">Cut one copy</button>
+      <button class="b" id="m2r">Reset</button>
+    </div>
+    <div class="out">
+      <div><span class="k">Junction: holders left with it</span><span class="v" id="m2L">2</span></div>
+      <div><span class="k">Copies: holders left with it</span><span class="v" id="m2R">2</span></div>
+    </div>
+    <figcaption>Cut the junction and <b>both</b> holders lose what they had, because there was only ever one of it. Cut a copy and only that holder is affected. Sharing is not a tidy way of storing two identical things. It is the claim that there is one thing in two places at once, and that is a claim a list of ones and zeros cannot make.</figcaption>
+  </figure>
+
+  <div class="note">
+    <h3>Why a theory would want this</h3>
+    <p>You might think a theory would prefer copies, since they are simpler. But if everything were copies, nothing anywhere could be connected to anything else, and the world would be a heap of separate pieces with no relationships in it. Every interesting thing in physics — and every interesting thing in this course — happens because two parts of the world can hold something in common.</p>
+  </div>
+</section>
+
+<section id="s3">
+  <p class="step"><b>Step 03</b> Machines that do work</p>
+  <h2>Holes, plugs, and things happening</h2>
+  <p>So far nothing has moved. Two more machines fix that.</p>
+  <p>A <strong>punch</strong> takes a structure and removes a piece, leaving a hole. A <strong>plug</strong> is a piece that fits a hole. When a hole and a matching plug end up facing each other, the arrangement can be completed — and completing it is the only kind of event this theory has.</p>
+
+  <figure class="fig">
+    <div class="head"><span class="t">Machine 3 — punch, plug, and fitting</span><span class="badge d2">flat · structure</span></div>
+    <div class="stage" id="m3"></div>
+    <div class="ctr">
+      <button class="b" id="m3s">Fit the next one</button>
+      <button class="b" id="m3r">Start over</button>
+      <span class="mono" id="m3lab" style="font-size:13px;color:var(--ink-2)">nothing fitted yet</span>
+    </div>
+    <div class="out">
+      <div><span class="k">Steps taken</span><span class="v" id="m3n">0</span></div>
+      <div><span class="k">Holes still open</span><span class="v" id="m3h">3</span></div>
+    </div>
+    <figcaption>Each fitting is one event. Nothing outside is keeping track, and there is no clock in the picture. <b>The stepping is the clock.</b> What we call a computation is exactly this: a structure with holes, filled one at a time.</figcaption>
+  </figure>
+
+  <p>This is the point at which the theory quietly says something large. It does not describe things happening <em>in</em> time. It says the happening <em>is</em> the time. If nothing were being fitted anywhere, there would be no time passing, because there would be nothing for time to be made of.</p>
+</section>
+
+<section id="s4">
+  <p class="step"><b>Step 04</b> A line with two ends</p>
+  <h2>Order arrives, but direction does not</h2>
+  <p>Lay those events out in the sequence they happened and you get a line. This is the only picture in the course that needs just one dimension, and there is a reason to draw it plainly.</p>
+
+  <figure class="fig">
+    <div class="head"><span class="t">Machine 4 — the record of what happened</span><span class="badge d1">one dimension · order</span></div>
+    <div class="stage" id="m4"></div>
+    <div class="ctr">
+      <button class="b" id="m4b">◀ Move left</button>
+      <button class="b" id="m4f">Move right ▶</button>
+      <span class="mono" id="m4lab" style="font-size:13px;color:var(--ink-2)">at position 1</span>
+    </div>
+    <figcaption>You can walk this line in either direction, and every rule met so far is satisfied whichever way you go. The sequence says which events are next to which. <b>It does not say which end is the past.</b> That has to come from somewhere else, and it will, in step 06.</figcaption>
+  </figure>
+</section>
+
+<section id="s5">
+  <p class="step"><b>Step 05</b> Choosing</p>
+  <h2>The world has preferences</h2>
+  <p>When more than one fitting is available, which one happens? The theory's answer is that the world takes whichever disturbs the least, and it measures disturbance by counting three things.</p>
+  <div class="scroll"><table>
+    <tr><th style="width:34%">Count</th><th>What it counts</th></tr>
+    <tr><td>Junctions broken</td><td>Shared things you had to cut apart.</td></tr>
+    <tr><td>Holes opened</td><td>Loose ends you left behind.</td></tr>
+    <tr><td>Lamp changed</td><td>Whether the comparator from step 01 now gives a different answer.</td></tr>
+  </div></table></div>
+  <p>Put two candidate moves on a balance and the cheaper one wins. That is the whole of the dynamics. There is no force anywhere in this theory, only a preference.</p>
+
+  <figure class="fig">
+    <div class="head"><span class="t">Machine 5 — the balance, and the latch</span><span class="badge d2">flat · value</span></div>
+    <div class="stage" id="m5"></div>
+    <div class="ctr">
+      <label class="sl"><span>Left move: junctions broken</span><input type="range" id="m5a" min="0" max="6" value="1"></label>
+      <label class="sl"><span>Right move: junctions broken</span><input type="range" id="m5b" min="0" max="6" value="4"></label>
+      <button class="b" id="m5l" aria-pressed="false">Left move breaks a rule</button>
+    </div>
+    <div class="out">
+      <div><span class="k">Left cost</span><span class="v" id="m5cl">—</span></div>
+      <div><span class="k">Right cost</span><span class="v" id="m5cr">—</span></div>
+      <div><span class="k">Chosen</span><span class="v ok" id="m5w">—</span></div>
+    </div>
+    <figcaption>Now press <b>left move breaks a rule</b> and set the left cost to zero. It still loses. A rule in this theory is not an enormous weight on the scale; it is a <b>latch</b> that takes the option off the scale entirely. No amount of cheapness buys its way past.</figcaption>
+  </figure>
+
+  <p>That distinction between a latch and a weight is worth keeping. It is the difference between a law that is never broken and a tendency that can be outweighed, and in this theory the two are not different kinds of thing. They are the same kind of thing at different heights. What we call conservation laws sit at latch height. What we call forces sit on the scale.</p>
+  <p>It is also the point where this stops being physics and starts being something more general. A preference ordering over available options, with some options ruled out absolutely and the rest traded off, is the shape of a theory of value. This one just happens to belong to the world rather than to a person in it.</p>
+</section>
+
+<section id="s6">
+  <p class="step"><b>Step 06</b> The one-way move</p>
+  <h2>Which end is the past</h2>
+  <p>Almost everything that happens can be undone. A fitting can be unfitted; the arrangement goes back to what it was and nothing about the reversed film looks wrong. Those events carry no direction at all, which is what step 04 was showing.</p>
+  <p>One kind of event is different. Sometimes the world holds several possibilities at once, joined by junctions, and then commits to one of them by cutting the rest loose. The pieces cut loose do not vanish. They are still there. They are simply no longer reachable from where you now are, and there is no move that reaches back.</p>
+
+  <figure class="fig">
+    <div class="head"><span class="t">Machine 6 — try to go back</span><span class="badge d1">one dimension · order plus direction</span></div>
+    <div class="stage" id="m6"></div>
+    <div class="ctr">
+      <button class="b" id="m6b">◀ Back</button>
+      <button class="b" id="m6f">Forward ▶</button>
+      <button class="b" id="m6r">Start over</button>
+      <span class="mono" id="m6lab" style="font-size:13px;color:var(--ink-2)">step 1 of 4</span>
+    </div>
+    <div class="out">
+      <div><span class="k">This move</span><span class="v" id="m6t" style="font-size:16px">Refitting</span></div>
+      <div><span class="k">Undoable</span><span class="v ok" id="m6u" style="font-size:16px">Yes</span></div>
+      <div><span class="k">Line has a direction</span><span class="v" id="m6d" style="font-size:16px">No</span></div>
+    </div>
+    <figcaption>The first three steps go back happily. The fourth cuts, and <b>Back stops working</b>. The button is not broken and nothing is being withheld from you: there is no move that undoes it. That disabled button is the whole of what this theory says the direction of time is.</figcaption>
+  </figure>
+
+  <p>Three things turn out to be the same event here, which is unusual enough to be worth noticing. The direction of time, the fact that disorder grows rather than shrinks, and the moment a measurement in physics gets a definite answer are one event looked at three ways.</p>
+  <p>It also explains something you have seen without being told why. Time obviously flows for a cup that breaks and does not obviously flow at all for a single atom left alone. Committing happens constantly for large things in contact with their surroundings and almost never for small isolated ones. Direction is as common as the world's habit of settling on one definite outcome, and those are not two facts.</p>
+</section>
+
+<section id="s7">
+  <p class="step"><b>Step 07</b> Counting a boundary</p>
+  <h2>Only the edge matters</h2>
+  <p>Now a result rather than a machine, and it is the one everything later leans on.</p>
+  <p>Suppose you want to separate some part of the world from the rest. You will have to cut every junction that crosses the line you have drawn. Junctions buried inside are untouched: both their ends are inside with you. So the price of separating something depends on its boundary and not on its contents.</p>
+
+  <figure class="fig">
+    <div class="head"><span class="t">Machine 7 — draw a line and count</span><span class="badge d2">flat · still just counting</span></div>
+    <div class="stage" id="m7"></div>
+    <div class="ctr">
+      <label class="sl"><span>Stuff inside</span><input type="range" id="m7a" min="0" max="60" value="16"></label>
+      <label class="sl"><span>Junctions crossing the line</span><input type="range" id="m7b" min="1" max="12" value="5"></label>
+    </div>
+    <div class="out">
+      <div><span class="k">Things inside</span><span class="v" id="m7n">—</span></div>
+      <div><span class="k">Junctions inside</span><span class="v" id="m7i">—</span></div>
+      <div><span class="k">Crossing</span><span class="v blue" id="m7x">—</span></div>
+      <div><span class="k">Price to separate</span><span class="v ok" id="m7c">—</span></div>
+    </div>
+    <figcaption>Push <b>stuff inside</b> as far as it goes. The inside fills up and the price does not move by one. Push <b>junctions crossing the line</b> and the price follows it exactly. <b>Notice this picture is flat.</b> Nothing here needed space, or shape, or size — only a line drawn on a diagram and some counting.</figcaption>
+  </figure>
+
+  <p>That last point is easy to skip past and is the reason this figure is drawn the way it is. The result is about a boundary in the sense of “what did you have to cut”, not a boundary in the sense of “a surface with an area in square metres”. So far the theory has never mentioned space at all.</p>
+</section>
+
+<section id="s8">
+  <p class="step"><b>Step 08</b> The step that costs something</p>
+  <h2>Where space is assumed</h2>
+  <p>Everything up to here followed from four assumptions and some counting, and the pictures stayed flat because nothing needed more than a flat picture.</p>
+  <p>To get physics — actual space, distances, areas, gravity — one more thing is needed, and the theory cannot currently supply it. It has to be assumed. The assumption is that the diagram we have been drawing, when it gets very large, settles down into something with a shape: a place where distances mean something and a boundary has an area.</p>
+  <p>Press the button and watch the assumption being made. Nothing is added to the diagram. It is the same diagram. It is given a dimension.</p>
+
+  <figure class="fig dim3">
+    <div class="head"><span class="t">Machine 8 — the same picture, tilted</span><span class="badge d3">three dimensions · assumed</span></div>
+    <div class="stage tiltbox" id="m8"></div>
+    <div class="ctr">
+      <button class="b" id="m8t" aria-pressed="false">Assume it has a shape</button>
+      <span class="mono" id="m8lab" style="font-size:13px;color:var(--ink-2)">flat: a diagram, and counting</span>
+    </div>
+    <figcaption>The count of crossings has not changed. What changed is that we agreed to call that count an <b>area</b>. Every result about gravity in this theory sits on the far side of that button, and if the assumption turns out to be false they all go with it. It is the largest unpaid debt the theory has, and it is written down as one.</figcaption>
+  </figure>
+
+  <p>Past the button, a lot follows quickly, and it is worth stating briefly rather than in detail. Being hard to push and being pulled hard by gravity turn out to be the same count of junctions, which is why a hammer and a feather fall together. Boundaries you cannot reach back across — black holes — can only grow, so two of them merging must make a bigger one. And the strength of gravity stops being a bare number and becomes a measure of how densely the empty world is stitched together.</p>
+  <div class="note warn">
+    <h3>The honest position on all of that</h3>
+    <p>Each of those results is real work and each is <span class="tag assumed">Assumed</span>, resting on the button you just pressed. Nobody has shown that the diagram does settle into a shape. Until someone does, this part of the theory is a careful account of what would follow if it did.</p>
+  </div>
+</section>
+
+<section id="s9">
+  <p class="step"><b>Step 09</b> The ledger</p>
+  <h2>What is missing</h2>
+  <p>A course that stopped at step 08 would have taught the content and left out the habit. This list is the habit.</p>
+  <div class="scroll"><table>
+    <tr><th style="width:36%">Open question</th><th>Where it bites</th></tr>
+    <tr><td><strong>Does the diagram have a shape?</strong></td><td>The button in step 08. Everything about space, gravity and black holes waits on it. This is the big one.</td></tr>
+    <tr><td><strong>Why did things start so tidy?</strong></td><td>Step 06 gives time a direction but not a beginning. Why the early universe was so orderly is a question about how things started, not about the rules, and it is untouched.</td></tr>
+    <tr><td><strong>Why is there anything?</strong></td><td>Step 00. The theory explains why something cannot become nothing. It does not explain why there was something.</td></tr>
+    <tr><td><strong>Why is there experience?</strong></td><td>The theory can say why the world an observer meets looks solid, single and one-thing-after-another. It says nothing about why there is anyone home to meet it. <span class="tag none">Not claimed</span></td></tr>
+    <tr><td><strong>The particles</strong></td><td>No account of the specific particles, their masses, or most of the forces. Listed as nothing offered, in those words.</td></tr>
+  </table></div>
+  <p>If one thing from this course is worth keeping it is probably the shape of that table rather than any single result before it. Being able to say exactly which of your claims are earned, which are borrowed, and which are absent is a habit that works on any theory, including the ones you meet elsewhere.</p>
+
+  <div class="note">
+    <h3>What the machines are made of</h3>
+    <p>A fair objection to the whole course: if everything is made of comparators and junctions and plugs, what are <em>those</em> made of? The answer is nothing, and that is not a dodge. The machines are a way of drawing relationships, chosen because you already have intuitions about how machines behave. Other drawings work equally well and mathematicians use several. What the theory says is real is whatever stays the same when you change the drawing — which is exactly why the labels in this course matter more than the pictures.</p>
+  </div>
+</section>
+
+<footer><div class="wrap" style="padding:0">
+  <p>Every result in steps 05 to 08 has a short program attached that checks it and prints the numbers. They need only Python, with nothing to install.</p>
+  <p>The theory itself is written up in a set of numbered documents. The labels used in this course — follows, assumed, not claimed — are its own, taken from its charter.</p>
+</div></footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+function E(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+function svg(id,w,h){
+  var host=document.getElementById(id); if(!host) return null;
+  host.innerHTML="";
+  var s=E("svg",{viewBox:"0 0 "+w+" "+h,role:"img"},host);
+  return s;
+}
+function T(p,x,y,txt,o){
+  o=o||{};
+  var e=E("text",{x:x,y:y,"font-family":"JetBrains Mono, monospace",
+    "font-size":o.size||11,fill:o.fill||"var(--ink-3)","text-anchor":o.anchor||"middle",
+    "letter-spacing":o.ls||".06em"},p);
+  e.textContent=txt; return e;
+}
+function box(p,x,y,w,h,o){
+  o=o||{};
+  return E("rect",{x:x,y:y,width:w,height:h,rx:o.r===undefined?3:o.r,
+    fill:o.fill||"var(--panel)",stroke:o.stroke||"var(--ink-2)","stroke-width":o.sw||1.4},p);
+}
+function line(p,x1,y1,x2,y2,o){
+  o=o||{};
+  return E("line",{x1:x1,y1:y1,x2:x2,y2:y2,stroke:o.stroke||"var(--ink-2)",
+    "stroke-width":o.sw||1.4,"stroke-linecap":"round",
+    "stroke-dasharray":o.dash||""},p);
+}
+function dot(p,x,y,r,o){
+  o=o||{};
+  return E("circle",{cx:x,cy:y,r:r,fill:o.fill||"var(--panel)",
+    stroke:o.stroke||"var(--ink-2)","stroke-width":o.sw||1.4},p);
+}
+function txt(id,v){var e=document.getElementById(id); if(e)e.textContent=v;}
+
+/* ---------------- 1. comparator ---------------- */
+(function(){
+  var s=svg("m1",420,190); if(!s) return;
+  var SHAPES=["circle","square","triangle"], L=0, R=0;
+  function glyph(p,cx,cy,kind,col){
+    col=col||"var(--blue)";
+    if(kind==="circle") dot(p,cx,cy,13,{fill:col,stroke:col});
+    else if(kind==="square") E("rect",{x:cx-12,y:cy-12,width:24,height:24,rx:2,fill:col},p);
+    else E("polygon",{points:(cx)+","+(cy-14)+" "+(cx+13)+","+(cy+11)+" "+(cx-13)+","+(cy+11),fill:col},p);
+  }
+  function draw(){
+    s.innerHTML="";
+    box(s,26,34,64,54); glyph(s,58,61,SHAPES[L]);
+    box(s,26,110,64,54); glyph(s,58,137,SHAPES[R]);
+    line(s,90,61,168,80); line(s,90,137,168,110);
+    box(s,168,62,86,66,{fill:"var(--sunk)"});
+    T(s,211,92,"same?",{size:12,fill:"var(--ink-2)"});
+    T(s,211,110,"eq",{size:10});
+    line(s,254,95,318,95);
+    var same=(L===R);
+    dot(s,340,95,20,{fill:same?"var(--blue)":"var(--panel)",stroke:same?"var(--blue)":"var(--rule)",sw:2});
+    if(same){ for(var i=0;i<6;i++){ var a=i*Math.PI/3;
+      line(s,340+Math.cos(a)*26,95+Math.sin(a)*26,340+Math.cos(a)*32,95+Math.sin(a)*32,{stroke:"var(--blue)",sw:2}); } }
+    T(s,340,146,same?"ON":"OFF",{size:12,fill:same?"var(--blue)":"var(--ink-3)"});
+    T(s,58,24,"a thing",{size:10}); T(s,58,182,"another thing",{size:10});
+    T(s,340,42,"one light out",{size:10});
+    txt("m1L",SHAPES[L]); txt("m1R",SHAPES[R]); txt("m1O",same?"1":"0");
+  }
+  document.getElementById("m1a").onclick=function(){L=(L+1)%3;draw();};
+  document.getElementById("m1b").onclick=function(){R=(R+1)%3;draw();};
+  draw();
+})();
+
+/* ---------------- 2. junction vs copier ---------------- */
+(function(){
+  var s=svg("m2",560,230); if(!s) return;
+  var jCut=false, cCut=false;
+  function holder(p,x,y,live,name){
+    box(p,x-27,y-19,54,38,{stroke:live?"var(--ink-2)":"var(--rule)"});
+    T(p,x,y+4,live?"has it":"empty",{size:10,fill:live?"var(--ink-2)":"var(--ink-3)"});
+    T(p,x,y-27,name,{size:10});
+  }
+  function draw(){
+    s.innerHTML="";
+    T(s,140,20,"ONE THING, TWO HOLDERS",{size:10,fill:"var(--blue)",ls:".12em"});
+    T(s,420,20,"TWO THINGS, ONE EACH",{size:10,fill:"var(--ink-3)",ls:".12em"});
+    line(s,280,34,280,214,{stroke:"var(--rule)",dash:"3 5"});
+
+    /* junction */
+    dot(s,140,186,12,{fill:"var(--blue)",stroke:"var(--blue)"});
+    T(s,140,214,"the thing",{size:10});
+    line(s,140,174,140,132,{stroke:jCut?"var(--red)":"var(--blue)",sw:2.4,dash:jCut?"5 5":""});
+    if(jCut){ line(s,128,153,152,141,{stroke:"var(--red)",sw:2.4}); line(s,128,141,152,153,{stroke:"var(--red)",sw:2.4}); }
+    dot(s,140,132,5,{fill:jCut?"var(--red)":"var(--blue)",stroke:jCut?"var(--red)":"var(--blue)"});
+    line(s,140,132,78,104,{stroke:jCut?"var(--rule)":"var(--blue)",sw:2});
+    line(s,140,132,202,104,{stroke:jCut?"var(--rule)":"var(--blue)",sw:2});
+    holder(s,78,86,!jCut,"holder A"); holder(s,202,86,!jCut,"holder B");
+
+    /* copier */
+    dot(s,420,186,12,{fill:"var(--ink-2)",stroke:"var(--ink-2)"});
+    T(s,420,214,"the thing",{size:10});
+    line(s,420,174,420,158);
+    box(s,392,132,56,26,{fill:"var(--sunk)"}); T(s,420,149,"copier",{size:10,fill:"var(--ink-2)"});
+    line(s,420,132,358,116,{stroke:cCut?"var(--red)":"var(--ink-2)",sw:2,dash:cCut?"5 5":""});
+    line(s,420,132,482,116,{stroke:"var(--ink-2)",sw:2});
+    if(cCut){ line(s,378,132,396,116,{stroke:"var(--red)",sw:2.4}); line(s,378,116,396,132,{stroke:"var(--red)",sw:2.4}); }
+    dot(s,358,110,9,{fill:cCut?"var(--rule)":"var(--ink-2)",stroke:cCut?"var(--rule)":"var(--ink-2)"});
+    dot(s,482,110,9,{fill:"var(--ink-2)",stroke:"var(--ink-2)"});
+    holder(s,358,64,!cCut,"holder C"); holder(s,482,64,true,"holder D");
+
+    txt("m2L",jCut?"0":"2"); txt("m2R",cCut?"1":"2");
+    var l=document.getElementById("m2L"), r=document.getElementById("m2R");
+    l.className="v "+(jCut?"red":""); r.className="v";
+  }
+  document.getElementById("m2a").onclick=function(){jCut=true;draw();};
+  document.getElementById("m2b").onclick=function(){cCut=true;draw();};
+  document.getElementById("m2r").onclick=function(){jCut=cCut=false;draw();};
+  draw();
+})();
+
+/* ---------------- 3. punch / plug / fit ---------------- */
+(function(){
+  var s=svg("m3",520,210); if(!s) return;
+  var n=0, SLOT=[110,240,370];
+  var NAMES=["first fitting","second fitting","third fitting"];
+  function draw(){
+    s.innerHTML="";
+    T(s,260,20,"A STRUCTURE WITH HOLES",{size:10,fill:"var(--ink-3)",ls:".12em"});
+    box(s,60,52,410,50,{fill:"var(--sunk)"});
+    for(var i=0;i<3;i++){
+      var x=SLOT[i], filled=i<n;
+      if(filled){
+        box(s,x-26,54,52,46,{fill:"var(--blue-soft)",stroke:"var(--blue)",sw:1.8});
+        T(s,x,82,"fitted",{size:10,fill:"var(--blue)"});
+      } else {
+        E("path",{d:"M"+(x-26)+" 52 v46 h52 v-46",fill:"var(--panel)",
+          stroke:"var(--ink-3)","stroke-width":1.4,"stroke-dasharray":"4 4"},s);
+        T(s,x,82,"hole",{size:10});
+      }
+      if(!filled){
+        box(s,x-24,144,48,40,{fill:"var(--panel)",stroke:"var(--ink-2)"});
+        T(s,x,168,"plug",{size:10,fill:"var(--ink-2)"});
+        if(i===n){
+          line(s,x,140,x,110,{stroke:"var(--blue)",sw:2});
+          E("polygon",{points:x+",104 "+(x-5)+",116 "+(x+5)+",116",fill:"var(--blue)"},s);
+          T(s,x,200,"this one fits",{size:10,fill:"var(--blue)"});
+        }
+      }
+    }
+    txt("m3n",n); txt("m3h",3-n);
+    txt("m3lab", n===0?"nothing fitted yet":(n<3?NAMES[n-1]+" done":"nothing left to fit"));
+    document.getElementById("m3s").disabled = n>=3;
+  }
+  document.getElementById("m3s").onclick=function(){ if(n<3){n++;draw();} };
+  document.getElementById("m3r").onclick=function(){ n=0; draw(); };
+  draw();
+})();
+
+/* ---------------- 4. the chain (1-D) ---------------- */
+(function(){
+  var s=svg("m4",560,110); if(!s) return;
+  var N=6, i=0;
+  function draw(){
+    s.innerHTML="";
+    var x0=60, dx=(440)/(N-1);
+    line(s,x0,60,x0+dx*(N-1),60,{stroke:"var(--rule)",sw:2});
+    for(var k=0;k<N;k++){
+      var x=x0+dx*k, here=(k===i);
+      dot(s,x,60,here?11:7,{fill:here?"var(--blue)":"var(--panel)",stroke:here?"var(--blue)":"var(--ink-2)",sw:here?2:1.4});
+      T(s,x,88,String(k+1),{size:10});
+    }
+    T(s,280,26,"THE RECORD OF EVENTS, IN ORDER",{size:10,fill:"var(--ink-3)",ls:".12em"});
+    T(s,32,64,"◀",{size:14,fill:"var(--ink-3)"}); T(s,528,64,"▶",{size:14,fill:"var(--ink-3)"});
+    txt("m4lab","at position "+(i+1));
+    document.getElementById("m4b").disabled = i<=0;
+    document.getElementById("m4f").disabled = i>=N-1;
+  }
+  document.getElementById("m4b").onclick=function(){ if(i>0){i--;draw();} };
+  document.getElementById("m4f").onclick=function(){ if(i<N-1){i++;draw();} };
+  draw();
+})();
+
+/* ---------------- 5. balance and latch ---------------- */
+(function(){
+  var s=svg("m5",520,230); if(!s) return;
+  var A=document.getElementById("m5a"), B=document.getElementById("m5b"),
+      Lb=document.getElementById("m5l"), latched=false;
+  function draw(){
+    s.innerHTML="";
+    var a=+A.value, b=+B.value;
+    /* a heavier pan sinks, so the CHEAPER move is the one that rises */
+    var tilt = latched ? 13 : Math.max(-13,Math.min(13,(b-a)*3.2));
+    var win = latched ? "right" : (a===b ? null : (a<b ? "left" : "right"));
+    var cx=260, cy=96;
+    E("polygon",{points:cx+",150 "+(cx-24)+",200 "+(cx+24)+",200",fill:"var(--sunk)",stroke:"var(--ink-2)","stroke-width":1.4},s);
+    var g=E("g",{transform:"rotate("+tilt+" "+cx+" "+cy+")"},s);
+    line(g,cx-150,cy,cx+150,cy,{sw:2.4});
+    line(g,cx,cy,cx,150,{sw:2.4});
+    [[-150,a,"left"],[150,b,"right"]].forEach(function(p){
+      var x=cx+p[0];
+      line(g,x,cy,x,cy+26); line(g,x-34,cy+26,x+34,cy+26,{sw:2});
+      for(var k=0;k<Math.min(p[1],6);k++){
+        E("rect",{x:x-13,y:cy+20-k*11,width:26,height:9,rx:1.5,
+          fill:"var(--blue-soft)",stroke:"var(--blue)","stroke-width":1.2},g);
+      }
+      T(g,x,cy+46,p[2]+" move",{size:10});
+      if(win===p[2]){
+        T(g,x,cy+64,"◀ taken",{size:10,fill:"var(--ok)"});
+        E("rect",{x:x-40,y:cy+20-Math.min(p[1],6)*11-8,width:80,
+          height:Math.min(p[1],6)*11+34,rx:4,fill:"none",
+          stroke:"var(--ok)","stroke-width":1.6,"stroke-dasharray":"5 4"},g);
+      }
+    });
+    if(latched){
+      box(s,34,18,120,32,{fill:"var(--red-soft)",stroke:"var(--red)"});
+      T(s,94,39,"LATCHED OUT",{size:11,fill:"var(--red)",ls:".1em"});
+      line(s,94,150,94,50,{stroke:"var(--red)",sw:2,dash:"5 4"});
+    }
+    T(s,260,220,"the heavier pan sinks, so the cheaper move is the one that rises",{size:10});
+    txt("m5cl", latched? "—" : a);
+    txt("m5cr", b);
+    document.getElementById("m5cl").className="v "+(latched?"red":"");
+    txt("m5w", latched ? "right" : (a===b ? "tie" : (a<b?"left":"right")));
+  }
+  A.oninput=B.oninput=draw;
+  Lb.onclick=function(){ latched=!latched; Lb.setAttribute("aria-pressed",latched?"true":"false"); draw(); };
+  draw();
+})();
+
+/* ---------------- 6. the cut ---------------- */
+(function(){
+  var s=svg("m6",560,130); if(!s) return;
+  var N=4, i=0;
+  function draw(){
+    s.innerHTML="";
+    var x0=80, dx=400/(N-1), cutAt=3;
+    for(var k=0;k<N-1;k++){
+      var isCut = (k===cutAt-1) && i>=cutAt;
+      line(s,x0+dx*k,66,x0+dx*(k+1),66,{stroke:isCut?"var(--red)":"var(--rule)",sw:2,dash:isCut?"5 5":""});
+      if(isCut){
+        var mx=x0+dx*k+dx/2;
+        line(s,mx-9,57,mx+9,75,{stroke:"var(--red)",sw:2.4});
+        line(s,mx-9,75,mx+9,57,{stroke:"var(--red)",sw:2.4});
+      }
+    }
+    for(var k2=0;k2<N;k2++){
+      var x=x0+dx*k2, here=(k2===i);
+      dot(s,x,66,here?11:7,{fill:here?(i>=cutAt?"var(--red)":"var(--blue)"):"var(--panel)",
+        stroke:here?(i>=cutAt?"var(--red)":"var(--blue)"):"var(--ink-2)",sw:here?2:1.4});
+      T(s,x,94,String(k2+1),{size:10});
+    }
+    if(i>=cutAt){
+      line(s,x0,32,x0+dx*(N-1)-14,32,{stroke:"var(--red)",sw:2});
+      E("polygon",{points:(x0+dx*(N-1))+",32 "+(x0+dx*(N-1)-13)+",26 "+(x0+dx*(N-1)-13)+",38",fill:"var(--red)"},s);
+      T(s,280,18,"NOW THE LINE HAS A DIRECTION",{size:10,fill:"var(--red)",ls:".12em"});
+    } else {
+      T(s,280,18,"NO DIRECTION YET",{size:10,fill:"var(--ink-3)",ls:".12em"});
+    }
+    var cut = i>=cutAt;
+    txt("m6lab","step "+(i+1)+" of "+N);
+    txt("m6t", cut?"A cut":"Refitting");
+    txt("m6u", cut?"No":"Yes");
+    document.getElementById("m6u").className="v "+(cut?"red":"ok");
+    txt("m6d", cut?"Yes":"No");
+    document.getElementById("m6b").disabled = cut || i===0;
+    document.getElementById("m6f").disabled = i>=N-1;
+    document.getElementById("m6r").disabled = i===0;
+  }
+  document.getElementById("m6f").onclick=function(){ if(i<N-1){i++;draw();} };
+  document.getElementById("m6b").onclick=function(){ if(i>0 && i<3){i--;draw();} };
+  document.getElementById("m6r").onclick=function(){ i=0; draw(); };
+  draw();
+})();
+
+/* ---------------- 7 & 8. boundary counting, flat then tilted ---------------- */
+function rngf(seed){var s=seed;return function(){s=(s*1664525+1013904223)%4294967296;return s/4294967296;};}
+function drawRegion(s,W,H,nIn,nX,showCount){
+  var cx=W*0.42, cy=H*0.5, rx=W*0.24, ry=H*0.33;
+  var r=rngf(9), inside=[], out=[];
+  for(var i=0;i<26;i++){
+    var a=r()*6.2832, q=Math.sqrt(r())*0.86;
+    inside.push([cx+Math.cos(a)*rx*q, cy+Math.sin(a)*ry*q]);
+  }
+  for(var j=0;j<14;j++){
+    var b=r()*6.2832, d=1.5+r()*1.1;
+    out.push([cx+Math.cos(b)*rx*d, cy+Math.sin(b)*ry*d*0.92]);
+  }
+  var r2=rngf(41);
+  for(var k=0;k<nIn;k++){
+    var p=inside[Math.floor(r2()*inside.length)], q2=inside[Math.floor(r2()*inside.length)];
+    line(s,p[0],p[1],q2[0],q2[1],{stroke:"var(--rule)",sw:1.2});
+  }
+  var r3=rngf(77);
+  for(var m=0;m<nX;m++){
+    var th=(m/nX)*6.2832+0.4;
+    var ix=cx+Math.cos(th)*rx*0.72, iy=cy+Math.sin(th)*ry*0.72;
+    var ox=cx+Math.cos(th)*rx*1.85, oy=cy+Math.sin(th)*ry*1.85;
+    line(s,ix,iy,ox,oy,{stroke:"var(--blue)",sw:2});
+    dot(s,ox,oy,4.5,{fill:"var(--panel)",stroke:"var(--blue)",sw:1.4});
+  }
+  E("ellipse",{cx:cx,cy:cy,rx:rx*1.18,ry:ry*1.18,fill:"none",
+    stroke:"var(--blue)","stroke-width":1.8,"stroke-dasharray":"7 5"},s);
+  inside.forEach(function(p){ dot(s,p[0],p[1],3.6,{fill:"var(--ink-2)",stroke:"var(--ink-2)"}); });
+  out.forEach(function(p){ dot(s,p[0],p[1],3,{fill:"none",stroke:"var(--rule)"}); });
+  if(showCount) T(s,cx,cy-ry*1.18-12,"the line you drew",{size:10,fill:"var(--blue)"});
+  return {n:inside.length, cx:cx, cy:cy};
+}
+(function(){
+  var A=document.getElementById("m7a"), B=document.getElementById("m7b");
+  function draw(){
+    var s=svg("m7",560,300); if(!s) return;
+    var nIn=+A.value, nX=+B.value;
+    var g=drawRegion(s,560,300,nIn,nX,true);
+    txt("m7n",g.n); txt("m7i",nIn); txt("m7x",nX); txt("m7c",nX);
+  }
+  A.oninput=B.oninput=draw; draw();
+})();
+(function(){
+  var host=document.getElementById("m8"); if(!host) return;
+  host.innerHTML="";
+  var inner=document.createElement("div");
+  inner.className="tilt"; inner.id="m8i"; host.appendChild(inner);
+  var s=E("svg",{viewBox:"0 0 560 300"},inner);
+  drawRegion(s,560,300,18,6,false);
+  var btn=document.getElementById("m8t"), on=false;
+  btn.onclick=function(){
+    on=!on; inner.classList.toggle("on",on);
+    btn.setAttribute("aria-pressed",on?"true":"false");
+    btn.textContent = on ? "Take the assumption back" : "Assume it has a shape";
+    txt("m8lab", on ? "assumed: a surface, with an area" : "flat: a diagram, and counting");
+  };
+})();
+})();
+</script>

@@ -1,6 +1,6 @@
 # 06 — Proto-Axiology
 
-> **STATUS: PRE-REBUILD DOCUMENT (superseded, retained for history).** Written before the derivation-first charter. The non-temporal attractors \(\mathcal{H}\)/\(\mathcal{L}\) referenced below belong to a discarded axiom set and have no counterpart in the current core (`docs/01-core-ontology.md`); the coherence measure \(\kappa\) survives (docs/02 §11). Pending rewrite or removal.
+> **STATUS: PRE-REBUILD DOCUMENT (superseded, retained for history).** Written before the derivation-first charter. The non-temporal attractors \(\mathcal{H}\)/\(\mathcal{L}\) referenced below belong to a discarded axiom set and have no counterpart in the current core (`docs/01-core-ontology.md`); the coherence measure \(\kappa\) survives (docs/02 §11). **Successor identified (docs/26 §3):** the material that should replace this document already exists and was never connected to it. O3 is a preference relation; `docs/20` grounds its axioms; RM1 gives a cardinal value function unique up to scale, which is a representation theorem of the kind proved for preference in measurement theory; RM2's dichotomy is the representable/lexicographic split; CC′ and ST1 give exact strata above a priced floor, with conservation laws derived as the top stratum. The limit stated below — that an objective ranking of configurations is not ethics, and the step to an 'ought' needs a bridge principle — survives the rewrite unchanged. **Rewrite against RM1/RM2/CC′/ST1 rather than remove.**
 
 ## Distinction
 

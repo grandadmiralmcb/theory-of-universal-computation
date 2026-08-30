@@ -2,6 +2,8 @@
 
 Build outward from O1–O4 only. Every step is either forced or explicitly postulational.
 
+*Continued outward past physics in `docs/26-outward-spine.md`, which places these results and the later layers on rungs in dependency order and opens the forced-layer audit.*
+
 ---
 
 ## 0. Ontological minima (assumptions)
