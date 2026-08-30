@@ -76,9 +76,27 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 
 ---
 
+## Thermodynamics & gravity (add TG1–TG5; docs/24)
+
+**TH1** [RM1, CI4, WM1] Relativity of entropy: under \(k\)-fold granularity refinement the von Neumann entropy diverges as \(N\log k\) while \(S_{\rm rel}(\rho\Vert\sigma)\) against the SB3 ground configuration is exactly invariant; with RM1's scale gauge (entropy is a count, not a cost) and CI4's additive gauge (modular energy has no zero), **every thermodynamic quantity that does work in this layer is a difference against the ground configuration**. (docs/24 §1)  
+**TH2** [WM1, WM2] Structural area law: \(C_{\rm isolate}\) is a function of the cut alone — \(\alpha N(\chi)+\beta B(\chi)+\gamma[N>0]\) — independent of interior structure. Holography is not added; it is the shape of the \(S\)-counter. **TH2′** [+TG1, D20] \(S(\chi)=s_0N(\chi)\).  
+**TH3** [F1, F3/O4, SB4, SM-B3, A4] Horizon reduction: an evaluator whose accessible past is proper has a proper subalgebra and a generically mixed restricted state, with entropy TH2′ on the horizon cut. Thermality's *origin* is F3 (the unselected persists); only the KMS normalization is postulated (TG3).  
+**TH4** [A4, D20, T15, T13′, T16′, T14′] Structural monotonicity: \(S_{\rm rel}(\Phi\rho\Vert\Phi\sigma)\le S_{\rm rel}(\rho\Vert\sigma)\), with equality on free epochs and reconfigurations and strict decrease possible only at structural projection. The framework's data-processing inequality; **entropy production and the measurement problem have one locus.**  
+**TH5** [TG1, A4] First law of structural entanglement: \(S_{\rm rel}=\Delta\langle K\rangle-\Delta S\ge0\) with vanishing first variation, so \(\delta S=\delta\langle K\rangle\); under TG1, \(K=C_{\rm maintain}/\Theta+\)const — the modular Hamiltonian **is** the WM4 maintain ledger.  
+**TH6** [TG1–TG4 (+TG5 for Route A), TH2′, TH3, TH5] Einstein equation \(G_{ab}+\Lambda g_{ab}=(2\pi/\eta)T_{ab}\), by two independent routes (Clausius flux; small-ball relative-entropy equilibrium) that agree. \(\Lambda\) is an integration constant, not a vacuum-energy sum.  
+**TH7** [TH6] \(\eta=1/4G\), i.e. \(G=1/(4s_0\eta_N)\): Newton's constant is the reciprocal ground-configuration share density across a cut. Identification, **not** a computation of \(G\) — that needs TG2 solved.  
+**TH8** [WM3, TH2, TH2′, TG1, TG2] Weak equivalence principle: the entropic bias is \(b_{\rm grav}=m_{\rm struct}\,g\), so \(g_{\rm eff}\) is cluster-independent — because inertia (WM3) and horizon entropy (TH2) count the **same shares**. **Closes contention 2** (previously an observational consistency requirement, docs/02 §6). **TH8-ε**: exact only to \(O(\varepsilon/\alpha_m n)\); WM3's floor predicts \(\eta_E\simeq(\varepsilon/\alpha_m)\,|n_1^{-1}-n_2^{-1}|\), a WEP violation growing for lighter bodies. **TH8′**: Eötvös bounds therefore constrain floor stratification (contention 8) independently of TS2.  
+**TH9** [TH4, TH3, TG3, TG4] Generalized second law: \(S_{\rm gen}=\eta A+S_{\rm out}\) is non-decreasing along a horizon, by monotonicity under the shrinking exterior algebra. Not a postulate and not an ignorance story — it is TH4.  
+**TH10** [TH9, SM-B3] **a**: area theorem \(\Delta A\ge0\). **b**: merger inequality \(A_f\ge A_1+A_2\), so a merged hole is necessarily bigger and fission is thermodynamically **forbidden**; for Schwarzschild, \(M_f\ge\sqrt{m_1^2+m_2^2}\) and \(f_{\rm rad}\le1-1/\sqrt2\approx29.3\%\) at equal masses. **c**: \(dM=T\,dS\) with \(T=\kappa/2\pi\), \(S=A/4G\).  
+**TH11** [TH5] Bekenstein bound \(S-S_{\rm gnd}\le2\pi ER\), as the content of \(S_{\rm rel}\ge0\).
+
+*Non-theorems of this layer:* the value of \(\eta_N\) (hence \(G\)); the value of \(\Lambda\); spacetime dimension; local Lorentz invariance; a quantum theory of the metric; the Page curve (docs/24 §8 defines a probe only).
+
+---
+
 ## Non-theorems
 
-Amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
+Geometry, area, curvature or the Einstein equation without TG2–TG5; amplitudes from O1–O4; unitarity from bare \(C\); Born derived; finite trees as ontology; continuum Newton without CI; monism; consciousness identity; \(SU(3)\times SU(2)\times U(1)\) or generation structure from the bridge postulates SB1–SB4.
 
 ---
 
@@ -91,4 +109,5 @@ SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-ph
 L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)  
 TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)  
 FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)  
+TH1–TH10: `sim/thermo_gravity.py` (area law at fixed cut; relative-entropy gauge invariance against divergent \(S\); monotonicity across the event trichotomy; both small-ball coefficients verified against exact \(S^3\) balls and quadrature; \(dM=T\,dS\); the merger inequality on observed binary black holes; WEP universality and its \(\varepsilon\)-floor residue)  
 PA0–PA2: `sim/progress_analysis.py` (mini sharing calculus; charge-safe duplication; the reachable FV term; projection discards; reference subtlety; conservative relevance checker vs dynamic audit)

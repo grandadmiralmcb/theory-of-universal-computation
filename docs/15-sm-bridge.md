@@ -87,7 +87,9 @@ Unlabeled structure is unrestricted; shares with \(q=0\) in every sector may be 
 - Background independence is native (O2: order constructed, not assumed) and lands the framework in causal-set territory (Bombelli–Lee–Meyer–Sorkin) by *definition*, not extra machinery.
 - Qualitative causality is native: a reduction can be influenced only by structure it consumes, so no influence propagates outside \(\prec\). This partially rehabilitates the orphaned pre-rebuild "bounded signal \(c\)": the *existence* of a causal bound is structural; a *quantitative* maximum speed needs a metric, which does not exist yet.
 
-**What it does not buy:** dimension, metric, Lorentz invariance, Einstein-equation limit, and the coupling of inertia to geometry (contention 2). The hard problem imported unsolved from causal-set theory — which order statistics yield 3+1-dimensional, locally Lorentz-invariant behavior — is inherited intact.
+**What it does not buy:** dimension, metric, Lorentz invariance. The hard problem imported unsolved from causal-set theory — which order statistics yield 3+1-dimensional, locally Lorentz-invariant behavior — is inherited intact, and is now the gate on an entire layer (charter TG2; docs/07 contention 9).
+
+**What has since been bought *conditionally on* that gate (docs/24).** Given TG2 — a coarse-graining of \(\prec\) to a Lorentzian manifold with finite share-per-area density — the Einstein equation follows by two routes (TH6), \(G\) is identified with the reciprocal ground cut density (TH7), the coupling of inertia to geometry is **derived** rather than imposed (TH8, closing contention 2), and the area theorem including \(A_f\ge A_1+A_2\) for mergers follows from relative-entropy monotonicity (TH9/TH10). None of this weakens the gate: it is exactly as strong as TG2, and TG2 is exactly the problem this section says is unsolved.
 
 ---
 
@@ -105,5 +107,6 @@ SB1+SB3      ──> SM-B2 discrete WM spectrum               [proved, flagged a
 SB2 (Γ-invariance) ──> gauge redundancy; C-symmetry       [postulate]
 SB2 + A4     ──> continuous gauge candidate (U(n) stabilizer)  [locus: reconfiguration isometries, docs/17]
 SB4 + F1     ──> SM-B3 causal order                       [proved, WM]
-SB4 + metric(?) ──> spacetime, Lorentz, gravity           [open; contention 2 adjacent]
+SB4 + metric(?) ──> spacetime, Lorentz, dimension         [open; contention 9 — the TG gate]
+SB4 + TG1..TG5  ──> thermodynamics, Einstein eq, G, WEP    [docs/24; conditional on TG2]
 ```

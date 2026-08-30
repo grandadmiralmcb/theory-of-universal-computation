@@ -86,6 +86,7 @@ that chain *is* sequential order for that evaluator.
 | Born rule | Requires D12 reading or a future derivation |
 | Monism as theorem | Preferred reading only |
 | Consciousness = high coherence sequentialization | Open interpretive link |
+| Spacetime metric, area, Einstein equation, \(G\) | Requires TG2–TG5 (docs/24); TG2 is the causal-set continuum problem, unsolved |
 
 **Fixed negative results**
 
@@ -151,9 +152,14 @@ F1–F5  +  WM1,WM2,WM3  →  quantitative WM theorems (cost, isolation, T10–T
 WM theorems  +  CI1,CI2,CI3,CI4  →  continuum sequential calculus (T5–T8), T6 ratio
 F5  +  A4,D19,B_flow  →  unitary free epoch, projection as non-unitary locus
 (+ D12)  →  Born statistics at projection (reading)
+
+WM1,WM2 alone         →  TH2 area law (isolation cost is a cut quantity)
+T15,T13',T16',T14'    →  TH4 relative-entropy monotonicity (second law's locus)
+(+ SB4, TG1..TG5)     →  TH6 Einstein eq, TH7 G, TH8 equivalence principle,
+                         TH9/TH10 generalized second law and A_f >= A_1 + A_2
 ```
 
-No arrow from O1–O4 alone to continuum, amplitudes, or Born.
+No arrow from O1–O4 alone to continuum, amplitudes, Born, or geometry.
 
 ---
 
@@ -166,4 +172,5 @@ No arrow from O1–O4 alone to continuum, amplitudes, or Born.
    - ~~Derive a cardinal disruption measure from representation theorems~~ **Done conditionally** — RM1 (docs/19 §5): Hölder representation from AD1–AD3 yields WM2's form unique up to scale; the stipulation moved down to order axioms.
    - Internalize sequential labels in structure (reduce dependence on CI1 as external).
    - Born: either derive from extended preference at F5 or permanently mark D12 non-derived.
+   - Geometry: exhibit **one** order statistic on reduction events with a finite share-per-area density, which is what TG2 currently assumes (docs/24; docs/07 contention 9).
 4. **Do not** re-ontologize finite trees or treat A4 as forced by O3.

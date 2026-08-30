@@ -27,7 +27,7 @@ Formal derivations name every operation. See also `docs/02-dynamics.md` and `doc
 
 **Executable check:** inverse-acceleration ratio exact in toy simulator (internal consistency only — docs/02 §10, docs/08 §3).
 
-**Gravitational reading:** free-fall universality requires \(b_{\rm grav}=m_{\rm struct}\,g\) (docs/02 §6); a cluster-independent \(b\) models an applied force, not gravity.
+**Gravitational reading:** free-fall universality requires \(b_{\rm grav}=m_{\rm struct}\,g\) (docs/02 §6); a cluster-independent \(b\) models an applied force, not gravity. That coupling is **derived** in the TG layer (docs/24, TH8): the gravitational bias is entropic, and its gradient counts the same shares WM3 counts as inertia.
 
 ---
 

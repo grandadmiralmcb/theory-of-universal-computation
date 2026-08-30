@@ -13,6 +13,9 @@ Executable discrete calculus for the Expression-Tree Ontology.
 | `sequential_tick` | \(v \leftarrow v + \delta v^*\), advance \(x\) |
 | `structural_energy` | \(T + V\) tracking |
 | `harmonic_potential` | specialized \(V = \frac12 kx^2\) |
+| `cut_shares` / `isolation_cost` | cut share count and the area-law reading of \(C_{\rm isolate}\) (TH2) |
+| `rel_entropy` / `rel_entropy_q` | relative information against the ground configuration (TH1, TH4) |
+| `kerr_area` / `bh_entropy` / `hawking_T` | horizon thermodynamics; the merger inequality (TH10) |
 
 ## Continuum targets recovered
 
@@ -34,6 +37,7 @@ python sim/splitter_rewrite.py
 python sim/stratified_cost.py
 python sim/forced_violation.py
 python sim/progress_analysis.py
+python sim/thermo_gravity.py
 ```
 
 Every file must execute cleanly; a sim that does not run must not be cited
@@ -42,3 +46,4 @@ as an executable confirmation in the docs.
 ## Formalism reference
 
 Full named-operation derivations: `docs/02-dynamics.md`, `docs/04-classical-limit.md`.
+Thermodynamics and gravity: `docs/24-thermodynamics-gravity.md`.
