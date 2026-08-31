@@ -16,9 +16,10 @@ cease" was claimed in docs/26 stage 0 as forced from O4, and a countermodel
 here shows it is not. O4 constrains selection, not reduction.
 
 Demonstrations:
-  1. F6  interleaving independence -- every linearisation of a dependence
-         order yields the same outcome and the same causal order, checked
-         by exhaustive enumeration rather than by argument.
+  1. F6  no global order -- and, separately, the carrier-level fact that
+         in THIS carrier every linearisation yields the same outcome.
+         The first is forced; the second is not, and the demo is honest
+         about which is which (docs/28 section 2.1).
   2. F7  selection is non-destructive, and the sharper claim is not.
   3. F8  accessibility is proper: no chain holds all real structure.
   4. F9  preference is structurally determined.
@@ -84,10 +85,16 @@ def demo_f6():
     print(f"      distinct outcomes       : {len(outs)}")
     print(f"      distinct causal orders  : {len(caus)}")
     assert len(lins) > 1 and len(outs) == 1 and len(caus) == 1
-    print("   -> more than one sequentialisation, one outcome, one causal order.")
-    print("      Nothing in O1-O4 distinguishes the linearisations, so none of them")
-    print("      is the order of events; the partial order is. No global 'now', and")
-    print("      no privileged global state. Uses O2 only -- no carrier detail.")
+    print("\n   FORCED (F6, from O2 + F1): more than one sequentialisation exists")
+    print("   and nothing determines an order between a and b. Not an unknown")
+    print("   order -- none. Hence no global 'now' and no privileged global state.")
+    print("\n   NOT FORCED: that the outcome is the same across linearisations.")
+    print("   That needs disjoint reductions to COMMUTE, which is a property of")
+    print("   the carrier. Here composition is set union, which commutes")
+    print("   trivially, so the one outcome above CONFIRMS the claim in a carrier")
+    print("   that has it -- it does not establish it in general. WM1 has it as a")
+    print("   lemma and SM-B3's proof sketch cites that lemma. See docs/28 s2.1;")
+    print("   'dependence order' is itself SB4's phrase, and SB4 is a postulate.")
 
 
 # ---------------------------------------------------------------------------
@@ -237,7 +244,7 @@ def demo():
     print("=" * 72)
     print("The forced layer, audited (docs/28)")
     print("=" * 72)
-    print("\n1. F6 -- interleaving independence  [O2]")
+    print("\n1. F6 -- no global order  [O2, F1]  (and one carrier-level rider)")
     demo_f6()
     print("\n2. F7 -- selection is non-destructive  [O4]")
     demo_f7()

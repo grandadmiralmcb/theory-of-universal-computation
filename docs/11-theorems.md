@@ -15,7 +15,7 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 | **F3** | Unselected remains real | O4 |
 | **F4** | Co-dependence admits disruption comparison | O1, O3 |
 | **F5** | Structural projection when break ≤ maintain | F4, O3 |
-| **F6** | Interleaving independence; no global now, no privileged global state | O2, B8 |
+| **F6** | No global order: events on no common chain are unordered — no global now, no privileged global state | O2, F1 |
 | **F7** | Selection is non-destructive | O4 |
 | **F8** | Accessibility is proper — no chain holds all real structure | F1, F2, O4 |
 | **F9** | Preference is structurally determined (weak form; PC is stronger and needs SI) | O3, analytic |

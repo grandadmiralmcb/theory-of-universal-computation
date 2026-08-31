@@ -26,7 +26,7 @@
 
 ## Forced from ontology alone
 
-Local sequential chains · minimal-disruption selection (under well-foundedness) · unselected structure real · co-dependence comparable by disruption · structural projection when breaking co-dependence is not more disruptive than maintaining it · interleaving independence, so no global now · selection is non-destructive · accessibility is proper · preference is structurally determined · selection need not be unique · order carries no orientation
+Local sequential chains · minimal-disruption selection (under well-foundedness) · unselected structure real · co-dependence comparable by disruption · structural projection when breaking co-dependence is not more disruptive than maintaining it · no global order, so no global now · selection is non-destructive · accessibility is proper · preference is structurally determined · selection need not be unique · order carries no orientation
 
 ## Not forced (requires postulates)
 

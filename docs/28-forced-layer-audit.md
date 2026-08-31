@@ -16,20 +16,33 @@ This makes the audit a discovery procedure rather than a catalogue, and it cuts 
 
 ---
 
-## 2. F6 — Interleaving independence
+## 2. F6 — No global order
 
-**Claim.** [O2, B8] Let a finite set of events carry a dependence order. Every total order extending it produces the same outcome and the same causal order, and nothing in O1–O4 distinguishes one such linearisation from another.
+**Claim.** [O2, F1] Where two events lie on no common evaluator chain, nothing determines an order between them.
 
-**Derivation.** O2 says sequential order is constructed locally by successive reduction and is not a global parameter. Events not related by dependence are therefore not ordered by anything: no evaluator's chain relates them, and there is no global parameter left to appeal to. Independent events commute, so the outcome is invariant across linearisations, and the dependence order is invariant by construction. ∎
+**Derivation.** F1 makes order a per-chain construction: an order between two events obtains when some chain places one after the other. O2 denies that sequential order is a global parameter of the structure. So for events on no common chain there is no order-determining fact — not an unknown one, none. ∎
 
-**Consequences, which are larger than the statement.**
-- **There is no global "now".** Simultaneity across independent events is not merely unknown; there is no fact of the matter.
-- **There is no privileged global state.** What exists is the partial order and the structure, not a sequence of world-states.
+**Consequences.**
+- **There is no global "now".** Simultaneity across such events is not merely unknown; there is no fact of the matter.
+- **There is no privileged global state.** What exists is the structure and the chains, not a sequence of world-states.
 - This is the precise content of "background independence is native to O2", which `docs/05` §3.2 asserts without deriving.
 
-The proof sketch of SM-B3 already leans on this ("∐ depends only on the local chains and share links, not on the interleaving") without it having been stated as a result.
+### 2.1 What was claimed here first, and why it was withdrawn
 
-*B8 is named because the enumeration argument is for finite event sets; infinite orders need a limit argument not given here.*
+The first version of F6 claimed more: that **every linearisation of the dependence order yields the same outcome**, cited as [O2, B8]. That does not follow, and the audit's own test rejects it on two counts.
+
+**Dependence is not ontological.** The relation is defined by **SB4**, a postulate, and in carrier language: \(e \prec_1 e'\) iff the redex of \(e'\) contains a node created by \(e\). Redexes and nodes are WM1 vocabulary. A claim phrased in terms of that relation is not phrased in O1–O4.
+
+**Commutation is a carrier property.** Outcome-invariance requires disjoint reductions to commute. WM1 has that as a lemma, and **SM-B3's own proof sketch says so**, resting on "trace-equivalence of independent steps, per Lemma-3.4-style commutation". Another faithful carrier of O1 need not have it.
+
+| Claim | Status |
+|---|---|
+| Independent events are not ordered | **Forced** — F6, from O2 and F1 |
+| All linearisations yield the same outcome | **Not forced.** Carrier-level; holds in WM1 by a commutation lemma |
+
+The sim's §1 demonstrates the second in a carrier where composition is set union, which commutes trivially. That **confirms** the claim where it holds; it does not establish it in general, and the sim now says so.
+
+**This is the third instance in as many passes**, after MG1's missing sequential-additivity and MG2's asymmetry failure. Each time the move was the same: recognise a structure, then import the setting it lives in without noticing. Charter §6 predicted this would recur and it recurred within one commit of being written. The practical lesson is narrow and worth stating: **before claiming a result forced, check the vocabulary of its statement, not only of its proof.** F6's first version could have been rejected by reading it, since "dependence order" is SB4's phrase and SB4 is a postulate.
 
 ---
 
@@ -123,13 +136,13 @@ Recording the failures matters as much as the promotions. A test that only ever 
 | F3 | Unselected remains real | O4 |
 | F4 | Co-dependence admits disruption comparison | O1, O3 |
 | F5 | Structural projection when break ≤ maintain | F4, O3 |
-| **F6** | **Interleaving independence; no global now or global state** | **O2, B8** |
+| **F6** | **No global order: independent events are unordered; no global now, no global state** | **O2, F1** |
 | **F7** | **Selection is non-destructive** | **O4** |
 | **F8** | **Accessibility is proper; no chain holds all of it** | **F1, F2, O4** |
 | **F9** | **Preference is structurally determined** | **O3, analytic** |
 | **F10** | **Selection need not be unique** | **F2′** |
 | **F11** | **Order carries no orientation** | **O2** |
 
-Six results become twelve. Three of the new ones relocate load off postulates that were carrying it unnecessarily: F8 under TH3, F9 under T17, F11 out of the AT layer.
+Six results become twelve. Three of the new ones relocate load off postulates that were carrying it unnecessarily: F8 under TH3, F9 under T17, F11 out of the AT layer. F6 was itself trimmed during the audit (§2.1), which is the test applying to the audit's own output.
 
 **What the audit does not claim.** No new physics, and no discharge of any contention. Every result above still sits on B2, and those touching admissibility sit on B3, which remains undefined. A larger forced layer is not the same as a better-founded one, and contention 12 is still the deepest thing in the way.

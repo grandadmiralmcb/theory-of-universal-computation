@@ -77,7 +77,7 @@ that chain *is* sequential order for that evaluator.
 
 ### F6–F11 — added by the audit (`docs/28`)
 
-**F6 [O2, B8]** *Interleaving independence.* Every total order extending the dependence order gives the same outcome and the same causal order; nothing in O1–O4 distinguishes them. Hence **no global "now" and no privileged global state** — the precise content of background independence.
+**F6 [O2, F1]** *No global order.* Where two events lie on no common evaluator chain, nothing determines an order between them — not an unknown order, none. Hence **no global "now" and no privileged global state**, which is the precise content of background independence. *(The stronger claim that every linearisation gives the same outcome is **not** forced: dependence is SB4's notion, stated in carrier language, and commutation of disjoint reductions is a WM1 lemma — `docs/28` §2.1.)*
 
 **F7 [O4]** *Selection is non-destructive.* Selecting one residual leaves the totality of real structure unchanged. (The stronger "structure cannot cease" is **not** forced — `docs/28` §8 gives a countermodel.)
 

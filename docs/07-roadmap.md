@@ -29,7 +29,7 @@
 | AT1–AT2 | Order forced by O2 and prior to entropy; order fixes no orientation | Proved [O2, F1, SM-B3] (docs/25) |
 | AT3–AT4 | Orientation lives at projection alone; the ratchet is F5 + stable exclusion | Proved [TH4, T14′] / [F5, O4, SM-B3] — **arrow sits below the TG stack** |
 | AT5–AT6 | Arrow density = decoherence density; duration counted by projection events | Proved [T10, T11, WM4] / [AT3, TH5] |
-| F6–F11 | Interleaving independence; non-destructive selection; proper accessibility; structural determination of preference; non-unique selection; no orientation | Proved [O2 / O4 / F1,F2,O4 / O3 / F2′ / O2] (docs/28). **"Structure cannot cease" rejected by countermodel** |
+| F6–F11 | No global order; non-destructive selection; proper accessibility; structural determination of preference; non-unique selection; no orientation | Proved [O2 / O4 / F1,F2,O4 / O3 / F2′ / O2] (docs/28). **"Structure cannot cease" rejected by countermodel** |
 | MG1 | The cost structure is a Lawvere metric | Proved [O1, O3, WM2, B5, B6] (docs/27) — B5/B6 were unstated in the first version |
 | MG2′ | Curvature definable **on the reversible sector**, with no manifold | Proved [MG1, B7, symmetry]. The unrestricted MG2 was **false**: asymmetric metrics give the same edge two answers |
 
