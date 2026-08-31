@@ -16,14 +16,17 @@ The question that precedes every other stage is why there is any structure at al
 
 **Why it does not.** O3 ranks *reductions*, not configurations. Cost in WM2 is charged to a step, so a configuration has no cost to compare while sitting still, and "nothing is cheapest" is a category error rather than a competing option. There is also no move to reach it by: reduction rewrites structure, and the calculus has no global annihilation operator. Nothing does not lose the competition; it does not enter it.
 
-**Why structure cannot cease.** O4 says non-selection is not non-existence. Selection is the only thing the dynamics does, and it removes nothing — it makes structure inaccessible to a chain, which is what AT3 turns into the arrow of time. So no admissible history reaches the empty state from a non-empty one.
+**Why selection cannot destroy.** O4 says non-selection is not non-existence, so selection removes nothing: it makes structure inaccessible to a chain, which is what AT3 turns into the arrow of time. That is **F7**, and it is forced.
+
+**Corrected (docs/28 §8).** This section originally continued "so no admissible history reaches the empty state from a non-empty one." That does not follow. O4 constrains **selection**; it says nothing about whether a reduction may destroy what it acts on, and `docs/28` gives a countermodel — a carrier satisfying O1–O4 in which a discard rule reaches the empty structure. **"Structure cannot cease" is forced given WM1, whose rule set has no annihilation rule, and is not forced by the minima.** The first leg of the argument stands: O3 ranks moves rather than configurations, so nothing is never a cheap option. The second leg was carrying more than it could bear.
 
 **The honest split.**
 
 | Claim | Label |
 |---|---|
 | There is structure | **Assumed** — this is O1, and it is an existence assertion |
-| Structure cannot cease | **Forced** — from O4 plus the absence of an annihilation move |
+| Selection cannot destroy | **Forced** — F7, from O4 |
+| Structure cannot cease | **Not forced** (docs/28 §8). Holds given WM1's rule set; a countermodel satisfying O1–O4 reaches the empty structure |
 
 The framework derives the persistence and not the origin. Any presentation that blurs this is overclaiming.
 
@@ -168,12 +171,14 @@ WM1's finite terms are the charter's default lab bench and explicitly not the su
 
 ### 7.2 Candidates for promotion
 
+**Run in `docs/28`.** Six new forced results (F6–F11); one rejection with a countermodel; two candidates examined and not promoted. The table below is the pre-audit list, kept for the record.
+
 | Candidate | Currently | Why it may be forced |
 |---|---|---|
 | **TH12a** disjoint additivity | [WM1, WM2, AD2] | AD2 was already traced to O2 through PC and IND (`docs/20` §3); the residue is the readings SI and SC, not the working model |
 | **AT2** order carries no orientation | [SM-B3] | A fact about strict partial orders and their converses; no carrier detail enters |
 | **TH2** boundary-only isolation cost | [WM1, WM2] | The *ordinal* form ("isolating a region disturbs only what crosses it") may need O1's sharing alone; the cardinal form needs WM2 |
-| **Stage 0** persistence | unlisted | O4 plus the absence of an annihilation move; appears carrier-independent |
+| ~~Stage 0 persistence~~ | unlisted | **REJECTED (docs/28 §8)** — countermodel. What survives is the weaker F7 |
 
 Each needs the test actually applied, which is the audit's work and is not done here.
 

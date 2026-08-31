@@ -41,6 +41,7 @@ python sim/progress_analysis.py
 python sim/thermo_gravity.py
 python sim/arrow_of_time.py
 python sim/metric_from_cost.py
+python sim/forced_layer.py
 ```
 
 Every file must execute cleanly; a sim that does not run must not be cited
@@ -52,3 +53,4 @@ Full named-operation derivations: `docs/02-dynamics.md`, `docs/04-classical-limi
 Thermodynamics and gravity: `docs/24-thermodynamics-gravity.md`.
 Time and the arrow: `docs/25-time-and-the-arrow.md`.
 Mathematics from the minima: `docs/27-mathematics-from-the-minima.md`.
+The forced layer, audited: `docs/28-forced-layer-audit.md`.

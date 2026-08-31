@@ -75,6 +75,22 @@ that chain *is* sequential order for that evaluator.
 
 ---
 
+### F6–F11 — added by the audit (`docs/28`)
+
+**F6 [O2, F1]** *No global order.* Where two events lie on no common evaluator chain, nothing determines an order between them — not an unknown order, none. Hence **no global "now" and no privileged global state**, which is the precise content of background independence. *(The stronger claim that every linearisation gives the same outcome is **not** forced: dependence is SB4's notion, stated in carrier language, and commutation of disjoint reductions is a WM1 lemma — `docs/28` §2.1.)*
+
+**F7 [O4]** *Selection is non-destructive.* Selecting one residual leaves the totality of real structure unchanged. (The stronger "structure cannot cease" is **not** forced — `docs/28` §8 gives a countermodel.)
+
+**F8 [F1, F2, O4]** *Accessibility is proper.* Where two or more residuals are admissible, the chain is a proper subset of what is real: no evaluator's record contains all real structure. This is TH3's core without SB4, SM-B3 or A4.
+
+**F9 [O3, analytic]** *Preference is structurally determined.* The disruption ordering depends only on the change-set; nothing non-structural can enter. This is T17's weight-blindness without WM2, D19 or A4. Weak form only — that isomorphic change-sets rank *equally* is PC, which needs the reading SI.
+
+**F10 [F2′]** *Selection need not be unique.* Minimal is not minimum; determinism is not forced. The tie set is where any isotropy would have to live.
+
+**F11 [O2]** *Order carries no orientation.* The converse of a strict partial order is a strict partial order. Promoted out of the AT layer.
+
+---
+
 ## Part II — What cannot be derived from O1–O4
 
 | Target | Why not forced |
@@ -88,6 +104,7 @@ that chain *is* sequential order for that evaluator.
 | Born rule | Requires D12 reading or a future derivation |
 | Monism as theorem | Preferred reading only |
 | Consciousness = high coherence sequentialization | Open interpretive link |
+| That structure cannot cease | **Not forced** — countermodel, `docs/28` §8. Forced only given WM1's rule set |
 | Spacetime metric, area, Einstein equation, \(G\) | Requires TG2–TG5 (docs/24); TG2 is the causal-set continuum problem, unsolved |
 
 **Fixed negative results**

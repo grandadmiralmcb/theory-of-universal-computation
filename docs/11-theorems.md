@@ -15,6 +15,14 @@ Every theorem lists **full hypotheses**. Nothing is derived from O1–O4 alone b
 | **F3** | Unselected remains real | O4 |
 | **F4** | Co-dependence admits disruption comparison | O1, O3 |
 | **F5** | Structural projection when break ≤ maintain | F4, O3 |
+| **F6** | No global order: events on no common chain are unordered — no global now, no privileged global state | O2, F1 |
+| **F7** | Selection is non-destructive | O4 |
+| **F8** | Accessibility is proper — no chain holds all real structure | F1, F2, O4 |
+| **F9** | Preference is structurally determined (weak form; PC is stronger and needs SI) | O3, analytic |
+| **F10** | Selection need not be unique; determinism is not forced | F2′ |
+| **F11** | Order carries no orientation (was AT2) | O2 |
+
+*Added by the audit (`docs/28`). Three relocate load off postulates carrying it unnecessarily: F8 under TH3, F9 under T17, F11 out of the AT layer. One standing claim was **rejected** — "structure cannot cease" is forced given WM1 only (`docs/28` §8).*
 
 ---
 
@@ -133,6 +141,7 @@ SM-B1 / SM-B2 pattern: `sim/spectrum_toy.py` (conservation property test; two-ph
 L2–L5 / T16b filter: `sim/splitter_rewrite.py` (induced map computed from routing; Hadamard pinned by the isometry filter; Mach-Zehnder fringes; negative cases)  
 TS1–TS4: `sim/stratified_cost.py` (constraint-then-cost; classical degeneracy; decoherence freeze; typing as stratum with forced-violation degradation)  
 FV1–FV3: `sim/forced_violation.py` (progress in open configurations; FV reachability under packing+clamps; minimal-step rule; asymmetry from floor tie-breaking)  
+F6–F11 and the rejection: `sim/forced_layer.py` (all linearisations enumerated; the proper-subset count; the change-set identity; two minimal residuals and no minimum; an order and its converse both strict partial orders; and the countermodel reaching the empty structure)  
 MG1–MG2: `sim/metric_from_cost.py` (metric axioms verified, asymmetry exhibited on a one-way chain; Ollivier curvature by exact min-cost flow reproducing the analytic values; the two flat lattices returning zero, which is the numerical form of curvature not knowing its dimension)  
 AT1–AT6: `sim/arrow_of_time.py` (isometric chains reversed exactly; projection's non-injectivity exhibited; exclusion stable over 200 steps; arrow density swept 0→99.8%; recurrent isometric clock vs monotone projection counter)  
 TH1–TH12: `sim/thermo_gravity.py` (area law at fixed cut; relative-entropy gauge invariance against divergent \(S\); monotonicity across the event trichotomy; both small-ball coefficients verified against exact \(S^3\) balls and quadrature; \(dM=T\,dS\); the merger inequality on observed binary black holes; WEP universality and its \(\varepsilon\)-floor residue; additivity exact at zero cross-shares and off by exactly \(2n_{\rm cross}\) otherwise)  
