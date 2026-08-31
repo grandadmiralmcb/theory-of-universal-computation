@@ -53,4 +53,4 @@ Full named-operation derivations: `docs/02-dynamics.md`, `docs/04-classical-limi
 Thermodynamics and gravity: `docs/24-thermodynamics-gravity.md`.
 Time and the arrow: `docs/25-time-and-the-arrow.md`.
 Mathematics from the minima: `docs/27-mathematics-from-the-minima.md`.
-The forced layer, audited: `docs/28-forced-layer-audit.md`.
+The forced layer, audited (both passes, F6–F17): `docs/28-forced-layer-audit.md`.
