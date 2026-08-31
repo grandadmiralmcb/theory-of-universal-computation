@@ -1,6 +1,6 @@
 # Theory of Universal Computation
 
-**Derivation-first.** Ontology is four minima (O1–O4). Only F1–F5 are forced from those. Everything else requires explicit postulates.
+**Derivation-first.** Ontology is four minima (O1–O4). Only F1–F11 are forced from those. Everything else requires explicit postulates.
 
 *Relevant entropy is relative information.* The thermodynamic layer (docs/24) rests on that one sentence: the framework's own gauge freedoms leave no absolute entropy standing, only differences against the ground configuration — and gravity is what those differences do.
 
@@ -26,7 +26,7 @@
 
 ## Forced from ontology alone
 
-Local sequential chains · minimal-disruption selection (under finiteness) · unselected structure real · co-dependence comparable by disruption · structural projection when breaking co-dependence is not more disruptive than maintaining it
+Local sequential chains · minimal-disruption selection (under well-foundedness) · unselected structure real · co-dependence comparable by disruption · structural projection when breaking co-dependence is not more disruptive than maintaining it · interleaving independence, so no global now · selection is non-destructive · accessibility is proper · preference is structurally determined · selection need not be unique · order carries no orientation
 
 ## Not forced (requires postulates)
 
