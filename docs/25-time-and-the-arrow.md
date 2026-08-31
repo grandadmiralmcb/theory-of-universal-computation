@@ -1,6 +1,6 @@
 # 25 — Time and the Arrow (AT results)
 
-*Status: derivation document. Claim under examination: **time is emergent from the entropy gradient**. Verdict: **half right, and the half that is right is a theorem the framework already owned.** Sequential order is forced by O2 with no entropy anywhere (AT1) — deriving it from an entropy gradient would be circular. What order does not supply is **orientation**: a strict partial order and its converse are both strict partial orders (AT2). The entropy gradient supplies exactly that missing half, and by TH4 it is carried by structural projection events and by nothing else (AT3). Sharper still: the gradient **measures** the arrow rather than creating it — the ratchet is F5 plus stable causal exclusion, one layer below the postulational TG stack (AT4). Executable: `sim/arrow_of_time.py`.*
+*Status: derivation document. Claim under examination: **time is emergent from the entropy gradient**. Verdict: **half right, and the half that is right is a theorem the framework already owned.** Sequential order is forced by O2 with no entropy anywhere (AT1) — deriving it from an entropy gradient would be circular. What order does not supply is **orientation**: a strict partial order and its converse are both strict partial orders (AT2). The entropy gradient supplies exactly that missing half, and by TH4 it is carried by structural projection events and by nothing else (AT3). Sharper still: the gradient **measures** the arrow rather than creating it — the ratchet is F5 plus stable causal exclusion, one layer below the postulational TG stack (AT4) — though the stability clause is WM1-level, not forced (`docs/28` §10.3). Executable: `sim/arrow_of_time.py`.*
 
 Authority: `docs/00-theory-charter.md`. Thermodynamic layer: `docs/24-thermodynamics-gravity.md`. Theorems with hypotheses: `docs/11-theorems.md`.
 
@@ -64,7 +64,9 @@ The framework does not have three mysteries about irreversibility. It has one ev
 
 ## 4. AT4 — The gradient measures the arrow; F5 *is* the arrow
 
-This is where the framework can do better than "time emerges from the entropy gradient," and the improvement matters because it moves the arrow **out of the postulational TG layer and into the forced layer**.
+This is where the framework can do better than "time emerges from the entropy gradient," and the improvement matters because it moves the arrow **out of the postulational TG layer**.
+
+*Corrected by the second audit pass (`docs/28` §10.3).* This sentence originally read "and into the forced layer", which is a layer too far. AT4 runs through SM-B3, whose \(\prec\) is **SB4's** dependence relation, stated in redexes and nodes — WM1 vocabulary. The arrow sits **below TG and above the minima**, which is still the substantive point: it survives the failure of the geometric limit. What is forced, and separately, is F14: a projection removes its own precondition, so the comparison that would license undoing it has no instance. The step from that to *permanent* exclusion is where WM1 enters.
 
 **Theorem AT4.** [F5, O4/F3, SM-B3] The asymmetry of AT3 does not originate in the entropy functional. Its source is structural: a projection breaks the co-dependence linking the unselected residuals to the chain, and causal exclusion is stable — \(\prec\) is a strict partial order, so re-inclusion would require a data-dependence path that the projection is precisely what removed. The unselected remains **real** (O4/F3) and permanently **off that chain**.
 

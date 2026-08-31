@@ -171,7 +171,7 @@ WM1's finite terms are the charter's default lab bench and explicitly not the su
 
 ### 7.2 Candidates for promotion
 
-**Run in `docs/28`.** Six new forced results (F6–F11); one rejection with a countermodel; two candidates examined and not promoted. The table below is the pre-audit list, kept for the record.
+**Run twice in `docs/28`.** Twelve new forced results — F6–F11, then F12–F17. One rejection with a countermodel, one correction (AT4's layer), two candidates examined and not promoted, one non-consequence recorded, two ledger gaps found (B9, B10). The second pass mostly marks **silences**: where O1–O4 determine nothing, so that each later postulate can be matched to the gap it fills. The table below is the pre-audit list, kept for the record.
 
 | Candidate | Currently | Why it may be forced |
 |---|---|---|

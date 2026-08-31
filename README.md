@@ -1,6 +1,6 @@
 # Theory of Universal Computation
 
-**Derivation-first.** Ontology is four minima (O1–O4). Only F1–F11 are forced from those. Everything else requires explicit postulates.
+**Derivation-first.** Ontology is four minima (O1–O4). Only F1–F17 are forced from those. Everything else requires explicit postulates.
 
 *Relevant entropy is relative information.* The thermodynamic layer (docs/24) rests on that one sentence: the framework's own gauge freedoms leave no absolute entropy standing, only differences against the ground configuration — and gravity is what those differences do.
 
@@ -26,11 +26,19 @@
 
 ## Forced from ontology alone
 
-Local sequential chains · minimal-disruption selection (under well-foundedness) · unselected structure real · co-dependence comparable by disruption · structural projection when breaking co-dependence is not more disruptive than maintaining it · no global order, so no global now · selection is non-destructive · accessibility is proper · preference is structurally determined · selection need not be unique · order carries no orientation
+Local sequential chains · minimal-disruption selection (under well-foundedness) · unselected structure real · co-dependence comparable by disruption · structural projection when breaking co-dependence is not more disruptive than maintaining it · no global order, so no global now · selection is non-destructive · accessibility is proper · preference is structurally determined · selection need not be unique · order carries no orientation · projection has no agent, so no ontological observer · projection destroys its own precondition · composition is not free (or B4 carries it), so non-separability is ontological either way
+
+## Forced *silences* — where the minima determine nothing
+
+Equally part of the foundation, and the more useful half (`docs/28` §10). Each one names the postulate standing in it.
+
+- **No selection among incomparable residuals** (F12). A tie and an incomparability are not alike, and only a tie licenses a symmetry argument. Filled by CP, or a measure postulate.
+- **No state-valued quantity of any kind** (F16) — no energy, no entropy, no cost on structures. O3 ranks *transitions*, and that order need not come from a function on states. Filled by WM2 and RM1, which is what those postulates are **for**.
+- **No termination and no monotone progress** (F17). The shape an H-theorem needs is unavailable. Filled by nothing — which is why the arrow of time had to come from F5's structure rather than from anything running downhill.
 
 ## Not forced (requires postulates)
 
-Finite trees · cardinal cost formula · continuum mechanics · complex amplitudes · unitarity · Born rule · **metric geometry and the Einstein equation** (TG2–TG5)
+Finite trees · cardinal cost formula · continuum mechanics · complex amplitudes · unitarity · Born rule · **metric geometry and the Einstein equation** (TG2–TG5) · **any state functional at all** (F16) · permanent causal exclusion (AT4, which needs WM1) · branching histories — and their denial
 
 ## Working model value
 
